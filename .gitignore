@@ -1,0 +1,46 @@
+# Python cache
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Data and outputs
+data/
+outputs/
+logs/
+*.log
+
+# Models and checkpoints
+models/
+*.ckpt
+*.bin
+*.safetensors
+*.pt
+*.pth
+
+# Generated reports
+*.xlsx
+*.xls
+*.csv
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# VS Code / SFTP configs
+.vscode/
+!.vscode/settings.example.json
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Jupyter
+.ipynb_checkpoints/
