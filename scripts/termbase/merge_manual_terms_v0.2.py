@@ -21,6 +21,7 @@ FIELDS = [
 DEFAULT_INPUT_BY_LANG = {
     "en": Path("termbase/manual_extracted_terms_v0.2.csv"),
     "ru": Path("termbase/manual_extracted_ru_terms_v0.2.csv"),
+    "es": Path("termbase/manual_extracted_es_terms_v0.2.csv"),
 }
 
 HIGH_DOMAINS = {
@@ -33,6 +34,9 @@ HIGH_DOMAINS = {
     "ev_safety",
     "defrost_demisting",
     "hvac",
+    "anti_theft",
+    "adas",
+    "vehicle_market",
 }
 
 MEDIUM_DOMAINS = {
@@ -111,7 +115,7 @@ HIGH_TERMS = {
     "overcurrent protection",
     "electrolyte leakage",
 
-    # ru general
+    # ru
     "гост",
     "межгосударственный стандарт",
     "технические требования",
@@ -134,8 +138,6 @@ HIGH_TERMS = {
     "водитель",
     "пассажир",
     "сиденье",
-
-    # ru defrost / demisting
     "ветровое стекло",
     "лобовое стекло",
     "наружная поверхность ветрового стекла",
@@ -157,8 +159,6 @@ HIGH_TERMS = {
     "испытание на оттаивание ветрового стекла",
     "испытание на удаление запотевания ветрового стекла",
     "обдув ветрового стекла",
-
-    # ru hvac
     "обитаемое помещение",
     "рабочее место водителя",
     "электрический отопитель",
@@ -199,8 +199,6 @@ HIGH_TERMS = {
     "испытание системы кондиционирования",
     "климатическое исполнение",
     "органы управления",
-
-    # ru testing
     "холодная камера",
     "климатическая камера",
     "выдержка",
@@ -214,6 +212,172 @@ HIGH_TERMS = {
     "динамометрический стенд",
     "солнечная радиация",
     "точка измерения",
+
+    # es general regulation
+    "decreto",
+    "resolución",
+    "resolución exenta",
+    "ministerio de transportes y telecomunicaciones",
+    "subsecretaría de transportes",
+    "diario oficial",
+    "ley de tránsito",
+    "decreto supremo",
+    "decreto con fuerza de ley",
+    "fecha de publicación",
+    "fecha de promulgación",
+    "entrará en vigencia",
+    "vigencia",
+    "artículo",
+    "artículo único",
+    "artículo transitorio",
+    "anexo",
+    "modifícase",
+    "reemplázase",
+    "agrégase",
+    "incorpórase",
+    "cuerpo normativo",
+    "normativa",
+    "normativa técnica",
+    "norma internacional",
+    "norma técnica internacional",
+    "reglamento",
+    "reglamento nº 116",
+    "comisión económica de las naciones unidas para europa",
+    "cepe",
+    "cepe/onu",
+    "un-ece",
+    "type approval",
+    "homologación",
+    "homologación de modelos",
+    "modelos homologados",
+    "acreditar",
+    "certificado",
+    "cumplir con los requisitos",
+    "requisitos establecidos",
+    "disposiciones",
+    "deberán",
+    "será obligatorio",
+    "centro de control y certificación vehicular",
+    "3cv",
+    "antecedentes técnicos",
+    "informe técnico",
+    "código de informe técnico",
+    "marca de verificación",
+    "rótulo",
+    "gb",
+    "gb/t",
+    "estándar nacional de la república popular china",
+    "gb/t 25985-2010",
+    "normativa internacional",
+    "criterios de evaluación",
+    "métodos de ensayo",
+    "organismo rector nacional de tránsito",
+    "sin perjuicio de",
+    "publicación en el diario oficial",
+    "fecha de publicación en el diario oficial",
+
+    # es vehicle general / market
+    "vehículo",
+    "vehículo motorizado",
+    "vehículo motorizado nuevo",
+    "vehículo nuevo",
+    "vehículos livianos",
+    "vehículos livianos de pasajeros",
+    "vehículos comerciales",
+    "furgón",
+    "minibús",
+    "camioneta",
+    "camioneta con cabina avanzada",
+    "cabina avanzada",
+    "habitáculo",
+    "peso bruto vehicular",
+    "comercializar",
+    "comercialización",
+    "ingresar al país",
+    "primera venta al por menor",
+    "fabricante",
+    "armador",
+    "importador",
+    "representante",
+    "modelo",
+    "motor",
+
+    # es safety
+    "rótulo de elementos de seguridad optativos",
+    "elementos de seguridad",
+    "elementos de seguridad optativos",
+    "elementos de seguridad obligatorios",
+    "provisto de",
+    "cuenta con",
+    "no está provisto de",
+    "parabrisas",
+    "sistema de bolsa de aire",
+    "air bags",
+    "bolsa de aire",
+    "bolsas de aire laterales de cuerpo",
+    "bolsas de aire laterales de cabeza",
+    "cinturón de seguridad",
+    "anclaje de cinturón de seguridad",
+    "vidrios de seguridad",
+    "retrovisor",
+    "espejo retrovisor",
+    "asiento",
+    "dispositivo de dirección",
+    "sistema de frenos",
+    "frenado",
+    "control electrónico de estabilidad",
+    "reglamento nº 13-h",
+    "reglamento nº 140",
+    "reglamento nº 14",
+    "reglamento nº 16",
+    "características técnicas de construcción",
+    "condiciones de seguridad",
+    "sistemas y/o componentes del vehículo",
+    "componentes del vehículo",
+    "seguridad vehicular",
+
+    # es anti theft
+    "protección contra la utilización no autorizada",
+    "utilización no autorizada",
+    "uso no autorizado",
+    "dispositivo de protección",
+    "dispositivo contra la utilización no autorizada",
+    "inmovilizador",
+    "theft protection",
+    "arranque",
+    "accionamiento",
+    "evitando su accionamiento",
+    "suministro de combustible",
+    "sistema de inyección",
+    "sistema de ignición",
+    "unidad de control electrónico",
+    "ecu",
+    "desenergizar la unidad de control electrónico",
+    "propia fuerza motriz",
+    "activar",
+    "desactivar",
+    "control único",
+    "equipamiento original",
+    "equipamiento certificado por el fabricante",
+    "bloqueado",
+    "desmontado",
+    "herramientas especiales",
+    "neutralizarse",
+    "accionamiento accidental",
+    "motor en marcha",
+    "bloqueo",
+    "medidas de protección",
+
+    # es adas
+    "sistema avanzado de frenado de emergencia",
+    "aeb",
+    "detector de punto ciego",
+    "bsd",
+    "punto ciego",
+    "asistente de velocidad inteligente",
+    "isa",
+    "asistente de mantenimiento de carril",
+    "lka",
 }
 
 LOW_TERMS = {
@@ -243,6 +407,15 @@ LOW_TERMS = {
     "пол",
     "диаметр отверстия",
     "толщина стенки",
+
+    # es
+    "punto final",
+    "punto y coma",
+    "frase",
+    "software de diseño",
+    "página web",
+    "s.r.r.v.",
+    "objetivos",
 }
 
 def clean(value):
@@ -285,6 +458,8 @@ def assign_priority(row):
         if (
             "испытание" in source_term
             or "испытаний" in source_term
+            or "ensayo" in source_term
+            or "método" in source_term
             or "test" in source_term
             or source_term.endswith("test")
         ):
@@ -298,7 +473,13 @@ def assign_priority(row):
             return "high"
         return "medium"
 
-    if domain in {"defrost_demisting", "hvac"}:
+    if domain in {
+        "defrost_demisting",
+        "hvac",
+        "anti_theft",
+        "adas",
+        "vehicle_market",
+    }:
         if current == "low":
             return "low"
         if current == "medium":
@@ -359,7 +540,7 @@ def resolve_input_path():
 
         return Path(arg)
 
-    return DEFAULT_INPUT_BY_LANG["ru"]
+    return DEFAULT_INPUT_BY_LANG["es"]
 
 def main():
     input_path = resolve_input_path()

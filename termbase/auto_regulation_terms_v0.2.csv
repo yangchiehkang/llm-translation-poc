@@ -673,3 +673,277 @@ ru_0233,ru,zh,очистка стекла,玻璃清洁,defrost_demisting,medium,
 ru_0234,ru,zh,камера рассеивания,扩散腔,testing,medium,дисперсионная камера,蒸汽发生器结构别名,active
 ru_0235,ru,zh,диаметр отверстия,孔径,testing,low,диаметр,设备尺寸参数，低优先级,active
 ru_0236,ru,zh,толщина стенки,壁厚,testing,low,толщина стенок,设备尺寸参数，低优先级,active
+es_0016,es,zh,Decreto,法令,general_regulation,high,decreto,智利法规文件类型，常见于Decreto 119,active
+es_0017,es,zh,Resolución,决议,general_regulation,high,resolución,智利行政规范文件类型,active
+es_0018,es,zh,resolución exenta,豁免决议,general_regulation,high,Resolución exenta,智利行政文件类型，exenta通常指免于审计程序的决议,active
+es_0019,es,zh,Ministerio de Transportes y Telecomunicaciones,交通和电信部,general_regulation,high,MTT,智利主管部委名称,active
+es_0020,es,zh,Subsecretaría de Transportes,交通副部,general_regulation,high,Subsecretaria de Transportes,智利交通主管机关下属机构,active
+es_0021,es,zh,Diario Oficial,官方公报,general_regulation,high,Diario Oficial de la República de Chile,智利法规公布载体,active
+es_0022,es,zh,Biblioteca del Congreso Nacional de Chile,智利国会图书馆,general_regulation,medium,BCN;Ley Chile,智利法规查询来源,active
+es_0023,es,zh,Ley de Tránsito,交通法,general_regulation,high,ley N°18.290,智利交通法规基础法律,active
+es_0024,es,zh,Constitución Política de la República,共和国政治宪法,general_regulation,medium,Constitución,智利法规引用文件,active
+es_0025,es,zh,decreto supremo,最高法令,general_regulation,high,DS,智利行政法规文件类型,active
+es_0026,es,zh,decreto con fuerza de ley,具有法律效力的法令,general_regulation,high,DFL,智利法规引用常用文件类型,active
+es_0027,es,zh,decreto ley,法令,general_regulation,medium,DL,智利法规引用文件类型,active
+es_0028,es,zh,texto refundido,合并文本,general_regulation,medium,texto refundido coordinado y sistematizado,法律文本整理方式,active
+es_0029,es,zh,texto coordinado,协调文本,general_regulation,medium,texto coordinado,法律文本整理方式,active
+es_0030,es,zh,texto sistematizado,系统化文本,general_regulation,medium,texto sistematizado,法律文本整理方式,active
+es_0031,es,zh,fecha de publicación,发布日期,general_regulation,high,Fecha Publicación,法规文件元数据,active
+es_0032,es,zh,fecha de promulgación,颁布日期,general_regulation,high,Fecha Promulgación,法规文件元数据,active
+es_0033,es,zh,última modificación,最后修改,general_regulation,medium,Ultima Modificación,法规文件元数据,active
+es_0034,es,zh,última versión,最新版本,general_regulation,medium,Última Versión,法规版本信息,active
+es_0035,es,zh,entrará en vigencia,生效,general_regulation,high,entrar en vigencia,法规生效表达,active
+es_0036,es,zh,vigencia,效力,general_regulation,high,entrada en vigencia,法规效力/生效状态,active
+es_0037,es,zh,publíquese,予以公布,general_regulation,medium,publicar,智利法规结尾用语,active
+es_0038,es,zh,anótese,予以登记,general_regulation,medium,anotar,智利法规结尾用语,active
+es_0039,es,zh,tómese razón,予以审计备案,general_regulation,medium,toma de razón,智利行政法程序用语,active
+es_0040,es,zh,exención de trámite de toma de razón,免于审计备案程序,general_regulation,medium,exención de toma de razón,Contraloría相关行政程序术语,active
+es_0041,es,zh,Contraloría General de la República,共和国总审计署,general_regulation,medium,Contraloría,智利行政监督机构,active
+es_0042,es,zh,normas generales,一般规范,general_regulation,medium,Normas Generales,官方公报栏目术语,active
+es_0043,es,zh,leyes reglamentos decretos y resoluciones de orden general,法律、条例、法令和一般性决议,general_regulation,medium,Leyes Reglamentos Decretos y Resoluciones,官方公报栏目表达,active
+es_0044,es,zh,artículo,条,general_regulation,high,Art.;Artículo,法规条款结构术语,active
+es_0045,es,zh,artículo único,唯一条款,general_regulation,high,Artículo único,西语法规修改文件常见结构,active
+es_0046,es,zh,artículo transitorio,过渡条款,general_regulation,high,Artículo transitorio,法规过渡规定,active
+es_0047,es,zh,numeral,项,general_regulation,medium,núm.;número,条款下级编号,active
+es_0048,es,zh,inciso,款,general_regulation,medium,inc.,拉美法规条文结构术语,active
+es_0049,es,zh,letra,字母项,general_regulation,medium,literal,条款中字母编号项,active
+es_0050,es,zh,visto,鉴于,general_regulation,medium,Visto,智利法规“依据”部分标题,active
+es_0051,es,zh,considerando,考虑到,general_regulation,medium,Considerando,智利法规理由部分标题,active
+es_0052,es,zh,resuelvo,决定,general_regulation,medium,Resuelvo,决议正文引导语,active
+es_0053,es,zh,modifícase,修改,general_regulation,high,modificar,法规修改用语,active
+es_0054,es,zh,reemplázase,替换,general_regulation,high,reemplazar,法规修改动作术语,active
+es_0055,es,zh,agrégase,增加,general_regulation,high,agregar,法规修改动作术语,active
+es_0056,es,zh,incorpórase,纳入,general_regulation,high,incorporar,法规修改动作术语,active
+es_0057,es,zh,a continuación,在其后,general_regulation,medium,a continuación de,法规插入文本表达,active
+es_0058,es,zh,punto final,句号,general_regulation,low,punto aparte,文本修改类术语，低优先级,active
+es_0059,es,zh,punto y coma,分号,general_regulation,low,punto y coma,文本修改类术语，低优先级,active
+es_0060,es,zh,expresión,表述,general_regulation,medium,frase,法规修改中“替换某表达”,active
+es_0061,es,zh,frase,短语,general_regulation,low,expresión,文本修改术语，低优先级,active
+es_0062,es,zh,cuerpo normativo,规范性文件,general_regulation,high,cuerpos normativos,法规文件统称,active
+es_0063,es,zh,normativa,法规,general_regulation,high,normativa técnica,法律/技术规范统称,active
+es_0064,es,zh,normativa técnica,技术法规,general_regulation,high,norma técnica,汽车安全技术标准语境,active
+es_0065,es,zh,norma internacional,国际标准,general_regulation,high,normas internacionales,认证依据术语,active
+es_0066,es,zh,norma técnica internacional,国际技术标准,general_regulation,high,normas técnicas internacionales,车辆安全配置适用标准,active
+es_0067,es,zh,futuras modificaciones o actualizaciones,未来修改或更新,general_regulation,medium,modificaciones o actualizaciones futuras,技术标准版本更新表达,active
+es_0068,es,zh,Reglamento Nº 116,第116号法规,general_regulation,high,Reglamento N°116,UNECE R116相关防盗法规,active
+es_0069,es,zh,Comisión Económica de las Naciones Unidas para Europa,联合国欧洲经济委员会,general_regulation,high,CEPE;UNECE,西语CEPE对应UNECE,active
+es_0070,es,zh,CEPE,联合国欧洲经济委员会,general_regulation,high,Comisión Económica de las Naciones Unidas para Europa,西语法规中常用缩写,active
+es_0071,es,zh,CEPE/ONU,联合国欧洲经济委员会,general_regulation,high,UN-ECE;UNECE,法规编号引用表达,active
+es_0072,es,zh,UN-ECE,联合国欧洲经济委员会,general_regulation,high,UNECE;CEPE/ONU,智利法规中引用UN-ECE标准,active
+es_0073,es,zh,Type Approval,型式认证,general_regulation,high,aprobación de tipo,文件中保留英文表达，建议统一译为型式认证,active
+es_0074,es,zh,homologación,认证,general_regulation,high,homologacion;homologar,智利车辆认证/车型核准核心术语,active
+es_0075,es,zh,homologación de modelos,车型认证,general_regulation,high,homologación del modelo,文件中对车辆型号认证的表达,active
+es_0076,es,zh,modelos homologados,已认证车型,general_regulation,high,modelos ya homologados,过渡条款术语,active
+es_0077,es,zh,por homologar,待认证,general_regulation,medium,modelos por homologar,过渡条款中认证状态,active
+es_0078,es,zh,acreditar,证明,general_regulation,high,certificar;demostrar,认证/证明合规常用动词,active
+es_0079,es,zh,acreditación,证明,general_regulation,medium,certificación,证明符合要求的行为,active
+es_0080,es,zh,certificado,证书,general_regulation,high,certificación,车辆安全元素标签对应证书,active
+es_0081,es,zh,certificando,认证,general_regulation,medium,certificar,补充认证程序用语,active
+es_0082,es,zh,cumplir con los requisitos,符合要求,general_regulation,high,cumplir los requisitos,法规合规表达,active
+es_0083,es,zh,requisitos establecidos,规定要求,general_regulation,high,requisitos,法规要求表达,active
+es_0084,es,zh,disposiciones,规定,general_regulation,high,disposición,法规条文/规定通用术语,active
+es_0085,es,zh,deberán,应,general_regulation,high,deber;deberá,法规强制性义务词,active
+es_0086,es,zh,podrán,可以,general_regulation,medium,poder;podrá,法规许可性表达,active
+es_0087,es,zh,será obligatorio,应为强制性,general_regulation,high,obligatorio,强制要求表达,active
+es_0088,es,zh,voluntariamente,自愿地,general_regulation,medium,solicitar voluntariamente,认证申请语境,active
+es_0089,es,zh,a contar de,自……起,general_regulation,medium,desde,法规生效/适用时间表达,active
+es_0090,es,zh,vehículo motorizado,机动车辆,vehicle_general,high,vehículos motorizados,智利交通法规核心术语,active
+es_0091,es,zh,vehículo motorizado nuevo,新机动车辆,vehicle_general,high,vehículos motorizados nuevos,适用对象术语,active
+es_0092,es,zh,vehículo nuevo,新车,vehicle_general,high,vehículos nuevos,标签展示和市场销售语境,active
+es_0093,es,zh,vehículos livianos,轻型车辆,vehicle_general,high,vehículos nuevos livianos,安全配置标签适用对象,active
+es_0094,es,zh,vehículos medianos,中型车辆,vehicle_general,medium,vehículos nuevos medianos,安全配置标签可选适用对象,active
+es_0095,es,zh,vehículos livianos de pasajeros,轻型乘用车,vehicle_general,high,vehículos livianos de pasajeros,Resolución 48标题核心术语,active
+es_0096,es,zh,vehículos comerciales,商用车,vehicle_general,high,vehículos comerciales,Resolución 48标题核心术语,active
+es_0097,es,zh,vehículo de carga,货车,vehicle_general,medium,vehículos de carga,法规编号R29适用语境,active
+es_0098,es,zh,furgón,厢式货车,vehicle_general,high,furgones,Decreto 119例外车型,active
+es_0099,es,zh,minibús,小型客车,vehicle_general,high,minibuses,Decreto 119例外车型,active
+es_0100,es,zh,camioneta,皮卡车,vehicle_general,high,camionetas,智利车辆类别常见词,active
+es_0101,es,zh,camioneta con cabina avanzada,平头皮卡车,vehicle_general,high,camionetas con cabina avanzada,指发动机位于乘员舱下方的车型,active
+es_0102,es,zh,cabina avanzada,前置/平头驾驶室,vehicle_general,high,cabina adelantada,法规定义为发动机位于habitáculo下方,active
+es_0103,es,zh,cabina separada,独立驾驶室,vehicle_general,medium,cabina separada,UN R29货车驾驶室法规语境,active
+es_0104,es,zh,habitáculo,乘员舱,vehicle_general,high,compartimiento de pasajeros,法规中指发动机所在位置相对乘员舱,active
+es_0105,es,zh,peso bruto vehicular,车辆总质量,vehicle_general,high,PBV,Decreto 119适用范围核心参数,active
+es_0106,es,zh,menor a,小于,general_regulation,medium,inferior a,法规阈值表达,active
+es_0107,es,zh,igual o mayor a,大于或等于,general_regulation,medium,mayor o igual a,法规阈值表达,active
+es_0108,es,zh,comercializar,销售,vehicle_market,high,comercialización,车辆进入市场销售语境,active
+es_0109,es,zh,comercialización,销售,vehicle_market,high,comercializar,法规适用对象：销售或进口销售,active
+es_0110,es,zh,ingresar al país,进入该国,vehicle_market,high,importar;ingreso al país,车辆进口进入智利市场,active
+es_0111,es,zh,oferta al público,向公众发售,vehicle_market,medium,oferta pública,新车销售展示标签语境,active
+es_0112,es,zh,primera venta al por menor,首次零售,vehicle_market,high,primera venta minorista,原厂装备认证时间点,active
+es_0113,es,zh,armador,组装商,vehicle_market,high,armadores,智利法规中车辆生产/组装主体,active
+es_0114,es,zh,importador,进口商,vehicle_market,high,importadores,车辆认证和标签责任主体,active
+es_0115,es,zh,vendedor,销售商,vehicle_market,medium,vendedores,可宣传配置的主体,active
+es_0116,es,zh,representante,代表,vehicle_market,high,representantes,制造商/进口商代理主体,active
+es_0117,es,zh,representada,被代表方,vehicle_market,medium,su representada,西语法规常见表达，指其所代表的品牌/企业,active
+es_0118,es,zh,Centro de Control y Certificación Vehicular,车辆控制与认证中心,general_regulation,high,3CV,智利车辆认证机构,active
+es_0119,es,zh,3CV,车辆控制与认证中心,general_regulation,high,Centro de Control y Certificación Vehicular,智利车辆认证机构缩写,active
+es_0120,es,zh,antecedentes técnicos,技术资料,general_regulation,high,información técnica,认证提交材料,active
+es_0121,es,zh,informe técnico,技术报告,general_regulation,high,código de informe técnico,标签中车辆信息字段,active
+es_0122,es,zh,código de informe técnico,技术报告编号,general_regulation,high,código informe técnico,安全配置标签字段,active
+es_0123,es,zh,marca,品牌,vehicle_market,medium,marca del vehículo,标签信息字段，注意也可指标志,active
+es_0124,es,zh,modelo,型号,vehicle_market,high,modelo del vehículo,车辆认证和标签字段,active
+es_0125,es,zh,marca de verificación,勾选标记,general_regulation,high,check mark,安全配置标签中用于表示配备项目,active
+es_0126,es,zh,rótulo,标签,general_regulation,high,etiqueta,智利车辆安全配置展示标签,active
+es_0127,es,zh,rótulo de elementos de seguridad optativos,选装安全配置标签,vehicle_safety,high,etiqueta de elementos de seguridad optativos,Resolución 816核心术语,active
+es_0128,es,zh,elementos de seguridad,安全配置,vehicle_safety,high,elementos de seguridad vehicular,车辆安全项目通用术语,active
+es_0129,es,zh,elementos de seguridad optativos,选装安全配置,vehicle_safety,high,elementos optativos de seguridad,Resolución 816核心术语,active
+es_0130,es,zh,elementos de seguridad obligatorios,强制安全配置,vehicle_safety,high,elementos obligatorios,过渡条款中相对选装配置,active
+es_0131,es,zh,equivalentes,等效项目,general_regulation,medium,equivalente,可替代安全配置/标准表达,active
+es_0132,es,zh,provisto de,配备,general_regulation,high,estar provisto de;cuenta con,车辆是否配置某装置,active
+es_0133,es,zh,cuenta con,配备有,general_regulation,high,contar con,标签和宣传语境,active
+es_0134,es,zh,no está provisto de,未配备,general_regulation,high,no cuenta con,标签中未勾选项目解释,active
+es_0135,es,zh,exhibir al público,向公众展示,vehicle_market,medium,exhibirse al público,车辆销售标签展示要求,active
+es_0136,es,zh,parabrisas,风窗玻璃,vehicle_safety,high,windshield,标签贴附位置：右下角风窗,active
+es_0137,es,zh,ángulo inferior derecho del parabrisas,风窗玻璃右下角,vehicle_safety,medium,ángulo inferior derecho,标签展示位置,active
+es_0138,es,zh,software de diseño,设计软件,general_regulation,low,programa de diseño,标签编辑方式，低优先级,active
+es_0139,es,zh,autenticación del usuario,用户认证,general_regulation,medium,autenticación,从部委网站下载标签前置条件,active
+es_0140,es,zh,página web,网页,general_regulation,low,sitio web,低优先级通用词,active
+es_0141,es,zh,protección contra la utilización no autorizada,防止未经授权使用的保护,anti_theft,high,protección contra uso no autorizado,Decreto 119标题核心术语,active
+es_0142,es,zh,utilización no autorizada,未经授权使用,anti_theft,high,uso no autorizado,防盗法规核心概念,active
+es_0143,es,zh,uso no autorizado,未经授权使用,anti_theft,high,utilización no autorizada,常用同义表达,active
+es_0144,es,zh,dispositivo de protección,保护装置,anti_theft,high,dispositivos de protección,防非法使用车辆装置,active
+es_0145,es,zh,dispositivo contra la utilización no autorizada,防未经授权使用装置,anti_theft,high,dispositivo de protección contra utilización no autorizada,Decreto 119核心装置术语,active
+es_0146,es,zh,Inmovilizador,发动机防盗锁止装置,anti_theft,high,inmovilizador,法规中规定只有符合UN R116 IV才能宣传为Inmovilizador,active
+es_0147,es,zh,theft protection,防盗保护,anti_theft,high,protección antirrobo,美国法规英文名在西语文件中出现,active
+es_0148,es,zh,rollaway prevention,防溜车,anti_theft,medium,prevención de desplazamiento involuntario,49 CFR 571.114术语,active
+es_0149,es,zh,arranque,起动,anti_theft,high,puesta en marcha,车辆起动相关术语,active
+es_0150,es,zh,conducción,驾驶,anti_theft,medium,conducir,未经授权使用防护场景,active
+es_0151,es,zh,personas habilitadas,获授权人员,anti_theft,medium,personas autorizadas,可启动车辆的人,active
+es_0152,es,zh,barrera para el uso no autorizado,防止未经授权使用的屏障,anti_theft,medium,barrera contra uso no autorizado,防盗目的描述,active
+es_0153,es,zh,accionamiento,作动,anti_theft,high,activación;operación,防盗装置作用方式，视上下文译作作动/操作,active
+es_0154,es,zh,desconectando,断开,anti_theft,medium,desconectar,装置作用方式,active
+es_0155,es,zh,evitando su accionamiento,防止其作动,anti_theft,high,impedir accionamiento,防盗装置阻止系统工作,active
+es_0156,es,zh,suministro de combustible,燃油供给,anti_theft,high,alimentación de combustible,防盗装置作用系统之一,active
+es_0157,es,zh,sistema de inyección,喷射系统,anti_theft,high,sistema de inyeccion,防盗装置作用系统之一,active
+es_0158,es,zh,sistema de ignición,点火系统,anti_theft,high,sistema de encendido,防盗装置作用系统之一,active
+es_0159,es,zh,Unidad de Control Electrónico,电子控制单元,anti_theft,high,ECU,发动机控制单元,active
+es_0160,es,zh,ECU,电子控制单元,anti_theft,high,Unidad de Control Electrónico,发动机ECU，法规原文括注,active
+es_0161,es,zh,desenergizar la Unidad de Control Electrónico,使电子控制单元断电,anti_theft,high,desenergizar ECU,防盗装置作用方式,active
+es_0162,es,zh,motor,发动机,vehicle_general,high,motor del vehículo,防盗法规核心部件,active
+es_0163,es,zh,motor se ponga en funcionamiento,发动机投入运行,anti_theft,medium,poner en funcionamiento el motor,防盗激活状态下不允许发生,active
+es_0164,es,zh,desplazamiento normal del vehículo,车辆正常移动,anti_theft,medium,desplazamiento normal,防盗激活时应阻止,active
+es_0165,es,zh,propia fuerza motriz,自身动力,anti_theft,high,fuerza motriz propia,车辆依靠自身动力移动,active
+es_0166,es,zh,fuerza motriz,驱动力,vehicle_general,medium,potencia motriz,车辆运动能力术语,active
+es_0167,es,zh,activar,激活,anti_theft,high,activarlo,防盗装置操作动作,active
+es_0168,es,zh,desactivar,解除激活,anti_theft,high,desactivarlo,防盗装置操作动作,active
+es_0169,es,zh,control único,单一控制器,anti_theft,high,mando único,装置启用/解除要求,active
+es_0170,es,zh,mando normal,正常控制装置,anti_theft,medium,control normal,发动机起动或车辆操纵控制,active
+es_0171,es,zh,dirigir,转向,anti_theft,medium,steer,车辆操纵动作,active
+es_0172,es,zh,conducir,驾驶,anti_theft,medium,drive,车辆操纵动作,active
+es_0173,es,zh,hacer avanzar el vehículo,使车辆前进,anti_theft,medium,avanzar el vehículo,车辆自主移动表达,active
+es_0174,es,zh,equipamiento original,原厂装备,anti_theft,high,equipo original;OEM equipment,防盗装置安装要求,active
+es_0175,es,zh,equipamiento certificado por el fabricante,制造商认证装备,anti_theft,high,equipamiento certificado,原厂装备解释,active
+es_0176,es,zh,carcasa,外壳,anti_theft,medium,cubierta,防盗装置拆卸安全要求,active
+es_0177,es,zh,bloqueado,锁止,anti_theft,high,bloqueada;bloquear,防盗装置状态,active
+es_0178,es,zh,desmontado,拆卸,anti_theft,high,desmontar,防盗装置不得轻易拆卸,active
+es_0179,es,zh,herramientas especiales,专用工具,anti_theft,high,herramientas especiales,拆卸条件要求,active
+es_0180,es,zh,abrirse,打开,anti_theft,medium,abrir,不得被快速打开,active
+es_0181,es,zh,neutralizarse,失效,anti_theft,high,neutralizar,防盗装置不得被快速失效化,active
+es_0182,es,zh,destruirse,破坏,anti_theft,medium,destruir,防盗装置抗破坏要求,active
+es_0183,es,zh,rápida y discretamente,快速且隐蔽地,anti_theft,medium,rápidamente y discretamente,防盗装置抗绕过要求,active
+es_0184,es,zh,herramientas poco costosas,低成本工具,anti_theft,medium,herramientas baratas,防盗装置不得被普通工具绕过,active
+es_0185,es,zh,fáciles de disimular,易于隐藏的,anti_theft,medium,de fácil disimulación,防盗装置抗绕过要求,active
+es_0186,es,zh,de fácil acceso para el público,公众易取得的,anti_theft,medium,fácil acceso para el público,防盗装置抗绕过要求,active
+es_0187,es,zh,accionamiento accidental,意外作动,anti_theft,high,activación accidental,防盗装置安全要求,active
+es_0188,es,zh,motor en marcha,发动机运行中,anti_theft,high,motor funcionando,不得发生危险锁止的工况,active
+es_0189,es,zh,bloqueo,锁止,anti_theft,high,bloqueo del vehículo,可能危及安全的动作,active
+es_0190,es,zh,poner en peligro la seguridad,危及安全,vehicle_safety,high,poner en riesgo la seguridad,安全要求表达,active
+es_0191,es,zh,publicitar,宣传,vehicle_market,medium,anunciar,车辆配置宣传限制,active
+es_0192,es,zh,consignarlo,注明,general_regulation,medium,consignar,标签上注明配置,active
+es_0193,es,zh,vehículos nuevos que ingresan al país,进入该国的新车,vehicle_market,medium,vehículos motorizados nuevos que ingresan al país,安全标签适用对象,active
+es_0194,es,zh,elementos optativos,选装配置,vehicle_safety,medium,elementos de seguridad optativos,标签项目简称,active
+es_0195,es,zh,sistema de bolsa de aire,安全气囊系统,vehicle_safety,high,air bags;bolsa de aire,Resolución 816修改内容,active
+es_0196,es,zh,air bags,安全气囊,vehicle_safety,high,bolsa de aire,西语法规中保留英文复数,active
+es_0197,es,zh,bolsa de aire,安全气囊,vehicle_safety,high,airbag;air bags,车辆被动安全术语,active
+es_0198,es,zh,bolsas de aire laterales de cuerpo,侧面躯干部安全气囊,vehicle_safety,high,air bags laterales de cuerpo,侧气囊类型,active
+es_0199,es,zh,bolsas de aire laterales de cabeza,侧面头部安全气囊,vehicle_safety,high,air bags laterales de cabeza,头部侧气帘/侧气囊,active
+es_0200,es,zh,bolsas de aire frontales,前部安全气囊,vehicle_safety,medium,air bags frontales,与其他气囊区分,active
+es_0201,es,zh,sistema avanzado de frenado de emergencia,高级紧急制动系统,adas,high,AEB,ADAS核心术语,active
+es_0202,es,zh,AEB,高级紧急制动系统,adas,high,sistema avanzado de frenado de emergencia,Resolución 816列明选装安全系统,active
+es_0203,es,zh,detector de punto ciego,盲点检测系统,adas,high,BSD,ADAS核心术语,active
+es_0204,es,zh,BSD,盲点检测系统,adas,high,detector de punto ciego,Resolución 816列明选装安全系统,active
+es_0205,es,zh,punto ciego,盲区,adas,high,blind spot,ADAS感知区域术语,active
+es_0206,es,zh,asistente de velocidad inteligente,智能速度辅助系统,adas,high,ISA,ADAS核心术语,active
+es_0207,es,zh,ISA,智能速度辅助系统,adas,high,asistente de velocidad inteligente,Resolución 816列明选装安全系统,active
+es_0208,es,zh,asistente de mantenimiento de carril,车道保持辅助系统,adas,high,LKA,ADAS核心术语,active
+es_0209,es,zh,LKA,车道保持辅助系统,adas,high,asistente de mantenimiento de carril,Resolución 816列明选装安全系统,active
+es_0210,es,zh,verificará su existencia,仅验证其存在,adas,medium,verificar existencia,对AEB/BSD/ISA/LKA的合规检查方式,active
+es_0211,es,zh,cinturón de seguridad,安全带,vehicle_safety,high,cinturones de seguridad,GB14166/GB14167语境，对应UN R16/R14,active
+es_0212,es,zh,anclaje de cinturón de seguridad,安全带固定点,vehicle_safety,high,anclajes de cinturones,GB14167/UN R14相关术语,active
+es_0213,es,zh,vidrios de seguridad,安全玻璃,vehicle_safety,high,cristales de seguridad,GB9656/UN R43相关术语,active
+es_0214,es,zh,materiales de acristalamiento de seguridad,安全玻璃材料,vehicle_safety,medium,acristalamiento de seguridad,UN R43相关译法,active
+es_0215,es,zh,parachoques,保险杠,vehicle_safety,medium,bumper,GB11550相关安全配置,active
+es_0216,es,zh,retrovisor,后视镜,vehicle_safety,high,espejo retrovisor,GB15084相关术语,active
+es_0217,es,zh,espejo retrovisor,后视镜,vehicle_safety,high,retrovisor,车辆视野装置术语,active
+es_0218,es,zh,asiento,座椅,vehicle_safety,high,asientos,GB15083相关术语,active
+es_0219,es,zh,respaldo del asiento,座椅靠背,vehicle_safety,medium,respaldo,座椅安全相关术语,active
+es_0220,es,zh,anclaje del asiento,座椅固定点,vehicle_safety,medium,anclajes de asiento,座椅安装相关术语,active
+es_0221,es,zh,dispositivo de dirección,转向装置,vehicle_safety,high,sistema de dirección,GB11557相关术语,active
+es_0222,es,zh,sistema de frenos,制动系统,vehicle_safety,high,sistema de frenado,GB21670/UN R13-H相关术语,active
+es_0223,es,zh,frenado,制动,vehicle_safety,high,freno,制动系统基础术语,active
+es_0224,es,zh,control electrónico de estabilidad,电子稳定控制系统,vehicle_safety,high,ESC;estabilidad electrónica,UN R140/GB/T30677相关术语,active
+es_0225,es,zh,Reglamento Nº 13-H,第13-H号法规,vehicle_safety,high,UN-ECE R13-H,乘用车制动相关法规,active
+es_0226,es,zh,Reglamento Nº 140,第140号法规,vehicle_safety,high,UN-ECE R140,电子稳定控制相关法规,active
+es_0227,es,zh,Reglamento Nº 14,第14号法规,vehicle_safety,high,UN-ECE R14,安全带固定点法规,active
+es_0228,es,zh,Reglamento Nº 16,第16号法规,vehicle_safety,high,UN-ECE R16,安全带法规,active
+es_0229,es,zh,Reglamento Nº 29,第29号法规,vehicle_safety,medium,UN-ECE R29,货车驾驶室强度法规,active
+es_0230,es,zh,49 Code of Federal Regulations 571.114,美国联邦法规第49篇第571.114节,general_regulation,high,49 CFR 571.114,美国防盗和防溜车法规引用,active
+es_0231,es,zh,GB,GB国家标准,general_regulation,high,Estándar Nacional de la República Popular China,中国国家标准引用,active
+es_0232,es,zh,GB/T,GB/T推荐性国家标准,general_regulation,high,Estándar Nacional de la República Popular China,中国推荐性国家标准引用,active
+es_0233,es,zh,Estándar Nacional de la República Popular China,中华人民共和国国家标准,general_regulation,high,GB;GB/T,Resolución 816新增定义,active
+es_0234,es,zh,GB/T 25985-2010,GB/T 25985-2010,general_regulation,high,National Standard of the People's Republic of China,防盗装置可接受标准之一，编号保留,active
+es_0235,es,zh,GB 14166,GB 14166,general_regulation,medium,GB14166,安全带相关中国标准编号，保留原文,active
+es_0236,es,zh,GB 14167,GB 14167,general_regulation,medium,GB14167,安全带固定点相关中国标准编号，保留原文,active
+es_0237,es,zh,GB 9656,GB 9656,general_regulation,medium,GB9656,汽车安全玻璃相关中国标准编号，保留原文,active
+es_0238,es,zh,GB 11550,GB 11550,general_regulation,medium,GB11550,车辆安全配置引用标准编号，保留原文,active
+es_0239,es,zh,GB 15084,GB 15084,general_regulation,medium,GB15084,后视镜/间接视野装置相关标准编号，保留原文,active
+es_0240,es,zh,GB 15083,GB 15083,general_regulation,medium,GB15083,座椅相关标准编号，保留原文,active
+es_0241,es,zh,GB 11557,GB 11557,general_regulation,medium,GB11557,转向机构相关标准编号，保留原文,active
+es_0242,es,zh,GB 21670,GB 21670,general_regulation,medium,GB21670,制动相关标准编号，保留原文,active
+es_0243,es,zh,GB 11551,GB 11551,general_regulation,medium,GB11551,乘员保护相关标准编号，保留原文,active
+es_0244,es,zh,GB 20071,GB 20071,general_regulation,medium,GB20071,车辆安全配置引用标准编号，保留原文,active
+es_0245,es,zh,GB 26512,GB 26512,general_regulation,medium,GB26512,车辆安全配置引用标准编号，保留原文,active
+es_0246,es,zh,GB/T 30677,GB/T 30677,general_regulation,medium,GB/T30677,电子稳定控制相关中国标准编号，保留原文,active
+es_0247,es,zh,K.M.V.S.S.,韩国机动车安全标准,general_regulation,medium,KMVSS,韩国法规标准缩写，原文出现,active
+es_0248,es,zh,S.R.R.V.,安全玻璃相关法规,general_regulation,low,SRRV,原文缩写未展开，建议后续核验,active
+es_0249,es,zh,República Popular China,中华人民共和国,general_regulation,medium,China,技术标准来源国,active
+es_0250,es,zh,Estados Unidos de América,美利坚合众国,general_regulation,medium,Estados Unidos;EE.UU.,标准来源国,active
+es_0251,es,zh,normativa internacional,国际法规,general_regulation,high,norma internacional,智利接受的技术法规体系,active
+es_0252,es,zh,legislación actual,现行法律,general_regulation,medium,actual legislación,法规背景说明,active
+es_0253,es,zh,objetivos,目标,general_regulation,low,objetivo,技术法规比较用词，低优先级,active
+es_0254,es,zh,criterios de evaluación,评价准则,general_regulation,high,criterios de evaluacion,技术标准等效性说明,active
+es_0255,es,zh,métodos de ensayo,试验方法,general_regulation,high,métodos de prueba,技术标准等效性说明,active
+es_0256,es,zh,desempeño de los vehículos motorizados,机动车辆性能,vehicle_safety,medium,performance vehicular,法规背景说明,active
+es_0257,es,zh,fabricación,制造,vehicle_market,medium,manufactura,车辆技术法规对象,active
+es_0258,es,zh,desarrollo tecnológico,技术发展,general_regulation,medium,desarrollo tecnico,引入中国标准的理由,active
+es_0259,es,zh,organismo rector nacional de tránsito,国家交通主管机关,general_regulation,high,organismo rector,智利交通部法定职责表述,active
+es_0260,es,zh,atribuciones,职权,general_regulation,medium,facultades,法律授权术语,active
+es_0261,es,zh,características técnicas de construcción,结构技术特性,vehicle_safety,high,características técnicas,车辆技术要求,active
+es_0262,es,zh,dimensiones,尺寸,vehicle_safety,medium,medidas,车辆技术要求,active
+es_0263,es,zh,condiciones de seguridad,安全条件,vehicle_safety,high,condiciones de seguridad vehicular,车辆技术要求,active
+es_0264,es,zh,comodidad,舒适性,vehicle_safety,medium,confort,车辆技术要求,active
+es_0265,es,zh,presentación,外观状态,vehicle_safety,medium,presentacion,车辆技术要求中presentation，按车辆状态译,active
+es_0266,es,zh,mantenimiento,维护,vehicle_safety,medium,mantención,车辆技术要求,active
+es_0267,es,zh,sistemas y/o componentes del vehículo,车辆系统和/或部件,vehicle_safety,high,sistemas o componentes,防盗装置作用对象,active
+es_0268,es,zh,componentes del vehículo,车辆部件,vehicle_safety,high,componentes vehiculares,防盗装置作用对象,active
+es_0269,es,zh,sistema,系统,vehicle_safety,medium,sistemas,通用词，建议中优先级，避免误匹配,active
+es_0270,es,zh,componente,部件,vehicle_safety,medium,componentes,通用词，建议中优先级,active
+es_0271,es,zh,seguridad,安全,vehicle_safety,medium,safety,通用词，建议谨慎强制,active
+es_0272,es,zh,seguridad vehicular,车辆安全,vehicle_safety,high,seguridad de vehículos,安全法规核心表达,active
+es_0273,es,zh,medidas de protección,保护措施,anti_theft,high,medidas de seguridad,Decreto 119标题和正文术语,active
+es_0274,es,zh,utilización,使用,general_regulation,medium,uso,通用词，防盗语境中常与no autorizada组合,active
+es_0275,es,zh,no autorizado,未经授权的,general_regulation,high,no autorizada,防盗法规核心修饰语,active
+es_0276,es,zh,opcionalmente,可选地,general_regulation,medium,facultativamente,标签适用范围表达,active
+es_0277,es,zh,cuando corresponda,在适用时,general_regulation,medium,si corresponde,法规条件表达,active
+es_0278,es,zh,sin perjuicio de,在不影响……的情况下,general_regulation,high,sin perjuicio,西语法规高频连接表达,active
+es_0279,es,zh,en razón de lo expuesto,鉴于上述,general_regulation,medium,por lo expuesto,法规理由承接表达,active
+es_0280,es,zh,en los términos que indica,按其所述条款,general_regulation,medium,en los términos indicados,法规标题常见表达,active
+es_0281,es,zh,en lo siguiente,如下,general_regulation,medium,lo siguiente,法规修改引导语,active
+es_0282,es,zh,inciso primero,第一款,general_regulation,medium,primer inciso,条款结构表达,active
+es_0283,es,zh,inciso segundo,第二款,general_regulation,medium,segundo inciso,条款结构表达,active
+es_0284,es,zh,numerales 1) a 15),第1项至第15项,general_regulation,medium,numerales 1 al 15,条款范围表达,active
+es_0285,es,zh,citado decreto supremo,上述最高法令,general_regulation,medium,decreto supremo citado,法规引用表达,active
+es_0286,es,zh,presente decreto,本法令,general_regulation,medium,este decreto,法规自称表达,active
+es_0287,es,zh,presente resolución,本决议,general_regulation,medium,esta resolución,法规自称表达,active
+es_0288,es,zh,publicación en el Diario Oficial,在官方公报公布,general_regulation,high,publicación oficial,生效条件常见表达,active
+es_0289,es,zh,fecha de publicación en el Diario Oficial,官方公报公布日期,general_regulation,high,fecha de publicación oficial,法规生效日期来源,active
