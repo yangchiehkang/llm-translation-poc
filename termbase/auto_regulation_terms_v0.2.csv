@@ -1584,3 +1584,280 @@ de_0333,de,zh,wirtschaftliche Instrumente,经济工具,environment_waste,medium,
 de_0334,de,zh,Deponiesteuer,填埋税,environment_waste,medium,landfill tax,经济工具示例,active
 de_0335,de,zh,verursachergerechtes Gebührensystem,按量计费制度,environment_waste,medium,pay-as-you-throw system,经济工具示例,active
 de_0336,de,zh,Pfandregelung,押金制度,environment_waste,high,deposit scheme,经济工具和产品责任机制,active
+it_0015,it,zh,Presidente del Consiglio dei ministri,部长会议主席,general_regulation,high,Presidente del Consiglio,意大利政府首脑称谓，法规签署主体,active
+it_0016,it,zh,Decreto del Presidente del Consiglio dei ministri,部长会议主席令,general_regulation,high,DPCM,意大利行政法规文件类型,active
+it_0017,it,zh,DPCM,部长会议主席令,general_regulation,high,Decreto del Presidente del Consiglio dei ministri,意大利常用法规缩写，建议保留缩写并译出,active
+it_0018,it,zh,Ministero dello sviluppo economico,经济发展部,general_regulation,high,MISE,意大利主管部委，现机构名称可能有调整，按文件原文译,active
+it_0019,it,zh,MISE,经济发展部,general_regulation,high,Ministero dello sviluppo economico,意大利部委缩写,active
+it_0020,it,zh,Ministero dell'economia e delle finanze,经济和财政部,general_regulation,high,MEF,意大利部委名称,active
+it_0021,it,zh,Ministero delle infrastrutture e della mobilità sostenibili,基础设施和可持续交通部,general_regulation,high,MIMS,文件中主管部委名称,active
+it_0022,it,zh,Ministero della transizione ecologica,生态转型部,general_regulation,high,MITE,文件中主管部委名称,active
+it_0023,it,zh,Gazzetta Ufficiale,官方公报,general_regulation,high,Gazzetta Ufficiale della Repubblica italiana,意大利法规公布载体,active
+it_0024,it,zh,Gazzetta Ufficiale della Repubblica italiana,意大利共和国官方公报,general_regulation,high,GURI,意大利法规公布载体全称,active
+it_0025,it,zh,vista,鉴于,general_regulation,medium,VISTA,意大利法规依据部分常见引导词,active
+it_0026,it,zh,considerato,考虑到,general_regulation,medium,CONSIDERATO,意大利法规理由部分引导词,active
+it_0027,it,zh,su proposta,根据……提议,general_regulation,medium,SU PROPOSTA,法规制定程序表达,active
+it_0028,it,zh,di concerto con,会同,general_regulation,high,concerto con,意大利行政法规中部委共同提出/协同制定表达,active
+it_0029,it,zh,decreta,兹命令,general_regulation,medium,DECRETA,意大利法规正文引导语,active
+it_0030,it,zh,articolo,条,general_regulation,high,art.;Art.,法规条文结构术语,active
+it_0031,it,zh,comma,款,general_regulation,high,commi,意大利法规条文结构核心术语,active
+it_0032,it,zh,lettera,项,general_regulation,medium,lettere,意大利法规中字母编号项,active
+it_0033,it,zh,periodo,句,general_regulation,medium,secondo periodo,意大利法规中条文内部句序,active
+it_0034,it,zh,campo di applicazione,适用范围,general_regulation,high,ambito di applicazione,法规适用范围术语,active
+it_0035,it,zh,disposizioni finali,最终规定,general_regulation,medium,disposizione finale,法规结尾章节术语,active
+it_0036,it,zh,disposizioni transitorie,过渡规定,general_regulation,high,disposizioni finali e transitorie,道路法典最终和过渡规定,active
+it_0037,it,zh,entrata in vigore,生效,general_regulation,high,data di entrata in vigore,法规生效表达,active
+it_0038,it,zh,a decorrere dalla data di entrata in vigore,自生效日起,general_regulation,high,a decorrere da,补贴政策适用起算时间,active
+it_0039,it,zh,legislazione vigente,现行法律,general_regulation,high,a legislazione vigente,财政和行政资源限制表达,active
+it_0040,it,zh,organi competenti,主管机关,general_regulation,medium,organismi competenti,法规审查/签署相关主体,active
+it_0041,it,zh,sito istituzionale,机构官方网站,general_regulation,medium,sito ufficiale,法规公开发布渠道,active
+it_0042,it,zh,decreto-legge,法令,general_regulation,high,decreto legge,意大利紧急立法文件类型，需经议会转换,active
+it_0043,it,zh,legge,法律,general_regulation,high,legge n.,意大利法律文件类型,active
+it_0044,it,zh,legge di bilancio,预算法,general_regulation,high,Bilancio di previsione dello Stato,意大利财政年度预算法律,active
+it_0045,it,zh,bilancio pluriennale,多年预算,general_regulation,medium,bilancio pluriennale per il triennio,财政预算术语,active
+it_0046,it,zh,anno finanziario,财政年度,general_regulation,medium,financial year,预算法律术语,active
+it_0047,it,zh,triennio,三年期,general_regulation,medium,three-year period,预算周期表达,active
+it_0048,it,zh,fondo,基金,general_regulation,high,Fondo,汽车产业转型和补贴资金来源,active
+it_0049,it,zh,dotazione,资金规模,general_regulation,high,dotazione finanziaria,基金配置金额,active
+it_0050,it,zh,riparto delle risorse,资源分配,general_regulation,high,ripartizione delle risorse,补贴资金年度和类别分配,active
+it_0051,it,zh,assegnazione delle risorse,资源划拨,general_regulation,high,assegnazione,向主管部委分配资金,active
+it_0052,it,zh,erogazione,发放,general_regulation,high,erogazione degli incentivi,补贴发放核心术语,active
+it_0053,it,zh,limiti massimi complessivi annui di spesa,年度总支出上限,general_regulation,high,limite massimo annuo di spesa,财政预算控制术语,active
+it_0054,it,zh,stanziamento,拨款,general_regulation,high,stanziamento di risorse,资金安排术语,active
+it_0055,it,zh,rimodulare,重新调整,general_regulation,medium,rimodulati,根据市场和技术变化调整资金分配或激励措施,active
+it_0056,it,zh,andamento del mercato,市场走势,general_regulation,medium,market trend,调整补贴政策的考虑因素,active
+it_0057,it,zh,evoluzione tecnologica,技术演进,general_regulation,medium,technological evolution,调整补贴政策的考虑因素,active
+it_0058,it,zh,risorse umane strumentali e finanziarie,人力、工具和财政资源,general_regulation,medium,risorse disponibili,公共行政执行资源表达,active
+it_0059,it,zh,veicoli non inquinanti,无污染车辆,vehicle_incentive,high,veicolo non inquinante,意大利购车激励政策核心对象,active
+it_0060,it,zh,veicoli a basse emissioni inquinanti,低污染排放车辆,vehicle_incentive,high,veicoli a basse emissioni,购车补贴政策对象,active
+it_0061,it,zh,incentivo,激励,vehicle_incentive,high,incentivi,购车补贴政策术语,active
+it_0062,it,zh,eco-bonus,生态奖金,vehicle_incentive,high,ecobonus;Eco bonus,意大利低排放车辆购置激励名称，建议保留原词并译注,active
+it_0063,it,zh,contributo,补贴,vehicle_incentive,high,contributi,购车激励中实际发放金额,active
+it_0064,it,zh,riconoscimento degli incentivi,确认给予激励,vehicle_incentive,high,riconoscimento dei contributi,补贴资格确认表达,active
+it_0065,it,zh,acquisto di veicoli,车辆购买,vehicle_incentive,high,acquisto,补贴触发行为,active
+it_0066,it,zh,locazione finanziaria,融资租赁,vehicle_incentive,high,leasing finanziario,补贴适用购买方式之一,active
+it_0067,it,zh,immatricolare,登记注册,vehicle_incentive,high,immatricolano,车辆在意大利登记注册,active
+it_0068,it,zh,immatricolazione,登记注册,vehicle_incentive,high,vehicle registration,车辆注册行为,active
+it_0069,it,zh,persone fisiche,自然人,general_regulation,high,persona fisica,补贴对象类型,active
+it_0070,it,zh,persone giuridiche,法人,general_regulation,high,persona giuridica,补贴对象类型，car sharing场景,active
+it_0071,it,zh,soggetto beneficiario,受益主体,general_regulation,high,beneficiario,获得补贴的人或法人,active
+it_0072,it,zh,intestatario,登记持有人,general_regulation,high,intestatario del veicolo,车辆登记名义人,active
+it_0073,it,zh,utilizzatore,使用人,general_regulation,medium,soggetto utilizzatore,融资租赁中车辆使用主体,active
+it_0074,it,zh,familiare convivente,同住家庭成员,general_regulation,high,familiari conviventi,报废车辆可登记在同住家庭成员名下,active
+it_0075,it,zh,proprietario,所有人,general_regulation,high,owner,车辆所有权主体,active
+it_0076,it,zh,proprietà,所有权,general_regulation,high,ownership,补贴要求保持所有权一定期限,active
+it_0077,it,zh,mantenuta per almeno 12 mesi,至少保持12个月,general_regulation,high,mantenimento per 12 mesi,自然人补贴车辆所有权保持要求,active
+it_0078,it,zh,mantenute per almeno 24 mesi,至少保持24个月,general_regulation,high,mantenimento per 24 mesi,法人car sharing补贴保持要求,active
+it_0079,it,zh,car sharing,汽车共享,vehicle_incentive,high,car-sharing,法人购车补贴适用场景,active
+it_0080,it,zh,finalità commerciali,商业目的,general_regulation,medium,commercial purpose,car sharing用途条件,active
+it_0081,it,zh,rottamazione,报废,vehicle_incentive,high,scrappage,购车补贴中旧车报废核心条件,active
+it_0082,it,zh,rottamato,已报废,vehicle_incentive,high,veicolo rottamato,旧车报废状态,active
+it_0083,it,zh,consegnato per la rottamazione,交付报废,vehicle_incentive,high,consegna per rottamazione,旧车交付报废条件,active
+it_0084,it,zh,contestuale rottamazione,同时报废,vehicle_incentive,high,rottamazione contestuale,购新车同时报废旧车,active
+it_0085,it,zh,ritargatura obbligatoria,强制换牌,vehicle_incentive,medium,ritargatura,特定L类车辆补贴条件,active
+it_0086,it,zh,nuovi di fabbrica,全新出厂,vehicle_incentive,high,nuovo di fabbrica,补贴车辆必须为新车,active
+it_0087,it,zh,categoria M1,M1类车辆,vehicle_category,high,veicoli di categoria M1,乘用车类别，购车补贴核心类别,active
+it_0088,it,zh,categoria N1,N1类车辆,vehicle_category,high,veicoli N1,轻型商用车类别，原文部分OCR可能识别为NI,active
+it_0089,it,zh,categoria N2,N2类车辆,vehicle_category,high,veicoli N2,中型商用车类别,active
+it_0090,it,zh,categoria L1e,L1e类车辆,vehicle_category,high,L1e,轻型两轮/三轮车辆欧盟分类之一,active
+it_0091,it,zh,categoria L2e,L2e类车辆,vehicle_category,high,L2e,轻型车辆欧盟分类之一,active
+it_0092,it,zh,categoria L3e,L3e类车辆,vehicle_category,high,L3e,摩托车类欧盟分类之一,active
+it_0093,it,zh,categoria L4e,L4e类车辆,vehicle_category,high,L4e,带边车摩托车等类别,active
+it_0094,it,zh,categoria L5e,L5e类车辆,vehicle_category,high,L5e,三轮车辆类别,active
+it_0095,it,zh,categoria L6e,L6e类车辆,vehicle_category,high,L6e,轻型四轮车辆类别,active
+it_0096,it,zh,categoria L7e,L7e类车辆,vehicle_category,high,L7e,重型四轮车辆类别,active
+it_0097,it,zh,veicoli commerciali,商用车,vehicle_category,high,commercial vehicles,N1/N2补贴类别,active
+it_0098,it,zh,alimentazione esclusivamente elettrica,纯电驱动,vehicle_incentive,high,esclusivamente elettrica,商用车补贴条件,active
+it_0099,it,zh,veicoli elettrici,电动车辆,vehicle_incentive,high,veicoli elettrici nuovi di fabbrica,L类电动车补贴对象,active
+it_0100,it,zh,classe Euro 6,欧6等级,vehicle_emissions,high,Euro 6,车辆排放等级,active
+it_0101,it,zh,classe Euro 5,欧5等级,vehicle_emissions,high,Euro 5,车辆排放等级和报废条件,active
+it_0102,it,zh,classe inferiore ad Euro 5,低于欧5等级,vehicle_emissions,high,inferiore ad Euro 5,报废旧车条件,active
+it_0103,it,zh,classe inferiore ad Euro 4,低于欧4等级,vehicle_emissions,high,inferiore ad Euro 4,商用车报废条件,active
+it_0104,it,zh,classe non inferiore ad Euro 6,不低于欧6等级,vehicle_emissions,high,non inferiore ad Euro 6,M1补贴车辆排放等级要求,active
+it_0105,it,zh,classe non inferiore ad Euro 5,不低于欧5等级,vehicle_emissions,high,non inferiore ad Euro 5,L类非电动车补贴要求,active
+it_0106,it,zh,anidride carbonica,二氧化碳,vehicle_emissions,high,CO2,车辆排放补贴分档指标,active
+it_0107,it,zh,CO2,二氧化碳,vehicle_emissions,high,anidride carbonica,建议保留化学式,active
+it_0108,it,zh,grammi per chilometro,克每公里,vehicle_emissions,high,g/Km;g/km,CO2排放单位,active
+it_0109,it,zh,fascia 0-20 grammi,0-20克区间,vehicle_emissions,high,0-20 g CO2/Km,M1补贴第一档排放区间,active
+it_0110,it,zh,fascia 21-60 grammi,21-60克区间,vehicle_emissions,high,21-60 g CO2/Km,M1补贴第二档排放区间,active
+it_0111,it,zh,fascia 61-135 grammi,61-135克区间,vehicle_emissions,high,61-135 g CO2/Km,M1补贴第三档排放区间,active
+it_0112,it,zh,listino prezzi ufficiale,官方价格表,vehicle_incentive,high,listino prezzi ufficiale della casa automobilistica,补贴车辆价格上限依据,active
+it_0113,it,zh,casa automobilistica produttrice,汽车制造商,vehicle_incentive,high,casa produttrice,官方价格表发布主体,active
+it_0114,it,zh,IVA esclusa,不含增值税,vehicle_incentive,high,IVA esclusa,价格上限计算方式,active
+it_0115,it,zh,prezzo di acquisto,购买价格,vehicle_incentive,high,prezzo d'acquisto,补贴比例计算基础,active
+it_0116,it,zh,sconto,折扣,vehicle_incentive,medium,sconto del venditore,L类车辆补贴中卖方折扣条件,active
+it_0117,it,zh,venditore,销售商,vehicle_incentive,medium,seller,补贴政策中提供折扣主体,active
+it_0118,it,zh,piccole e medie imprese,中小企业,general_regulation,high,PMI,商用车补贴受益主体,active
+it_0119,it,zh,PMI,中小企业,general_regulation,high,piccole e medie imprese,意大利/欧盟政策常用缩写,active
+it_0120,it,zh,trasporto di cose in conto proprio,自有货物运输,transport_general,high,conto proprio,商用车补贴适用经营活动,active
+it_0121,it,zh,trasporto di cose in conto terzi,第三方货物运输,transport_general,high,conto terzi,商用车补贴适用经营活动,active
+it_0122,it,zh,Codice della Strada,道路法典,road_traffic,high,Nuovo Codice della Strada,意大利道路交通核心法律,active
+it_0123,it,zh,Nuovo Codice della Strada,新道路法典,road_traffic,high,Codice della Strada,1992年第285号立法令,active
+it_0124,it,zh,decreto legislativo,立法令,general_regulation,high,D.Lgs.;decreto legislativo n.,意大利立法文件类型,active
+it_0125,it,zh,circolazione stradale,道路通行,road_traffic,high,circolazione,道路法典调整对象,active
+it_0126,it,zh,sicurezza stradale,道路安全,road_traffic,high,road safety,道路法典核心目标,active
+it_0127,it,zh,tutela della salute,健康保护,general_regulation,high,protezione della salute,道路法典目标之一,active
+it_0128,it,zh,tutela dell'ambiente,环境保护,general_regulation,high,protezione ambientale,道路法典目标之一,active
+it_0129,it,zh,mobilità sostenibile,可持续出行,road_traffic,high,sustainable mobility,道路法典政策目标,active
+it_0130,it,zh,Piano nazionale della sicurezza stradale,国家道路安全计划,road_traffic,high,PNSS,由基础设施和交通部制定,active
+it_0131,it,zh,classificazione delle strade,道路分类,road_infrastructure,high,classificazione,道路法典第2条核心内容,active
+it_0132,it,zh,autostrada,高速公路,road_infrastructure,high,autostrade;A,意大利道路A类,active
+it_0133,it,zh,strada extraurbana principale,主要城外道路,road_infrastructure,high,strade extraurbane principali;B,意大利道路B类,active
+it_0134,it,zh,strada extraurbana secondaria,次要城外道路,road_infrastructure,high,strade extraurbane secondarie;C,意大利道路C类,active
+it_0135,it,zh,strada urbana di scorrimento,城市快速道路,road_infrastructure,high,strade urbane di scorrimento;D,意大利道路D类,active
+it_0136,it,zh,strada urbana di quartiere,城市社区道路,road_infrastructure,high,strade urbane di quartiere;E,意大利道路E类,active
+it_0137,it,zh,strada urbana ciclabile,城市自行车道路,road_infrastructure,high,strade urbane ciclabili;E-bis,意大利道路E-bis类，限速通常不超过30 km/h,active
+it_0138,it,zh,strada locale,地方道路,road_infrastructure,high,strade locali;F,意大利道路F类,active
+it_0139,it,zh,itinerario ciclopedonale,自行车和行人路径,road_infrastructure,high,itinerari ciclopedonali;F-bis,意大利道路F-bis类,active
+it_0140,it,zh,strada statale,国道,road_infrastructure,high,strade statali,按行政归属分类,active
+it_0141,it,zh,strada regionale,大区道路,road_infrastructure,high,strade regionali,按行政归属分类,active
+it_0142,it,zh,strada provinciale,省道,road_infrastructure,high,strade provinciali,按行政归属分类,active
+it_0143,it,zh,strada comunale,市镇道路,road_infrastructure,high,strade comunali,按行政归属分类,active
+it_0144,it,zh,carreggiata,车行道,road_infrastructure,high,carriageway,道路法典技术定义，高频术语,active
+it_0145,it,zh,corsia,车道,road_infrastructure,high,lane,道路结构基础术语,active
+it_0146,it,zh,corsia ciclabile,自行车道,road_infrastructure,high,bike lane,道路法典技术定义,active
+it_0147,it,zh,banchina,路肩,road_infrastructure,medium,shoulder,道路结构术语,active
+it_0148,it,zh,marciapiede,人行道,road_infrastructure,high,sidewalk,城市道路结构术语,active
+it_0149,it,zh,corsia di emergenza,应急车道,road_infrastructure,high,emergency lane,高速公路/主要城外道路结构,active
+it_0150,it,zh,area di servizio,服务区,road_infrastructure,medium,service area,高速公路/主要道路附属设施,active
+it_0151,it,zh,passaggio a livello,平交道口,road_infrastructure,medium,level crossing,道路分类条件之一,active
+it_0152,it,zh,intersezione,交叉口,road_infrastructure,high,incrocio,交通组织和能见度三角区语境,active
+it_0153,it,zh,triangolo di visibilità,能见度三角区,road_infrastructure,high,triangoli di visibilità,交叉口视距安全区域,active
+it_0154,it,zh,fascia di rispetto,退让控制带,road_infrastructure,high,fasce di rispetto,城外道路建筑/围栏/种植退距区域,active
+it_0155,it,zh,centro abitato,居民区,road_infrastructure,high,urban center,道路管理和退距规则关键概念,active
+it_0156,it,zh,passo carrabile,车辆出入口,road_infrastructure,high,driveway access,新设出入口需许可并设标志,active
+it_0157,it,zh,cantiere,施工现场,road_infrastructure,high,cantieri,道路工程需授权和标识,active
+it_0158,it,zh,lavori stradali,道路工程,road_infrastructure,high,roadworks,道路施工管理术语,active
+it_0159,it,zh,occupazione della sede stradale,占用道路,road_infrastructure,high,occupazione stradale,未经许可占道禁止,active
+it_0160,it,zh,segnaletica,交通标志标线,road_traffic,high,road signs and markings,道路施工和交通管理高频术语,active
+it_0161,it,zh,segnale stradale,道路标志,road_traffic,high,segnali stradali,禁止移除或仿冒,active
+it_0162,it,zh,utente della strada,道路使用者,road_traffic,high,utenti della strada,道路法典基础术语,active
+it_0163,it,zh,utente vulnerabile,弱势道路使用者,road_traffic,high,utenti vulnerabili,行人、残障人士、骑行者等,active
+it_0164,it,zh,pedone,行人,road_traffic,high,pedoni,道路使用者类别,active
+it_0165,it,zh,ciclista,骑行者,road_traffic,high,ciclisti,弱势道路使用者类别,active
+it_0166,it,zh,persona con disabilità,残障人士,road_traffic,high,persone con disabilità,弱势道路使用者类别,active
+it_0167,it,zh,casa avanzata,自行车提前停车区,road_traffic,high,advanced stop line,信号灯前供自行车停靠的前置区域,active
+it_0168,it,zh,Zona a Traffico Limitato,限制交通区,road_traffic,high,ZTL,意大利城市交通管理核心术语,active
+it_0169,it,zh,ZTL,限制交通区,road_traffic,high,Zona a Traffico Limitato,建议保留缩写并译出,active
+it_0170,it,zh,area pedonale,步行区,road_traffic,high,pedestrian area,市长可设立的交通限制区域,active
+it_0171,it,zh,sosta a pagamento,收费停车,road_traffic,high,parcheggio a pagamento,城市交通管理术语,active
+it_0172,it,zh,strisce blu,蓝线停车位,road_traffic,medium,blue lines,意大利收费停车位俗称,active
+it_0173,it,zh,permesso rosa,粉色通行/停车许可,road_traffic,medium,permessi rosa,孕妇或两岁以下儿童父母专用停车许可,active
+it_0174,it,zh,area scolastica,学校区域,road_traffic,high,zone scolastiche,学校周边特殊保护区域,active
+it_0175,it,zh,prefetto,省督,general_regulation,high,Prefetto,意大利地方国家代表，可暂停交通等,active
+it_0176,it,zh,sindaco,市长,general_regulation,high,mayor,城市交通限制和停车管理主体,active
+it_0177,it,zh,ente proprietario della strada,道路所有机构,road_infrastructure,high,proprietario della strada,道路管理、授权和维护责任主体,active
+it_0178,it,zh,ordinanza,命令,general_regulation,high,ordinanze,道路所有机构发布交通管理命令,active
+it_0179,it,zh,sospensione della circolazione,暂停通行,road_traffic,high,sospendere il traffico,省督因安全、卫生、军事原因采取措施,active
+it_0180,it,zh,obbligo di pneumatici invernali,冬季轮胎义务,road_traffic,medium,pneumatici invernali,城外道路冬季装备要求,active
+it_0181,it,zh,catene da neve,防滑链,road_traffic,medium,snow chains,冬季装备要求,active
+it_0182,it,zh,competizione sportiva,体育竞赛,road_traffic,medium,competizioni sportive,道路上赛事许可对象,active
+it_0183,it,zh,gara ciclistica,自行车比赛,road_traffic,medium,cycling race,道路赛事类型,active
+it_0184,it,zh,gara atletica,田径比赛,road_traffic,low,athletic race,道路赛事类型,active
+it_0185,it,zh,gara con veicoli a motore,机动车比赛,road_traffic,high,motor race,需部委批准的赛事类型,active
+it_0186,it,zh,autorizzazione,授权许可,general_regulation,high,authorization,道路赛事、占道、特殊运输等均涉及,active
+it_0187,it,zh,gara clandestina,非法竞赛,road_violation,high,gare clandestine,未经授权机动车比赛，刑事犯罪,active
+it_0188,it,zh,competizione in velocità,竞速比赛,road_violation,high,speed contest,机动车竞速违法/犯罪语境,active
+it_0189,it,zh,veicolo eccezionale,超限车辆,road_transport,high,veicoli eccezionali,超过尺寸或质量标准的车辆,active
+it_0190,it,zh,trasporto eccezionale,超限运输,road_transport,high,trasporti eccezionali,超过标准尺寸或质量的运输,active
+it_0191,it,zh,mezzo d'opera,工程车辆,road_transport,high,mezzi d'opera,道路法典中特定重型作业车辆类别,active
+it_0192,it,zh,massa,质量,vehicle_general,high,mass,车辆超限判断参数,active
+it_0193,it,zh,sagoma limite,外廓限值,vehicle_general,high,dimension limit,道路法典车辆尺寸限值,active
+it_0194,it,zh,limiti di massa,质量限值,vehicle_general,high,mass limits,车辆超限判断依据,active
+it_0195,it,zh,indennizzo,补偿费,road_transport,medium,indennità,因道路磨损收取费用,active
+it_0196,it,zh,usura della strada,道路磨损,road_transport,medium,road wear,超限运输补偿费依据,active
+it_0197,it,zh,autorizzazione singola,单次许可,road_transport,medium,single authorization,超限运输许可类型,active
+it_0198,it,zh,autorizzazione multipla,多次许可,road_transport,medium,multiple authorization,超限运输许可类型,active
+it_0199,it,zh,autorizzazione periodica,定期许可,road_transport,medium,periodic authorization,超限运输许可类型,active
+it_0200,it,zh,servizi di polizia stradale,道路警察服务,road_enforcement,high,polizia stradale,道路法典执法活动,active
+it_0201,it,zh,Polizia di Stato,国家警察,road_enforcement,high,State Police,道路警察主体之一,active
+it_0202,it,zh,Polizia Stradale,交通警察,road_enforcement,high,polizia stradale,国家警察下属道路警察部门,active
+it_0203,it,zh,Carabinieri,宪兵,road_enforcement,high,Arma dei Carabinieri,意大利道路执法主体之一,active
+it_0204,it,zh,Guardia di Finanza,财政警察,road_enforcement,medium,Financial Police,道路执法主体之一,active
+it_0205,it,zh,Polizia Municipale,市政警察,road_enforcement,high,polizia locale,地方道路执法主体,active
+it_0206,it,zh,Polizia Provinciale,省级警察,road_enforcement,medium,provincial police,地方道路执法主体,active
+it_0207,it,zh,ausiliario della sosta,停车协管员,road_enforcement,high,ausiliari della sosta,可被授权处理停车违法,active
+it_0208,it,zh,divieto,禁止,general_regulation,medium,proibizione,法规禁止性表达,active
+it_0209,it,zh,scarico di rifiuti,倾倒废弃物,road_violation,high,getto di rifiuti,道路法典禁止行为之一,active
+it_0210,it,zh,getto di rifiuti da veicolo,从车辆抛弃废弃物,road_violation,high,littering from vehicle,罚款较高的道路违法行为,active
+it_0211,it,zh,fosso stradale,道路边沟,road_infrastructure,medium,road ditch,禁止排水进入道路边沟,active
+it_0212,it,zh,pubblicità stradale,道路广告,road_infrastructure,high,advertising along roads,道路法典第23条管制对象,active
+it_0213,it,zh,impianto pubblicitario,广告设施,road_infrastructure,high,advertising installation,道路沿线广告管理对象,active
+it_0214,it,zh,abbagliamento,眩光,road_safety,medium,glare,道路广告禁止造成的危险之一,active
+it_0215,it,zh,stereotipi di genere,性别刻板印象,general_regulation,medium,gender stereotypes,道路广告内容禁止项,active
+it_0216,it,zh,sanzione amministrativa,行政处罚,road_violation,high,sanzioni amministrative,道路违法处罚核心术语,active
+it_0217,it,zh,sanzione amministrativa pecuniaria,行政罚款,road_violation,high,multa;ammenda amministrativa,道路违法金钱处罚,active
+it_0218,it,zh,multa,罚款,road_violation,high,fine,道路违法常用表达,active
+it_0219,it,zh,violazione,违法行为,road_violation,high,violazioni,道路法典处罚触发行为,active
+it_0220,it,zh,illecito amministrativo,行政违法,road_violation,high,administrative offence,道路法典多数违法性质,active
+it_0221,it,zh,aggiornamento biennale ISTAT,ISTAT两年一次调整,road_violation,medium,ISTAT update,罚款金额按通胀指数调整,active
+it_0222,it,zh,maggiorazione notturna,夜间加重,road_violation,high,night surcharge,22:00至07:00特定违法罚款增加三分之一,active
+it_0223,it,zh,aumento di un terzo,增加三分之一,road_violation,medium,increased by one third,夜间加重幅度,active
+it_0224,it,zh,responsabilità solidale,连带责任,general_regulation,high,solidarietà,车主对罚款承担连带责任,active
+it_0225,it,zh,proprietario del veicolo,车辆所有人,road_violation,high,vehicle owner,连带责任主体,active
+it_0226,it,zh,contro la propria volontà,违背本人意愿,general_regulation,medium,against one's will,车主免除连带责任条件,active
+it_0227,it,zh,più violazioni,多项违法,road_violation,medium,multiple violations,通常适用最重处罚并可增加,active
+it_0228,it,zh,contestazione immediata,当场告知违法,road_violation,high,contestazione,违法处理程序术语,active
+it_0229,it,zh,notificazione,送达通知,road_violation,high,notification,违法未当场告知时需送达,active
+it_0230,it,zh,verbale,违法记录,general_regulation,high,verbale di accertamento,道路违法处罚文书,active
+it_0231,it,zh,pagamento in misura ridotta,减额缴纳,road_violation,high,reduced payment,罚款程序术语,active
+it_0232,it,zh,sconto del 30 per cento,30%折扣,road_violation,high,30% discount,5日内缴纳罚款优惠,active
+it_0233,it,zh,pagamento rateale,分期缴纳,road_violation,high,rateazione,罚款超过一定金额且收入较低时适用,active
+it_0234,it,zh,rateazione,分期缴纳,road_violation,high,pagamento a rate,道路罚款分期制度,active
+it_0235,it,zh,ricorso al Prefetto,向省督申诉,road_violation,high,appeal to Prefect,道路违法救济路径之一,active
+it_0236,it,zh,Giudice di Pace,治安法官,road_violation,high,Justice of the Peace,道路罚款司法申诉机关,active
+it_0237,it,zh,ricorso giurisdizionale,司法申诉,road_violation,medium,judicial appeal,向治安法官申诉,active
+it_0238,it,zh,rigetto del ricorso,驳回申诉,road_violation,medium,rejection of appeal,省督驳回时罚款至少翻倍,active
+it_0239,it,zh,assicurazione obbligatoria,强制保险,vehicle_insurance,high,compulsory insurance,道路法典第193条核心要求,active
+it_0240,it,zh,responsabilità civile verso terzi,第三方责任,vehicle_insurance,high,RCA,机动车强制责任保险对象,active
+it_0241,it,zh,RCA,机动车第三方责任保险,vehicle_insurance,high,responsabilità civile auto,意大利车辆强制保险缩写,active
+it_0242,it,zh,sequestro del veicolo,车辆扣押,road_violation,high,sequestro,无保险等违法处罚措施,active
+it_0243,it,zh,confisca del veicolo,车辆没收,road_violation,high,confisca,严重违法导致车辆所有权归国家,active
+it_0244,it,zh,documenti falsi,虚假文件,road_violation,high,fake documents,保险虚假文件导致没收和吊证,active
+it_0245,it,zh,sanzioni accessorie,附加处罚,road_violation,high,accessory sanctions,罚款之外的非金钱处罚,active
+it_0246,it,zh,rimozione,拖移,road_violation,high,towing;removal,违法停车车辆拖移措施,active
+it_0247,it,zh,fermo amministrativo,行政停驶,road_violation,high,administrative detention,车辆一定期限内不得使用,active
+it_0248,it,zh,sospensione della patente,驾驶证暂扣,driver_license,high,license suspension,暂时剥夺驾驶资格,active
+it_0249,it,zh,revoca della patente,驾驶证吊销,driver_license,high,license revocation,永久取消驾驶资格，需重新取得,active
+it_0250,it,zh,patente di guida,驾驶证,driver_license,high,patente,道路法典核心证照术语,active
+it_0251,it,zh,patente a punti,积分驾驶证,driver_license,high,point-based license,意大利驾驶证积分制度,active
+it_0252,it,zh,decurtazione dei punti,扣分,driver_license,high,deducting points,驾驶证积分处罚,active
+it_0253,it,zh,punti patente,驾驶证分数,driver_license,high,license points,驾驶证积分制度术语,active
+it_0254,it,zh,neo-patentati,新手驾驶人,driver_license,high,new drivers,取得驾驶证前三年适用更严扣分,active
+it_0255,it,zh,punto bonus,奖励分,driver_license,medium,bonus point,新手驾驶人无违法可获得,active
+it_0256,it,zh,omicidio stradale,交通肇事致人死亡罪,road_crime,high,road homicide,道路违法导致死亡的刑事犯罪,active
+it_0257,it,zh,lesioni personali stradali gravi,严重交通人身伤害,road_crime,high,serious road injury,道路违法造成重伤的刑事责任,active
+it_0258,it,zh,lavoro di pubblica utilità,公益劳动,road_crime,medium,community service,可替代刑期的无偿服务,active
+it_0259,it,zh,guida in stato di ebbrezza,酒后驾驶,road_violation,high,DUI alcohol,驾驶证扣10分典型违法,active
+it_0260,it,zh,guida sotto l'effetto di stupefacenti,毒驾,road_violation,high,DUI drugs,驾驶证扣10分典型违法,active
+it_0261,it,zh,superamento dei limiti di velocità,超速,road_violation,high,eccesso di velocità,驾驶证扣分和罚款高频违法,active
+it_0262,it,zh,passaggio con semaforo rosso,闯红灯,road_violation,high,red light violation,驾驶证扣分违法,active
+it_0263,it,zh,sorpasso vietato,违法超车,road_violation,high,illegal overtaking,严重时扣10分,active
+it_0264,it,zh,marcia contromano,逆向行驶,road_violation,high,driving against traffic,严重扣分违法,active
+it_0265,it,zh,retromarcia in autostrada,高速公路倒车,road_violation,high,reverse driving on motorways,扣10分违法,active
+it_0266,it,zh,omissione di soccorso,未救助,road_violation,high,failure to assist,事故后未停车/救助相关违法,active
+it_0267,it,zh,mancato uso delle cinture di sicurezza,未系安全带,road_violation,high,failure to use seatbelts,扣分违法,active
+it_0268,it,zh,cinture di sicurezza,安全带,vehicle_safety,high,seat belts,车辆安全装备和违法处罚术语,active
+it_0269,it,zh,seggiolini per bambini,儿童座椅,vehicle_safety,high,child seats,儿童约束装置,active
+it_0270,it,zh,uso del telefono cellulare alla guida,驾驶时使用手机,road_violation,high,using mobile phone while driving,扣分违法,active
+it_0271,it,zh,sosta,停放,road_traffic,high,parking,停车违法和管理高频术语,active
+it_0272,it,zh,fermata,临时停车,road_traffic,high,standing,区别于sosta，视上下文译为临停,active
+it_0273,it,zh,sosta vietata,违法停车,road_violation,high,illegal parking,可能导致拖移或罚款,active
+it_0274,it,zh,spazi riservati ai disabili,残障人士专用车位,road_traffic,high,disabled spaces,违法停车扣分对象,active
+it_0275,it,zh,fermata autobus,公交站,road_traffic,medium,bus stop,违法停车扣分对象,active
+it_0276,it,zh,archivio nazionale delle strade,国家道路档案库,road_data,high,National Road Archive,道路技术和法律数据登记系统,active
+it_0277,it,zh,archivio nazionale dei veicoli,国家车辆档案库,road_data,high,National Vehicle Archive,车辆技术和所有权数据系统,active
+it_0278,it,zh,anagrafe nazionale degli abilitati alla guida,国家驾驶资格人员登记库,road_data,high,National Register of Licensed Drivers,记录驾驶人积分事故违法等,active
+it_0279,it,zh,monitoraggio del traffico,交通监测,road_data,high,traffic monitoring,道路所有机构安装监测设备,active
+it_0280,it,zh,flusso del traffico,交通流,road_data,medium,traffic flow,监测对象,active
+it_0281,it,zh,inquinamento,污染,general_regulation,high,pollution,道路监测和环保目标,active
+it_0282,it,zh,educazione stradale,道路安全教育,road_safety,high,road education,学校各级开展交通安全教育,active
+it_0283,it,zh,alcol,酒精,road_safety,medium,alcohol,道路安全教育风险内容,active
+it_0284,it,zh,droga,毒品,road_safety,medium,stupefacenti,道路安全教育风险内容,active
+it_0285,it,zh,conducente,驾驶人,road_traffic,high,driver,道路法典通用主体,active
+it_0286,it,zh,ciclomotore,轻便摩托车,vehicle_general,medium,moped,道路法典车辆类别,active
+it_0287,it,zh,motociclo,摩托车,vehicle_general,medium,motorcycle,道路法典车辆类别,active
+it_0288,it,zh,autovettura,乘用车,vehicle_general,high,passenger car,道路法典和补贴政策车辆类别,active
+it_0289,it,zh,autocarro,载货汽车,vehicle_general,high,truck,道路法典车辆类别,active
+it_0290,it,zh,autobus,客车,vehicle_general,high,bus,道路法典车辆类别,active
+it_0291,it,zh,rimorchio,挂车,vehicle_general,high,trailer,车辆类别和超限运输语境,active

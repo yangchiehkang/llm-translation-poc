@@ -24,6 +24,7 @@ DEFAULT_INPUT_BY_LANG = {
     "es": Path("termbase/manual_extracted_es_terms_v0.2.csv"),
     "fr": Path("termbase/manual_extracted_fr_terms_v0.2.csv"),
     "de": Path("termbase/manual_extracted_de_terms_v0.2.csv"),
+    "it": Path("termbase/manual_extracted_it_terms_v0.2.csv"),
 }
 
 VALID_PRIORITY = {"high", "medium", "low"}
@@ -42,6 +43,20 @@ HIGH_DOMAINS = {
     "vehicle_lighting",
     "vehicle_equipment",
     "vehicle_identification",
+    "vehicle_incentive",
+    "vehicle_category",
+    "vehicle_emissions",
+    "vehicle_insurance",
+    "road_traffic",
+    "road_infrastructure",
+    "road_transport",
+    "road_enforcement",
+    "road_violation",
+    "road_safety",
+    "road_crime",
+    "road_data",
+    "driver_license",
+    "transport_general",
     "seatbelt_restraint",
     "seat_headrest",
     "seatbelt_reminder",
@@ -103,6 +118,9 @@ LOW_TERMS = {
     "sept jours",
     "chef du service",
     "par empêchement",
+
+    # it
+    "gara atletica",
 }
 
 def clean(value):
@@ -202,7 +220,7 @@ def resolve_input_path():
 
         return Path(arg)
 
-    return DEFAULT_INPUT_BY_LANG["de"]
+    return DEFAULT_INPUT_BY_LANG["it"]
 
 def main():
     input_path = resolve_input_path()
