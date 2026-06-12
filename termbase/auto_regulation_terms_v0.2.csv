@@ -447,3 +447,229 @@ en_0273,en,zh,battery casing,电池壳体,ev_safety,medium,casing material,REESS
 en_0274,en,zh,cell,单体电池,ev_safety,high,battery cell,热失控和热蔓延核心术语,active
 en_0275,en,zh,single cell internal short circuit,单体电池内部短路,ev_safety,high,internal short circuit of a single cell,R100热蔓延触发条件,active
 en_0276,en,zh,mitigation strategy,缓解策略,ev_safety,medium,mitigation strategies,R100安全论证术语,active
+ru_0011,ru,zh,ГОСТ,ГОСТ标准,general_regulation,high,государственный стандарт,俄罗斯/独联体标准体系名称，通常保留ГОСТ并补充“标准”,active
+ru_0012,ru,zh,межгосударственный стандарт,跨国标准,general_regulation,high,межгосстандарт,GOST标准文件类型,active
+ru_0013,ru,zh,технические требования,技术要求,general_regulation,high,техтребования,标准标题和正文高频术语,active
+ru_0014,ru,zh,методы испытаний,试验方法,general_regulation,high,методики испытаний,标准标题和试验章节术语,active
+ru_0015,ru,zh,область применения,适用范围,general_regulation,medium,сфера применения,标准章节标题常用译法,active
+ru_0016,ru,zh,термины и определения,术语和定义,general_regulation,medium,терминология и определения,标准章节标题术语,active
+ru_0017,ru,zh,нормативные ссылки,规范性引用文件,general_regulation,medium,ссылочные нормативные документы,标准章节术语,active
+ru_0018,ru,zh,приложение,附录,general_regulation,high,прил.;приложения,GOST/法规附件结构术语,active
+ru_0019,ru,zh,таблица,表,general_regulation,low,табл.,结构性术语，通常不宜强约束,active
+ru_0020,ru,zh,рисунок,图,general_regulation,low,рис.,结构性术语，通常不宜强约束,active
+ru_0021,ru,zh,автотранспортное средство,机动车辆,vehicle_general,high,АТС,俄罗斯汽车标准常见表达,active
+ru_0022,ru,zh,легковой автомобиль,乘用车,vehicle_general,high,легковые автомобили,GOST 33992标题核心术语,active
+ru_0023,ru,zh,категория M1,M1类车辆,vehicle_general,high,M1,车辆类别术语,active
+ru_0024,ru,zh,категории M и N,M类和N类车辆,vehicle_general,high,M и N,车辆类别范围术语,active
+ru_0025,ru,zh,категория M3,M3类车辆,vehicle_general,medium,M3,车辆类别术语,active
+ru_0026,ru,zh,категория N1,N1类车辆,vehicle_general,medium,N1,车辆类别术语,active
+ru_0027,ru,zh,категория N2,N2类车辆,vehicle_general,medium,N2,车辆类别术语,active
+ru_0028,ru,zh,категория N3,N3类车辆,vehicle_general,medium,N3,车辆类别术语,active
+ru_0029,ru,zh,салон,乘员舱,vehicle_general,medium,пассажирский салон,车内空间通用术语,active
+ru_0030,ru,zh,пассажирское помещение,乘客舱,vehicle_general,high,пассажирский салон,车内乘员区域术语,active
+ru_0031,ru,zh,обитаемое помещение,可居住舱室,hvac,high,обитаемый отсек,GOST 30593中driver/passenger compartment统称,active
+ru_0032,ru,zh,рабочее место водителя,驾驶员工作位置,hvac,high,место водителя,GOST 30593核心测量对象,active
+ru_0033,ru,zh,место отдыха водителя,驾驶员休息区,hvac,medium,спальное место водителя,客车/商用车热舒适相关术语,active
+ru_0034,ru,zh,ветровое стекло,风窗玻璃,defrost_demisting,high,лобовое стекло,GOST 33992核心术语,active
+ru_0035,ru,zh,лобовое стекло,前风窗玻璃,defrost_demisting,high,ветровое стекло,常用俄语表达，和ветровое стекло近义,active
+ru_0036,ru,zh,наружная поверхность ветрового стекла,风窗玻璃外表面,defrost_demisting,high,наружная поверхность стекла,除霜对象表面,active
+ru_0037,ru,zh,внутренняя поверхность ветрового стекла,风窗玻璃内表面,defrost_demisting,high,внутренняя поверхность стекла,除雾对象表面,active
+ru_0038,ru,zh,обмерзание,结霜,defrost_demisting,high,обледенение,GOST 33992术语定义，外表面霜/冰层,active
+ru_0039,ru,zh,обледенение,结冰,defrost_demisting,medium,обмерзание,可根据上下文译为结冰或结霜,active
+ru_0040,ru,zh,иней,霜,defrost_demisting,medium,наледь,风窗外表面霜层,active
+ru_0041,ru,zh,лед,冰,defrost_demisting,medium,ледяной слой,风窗外表面冰层,active
+ru_0042,ru,zh,оттаивание,除霜,defrost_demisting,high,размораживание,风窗外表面霜冰融化过程,active
+ru_0043,ru,zh,система оттаивания,除霜系统,defrost_demisting,high,система размораживания,GOST 33992核心系统术语,active
+ru_0044,ru,zh,зона оттаивания,除霜区域,defrost_demisting,high,оттаянная зона,除霜效果区域,active
+ru_0045,ru,zh,оттаявшая зона,已除霜区域,defrost_demisting,medium,оттаянная зона,已清除霜冰的区域,active
+ru_0046,ru,zh,запотевание,起雾,defrost_demisting,high,конденсация влаги,风窗内表面水汽凝结,active
+ru_0047,ru,zh,удаление запотевания,除雾,defrost_demisting,high,осушение стекла,内表面水汽去除过程,active
+ru_0048,ru,zh,система удаления запотевания,除雾系统,defrost_demisting,high,система осушения стекла,GOST 33992核心系统术语,active
+ru_0049,ru,zh,зона удаления запотевания,除雾区域,defrost_demisting,high,очищенная от запотевания зона,除雾效果区域,active
+ru_0050,ru,zh,очищенная зона,已清除区域,defrost_demisting,medium,зона очистки,除霜/除雾后清晰区域,active
+ru_0051,ru,zh,конденсат,冷凝水,defrost_demisting,medium,конденсационная влага,内表面冷凝物,active
+ru_0052,ru,zh,конденсация влаги,水汽凝结,defrost_demisting,high,запотевание,除雾定义相关术语,active
+ru_0053,ru,zh,следы влаги,水汽痕迹,defrost_demisting,medium,остатки влаги,除雾效果判断术语,active
+ru_0054,ru,zh,стеклоочиститель,刮水器,defrost_demisting,high,дворник,除霜后可被刮水器清除,active
+ru_0055,ru,zh,зона А,A区,defrost_demisting,high,зона A,UN R43定义的风窗视野区域,active
+ru_0056,ru,zh,зона В,B区,defrost_demisting,high,зона B,UN R43定义的风窗视野区域,active
+ru_0057,ru,zh,поле обзора,视野,defrost_demisting,high,зона обзора,风窗前方视野区域,active
+ru_0058,ru,zh,переднее поле обзора,前方视野,defrost_demisting,medium,поле обзора вперед,GOST 33992车型同一性判定,active
+ru_0059,ru,zh,угол 180°,180°角,defrost_demisting,low,180-градусное поле,几何描述术语，低优先级,active
+ru_0060,ru,zh,тип транспортного средства,车辆型式,general_regulation,high,тип ТС,型式定义核心术语,active
+ru_0061,ru,zh,характеристики системы,系统特性,general_regulation,medium,свойства системы,同一型式判定条件,active
+ru_0062,ru,zh,форма кузова,车身形状,vehicle_general,medium,форма корпуса,风窗视野相关车辆型式条件,active
+ru_0063,ru,zh,число мест,座位数,vehicle_general,medium,количество мест,车型同一性条件,active
+ru_0064,ru,zh,размеры ветрового стекла,风窗玻璃尺寸,defrost_demisting,medium,габариты стекла,车型同一性条件,active
+ru_0065,ru,zh,толщина ветрового стекла,风窗玻璃厚度,defrost_demisting,medium,толщина стекла,车型同一性条件,active
+ru_0066,ru,zh,способ крепления,安装方式,vehicle_general,medium,метод крепления,风窗安装条件,active
+ru_0067,ru,zh,бортовая электронная система,车载电子系统,vehicle_general,high,бортовая электроника,GOST 33992定义术语,active
+ru_0068,ru,zh,главное коммутационное устройство,主开关装置,vehicle_general,high,главный выключатель,车辆从关闭到正常运行的控制装置,active
+ru_0069,ru,zh,замок зажигания,点火开关,vehicle_general,medium,выключатель зажигания,主开关装置示例,active
+ru_0070,ru,zh,система бесключевого доступа,无钥匙系统,vehicle_general,medium,бесключевая система,主开关装置示例,active
+ru_0071,ru,zh,нормальная эксплуатация,正常运行,vehicle_general,medium,нормальный режим работы,车辆运行状态术语,active
+ru_0072,ru,zh,холодная камера,低温试验箱,testing,high,камера холода,GOST 33992除霜试验设备,active
+ru_0073,ru,zh,климатическая камера,气候试验室,testing,high,климатическая установка,GOST 30593/33992测试环境设备,active
+ru_0074,ru,zh,испытательная камера,试验箱,testing,medium,камера для испытаний,通用试验设备术语,active
+ru_0075,ru,zh,температура испытания,试验温度,testing,medium,испытательная температура,试验条件术语,active
+ru_0076,ru,zh,выдержка,恒温停放,testing,high,температурная выдержка,车辆在试验温度下稳定过程,active
+ru_0077,ru,zh,предварительное охлаждение,预冷,testing,medium,предохлаждение,试验箱或车辆预处理,active
+ru_0078,ru,zh,обезжиривание,脱脂,testing,medium,обезжиривание поверхности,玻璃清洁步骤,active
+ru_0079,ru,zh,этиловый спирт,乙醇,testing,low,этанол,清洁剂，低优先级,active
+ru_0080,ru,zh,раствор аммиака,氨溶液,testing,low,аммиачный раствор,清洁剂，低优先级,active
+ru_0081,ru,zh,безворсовая хлопчатобумажная ткань,无绒棉布,testing,medium,безворсовая ткань,玻璃清洁材料,active
+ru_0082,ru,zh,процедура обледенения,结冰程序,defrost_demisting,high,процедура нанесения льда,除霜试验准备步骤,active
+ru_0083,ru,zh,пульверизатор,喷枪,testing,medium,распылитель,结冰程序工具,active
+ru_0084,ru,zh,давление распыления,喷射压力,testing,medium,давление пульверизатора,结冰程序参数,active
+ru_0085,ru,zh,сопло,喷嘴,testing,medium,форсунка,喷枪/蒸汽发生器部件,active
+ru_0086,ru,zh,конический факел распыла,锥形喷雾,testing,medium,конус распыла,结冰试验喷雾形态,active
+ru_0087,ru,zh,расход,流量,testing,medium,расход жидкости,试验设备参数,active
+ru_0088,ru,zh,номинальное напряжение,标称电压,vehicle_general,medium,номинальное напряжение ТС,试验电压条件,active
+ru_0089,ru,zh,напряжение на клеммах,端子电压,vehicle_general,medium,клеммное напряжение,蓄电池/车辆电压条件,active
+ru_0090,ru,zh,аккумуляторная батарея,蓄电池,vehicle_general,high,АКБ,试验前必须充满电,active
+ru_0091,ru,zh,полностью заряженная аккумуляторная батарея,充满电的蓄电池,vehicle_general,medium,полностью заряженная АКБ,试验状态要求,active
+ru_0092,ru,zh,вспомогательная система,辅助系统,vehicle_general,medium,дополнительная система,除霜试验中辅助加热等系统,active
+ru_0093,ru,zh,обогрев заднего стекла,后窗加热,defrost_demisting,medium,подогрев заднего стекла,试验中需开启的辅助系统,active
+ru_0094,ru,zh,обогрев сидений,座椅加热,defrost_demisting,medium,подогрев сидений,辅助加热系统,active
+ru_0095,ru,zh,электрический отопитель,电加热器,hvac,high,электроотопитель,辅助电加热设备,active
+ru_0096,ru,zh,топливный отопитель,燃油加热器,hvac,high,жидкостный отопитель,辅助燃油加热设备,active
+ru_0097,ru,zh,тепловой аккумулятор,蓄热器,hvac,medium,аккумулятор тепла,除霜系统辅助设备,active
+ru_0098,ru,zh,насос охлаждающей жидкости,冷却液泵,hvac,medium,помпа охлаждающей жидкости,辅助冷却液泵,active
+ru_0099,ru,zh,частота вращения двигателя,发动机转速,vehicle_general,high,обороты двигателя,试验控制参数,active
+ru_0100,ru,zh,максимальная мощность,最大功率,vehicle_general,medium,максимальная мощность двигателя,发动机转速限定相关,active
+ru_0101,ru,zh,холодный пуск,冷起动,vehicle_general,medium,запуск холодного двигателя,除霜试验发动机工况,active
+ru_0102,ru,zh,горизонтальная скорость воздуха,水平空气速度,testing,medium,скорость воздушного потока,试验箱空气流速限制,active
+ru_0103,ru,zh,капот,发动机罩,vehicle_general,low,капот двигателя,车身开闭件，低优先级,active
+ru_0104,ru,zh,дверь,车门,vehicle_general,low,двери,车身开闭件，低优先级,active
+ru_0105,ru,zh,окно,车窗,vehicle_general,low,окна,车身开闭件，低优先级,active
+ru_0106,ru,zh,наблюдатель,观察员,testing,medium,испытатель,试验执行人员,active
+ru_0107,ru,zh,восковой карандаш,蜡笔,testing,low,карандаш для разметки,除霜区域标记工具,active
+ru_0108,ru,zh,контур очищенной зоны,已清除区域轮廓,defrost_demisting,medium,контур зоны очистки,试验记录对象,active
+ru_0109,ru,zh,испытание на оттаивание ветрового стекла,风窗除霜试验,defrost_demisting,high,испытание системы оттаивания,GOST 33992核心试验,active
+ru_0110,ru,zh,испытание на удаление запотевания ветрового стекла,风窗除雾试验,defrost_demisting,high,испытание системы удаления запотевания,GOST 33992核心试验,active
+ru_0111,ru,zh,парообразователь,蒸汽发生器,testing,high,генератор пара,除雾试验核心设备,active
+ru_0112,ru,zh,генератор пара,蒸汽发生器,testing,high,парообразователь,除雾试验核心设备,active
+ru_0113,ru,zh,производительность парообразователя,蒸汽发生器产汽量,testing,high,производительность генератора пара,除雾试验参数,active
+ru_0114,ru,zh,водяной бак,水箱,testing,medium,резервуар для воды,蒸汽发生器部件,active
+ru_0115,ru,zh,тепловые потери,热损失,testing,medium,потери тепла,蒸汽发生器技术特性,active
+ru_0116,ru,zh,вентилятор,风扇,hvac,medium,fan,HVAC和蒸汽发生器部件,active
+ru_0117,ru,zh,статическое давление,静压,testing,medium,статическое давление воздуха,风扇性能参数,active
+ru_0118,ru,zh,нагревательный элемент,加热元件,hvac,medium,электронагревательный элемент,蒸汽发生器/空调暖通部件,active
+ru_0119,ru,zh,выход пара,蒸汽出口,testing,medium,паровой выход,蒸汽发生器部件,active
+ru_0120,ru,zh,калибровка,校准,testing,high,тарировка,试验设备校准,active
+ru_0121,ru,zh,потребляемая мощность,功率消耗,testing,medium,энергопотребление,设备记录参数,active
+ru_0122,ru,zh,дисперсионная камера,扩散腔,testing,medium,камера рассеивания,蒸汽发生器结构部件,active
+ru_0123,ru,zh,коррозионностойкий металл,耐腐蚀金属,testing,medium,некорродирующий металл,蒸汽发生器材料要求,active
+ru_0124,ru,zh,латунь,黄铜,testing,low,brass,材料名称，低优先级,active
+ru_0125,ru,zh,отопление,供暖,hvac,high,обогрев,温度升高和保持过程,active
+ru_0126,ru,zh,система вентиляции,通风系统,hvac,high,вентиляционная система,GOST 30593核心系统术语,active
+ru_0127,ru,zh,система кондиционирования,空调系统,hvac,high,кондиционер,GOST 30593核心系统术语,active
+ru_0128,ru,zh,кондиционирование,空气调节,hvac,high,охлаждение воздуха,降低车内空气温度的过程,active
+ru_0129,ru,zh,система климат-контроля,气候控制系统,hvac,high,климатическая система,自动维持热状态的HVAC系统,active
+ru_0130,ru,zh,головная зона,头部区域,hvac,high,зона головы,热环境测量区域,active
+ru_0131,ru,zh,зона дыхания,呼吸区域,hvac,high,дыхательная зона,驾驶员/乘员面部前方区域,active
+ru_0132,ru,zh,поясная зона,腰部区域,hvac,high,зона пояса,热环境测量区域,active
+ru_0133,ru,zh,ножная зона,脚部区域,hvac,high,зона ног,热环境测量区域,active
+ru_0134,ru,zh,установившаяся температура,稳态温度,hvac,high,стационарная температура,GOST 30593定义术语,active
+ru_0135,ru,zh,тепловое состояние,热状态,hvac,medium,термическое состояние,气候控制目标条件,active
+ru_0136,ru,zh,наружная температура,外部温度,hvac,medium,температура окружающей среды,HVAC测试条件,active
+ru_0137,ru,zh,температура окружающей среды,环境温度,hvac,medium,наружная температура,测试环境术语,active
+ru_0138,ru,zh,подача свежего воздуха,新鲜空气供给,hvac,high,приток свежего воздуха,供暖/通风系统要求,active
+ru_0139,ru,zh,наружный воздух,外部空气,hvac,medium,свежий воздух,HVAC空气来源术语,active
+ru_0140,ru,zh,воздухообмен,空气交换,hvac,high,обмен воздуха,通风定义核心术语,active
+ru_0141,ru,zh,расход воздуха,空气流量,hvac,high,подача воздуха,HVAC性能参数,active
+ru_0142,ru,zh,скорость воздушного потока,空气流速,hvac,high,скорость воздуха,HVAC性能和舒适性参数,active
+ru_0143,ru,zh,распределение воздушного потока,气流分配,hvac,high,распределение воздуха,HVAC控制要求,active
+ru_0144,ru,zh,направление воздушного потока,气流方向,hvac,medium,направление подачи воздуха,HVAC控制要求,active
+ru_0145,ru,zh,регулирование производительности,性能调节,hvac,medium,регулировка производительности,HVAC控制术语,active
+ru_0146,ru,zh,регулирование направления,方向调节,hvac,medium,регулировка направления воздуха,HVAC控制术语,active
+ru_0147,ru,zh,полное отключение системы,系统完全关闭,hvac,medium,отключение системы,控制要求术语,active
+ru_0148,ru,zh,выпускной клапан,排气阀,hvac,medium,автоматический выпускной клапан,可自动保持功能的部件,active
+ru_0149,ru,zh,резервная система отопления,备用供暖系统,hvac,high,аварийная система отопления,寒冷气候车型要求,active
+ru_0150,ru,zh,аварийная система отопления,应急供暖系统,hvac,high,резервная система отопления,GOST 30593核心安全要求,active
+ru_0151,ru,zh,система охлаждения двигателя,发动机冷却系统,hvac,medium,охлаждающая система двигателя,备用供暖独立性要求,active
+ru_0152,ru,zh,спальное место,卧铺,hvac,medium,спальная полка,驾驶员休息区相关术语,active
+ru_0153,ru,zh,без работы двигателя,发动机不工作,hvac,medium,при неработающем двигателе,备用供暖运行条件,active
+ru_0154,ru,zh,без дозаправки,无需加注燃料,hvac,medium,без заправки,备用供暖持续运行要求,active
+ru_0155,ru,zh,металлическая поверхность,金属表面,hvac,medium,металлические поверхности,表面温度限制,active
+ru_0156,ru,zh,неметаллическая поверхность,非金属表面,hvac,medium,неметаллические поверхности,表面温度限制,active
+ru_0157,ru,zh,температура поверхности,表面温度,hvac,high,температура внутренних поверхностей,HVAC安全要求,active
+ru_0158,ru,zh,температура воздуха на выходе,出口空气温度,hvac,high,температура выходящего воздуха,加热/空调出口温度限制,active
+ru_0159,ru,zh,остаточное тепло,余热,hvac,medium,остаточный нагрев,关闭加热后内部表面温度,active
+ru_0160,ru,zh,температурный градиент,温度梯度,hvac,high,градиент температуры,脚部和头部区域温差要求,active
+ru_0161,ru,zh,разброс температур,温度差异,hvac,medium,температурный разброс,乘客区域稳态温度差,active
+ru_0162,ru,zh,устойчивое движение,稳态行驶,hvac,medium,установившееся движение,HVAC性能测试状态,active
+ru_0163,ru,zh,период прогрева,预热阶段,hvac,medium,разогрев,测试初期温升过程,active
+ru_0164,ru,zh,естественная вентиляция,自然通风,hvac,medium,натуральная вентиляция,通风类型,active
+ru_0165,ru,zh,принудительная вентиляция,强制通风,hvac,high,механическая вентиляция,通风类型,active
+ru_0166,ru,zh,вентиляционный люк,通风舱口,hvac,medium,люк вентиляции,通风系统技术描述,active
+ru_0167,ru,zh,кондиционер,空调器,hvac,high,система кондиционирования,空调系统设备,active
+ru_0168,ru,zh,главный выключатель,总开关,hvac,medium,основной выключатель,空调主开关,active
+ru_0169,ru,zh,индивидуальный воздуховод,独立风道,hvac,high,индивидуальный канал подачи воздуха,客车乘客空调要求,active
+ru_0170,ru,zh,воздушный канал,风道,hvac,medium,воздуховод,HVAC部件术语,active
+ru_0171,ru,zh,интенсивность подачи воздуха,送风强度,hvac,medium,интенсивность воздушного потока,乘客风道可调要求,active
+ru_0172,ru,zh,понижение температуры,降温,hvac,high,снижение температуры,空调性能目标,active
+ru_0173,ru,zh,относительная влажность,相对湿度,hvac,high,влажность воздуха,通风/空调测试环境条件,active
+ru_0174,ru,zh,хладагент,制冷剂,hvac,high,охлаждающий агент,空调系统核心术语,active
+ru_0175,ru,zh,озоноразрушающее вещество,消耗臭氧层物质,hvac,high,вещество разрушaющее озоновый слой,蒙特利尔议定书相关术语,active
+ru_0176,ru,zh,Монреальский протокол,蒙特利尔议定书,hvac,medium,Montreal Protocol,制冷剂环保要求依据,active
+ru_0177,ru,zh,компрессор,压缩机,hvac,high,компрессор кондиционера,空调系统部件,active
+ru_0178,ru,zh,маркировка агрегата,总成标识,hvac,medium,маркировка узла,技术描述要求,active
+ru_0179,ru,zh,эффективность системы,系统效率,hvac,medium,эффективность,HVAC性能评价术语,active
+ru_0180,ru,zh,оценка соответствия,符合性评价,general_regulation,high,подтверждение соответствия,GOST 30593附录A术语,active
+ru_0181,ru,zh,условия испытаний,试验条件,testing,high,испытательные условия,通用测试术语,active
+ru_0182,ru,zh,технически исправное состояние,技术状态良好,testing,high,исправное техническое состояние,测试车辆状态要求,active
+ru_0183,ru,zh,частичная нагрузка,部分载荷,testing,medium,частично нагруженное состояние,车辆测试状态,active
+ru_0184,ru,zh,режим движения,行驶工况,testing,high,режимы движения,测试车速条件,active
+ru_0185,ru,zh,дорога с твердым покрытием,硬质路面,testing,medium,дорога с жестким покрытием,测试道路条件,active
+ru_0186,ru,zh,динамометрический стенд,测功机台架,testing,high,барабанный стенд,气候室行驶模拟设备,active
+ru_0187,ru,zh,скорость ветра,风速,testing,medium,скорость воздушного потока,测试环境条件,active
+ru_0188,ru,zh,солнечная радиация,太阳辐射,testing,high,инсоляция,通风/空调性能测试条件,active
+ru_0189,ru,zh,точка измерения,测量点,testing,high,измерительная точка,HVAC测试布点术语,active
+ru_0190,ru,zh,R-точка,R点,vehicle_general,high,точка R,座椅测量基准点,active
+ru_0191,ru,zh,H-точка,H点,vehicle_general,high,точка H,座椅测量基准点,active
+ru_0192,ru,zh,продольная ось,纵向轴线,vehicle_general,medium,продольная ось автомобиля,测量位置描述,active
+ru_0193,ru,zh,впускное отверстие,进气口,hvac,medium,входное отверстие,HVAC测量点,active
+ru_0194,ru,zh,выпускное отверстие,出风口,hvac,medium,выходное отверстие,HVAC测量点,active
+ru_0195,ru,zh,последовательность испытаний,试验顺序,testing,high,порядок испытаний,附录测试流程术语,active
+ru_0196,ru,zh,прогрев двигателя,发动机预热,testing,medium,прогрев,供暖试验步骤,active
+ru_0197,ru,zh,холостой ход,怠速,vehicle_general,medium,режим холостого хода,供暖试验发动机工况,active
+ru_0198,ru,zh,сбор данных,数据采集,testing,medium,регистрация данных,测试记录过程,active
+ru_0199,ru,zh,интервал времени,时间间隔,testing,low,временной интервал,测试记录参数，低优先级,active
+ru_0200,ru,zh,техническое описание,技术说明,general_regulation,high,техническое описание системы,符合性评价申请材料,active
+ru_0201,ru,zh,идентификационный номер транспортного средства,车辆识别代号,general_regulation,high,VIN,技术资料字段,active
+ru_0202,ru,zh,тип двигателя,发动机类型,vehicle_general,medium,тип мотора,技术资料字段,active
+ru_0203,ru,zh,схема расположения мест,座位布置图,vehicle_general,medium,планировка мест,技术资料字段,active
+ru_0204,ru,zh,производительность вентилятора,风扇性能,hvac,medium,производительность fan,技术说明字段,active
+ru_0205,ru,zh,модель отопителя,加热器型号,hvac,medium,тип отопителя,技术说明字段,active
+ru_0206,ru,zh,теплопроизводительность,供热能力,hvac,high,тепловая мощность,加热器性能参数,active
+ru_0207,ru,zh,тип хладагента,制冷剂类型,hvac,medium,вид хладагента,空调技术描述字段,active
+ru_0208,ru,zh,производительность по воздуху,空气处理能力,hvac,medium,воздушная производительность,空调/通风性能字段,active
+ru_0209,ru,zh,испытание системы отопления,供暖系统试验,hvac,high,испытания отопления,GOST 30593测试项目,active
+ru_0210,ru,zh,испытание системы вентиляции,通风系统试验,hvac,high,испытания вентиляции,GOST 30593测试项目,active
+ru_0211,ru,zh,испытание системы кондиционирования,空调系统试验,hvac,high,испытания кондиционирования,GOST 30593测试项目,active
+ru_0212,ru,zh,климатическое исполнение,气候版本,hvac,high,климатическое исполнение У;УХЛ;ХЛ,GOST 30593车辆气候适应性术语,active
+ru_0213,ru,zh,исполнение У,U气候版本,hvac,medium,У,温带气候版本标记,active
+ru_0214,ru,zh,исполнение УХЛ,UHL气候版本,hvac,medium,УХЛ,温带/寒冷气候版本标记,active
+ru_0215,ru,zh,исполнение ХЛ,HL气候版本,hvac,medium,ХЛ,寒冷/极寒气候版本标记,active
+ru_0216,ru,zh,водитель,驾驶员,vehicle_general,high,driver,通用车辆主体术语,active
+ru_0217,ru,zh,пассажир,乘客,vehicle_general,high,passenger,通用车辆主体术语,active
+ru_0218,ru,zh,экипаж,乘务人员,vehicle_general,medium,члены экипажа,GOST 30593可居住舱室对象,active
+ru_0219,ru,zh,сиденье,座椅,vehicle_general,high,seat,测量点和座位数量相关术语,active
+ru_0220,ru,zh,спинка сиденья,座椅靠背,vehicle_general,medium,seat back,蒸汽发生器放置位置描述,active
+ru_0221,ru,zh,пол,地板,vehicle_general,low,поверхность пола,测量位置描述，低优先级,active
+ru_0222,ru,zh,закрытое транспортное средство,封闭车辆,testing,medium,закрытый автомобиль,除雾试验蒸汽阶段条件,active
+ru_0223,ru,zh,пуск двигателя,发动机起动,vehicle_general,medium,запуск двигателя,试验开始步骤,active
+ru_0224,ru,zh,включение главного выключателя,接通主开关,testing,medium,активация главного коммутационного устройства,计时起点,active
+ru_0225,ru,zh,начало отсчета времени,开始计时,testing,medium,старт отсчета,测试程序术语,active
+ru_0226,ru,zh,рекомендуемое положение органов управления,推荐控制位置,hvac,medium,рекомендованное положение управления,除雾试验设置要求,active
+ru_0227,ru,zh,органы управления,控制装置,hvac,high,элементы управления,HVAC控制部件术语,active
+ru_0228,ru,zh,наружный воздухозаборник,外部进风口,hvac,medium,забор наружного воздуха,供暖/通风新风输入,active
+ru_0229,ru,zh,рециркуляция воздуха,空气内循环,hvac,medium,режим рециркуляции,HVAC模式术语，虽然摘要未强调但常见,active
+ru_0230,ru,zh,обдув ветрового стекла,风窗吹风,defrost_demisting,high,обдув стекла,除霜除雾系统常用功能术语,active
+ru_0231,ru,zh,воздушный поток на стекло,吹向玻璃的气流,defrost_demisting,medium,поток воздуха на ветровое стекло,除霜除雾效果相关术语,active
+ru_0232,ru,zh,удаление влаги,除湿,defrost_demisting,medium,осушение,除雾过程相关术语,active
+ru_0233,ru,zh,очистка стекла,玻璃清洁,defrost_demisting,medium,очистка ветрового стекла,试验准备和关键词术语,active
+ru_0234,ru,zh,камера рассеивания,扩散腔,testing,medium,дисперсионная камера,蒸汽发生器结构别名,active
+ru_0235,ru,zh,диаметр отверстия,孔径,testing,low,диаметр,设备尺寸参数，低优先级,active
+ru_0236,ru,zh,толщина стенки,壁厚,testing,low,толщина стенок,设备尺寸参数，低优先级,active
