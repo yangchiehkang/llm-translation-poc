@@ -211,3 +211,239 @@ vi_0011,vi,zh,quy định,法规,general,high,,越南语法规,active
 vi_0012,vi,zh,phụ lục,附件,document,medium,,越南语附件,active
 vi_0013,vi,zh,đoạn,段落,document,medium,,越南语段落,active
 vi_0014,vi,zh,phải,应,modal,high,,越南语义务词,active
+en_0041,en,zh,UN Regulation,联合国法规,general_regulation,high,UN Regulation No.,UNECE法规通用表达,active
+en_0042,en,zh,approval,认证,general_regulation,high,type approval;approval,法规认证语境下译为认证,active
+en_0043,en,zh,approved type,认证型式,general_regulation,medium,approved vehicle type,用于一致性和认证条款,active
+en_0044,en,zh,approval number,认证编号,general_regulation,medium,approval mark number,认证标志相关术语,active
+en_0045,en,zh,approval mark,认证标志,general_regulation,high,mark of approval,法规认证标记,active
+en_0046,en,zh,Contracting Party,缔约方,general_regulation,high,Contracting Parties,UNECE法规常见行政术语,active
+en_0047,en,zh,type approval authority,型式认证机构,general_regulation,high,approval authority;Type Approval Authority,法规认证主管机构,active
+en_0048,en,zh,transitional provisions,过渡规定,general_regulation,high,transitional provision,法规版本过渡条款,active
+en_0049,en,zh,series of amendments,修订系列,general_regulation,high,amendment series,UNECE法规版本表达,active
+en_0050,en,zh,scope,适用范围,general_regulation,low,Scope,法规章节标题常见译法,active
+en_0051,en,zh,requirements,要求,general_regulation,high,requirement,法规技术要求,active
+en_0052,en,zh,performance criteria,性能判据,general_regulation,medium,performance criterion,测试合格判据,active
+en_0053,en,zh,pass criteria,通过判据,general_regulation,medium,acceptance criteria,试验通过条件,active
+en_0054,en,zh,not obliged to,无义务,legal_expression,low,shall not be obliged to,过渡规定中常见表达,active
+en_0055,en,zh,mandatory,强制性,legal_expression,high,compulsory,法规强制要求,active
+en_0056,en,zh,not compulsory,非强制性,legal_expression,low,not mandatory,法规豁免或过渡要求,active
+en_0057,en,zh,vehicle category,车辆类别,vehicle_general,high,category of vehicle,法规车型分类,active
+en_0058,en,zh,power-driven vehicle,动力驱动车辆,vehicle_general,medium,motor vehicle,UN R16适用范围术语,active
+en_0059,en,zh,road vehicle,道路车辆,vehicle_general,medium,road vehicles,R100适用范围术语,active
+en_0060,en,zh,seating position,座椅位置,vehicle_general,high,seat position,安全带和座椅法规核心术语,active
+en_0061,en,zh,front outboard seat,前排外侧座椅,vehicle_general,high,front outboard seating position,R16/R17座椅位置术语,active
+en_0062,en,zh,front centre seat,前排中间座椅,vehicle_general,medium,front center seat,座椅位置术语,active
+en_0063,en,zh,rear outboard seat,后排外侧座椅,vehicle_general,high,rear outboard seating position,座椅位置术语,active
+en_0064,en,zh,rear centre seat,后排中间座椅,vehicle_general,medium,rear center seat,座椅位置术语,active
+en_0065,en,zh,occupant,乘员,vehicle_safety,high,occupants,汽车安全法规核心术语,active
+en_0066,en,zh,adult occupant,成年乘员,vehicle_safety,medium,adult occupants,R16安全带适用对象,active
+en_0067,en,zh,driver,驾驶员,vehicle_safety,high,driver,法规常用主体,active
+en_0068,en,zh,passenger,乘客,vehicle_safety,medium,passenger occupant,安全气囊和安全带场景,active
+en_0069,en,zh,safety-belt,安全带,seatbelt_restraint,high,seat-belt;safety belt,UN R16核心术语,active
+en_0070,en,zh,seat-belt,安全带,seatbelt_restraint,high,safety-belt;safety belt,UN R16核心术语,active
+en_0071,en,zh,restraint system,约束系统,seatbelt_restraint,high,restraint systems,R16核心术语,active
+en_0072,en,zh,child restraint system,儿童约束系统,seatbelt_restraint,high,CRS,儿童安全法规核心术语,active
+en_0073,en,zh,ISOFIX child restraint system,ISOFIX儿童约束系统,seatbelt_restraint,high,ISOFIX CRS,R16/R129相关术语,active
+en_0074,en,zh,i-Size child restraint system,i-Size儿童约束系统,seatbelt_restraint,high,i-Size CRS,R16儿童约束系统术语,active
+en_0075,en,zh,safety-belt reminder,安全带提醒装置,seatbelt_restraint,high,SBR,R16核心系统术语,active
+en_0076,en,zh,strap,织带,seatbelt_restraint,high,webbing,安全带组成部件,active
+en_0077,en,zh,webbing,织带,seatbelt_restraint,high,strap,安全带织带术语,active
+en_0078,en,zh,securing buckle,锁扣,seatbelt_restraint,high,buckle,安全带组件,active
+en_0079,en,zh,buckle,带扣,seatbelt_restraint,high,securing buckle,安全带释放和锁止部件,active
+en_0080,en,zh,adjusting device,调节装置,seatbelt_restraint,medium,adjuster,安全带组件,active
+en_0081,en,zh,attachment,固定件,seatbelt_restraint,medium,attachments,安全带连接部件,active
+en_0082,en,zh,anchorage,固定点,seatbelt_restraint,high,anchorages,安全带或座椅固定结构,active
+en_0083,en,zh,lap belt,腰带,seatbelt_restraint,high,two-point belt,安全带类型,active
+en_0084,en,zh,diagonal belt,肩带,seatbelt_restraint,high,diagonal strap,安全带类型,active
+en_0085,en,zh,three-point belt,三点式安全带,seatbelt_restraint,high,3-point belt,安全带类型,active
+en_0086,en,zh,harness belt,全背带式安全带,seatbelt_restraint,medium,harness,安全带类型,active
+en_0087,en,zh,crotch strap,裆带,seatbelt_restraint,medium,crotch belt,全背带式安全带组成,active
+en_0088,en,zh,retractor,卷收器,seatbelt_restraint,high,belt retractor,安全带核心部件,active
+en_0089,en,zh,non-locking retractor,非锁止式卷收器,seatbelt_restraint,medium,Type 1 retractor,R16卷收器类型,active
+en_0090,en,zh,manually unlocking retractor,手动解锁式卷收器,seatbelt_restraint,medium,Type 2 retractor,R16卷收器类型,active
+en_0091,en,zh,automatically locking retractor,自动锁止式卷收器,seatbelt_restraint,high,Type 3 retractor,R16卷收器类型,active
+en_0092,en,zh,emergency locking retractor,紧急锁止式卷收器,seatbelt_restraint,high,Type 4 retractor,安全带重要部件,active
+en_0093,en,zh,single sensitivity,单敏感式,seatbelt_restraint,medium,single-sensitive,卷收器响应类型,active
+en_0094,en,zh,multiple sensitivity,多敏感式,seatbelt_restraint,medium,multiple-sensitive,卷收器响应类型,active
+en_0095,en,zh,pre-loading device,预紧装置,seatbelt_restraint,high,pretensioner;pre-tensioning device,安全带系统术语,active
+en_0096,en,zh,tension-reducing device,张力降低装置,seatbelt_restraint,medium,tension reducer,安全带舒适性装置,active
+en_0097,en,zh,energy absorption device,能量吸收装置,seatbelt_restraint,high,energy absorber,安全带/座椅安全术语,active
+en_0098,en,zh,release button,释放按钮,seatbelt_restraint,medium,buckle release button,安全带带扣术语,active
+en_0099,en,zh,locking threshold,锁止阈值,seatbelt_restraint,high,lock threshold,卷收器性能术语,active
+en_0100,en,zh,tilt sensitivity,倾斜敏感性,seatbelt_restraint,medium,tilt-sensitive,卷收器测试术语,active
+en_0101,en,zh,withdrawal,拉出,seatbelt_restraint,medium,webbing withdrawal,织带卷收测试,active
+en_0102,en,zh,retraction,卷回,seatbelt_restraint,medium,webbing retraction,织带卷收测试,active
+en_0103,en,zh,breaking strength,断裂强度,seatbelt_restraint,high,tensile strength,织带性能术语,active
+en_0104,en,zh,conditioning,预处理,testing,medium,conditioning test,材料试验前处理,active
+en_0105,en,zh,abrasion conditioning,磨损预处理,testing,medium,abrasion test conditioning,织带性能测试,active
+en_0106,en,zh,dynamic test,动态试验,testing,high,dynamic testing,法规试验通用术语,active
+en_0107,en,zh,sled test,滑车试验,testing,high,dynamic sled test,R16/R17动态测试术语,active
+en_0108,en,zh,trolley,滑车,testing,medium,test trolley,R16动态试验设备,active
+en_0109,en,zh,manikin,人体模型,testing,high,dummy,法规测试假人通用术语,active
+en_0110,en,zh,dummy,假人,testing,high,manikin,碰撞测试假人,active
+en_0111,en,zh,pelvic displacement,骨盆位移,testing,medium,pelvis displacement,R16性能判据,active
+en_0112,en,zh,chest displacement,胸部位移,testing,medium,thorax displacement,R16性能判据,active
+en_0113,en,zh,corrosion test,腐蚀试验,testing,high,corrosion,盐雾等环境试验,active
+en_0114,en,zh,salt mist chamber,盐雾箱,testing,medium,salt spray chamber,腐蚀试验设备,active
+en_0115,en,zh,dust resistance,防尘性能,testing,medium,dust test,安全带卷收器测试,active
+en_0116,en,zh,micro-slip,微滑移,testing,medium,micro slip,安全带调节装置测试,active
+en_0117,en,zh,airbag,安全气囊,vehicle_safety,high,air bag,乘员保护装置,active
+en_0118,en,zh,passenger airbag,乘客安全气囊,vehicle_safety,high,passenger air bag,R16儿童座椅警告语境,active
+en_0119,en,zh,warning label,警告标签,vehicle_safety,medium,warning marking,安全提示标识,active
+en_0120,en,zh,pictogram,象形图,vehicle_safety,medium,symbol,警告标签中的图形符号,active
+en_0121,en,zh,rearward-facing child restraint,后向式儿童约束系统,vehicle_safety,high,rearward facing CRS,R16安全气囊警告术语,active
+en_0122,en,zh,active airbag,激活的安全气囊,vehicle_safety,medium,ACTIVE AIRBAG,安全气囊警告标签术语,active
+en_0123,en,zh,first level warning,一级警告,seatbelt_reminder,high,first-level warning,SBR术语,active
+en_0124,en,zh,second level warning,二级警告,seatbelt_reminder,high,second-level warning,SBR术语,active
+en_0125,en,zh,visual warning,视觉警告,seatbelt_reminder,medium,visual signal,SBR警告形式,active
+en_0126,en,zh,audible warning,声音警告,seatbelt_reminder,medium,audible signal,SBR警告形式,active
+en_0127,en,zh,normal operation,正常运行,seatbelt_reminder,medium,normal vehicle operation,SBR触发条件术语,active
+en_0128,en,zh,occupancy detection,乘员检测,seatbelt_reminder,high,occupant detection,SBR测试术语,active
+en_0129,en,zh,seat,座椅,seat_headrest,high,seats,R17核心术语,active
+en_0130,en,zh,seat assembly,座椅总成,seat_headrest,high,seat unit,R17座椅结构术语,active
+en_0131,en,zh,seat anchorage,座椅固定点,seat_headrest,high,seat anchorages,R17核心术语,active
+en_0132,en,zh,seat-back,座椅靠背,seat_headrest,high,seat back;backrest,R17核心术语,active
+en_0133,en,zh,head restraint,头枕,seat_headrest,high,headrest,R17核心术语,active
+en_0134,en,zh,integrated head restraint,整体式头枕,seat_headrest,high,integrated restraint,R17头枕类型,active
+en_0135,en,zh,detachable head restraint,可拆卸式头枕,seat_headrest,high,detachable restraint,R17头枕类型,active
+en_0136,en,zh,separate head restraint,分离式头枕,seat_headrest,medium,separate restraint,R17头枕类型,active
+en_0137,en,zh,forward-facing seat,前向座椅,seat_headrest,high,forward facing seat,R17座椅方向术语,active
+en_0138,en,zh,rearward-facing seat,后向座椅,seat_headrest,high,rearward facing seat,R17座椅方向术语,active
+en_0139,en,zh,side-facing seat,侧向座椅,seat_headrest,high,side facing seat,R17座椅方向术语,active
+en_0140,en,zh,folding seat,折叠座椅,seat_headrest,medium,folding seats,R17排除项术语,active
+en_0141,en,zh,adjustment system,调节系统,seat_headrest,high,seat adjustment system,R17座椅调节术语,active
+en_0142,en,zh,displacement system,位移系统,seat_headrest,medium,seat displacement system,R17座椅进入后排相关术语,active
+en_0143,en,zh,locking system,锁止系统,seat_headrest,high,seat locking system,R17座椅锁止术语,active
+en_0144,en,zh,automatic locking,自动锁止,seat_headrest,high,automatically operating locking system,R17座椅要求术语,active
+en_0145,en,zh,unlocking control,解锁控制件,seat_headrest,medium,unlocking controls,R17座椅控制件术语,active
+en_0146,en,zh,energy dissipation,能量耗散,seat_headrest,high,energy absorption,R17座椅靠背安全术语,active
+en_0147,en,zh,radius of curvature,曲率半径,seat_headrest,medium,radii of curvature,座椅表面质量术语,active
+en_0148,en,zh,structural strength,结构强度,seat_headrest,high,strength of structure,R17结构性能术语,active
+en_0149,en,zh,permanent deformation,永久变形,seat_headrest,medium,permanent deformations,结构强度试验术语,active
+en_0150,en,zh,injury risk,伤害风险,vehicle_safety,high,risk of injury,安全法规常用术语,active
+en_0151,en,zh,backset,后间距,seat_headrest,high,static backset,R17头枕关键测量术语,active
+en_0152,en,zh,H-Point,H点,seat_headrest,high,H point;H-point,座椅设计和测量核心点,active
+en_0153,en,zh,R-Point,R点,seat_headrest,high,R point;R-point,制造商定义设计点,active
+en_0154,en,zh,intersection point,交点,seat_headrest,medium,IP,头枕有效顶部点,active
+en_0155,en,zh,torso line,躯干线,seat_headrest,medium,torso reference line,头枕高度测量术语,active
+en_0156,en,zh,torso angle,躯干角,seat_headrest,medium,actual torso angle,座椅姿态测量术语,active
+en_0157,en,zh,outboard front seat,前排外侧座椅,seat_headrest,high,front outboard seat,R17强制安装头枕位置,active
+en_0158,en,zh,height requirement,高度要求,seat_headrest,medium,height requirements,头枕法规要求,active
+en_0159,en,zh,height retention,高度保持,seat_headrest,high,height retention test,R17头枕试验术语,active
+en_0160,en,zh,downward load,向下载荷,testing,medium,downward force,头枕高度保持试验,active
+en_0161,en,zh,energy absorption test,能量吸收试验,testing,high,energy dissipation test,R17测试术语,active
+en_0162,en,zh,headform,头型冲击器,testing,medium,head form,R17碰撞测试工具,active
+en_0163,en,zh,pendulum test,摆锤试验,testing,high,pendulum impact test,R17附件测试术语,active
+en_0164,en,zh,dynamic performance,动态性能,testing,medium,dynamic performance test,R17头枕动态测试,active
+en_0165,en,zh,BioRID II UN,BioRID II UN假人,testing,medium,BioRID;BioRID II,后碰假人名称，通常保留英文并补“假人”,active
+en_0166,en,zh,50th percentile male,第50百分位男性,testing,medium,50th percentile male dummy,测试假人规格,active
+en_0167,en,zh,injury criteria,伤害指标,testing,high,injury criterion,R17动态性能判据,active
+en_0168,en,zh,upper neck,上颈部,testing,medium,upper-neck,伤害指标部位,active
+en_0169,en,zh,lower neck,下颈部,testing,medium,lower-neck,伤害指标部位,active
+en_0170,en,zh,shear force,剪切力,testing,medium,shear,颈部伤害指标,active
+en_0171,en,zh,flexion,屈曲,testing,medium,flexion moment,颈部弯矩术语,active
+en_0172,en,zh,extension,伸展,testing,medium,extension moment,颈部弯矩术语,active
+en_0173,en,zh,rebound phase,反弹阶段,testing,medium,rebound,动态测试阶段术语,active
+en_0174,en,zh,displaced luggage,移位行李,vehicle_safety,high,luggage displacement,R17行李位移防护术语,active
+en_0175,en,zh,protection against displaced luggage,防止行李移位伤害,vehicle_safety,high,luggage displacement protection,R17乘员保护术语,active
+en_0176,en,zh,test block,试验块,testing,medium,test blocks,R17行李位移试验,active
+en_0177,en,zh,locking mechanism,锁止机构,seat_headrest,high,locking mechanisms,座椅靠背锁止结构,active
+en_0178,en,zh,non-use position,非使用位置,seat_headrest,high,non use position,R17头枕特殊位置,active
+en_0179,en,zh,automatic return,自动回位,seat_headrest,medium,auto return,非使用位置判定方式,active
+en_0180,en,zh,human surrogate,人体替代物,testing,medium,human surrogate occupant,非使用位置测试对象,active
+en_0181,en,zh,5th percentile adult female,第5百分位成年女性,testing,medium,5th percentile female,R17/R16测试对象,active
+en_0182,en,zh,warning,警告,vehicle_safety,low,warning signal,通用安全术语,active
+en_0183,en,zh,electric power train,电力传动系统,ev_safety,high,electric drivetrain,R100核心术语,active
+en_0184,en,zh,Rechargeable Electrical Energy Storage System,可充电储能系统,ev_safety,high,REESS,R100核心术语,active
+en_0185,en,zh,REESS,可充电储能系统,ev_safety,high,Rechargeable Electrical Energy Storage System,R100核心缩写,active
+en_0186,en,zh,vehicle electrical safety,车辆电气安全,ev_safety,high,electrical safety,R100 Part I术语,active
+en_0187,en,zh,high voltage,高电压,ev_safety,high,HV,R100核心术语,active
+en_0188,en,zh,high voltage bus,高压母线,ev_safety,high,HV bus,R100电气安全核心术语,active
+en_0189,en,zh,high voltage component,高压部件,ev_safety,high,high voltage components,R100电气安全术语,active
+en_0190,en,zh,live part,带电部件,ev_safety,high,live parts,防触电要求核心术语,active
+en_0191,en,zh,direct contact,直接接触,ev_safety,high,protection against direct contact,R100防触电术语,active
+en_0192,en,zh,indirect contact,间接接触,ev_safety,high,protection against indirect contact,R100防触电术语,active
+en_0193,en,zh,electrical shock,电击,ev_safety,high,electric shock,防触电安全术语,active
+en_0194,en,zh,protection against electrical shock,防电击保护,ev_safety,high,protection against electric shock,R100安全要求,active
+en_0195,en,zh,barrier,遮栏,ev_safety,high,barriers,R100直接接触防护术语,active
+en_0196,en,zh,enclosure,外壳,ev_safety,high,enclosures,R100直接接触防护术语,active
+en_0197,en,zh,solid insulator,固体绝缘体,ev_safety,medium,solid insulators,R100绝缘防护术语,active
+en_0198,en,zh,connector,连接器,ev_safety,high,connectors,高压连接部件,active
+en_0199,en,zh,service disconnect,维修断开装置,ev_safety,high,service disconnect device,R100高压维修安全装置,active
+en_0200,en,zh,protection degree,防护等级,ev_safety,high,IP rating;IP Ratings,R100 IPXXB/IPXXD术语,active
+en_0201,en,zh,IPXXB,IPXXB防护等级,ev_safety,high,IPXXB,通常保留原文并补充防护等级,active
+en_0202,en,zh,IPXXD,IPXXD防护等级,ev_safety,high,IPXXD,通常保留原文并补充防护等级,active
+en_0203,en,zh,passenger compartment,乘客舱,vehicle_general,high,passenger cabin,R100防护位置术语,active
+en_0204,en,zh,luggage compartment,行李舱,vehicle_general,medium,luggage area,R100防护位置术语,active
+en_0205,en,zh,orange outer covering,橙色外覆层,ev_safety,medium,orange covering,高压线束识别要求,active
+en_0206,en,zh,exposed conductive part,外露可导电部分,ev_safety,high,exposed conductive parts,R100间接接触防护核心术语,active
+en_0207,en,zh,electrical chassis,电底盘,ev_safety,high,electric chassis,R100电位均衡术语,active
+en_0208,en,zh,galvanically connected,电气连接,ev_safety,medium,galvanic connection,法规中也可译为“电连接”,active
+en_0209,en,zh,earth ground,保护接地,ev_safety,medium,ground;earth grounding,充电安全语境,active
+en_0210,en,zh,isolation resistance,绝缘电阻,ev_safety,high,insulation resistance,R100核心术语,active
+en_0211,en,zh,isolation resistance monitoring system,绝缘电阻监测系统,ev_safety,high,insulation resistance monitoring system,R100燃料电池/高压系统术语,active
+en_0212,en,zh,working voltage,工作电压,ev_safety,high,operating voltage,R100定义术语,active
+en_0213,en,zh,DC bus,直流母线,ev_safety,high,direct current bus,R100电气系统术语,active
+en_0214,en,zh,AC bus,交流母线,ev_safety,high,alternating current bus,R100电气系统术语,active
+en_0215,en,zh,external power supply,外部电源,ev_safety,medium,external electric power supply,R100适用范围术语,active
+en_0216,en,zh,charging interlock,充电互锁,ev_safety,high,charger interlock,R100防误移动要求,active
+en_0217,en,zh,active driving possible mode,可行驶模式,ev_safety,high,active driving mode,R100核心车辆状态术语,active
+en_0218,en,zh,startup indication,启动指示,ev_safety,medium,start-up indication,R100车辆状态提示,active
+en_0219,en,zh,accidental movement,意外移动,ev_safety,high,unintended movement,R100防误移动要求,active
+en_0220,en,zh,state of charge,荷电状态,ev_safety,high,SOC,电池状态术语,active
+en_0221,en,zh,low energy warning,低能量警告,ev_safety,medium,low SOC warning,R100驾驶员提示术语,active
+en_0222,en,zh,traction battery,牵引蓄电池,ev_safety,high,traction batteries,R100电池类型术语,active
+en_0223,en,zh,thermal management,热管理,ev_safety,high,thermal management system,REESS参数术语,active
+en_0224,en,zh,thermal runaway,热失控,ev_safety,high,cell thermal runaway,R100 03系列核心术语,active
+en_0225,en,zh,thermal propagation,热蔓延,ev_safety,high,thermal propagation within REESS,R100 03系列核心术语,active
+en_0226,en,zh,thermal event,热事件,ev_safety,high,thermal safety event,R100热安全警告术语,active
+en_0227,en,zh,thermal event warning,热事件警告,ev_safety,high,thermal warning,R100 03系列新增要求,active
+en_0228,en,zh,flammable electrolyte,易燃电解液,ev_safety,high,flammable electrolyte,R100热蔓延场景术语,active
+en_0229,en,zh,hazardous environment,危险环境,ev_safety,high,hazardous conditions,R100热蔓延乘员保护术语,active
+en_0230,en,zh,advance warning,提前警告,ev_safety,high,early warning,R100热蔓延5分钟警告要求,active
+en_0231,en,zh,egress,撤离,ev_safety,medium,escape,热事件乘员撤离语境,active
+en_0232,en,zh,risk reduction analysis,风险降低分析,ev_safety,high,risk analysis,R100安全论证资料,active
+en_0233,en,zh,FMEA,失效模式及影响分析,ev_safety,medium,Failure Mode and Effects Analysis,安全分析方法,active
+en_0234,en,zh,safety concept,安全概念,ev_safety,high,safety concept description,R100审批资料术语,active
+en_0235,en,zh,power circuit,动力电路,ev_safety,medium,power circuit diagram,R100文件资料术语,active
+en_0236,en,zh,vibration test,振动试验,testing,high,vibration,R100 REESS测试,active
+en_0237,en,zh,thermal shock and cycling,热冲击和循环,testing,medium,thermal cycling,R100 REESS测试,active
+en_0238,en,zh,mechanical shock,机械冲击,testing,medium,mechanical shock test,R100 REESS测试,active
+en_0239,en,zh,mechanical integrity,机械完整性,testing,medium,mechanical integrity test,R100挤压类试验,active
+en_0240,en,zh,crush test,挤压试验,testing,high,crush,R100机械完整性试验,active
+en_0241,en,zh,fire resistance,耐火性,testing,medium,fire resistance test,R100 REESS火烧试验,active
+en_0242,en,zh,external short circuit,外部短路,testing,high,external short circuit test,R100电安全测试,active
+en_0243,en,zh,overcharge protection,过充电保护,testing,high,over-charge protection,R100电池保护测试,active
+en_0244,en,zh,over-discharge protection,过放电保护,testing,high,overdischarge protection,R100电池保护测试,active
+en_0245,en,zh,over-temperature protection,过温保护,testing,high,overtemperature protection,R100电池保护测试,active
+en_0246,en,zh,overcurrent protection,过电流保护,testing,high,over-current protection,R100电池保护测试,active
+en_0247,en,zh,electrolyte leakage,电解液泄漏,ev_safety,high,electrolyte leak,R100测试判据,active
+en_0248,en,zh,rupture,破裂,testing,medium,rupture of REESS,R100测试判据,active
+en_0249,en,zh,fire,起火,testing,medium,fire occurrence,R100测试判据,active
+en_0250,en,zh,explosion,爆炸,testing,medium,explosion occurrence,R100测试判据,active
+en_0251,en,zh,gas-tight enclosure,气密舱,testing,medium,SHED,氢排放试验设备,active
+en_0252,en,zh,hydrogen emissions,氢排放,ev_safety,medium,hydrogen emission,R100开放式牵引蓄电池术语,active
+en_0253,en,zh,open-type traction battery,开放式牵引蓄电池,ev_safety,medium,open type traction battery,R100氢排放语境,active
+en_0254,en,zh,hydrogen accumulation,氢气积聚,ev_safety,medium,hydrogen buildup,R100气体管理术语,active
+en_0255,en,zh,ventilation,通风,ev_safety,low,ventilation system,氢气管理要求,active
+en_0256,en,zh,gas management,气体管理,ev_safety,medium,gas management system,REESS安装要求,active
+en_0257,en,zh,Jointed Test Finger,铰接试指,testing,high,jointed test finger,IPXXB测试工具,active
+en_0258,en,zh,Test Wire,试验线,testing,medium,test wire,IPXXD测试工具,active
+en_0259,en,zh,potential equalization,电位均衡,ev_safety,high,potential equalization verification,R100附件4术语,active
+en_0260,en,zh,resistance measurement,电阻测量,testing,medium,resistance measurement method,R100测试方法术语,active
+en_0261,en,zh,internal resistance,内阻,ev_safety,medium,internal resistance of voltmeter,绝缘电阻测量语境,active
+en_0262,en,zh,nominal voltage,标称电压,ev_safety,high,rated voltage,REESS参数术语,active
+en_0263,en,zh,nominal capacity,标称容量,ev_safety,medium,capacity,R100 REESS资料字段,active
+en_0264,en,zh,electric motor,电机,ev_safety,high,traction motor,电力传动系统组成,active
+en_0265,en,zh,traction motor,驱动电机,ev_safety,high,electric traction motor,电力传动系统组成,active
+en_0266,en,zh,maximum net power,最大净功率,ev_safety,medium,max net power,电机参数术语,active
+en_0267,en,zh,fuel cell,燃料电池,ev_safety,medium,fuel-cell,R100定义和要求相关术语,active
+en_0268,en,zh,cooling system,冷却系统,ev_safety,low,cooling system type,REESS/燃料电池资料术语,active
+en_0269,en,zh,energy conversion system,能量转换系统,ev_safety,medium,energy conversion systems,电力传动系统组成,active
+en_0270,en,zh,electronic converter,电子变换器,ev_safety,medium,electronic converters,电力传动系统组成,active
+en_0271,en,zh,wiring,线束,ev_safety,medium,wiring harness,电力传动系统组成,active
+en_0272,en,zh,charging system,充电系统,ev_safety,high,charging systems,电力传动系统组成,active
+en_0273,en,zh,battery casing,电池壳体,ev_safety,medium,casing material,REESS资料术语,active
+en_0274,en,zh,cell,单体电池,ev_safety,high,battery cell,热失控和热蔓延核心术语,active
+en_0275,en,zh,single cell internal short circuit,单体电池内部短路,ev_safety,high,internal short circuit of a single cell,R100热蔓延触发条件,active
+en_0276,en,zh,mitigation strategy,缓解策略,ev_safety,medium,mitigation strategies,R100安全论证术语,active
