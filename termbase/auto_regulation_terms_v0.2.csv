@@ -1,0 +1,213 @@
+﻿term_id,source_lang,target_lang,source_term,target_term,domain,priority,alias,note,status
+en_0001,en,zh,vehicle,车辆,general,high,,汽车法规通用术语,active
+en_0002,en,zh,motor vehicle,机动车,general,high,,道路车辆法规常见术语,active
+en_0003,en,zh,type approval,型式认证,certification,high,,认证法规术语,active
+en_0004,en,zh,approval authority,认证主管机构,certification,high,,法规主管机构,active
+en_0005,en,zh,technical service,技术服务机构,certification,high,,认证测试机构,active
+en_0006,en,zh,manufacturer,制造商,general,high,,法规责任主体,active
+en_0007,en,zh,component,零部件,general,medium,,汽车零部件,active
+en_0008,en,zh,separate technical unit,独立技术单元,certification,high,,欧盟法规常见术语,active
+en_0009,en,zh,braking system,制动系统,braking,high,,制动法规术语,active
+en_0010,en,zh,service braking system,行车制动系统,braking,high,,制动系统,active
+en_0011,en,zh,parking braking system,驻车制动系统,braking,high,,制动系统,active
+en_0012,en,zh,anti-lock braking system,防抱死制动系统,braking,high,,ABS相关术语,active
+en_0013,en,zh,steering system,转向系统,steering,high,,转向法规术语,active
+en_0014,en,zh,lighting device,照明装置,lighting,high,,灯光法规术语,active
+en_0015,en,zh,headlamp,前照灯,lighting,high,,灯光术语,active
+en_0016,en,zh,rear position lamp,后位灯,lighting,medium,,灯光术语,active
+en_0017,en,zh,direction indicator lamp,转向信号灯,lighting,medium,,灯光术语,active
+en_0018,en,zh,retro-reflector,回复反射器,lighting,medium,,灯光术语,active
+en_0019,en,zh,emission,排放,emission,high,,排放法规术语,active
+en_0020,en,zh,exhaust emission,排气排放,emission,high,,排放法规术语,active
+en_0021,en,zh,noise emission,噪声排放,emission,medium,,噪声法规术语,active
+en_0022,en,zh,test procedure,试验程序,test,high,,测试法规术语,active
+en_0023,en,zh,test method,试验方法,test,high,,标准法规常见表述,active
+en_0024,en,zh,requirement,要求,general,medium,,法规要求,active
+en_0025,en,zh,shall,应,modal,high,,法规义务词,active
+en_0026,en,zh,shall not,不得,modal,high,,禁止性义务词,active
+en_0027,en,zh,must,必须,modal,high,,强制性义务词,active
+en_0028,en,zh,may,可,modal,medium,,许可性情态词,active
+en_0029,en,zh,should,宜,modal,medium,,推荐性情态词,active
+en_0030,en,zh,compliance,符合性,compliance,high,,合规术语,active
+en_0031,en,zh,conformity of production,生产一致性,compliance,high,,COP术语,active
+en_0032,en,zh,inspection,检查,test,medium,,检测检查术语,active
+en_0033,en,zh,verification,验证,test,medium,,验证术语,active
+en_0034,en,zh,calibration,校准,test,medium,,测试设备术语,active
+en_0035,en,zh,standard,标准,general,high,,标准法规术语,active
+en_0036,en,zh,regulation,法规,general,high,,法规术语,active
+en_0037,en,zh,annex,附件,document,medium,,法规文档结构,active
+en_0038,en,zh,appendix,附录,document,medium,,法规文档结构,active
+en_0039,en,zh,paragraph,段落,document,medium,,法规文档结构,active
+en_0040,en,zh,subparagraph,分段,document,medium,,法规文档结构,active
+ru_0001,ru,zh,транспортное средство,车辆,general,high,,俄语车辆术语,active
+ru_0002,ru,zh,автомобиль,汽车,general,high,,俄语汽车术语,active
+ru_0003,ru,zh,изготовитель,制造商,general,high,,俄语责任主体,active
+ru_0004,ru,zh,тормозная система,制动系统,braking,high,,俄语制动术语,active
+ru_0005,ru,zh,система отопления,供暖系统,hvac,high,,俄语暖通术语,active
+ru_0006,ru,zh,вентиляция,通风,hvac,medium,,俄语通风术语,active
+ru_0007,ru,zh,кондиционирование воздуха,空气调节,hvac,high,,俄语空调术语,active
+ru_0008,ru,zh,температура,温度,hvac,medium,,俄语温度术语,active
+ru_0009,ru,zh,испытание,试验,test,high,,俄语试验术语,active
+ru_0010,ru,zh,требование,要求,general,medium,,俄语法规要求,active
+de_0001,de,zh,Fahrzeug,车辆,general,high,,德语车辆术语,active
+de_0002,de,zh,Kraftfahrzeug,机动车,general,high,,德语机动车术语,active
+de_0003,de,zh,Hersteller,制造商,general,high,,德语责任主体,active
+de_0004,de,zh,Genehmigungsbehörde,认证主管机构,certification,high,,德语认证机构,active
+de_0005,de,zh,Bremsanlage,制动系统,braking,high,,德语制动术语,active
+de_0006,de,zh,Sicherheitsglas,安全玻璃,body,high,,德语安全玻璃,active
+de_0007,de,zh,Beleuchtungseinrichtung,照明装置,lighting,high,,德语灯光术语,active
+de_0008,de,zh,Prüfung,试验,test,high,,德语试验术语,active
+de_0009,de,zh,Anforderung,要求,general,medium,,德语法规要求,active
+de_0010,de,zh,Anlage,附件,document,medium,,德语法规附件,active
+fr_0001,fr,zh,véhicule,车辆,general,high,,法语车辆术语,active
+fr_0002,fr,zh,véhicule à moteur,机动车,general,high,,法语机动车术语,active
+fr_0003,fr,zh,constructeur,制造商,general,high,,法语制造商,active
+fr_0004,fr,zh,autorité compétente,主管机构,certification,high,,法语主管机构,active
+fr_0005,fr,zh,système de freinage,制动系统,braking,high,,法语制动术语,active
+fr_0006,fr,zh,dispositif d'éclairage,照明装置,lighting,high,,法语灯光术语,active
+fr_0007,fr,zh,émissions,排放,emission,high,,法语排放术语,active
+fr_0008,fr,zh,essai,试验,test,high,,法语试验术语,active
+fr_0009,fr,zh,exigence,要求,general,medium,,法语法规要求,active
+fr_0010,fr,zh,annexe,附件,document,medium,,法语附件,active
+ar_0001,ar,zh,مركبة,车辆,general,high,,阿拉伯语车辆术语,active
+ar_0002,ar,zh,مركبة آلية,机动车,general,high,,阿拉伯语机动车术语,active
+ar_0003,ar,zh,الشركة المصنعة,制造商,general,high,,阿拉伯语制造商,active
+ar_0004,ar,zh,نظام الفرامل,制动系统,braking,high,,阿拉伯语制动系统,active
+ar_0005,ar,zh,اختبار,试验,test,medium,,阿拉伯语试验,active
+es_0001,es,zh,vehículo,车辆,general,high,,西班牙语车辆术语,active
+es_0002,es,zh,vehículo de motor,机动车,general,high,,西班牙语机动车术语,active
+es_0003,es,zh,fabricante,制造商,general,high,,西班牙语制造商,active
+es_0004,es,zh,homologación de tipo,型式认证,certification,high,,西班牙语型式认证,active
+es_0005,es,zh,autoridad de homologación,认证主管机构,certification,high,,西班牙语认证主管机构,active
+es_0006,es,zh,sistema de frenado,制动系统,braking,high,,西班牙语制动系统,active
+es_0007,es,zh,dispositivo de alumbrado,照明装置,lighting,high,,西班牙语照明装置,active
+es_0008,es,zh,emisiones,排放,emission,high,,西班牙语排放,active
+es_0009,es,zh,ensayo,试验,test,high,,西班牙语试验,active
+es_0010,es,zh,requisito,要求,general,medium,,西班牙语要求,active
+es_0011,es,zh,reglamento,法规,general,high,,西班牙语法规,active
+es_0012,es,zh,anexo,附件,document,medium,,西班牙语附件,active
+es_0013,es,zh,párrafo,段落,document,medium,,西班牙语段落,active
+es_0014,es,zh,deberá,应,modal,high,,西班牙语义务词,active
+es_0015,es,zh,no deberá,不得,modal,high,,西班牙语禁止性义务词,active
+id_0001,id,zh,kendaraan,车辆,general,high,,印尼语车辆术语,active
+id_0002,id,zh,kendaraan bermotor,机动车,general,high,,印尼语机动车术语,active
+id_0003,id,zh,pabrikan,制造商,general,high,,印尼语制造商,active
+id_0004,id,zh,persetujuan tipe,型式认证,certification,high,,印尼语型式认证,active
+id_0005,id,zh,sistem pengereman,制动系统,braking,high,,印尼语制动系统,active
+id_0006,id,zh,perangkat penerangan,照明装置,lighting,high,,印尼语照明装置,active
+id_0007,id,zh,emisi,排放,emission,high,,印尼语排放,active
+id_0008,id,zh,pengujian,试验,test,high,,印尼语试验,active
+id_0009,id,zh,persyaratan,要求,general,medium,,印尼语要求,active
+id_0010,id,zh,peraturan,法规,general,high,,印尼语法规,active
+id_0011,id,zh,lampiran,附件,document,medium,,印尼语附件,active
+id_0012,id,zh,paragraf,段落,document,medium,,印尼语段落,active
+id_0013,id,zh,harus,应,modal,high,,印尼语义务词,active
+it_0001,it,zh,veicolo,车辆,general,high,,意大利语车辆术语,active
+it_0002,it,zh,veicolo a motore,机动车,general,high,,意大利语机动车术语,active
+it_0003,it,zh,costruttore,制造商,general,high,,意大利语制造商,active
+it_0004,it,zh,omologazione,型式认证,certification,high,,意大利语型式认证,active
+it_0005,it,zh,autorità di omologazione,认证主管机构,certification,high,,意大利语认证主管机构,active
+it_0006,it,zh,sistema di frenatura,制动系统,braking,high,,意大利语制动系统,active
+it_0007,it,zh,dispositivo di illuminazione,照明装置,lighting,high,,意大利语照明装置,active
+it_0008,it,zh,emissioni,排放,emission,high,,意大利语排放,active
+it_0009,it,zh,prova,试验,test,high,,意大利语试验,active
+it_0010,it,zh,requisito,要求,general,medium,,意大利语要求,active
+it_0011,it,zh,regolamento,法规,general,high,,意大利语法规,active
+it_0012,it,zh,allegato,附件,document,medium,,意大利语附件,active
+it_0013,it,zh,paragrafo,段落,document,medium,,意大利语段落,active
+it_0014,it,zh,deve,应,modal,high,,意大利语义务词,active
+ms_0001,ms,zh,kenderaan,车辆,general,high,,马来语车辆术语,active
+ms_0002,ms,zh,kenderaan bermotor,机动车,general,high,,马来语机动车术语,active
+ms_0003,ms,zh,pengeluar,制造商,general,high,,马来语制造商,active
+ms_0004,ms,zh,kelulusan jenis,型式认证,certification,high,,马来语型式认证,active
+ms_0005,ms,zh,sistem brek,制动系统,braking,high,,马来语制动系统,active
+ms_0006,ms,zh,peranti pencahayaan,照明装置,lighting,high,,马来语照明装置,active
+ms_0007,ms,zh,pelepasan,排放,emission,high,,马来语排放,active
+ms_0008,ms,zh,ujian,试验,test,high,,马来语试验,active
+ms_0009,ms,zh,keperluan,要求,general,medium,,马来语要求,active
+ms_0010,ms,zh,peraturan,法规,general,high,,马来语法规,active
+ms_0011,ms,zh,lampiran,附件,document,medium,,马来语附件,active
+ms_0012,ms,zh,perenggan,段落,document,medium,,马来语段落,active
+ms_0013,ms,zh,hendaklah,应,modal,high,,马来语义务词,active
+nl_0001,nl,zh,voertuig,车辆,general,high,,荷兰语车辆术语,active
+nl_0002,nl,zh,motorvoertuig,机动车,general,high,,荷兰语机动车术语,active
+nl_0003,nl,zh,fabrikant,制造商,general,high,,荷兰语制造商,active
+nl_0004,nl,zh,typegoedkeuring,型式认证,certification,high,,荷兰语型式认证,active
+nl_0005,nl,zh,goedkeuringsinstantie,认证主管机构,certification,high,,荷兰语认证主管机构,active
+nl_0006,nl,zh,remsysteem,制动系统,braking,high,,荷兰语制动系统,active
+nl_0007,nl,zh,verlichtingsinrichting,照明装置,lighting,high,,荷兰语照明装置,active
+nl_0008,nl,zh,emissies,排放,emission,high,,荷兰语排放,active
+nl_0009,nl,zh,proef,试验,test,high,,荷兰语试验,active
+nl_0010,nl,zh,eis,要求,general,medium,,荷兰语要求,active
+nl_0011,nl,zh,reglement,法规,general,high,,荷兰语法规,active
+nl_0012,nl,zh,bijlage,附件,document,medium,,荷兰语附件,active
+nl_0013,nl,zh,punt,段落,document,medium,,荷兰语段落,active
+nl_0014,nl,zh,moet,应,modal,high,,荷兰语义务词,active
+no_0001,no,zh,kjøretøy,车辆,general,high,,挪威语车辆术语,active
+no_0002,no,zh,motorvogn,机动车,general,high,,挪威语机动车术语,active
+no_0003,no,zh,produsent,制造商,general,high,,挪威语制造商,active
+no_0004,no,zh,typegodkjenning,型式认证,certification,high,,挪威语型式认证,active
+no_0005,no,zh,godkjenningsmyndighet,认证主管机构,certification,high,,挪威语认证主管机构,active
+no_0006,no,zh,bremsesystem,制动系统,braking,high,,挪威语制动系统,active
+no_0007,no,zh,belysningsinnretning,照明装置,lighting,high,,挪威语照明装置,active
+no_0008,no,zh,utslipp,排放,emission,high,,挪威语排放,active
+no_0009,no,zh,prøving,试验,test,high,,挪威语试验,active
+no_0010,no,zh,krav,要求,general,medium,,挪威语要求,active
+no_0011,no,zh,forskrift,法规,general,high,,挪威语法规,active
+no_0012,no,zh,vedlegg,附件,document,medium,,挪威语附件,active
+no_0013,no,zh,punkt,段落,document,medium,,挪威语段落,active
+no_0014,no,zh,skal,应,modal,high,,挪威语义务词,active
+pt_0001,pt,zh,veículo,车辆,general,high,,葡萄牙语车辆术语,active
+pt_0002,pt,zh,veículo a motor,机动车,general,high,,葡萄牙语机动车术语,active
+pt_0003,pt,zh,fabricante,制造商,general,high,,葡萄牙语制造商,active
+pt_0004,pt,zh,homologação,型式认证,certification,high,,葡萄牙语型式认证,active
+pt_0005,pt,zh,autoridade de homologação,认证主管机构,certification,high,,葡萄牙语认证主管机构,active
+pt_0006,pt,zh,sistema de travagem,制动系统,braking,high,,葡萄牙语制动系统,active
+pt_0007,pt,zh,dispositivo de iluminação,照明装置,lighting,high,,葡萄牙语照明装置,active
+pt_0008,pt,zh,emissões,排放,emission,high,,葡萄牙语排放,active
+pt_0009,pt,zh,ensaio,试验,test,high,,葡萄牙语试验,active
+pt_0010,pt,zh,requisito,要求,general,medium,,葡萄牙语要求,active
+pt_0011,pt,zh,regulamento,法规,general,high,,葡萄牙语法规,active
+pt_0012,pt,zh,anexo,附件,document,medium,,葡萄牙语附件,active
+pt_0013,pt,zh,parágrafo,段落,document,medium,,葡萄牙语段落,active
+pt_0014,pt,zh,deve,应,modal,high,,葡萄牙语义务词,active
+sv_0001,sv,zh,fordon,车辆,general,high,,瑞典语车辆术语,active
+sv_0002,sv,zh,motorfordon,机动车,general,high,,瑞典语机动车术语,active
+sv_0003,sv,zh,tillverkare,制造商,general,high,,瑞典语制造商,active
+sv_0004,sv,zh,typgodkännande,型式认证,certification,high,,瑞典语型式认证,active
+sv_0005,sv,zh,godkännandemyndighet,认证主管机构,certification,high,,瑞典语认证主管机构,active
+sv_0006,sv,zh,bromssystem,制动系统,braking,high,,瑞典语制动系统,active
+sv_0007,sv,zh,belysningsanordning,照明装置,lighting,high,,瑞典语照明装置,active
+sv_0008,sv,zh,utsläpp,排放,emission,high,,瑞典语排放,active
+sv_0009,sv,zh,provning,试验,test,high,,瑞典语试验,active
+sv_0010,sv,zh,krav,要求,general,medium,,瑞典语要求,active
+sv_0011,sv,zh,föreskrift,法规,general,high,,瑞典语法规,active
+sv_0012,sv,zh,bilaga,附件,document,medium,,瑞典语附件,active
+sv_0013,sv,zh,punkt,段落,document,medium,,瑞典语段落,active
+sv_0014,sv,zh,ska,应,modal,high,,瑞典语义务词,active
+th_0001,th,zh,ยานพาหนะ,车辆,general,high,,泰语车辆术语,active
+th_0002,th,zh,ยานยนต์,机动车,general,high,,泰语机动车术语,active
+th_0003,th,zh,ผู้ผลิต,制造商,general,high,,泰语制造商,active
+th_0004,th,zh,การรับรองแบบ,型式认证,certification,high,,泰语型式认证,active
+th_0005,th,zh,ระบบเบรก,制动系统,braking,high,,泰语制动系统,active
+th_0006,th,zh,อุปกรณ์ให้แสงสว่าง,照明装置,lighting,high,,泰语照明装置,active
+th_0007,th,zh,การปล่อยมลพิษ,排放,emission,high,,泰语排放,active
+th_0008,th,zh,การทดสอบ,试验,test,high,,泰语试验,active
+th_0009,th,zh,ข้อกำหนด,要求,general,medium,,泰语要求,active
+th_0010,th,zh,กฎระเบียบ,法规,general,high,,泰语法规,active
+th_0011,th,zh,ภาคผนวก,附件,document,medium,,泰语附件,active
+th_0012,th,zh,วรรค,段落,document,medium,,泰语段落,active
+vi_0001,vi,zh,xe,车辆,general,high,,越南语车辆术语,active
+vi_0002,vi,zh,xe cơ giới,机动车,general,high,,越南语机动车术语,active
+vi_0003,vi,zh,nhà sản xuất,制造商,general,high,,越南语制造商,active
+vi_0004,vi,zh,phê duyệt kiểu loại,型式认证,certification,high,,越南语型式认证,active
+vi_0005,vi,zh,cơ quan phê duyệt,认证主管机构,certification,high,,越南语认证主管机构,active
+vi_0006,vi,zh,hệ thống phanh,制动系统,braking,high,,越南语制动系统,active
+vi_0007,vi,zh,thiết bị chiếu sáng,照明装置,lighting,high,,越南语照明装置,active
+vi_0008,vi,zh,khí thải,排放,emission,high,,越南语排放,active
+vi_0009,vi,zh,thử nghiệm,试验,test,high,,越南语试验,active
+vi_0010,vi,zh,yêu cầu,要求,general,medium,,越南语要求,active
+vi_0011,vi,zh,quy định,法规,general,high,,越南语法规,active
+vi_0012,vi,zh,phụ lục,附件,document,medium,,越南语附件,active
+vi_0013,vi,zh,đoạn,段落,document,medium,,越南语段落,active
+vi_0014,vi,zh,phải,应,modal,high,,越南语义务词,active
