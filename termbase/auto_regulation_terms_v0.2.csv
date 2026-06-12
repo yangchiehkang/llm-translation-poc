@@ -947,3 +947,314 @@ es_0286,es,zh,presente decreto,本法令,general_regulation,medium,este decreto,
 es_0287,es,zh,presente resolución,本决议,general_regulation,medium,esta resolución,法规自称表达,active
 es_0288,es,zh,publicación en el Diario Oficial,在官方公报公布,general_regulation,high,publicación oficial,生效条件常见表达,active
 es_0289,es,zh,fecha de publicación en el Diario Oficial,官方公报公布日期,general_regulation,high,fecha de publicación oficial,法规生效日期来源,active
+fr_0011,fr,zh,arrêté,命令,general_regulation,high,Arrêté,法国行政法规文件类型,active
+fr_0012,fr,zh,décret,法令,general_regulation,high,décret n°,法国法规文件类型,active
+fr_0013,fr,zh,code de la route,道路交通法典,general_regulation,high,Code de la route,法国道路交通法规引用,active
+fr_0014,fr,zh,code des transports,交通运输法典,general_regulation,high,Code des transports,法国运输法规引用,active
+fr_0015,fr,zh,Journal officiel de la République française,法兰西共和国官方公报,general_regulation,high,Journal officiel;JORF,法国法规公布载体,active
+fr_0016,fr,zh,version en vigueur,现行版本,general_regulation,medium,texte en vigueur,法规版本状态,active
+fr_0017,fr,zh,dernière mise à jour,最后更新,general_regulation,medium,mise à jour,法规元数据表达,active
+fr_0018,fr,zh,modifié par,经……修改,general_regulation,medium,modifiée par,法规版本修订说明,active
+fr_0019,fr,zh,vu,鉴于,general_regulation,medium,Vu,法国法规依据部分常用引导词,active
+fr_0020,fr,zh,sur le rapport de,根据……报告,general_regulation,medium,rapport de,法国法规引导表达,active
+fr_0021,fr,zh,article,条,general_regulation,high,Article,法规条文结构术语,active
+fr_0022,fr,zh,titre,章,general_regulation,medium,Titre,法规结构术语,active
+fr_0023,fr,zh,dispositions transitoires,过渡规定,general_regulation,high,disposition transitoire,法规过渡条款,active
+fr_0024,fr,zh,dispositions réglementaires,法规规定,general_regulation,high,dispositions reglementaires,法规依据表达,active
+fr_0025,fr,zh,champ d'application,适用范围,general_regulation,high,champ d’application,法规适用范围术语,active
+fr_0026,fr,zh,le présent arrêté,本命令,general_regulation,medium,présent arrêté,法规自称表达,active
+fr_0027,fr,zh,conformément aux dispositions,根据规定,general_regulation,high,conformément à,法规合规表达,active
+fr_0028,fr,zh,en vigueur,现行有效,general_regulation,medium,en vigueur,法规效力表达,active
+fr_0029,fr,zh,publié au Journal officiel,在官方公报公布,general_regulation,high,publication au Journal officiel,法规公布表达,active
+fr_0030,fr,zh,transports par route,道路运输,transport_tachograph,high,transport routier,行驶记录仪适用领域,active
+fr_0031,fr,zh,chronotachygraphe,行驶记录仪,transport_tachograph,high,chronotachygraphes,道路运输车辆计时测速记录设备,active
+fr_0032,fr,zh,appareil de contrôle,控制装置,transport_tachograph,high,appareils de contrôle,法规中指行驶记录仪控制装置,active
+fr_0033,fr,zh,feuille d'enregistrement,记录纸,transport_tachograph,high,feuilles d’enregistrement,模拟行驶记录仪记录纸,active
+fr_0034,fr,zh,disque,记录盘,transport_tachograph,medium,disque d'enregistrement,行驶记录仪记录介质,active
+fr_0035,fr,zh,lecteur de disque,读盘器,transport_tachograph,medium,lecteur de disques,记录盘读取设备,active
+fr_0036,fr,zh,embase porte-disque,记录盘座,transport_tachograph,medium,embases porte-disques,读盘器适配件,active
+fr_0037,fr,zh,homologation,型式批准,general_regulation,high,homologation de modèle,法国/欧盟法规中认证批准术语,active
+fr_0038,fr,zh,homologation C.E.E.,欧共体型式批准,general_regulation,high,homologation CEE,行驶记录仪法规中核心认证术语,active
+fr_0039,fr,zh,homologation C.E.E. de modèle,欧共体型号批准,general_regulation,high,homologation de modèle CEE,控制装置和记录纸型号认证,active
+fr_0040,fr,zh,approbation de modèle,型号批准,general_regulation,high,approbations de modèle,计量器具型号批准术语,active
+fr_0041,fr,zh,demande d'homologation,型式批准申请,general_regulation,high,demande homologation,认证申请术语,active
+fr_0042,fr,zh,demandeur,申请人,general_regulation,medium,le demandeur,申请认证/认可的主体,active
+fr_0043,fr,zh,modèle homologué,经批准型号,general_regulation,high,modèle approuvé,型式批准后的型号,active
+fr_0044,fr,zh,décision d'homologation,型式批准决定,general_regulation,high,décision préfectorale d'homologation,行政批准文件,active
+fr_0045,fr,zh,décision préfectorale,省长决定,general_regulation,medium,décision du préfet,法国地方行政决定,active
+fr_0046,fr,zh,préfet,省长,general_regulation,medium,le préfet,法国地方行政机关代表,active
+fr_0047,fr,zh,prototype,样机,testing,high,prototypes,认证试验提交样品,active
+fr_0048,fr,zh,essais satisfaisants,试验合格,testing,medium,essai satisfaisant,认证通过条件,active
+fr_0049,fr,zh,examen des modèles,型号审查,testing,medium,examen de modèle,型式批准前审查,active
+fr_0050,fr,zh,en vue de l'homologation,为进行型式批准,testing,medium,pour homologation,认证试验目的表达,active
+fr_0051,fr,zh,vérification primitive,初次检定,metrology,high,verification primitive,计量器具首次/修理后检定术语,active
+fr_0052,fr,zh,vérification après installation,安装后检定,metrology,high,verification apres installation,行驶记录仪安装后验证核心术语,active
+fr_0053,fr,zh,vérification définitive,最终检定,metrology,medium,marque de vérification définitive,设备不得安装前需具备的检定标识,active
+fr_0054,fr,zh,vérification périodique,周期检定,metrology,high,centre de vérification périodique,计量器具周期性验证,active
+fr_0055,fr,zh,marque de vérification primitive,初次检定标志,metrology,high,marque de verification primitive,初次检定合格后加施标志,active
+fr_0056,fr,zh,marque de vérification définitive,最终检定标志,metrology,medium,marque verification definitive,安装前设备应具备的标志,active
+fr_0057,fr,zh,marque d'agrément,认可标志,metrology,high,marque agrement,安装后由认可机构加施,active
+fr_0058,fr,zh,marque d'identification,识别标志,metrology,high,marque identification,认可机构被授予的标识,active
+fr_0059,fr,zh,apposition de la marque,加施标志,metrology,medium,apposer la marque,检定/认可标志加施动作,active
+fr_0060,fr,zh,plaquette signalétique,铭牌,transport_tachograph,high,plaque signalétique,设备标识牌,active
+fr_0061,fr,zh,plaquette d'installation,安装铭牌,transport_tachograph,high,plaque d'installation,行驶记录仪安装后标识,active
+fr_0062,fr,zh,plombage,铅封,metrology,high,dispositif de plombage,防拆封装置,active
+fr_0063,fr,zh,plombs de scellement,封印铅封,metrology,high,plomb de scellement,行驶记录仪封印部件,active
+fr_0064,fr,zh,scellement,封印,metrology,high,scellements,计量器具防拆封印,active
+fr_0065,fr,zh,bris de plombs de scellement,破坏封印铅封,metrology,high,bris de plombs,需认可机构处理的行为,active
+fr_0066,fr,zh,erreurs maximales tolérées,最大允许误差,metrology,high,erreur maximale tolérée,计量检定核心术语,active
+fr_0067,fr,zh,erreurs présentées par l'appareil,仪器示值误差,metrology,medium,erreurs de l'appareil,检定判断对象,active
+fr_0068,fr,zh,distance parcourue,行驶距离,transport_tachograph,high,distance,行驶记录仪测量项目,active
+fr_0069,fr,zh,vitesse,速度,transport_tachograph,high,speed,行驶记录仪测量项目,active
+fr_0070,fr,zh,deux minutes par jour,每日两分钟,metrology,low,2 minutes par jour,时间误差要求，数值型术语低优先级,active
+fr_0071,fr,zh,sept jours,七日,metrology,low,7 jours,时间误差周期，低优先级,active
+fr_0072,fr,zh,appareil neuf,新仪器,transport_tachograph,medium,appareils neufs,初次检定对象,active
+fr_0073,fr,zh,appareil réparé,修理后仪器,transport_tachograph,medium,appareils réparés,初次检定对象,active
+fr_0074,fr,zh,fabricant,制造商,general_regulation,high,fabricants,认证/检定责任主体,active
+fr_0075,fr,zh,importateur,进口商,general_regulation,high,importateurs,认证/检定责任主体,active
+fr_0076,fr,zh,réparateur,修理商,general_regulation,high,réparateurs,行驶记录仪维修主体,active
+fr_0077,fr,zh,installateur,安装商,general_regulation,high,installateurs,行驶记录仪安装主体,active
+fr_0078,fr,zh,installateur agréé,认可安装商,general_regulation,high,installateurs agréés,经省长认可的安装单位,active
+fr_0079,fr,zh,réparateur agréé,认可修理商,general_regulation,high,réparateurs agréés,经行政认可的维修单位,active
+fr_0080,fr,zh,organisme agréé,认可机构,general_regulation,high,organismes agréés,获准执行安装/维修/检定相关操作的机构,active
+fr_0081,fr,zh,agrément,认可,general_regulation,high,agrement,法国行政许可/认可术语,active
+fr_0082,fr,zh,demande d'agrément,认可申请,general_regulation,high,demande agrement,机构申请认可材料,active
+fr_0083,fr,zh,dossier d'agrément,认可申请文件,general_regulation,high,dossier agrement,机构申请材料集合,active
+fr_0084,fr,zh,décision d'agrément,认可决定,general_regulation,high,décision agrement,省长作出的认可文件,active
+fr_0085,fr,zh,conditions d'agrément,认可条件,general_regulation,medium,condition agrement,机构需持续满足的条件,active
+fr_0086,fr,zh,suspension de l'agrément,暂停认可,general_regulation,high,suspendre l'agrément,行政处罚/监管措施,active
+fr_0087,fr,zh,refus d'agrément,拒绝认可,general_regulation,medium,refus,行政决定结果,active
+fr_0088,fr,zh,siège social,注册住所,general_regulation,medium,head office,申请材料字段,active
+fr_0089,fr,zh,établissement principal,主要营业场所,general_regulation,medium,principal établissement,申请材料字段,active
+fr_0090,fr,zh,registre du commerce et des sociétés,商业和公司登记簿,general_regulation,medium,RCS,法国企业登记文件,active
+fr_0091,fr,zh,répertoire des métiers,手工业登记簿,general_regulation,medium,RM,法国工商业登记术语,active
+fr_0092,fr,zh,personne responsable,负责人,general_regulation,medium,responsable,企业内负责行驶记录仪业务人员,active
+fr_0093,fr,zh,moyens techniques,技术手段,general_regulation,high,moyens matériels,认可机构必备条件,active
+fr_0094,fr,zh,moyens en personnel,人员资源,general_regulation,medium,moyens humains,认可机构能力要求,active
+fr_0095,fr,zh,main-d'oeuvre,人力,general_regulation,medium,main-d’œuvre,检定配合要求,active
+fr_0096,fr,zh,matériel nécessaire,必要设备,general_regulation,medium,matériel,检定/维修/安装所需设备,active
+fr_0097,fr,zh,opérations de contrôle,检验操作,metrology,high,contrôle,检定和监管过程,active
+fr_0098,fr,zh,opérations,操作,general_regulation,medium,opération,通用词，建议中优先级,active
+fr_0099,fr,zh,installation,安装,transport_tachograph,high,installation du chronotachygraphe,行驶记录仪安装,active
+fr_0100,fr,zh,réparation,修理,transport_tachograph,high,réparation des chronotachygraphes,行驶记录仪修理,active
+fr_0101,fr,zh,intervention,干预操作,transport_tachograph,medium,toute intervention,涉及破坏封印的操作,active
+fr_0102,fr,zh,démontage,拆卸,transport_tachograph,high,démontage de l'installation,封印用于防止拆卸,active
+fr_0103,fr,zh,bon entretien,良好维护,transport_tachograph,medium,entretien,设备维护要求,active
+fr_0104,fr,zh,étalonnage périodique,周期校准,metrology,high,calibrage périodique,控制手段需定期校准,active
+fr_0105,fr,zh,étalonnage,校准,metrology,high,calibrage,计量术语,active
+fr_0106,fr,zh,moyens de contrôle,检验手段,metrology,high,moyens de controle,机构用于检验的设备和方法,active
+fr_0107,fr,zh,service des instruments de mesure,计量器具管理部门,metrology,high,Service des instruments de mesure,法国计量监管部门,active
+fr_0108,fr,zh,direction régionale de l'industrie et de la recherche,地区工业和研究局,general_regulation,medium,DRIR,法国原行政监管机构名称,active
+fr_0109,fr,zh,directeur de la qualité et de la sécurité industrielles,质量和工业安全主任,general_regulation,medium,direction de la qualité et de la sécurité industrielles,行政机关职位/部门名称,active
+fr_0110,fr,zh,enquête,调查,general_regulation,medium,enquête administrative,认可申请审查程序,active
+fr_0111,fr,zh,motiver son refus,说明拒绝理由,general_regulation,medium,motiver le refus,行政决定要求,active
+fr_0112,fr,zh,observations,意见陈述,general_regulation,medium,présenter ses observations,暂停认可前听取意见,active
+fr_0113,fr,zh,pince,钳,general_regulation,medium,pinces,加施识别标志的工具,active
+fr_0114,fr,zh,poinçon,冲印,general_regulation,medium,poinçons,加施标志的工具,active
+fr_0115,fr,zh,poinçonner,冲印标记,metrology,medium,poinçonnage,安装检定后打标动作,active
+fr_0116,fr,zh,registre d'installation,安装登记簿,transport_tachograph,high,registre des installateurs,安装信息记录文件,active
+fr_0117,fr,zh,registre des installateurs,安装商登记簿,transport_tachograph,high,registre d'installation,附件II术语,active
+fr_0118,fr,zh,renseignements relatifs à l'installation,安装相关信息,transport_tachograph,medium,informations d'installation,登记簿记录内容,active
+fr_0119,fr,zh,visite inopinée,突击检查,general_regulation,high,contrôle inopiné,计量监管部门现场检查,active
+fr_0120,fr,zh,surveillance,监督,general_regulation,high,contrôle administratif,认可机构受监管要求,active
+fr_0121,fr,zh,prescriptions réglementaires,法规要求,general_regulation,high,prescriptions,设备和机构合规要求,active
+fr_0122,fr,zh,obligations,义务,general_regulation,high,obligation,法规义务,active
+fr_0123,fr,zh,taxes et redevances,税费和规费,general_regulation,medium,taxes;redevances,认证/检定收费条款,active
+fr_0124,fr,zh,redevance,规费,general_regulation,medium,redevances,行政服务收费,active
+fr_0125,fr,zh,taxe,税,general_regulation,medium,taxes,税费术语,active
+fr_0126,fr,zh,perception de taxes et redevances,征收税费和规费,general_regulation,medium,perception,收费条款表达,active
+fr_0127,fr,zh,coefficient caractéristique w,车辆特征系数w,transport_tachograph,high,coefficient w,安装后检定核心参数,active
+fr_0128,fr,zh,circonférence effective l,轮胎有效周长l,transport_tachograph,high,circonférence effective,安装后检定核心参数,active
+fr_0129,fr,zh,pneumatique,轮胎,vehicle_general,high,pneumatiques,车辆测量相关部件,active
+fr_0130,fr,zh,roue,车轮,vehicle_general,medium,roues,轮胎周长测定语境,active
+fr_0131,fr,zh,constante k du chronotachygraphe,行驶记录仪常数k,transport_tachograph,high,constante k,安装匹配核心参数,active
+fr_0132,fr,zh,adaptation du coefficient w,系数w适配,transport_tachograph,high,adaptation w,车辆系数与行驶记录仪常数匹配,active
+fr_0133,fr,zh,erreurs après installation,安装后误差,metrology,high,erreurs d'installation,安装后检定项目,active
+fr_0134,fr,zh,coefficient w brut,原始w系数,transport_tachograph,medium,coefficient w brut,车辆系数测量术语,active
+fr_0135,fr,zh,coefficient w corrigé,修正w系数,transport_tachograph,medium,coefficient w corrigé,车辆系数测量术语,active
+fr_0136,fr,zh,variateur de vitesse,调速器,testing,medium,variateur,行驶记录仪检测设备,active
+fr_0137,fr,zh,banc de contrôle,检测台,testing,high,banc d'essai,控制装置或安装检验设备,active
+fr_0138,fr,zh,vérificateur de prise,取样检验器,testing,medium,vérificateur de prise,用于测定车辆w系数，建议后续按原文核验专业译法,active
+fr_0139,fr,zh,aire plane,平坦场地,testing,medium,aire plane de 40 mètres,用于建立标准测试跑道,active
+fr_0140,fr,zh,piste étalonnée,校准跑道,testing,high,piste étalon,车辆w系数测定用标准跑道,active
+fr_0141,fr,zh,piste de 20 mètres,20米跑道,testing,medium,piste 20 m,安装检定技术条件,active
+fr_0142,fr,zh,double décamètre,双十米卷尺,testing,medium,décamètre,测距工具，建议后续确认中文标准译名,active
+fr_0143,fr,zh,manomètre,压力表,testing,high,pressure gauge,轮胎压力检测工具,active
+fr_0144,fr,zh,pression des pneumatiques,轮胎压力,vehicle_general,high,pression pneu,安装检定测量条件,active
+fr_0145,fr,zh,dispositif de gonflage des pneumatiques,轮胎充气装置,testing,medium,dispositif de gonflage,安装商必备设备,active
+fr_0146,fr,zh,centre de vérification périodique,周期检定中心,metrology,high,centre verification periodique,行驶记录仪检定机构类型,active
+fr_0147,fr,zh,contrôle rapide,快速检查,testing,medium,contrôle rapide des chronotachygraphes,安装前快速检验,active
+fr_0148,fr,zh,avant installation,安装前,transport_tachograph,medium,préalable à l'installation,检验阶段表达,active
+fr_0149,fr,zh,après installation,安装后,transport_tachograph,medium,post-installation,检定阶段表达,active
+fr_0150,fr,zh,délivrance de l'agrément,颁发认可,general_regulation,medium,délivrer l'agrément,认可授予动作,active
+fr_0151,fr,zh,délai maximal,最长期限,general_regulation,medium,délai maximum,过渡规定时间表达,active
+fr_0152,fr,zh,rester valables,继续有效,general_regulation,medium,restent valables,过渡规定效力表达,active
+fr_0153,fr,zh,chef du service,部门负责人,general_regulation,low,chef,职务表达，低优先级,active
+fr_0154,fr,zh,par délégation,经授权,general_regulation,medium,pour le ministre et par délégation,法国法规签署表达,active
+fr_0155,fr,zh,par empêchement,因故不能履职,general_regulation,low,par empêchement du directeur,签署授权表达，低优先级,active
+fr_0156,fr,zh,code de l'environnement,环境法典,environment_waste,high,Code de l'environnement,法国环境法引用,active
+fr_0157,fr,zh,prévention des déchets,废弃物预防,environment_waste,high,prévention et gestion des déchets,环境法核心术语,active
+fr_0158,fr,zh,gestion des déchets,废弃物管理,environment_waste,high,gestion de déchets,环境法核心术语,active
+fr_0159,fr,zh,déchet,废弃物,environment_waste,high,déchets,环境法基础术语,active
+fr_0160,fr,zh,produits générateurs de déchets,产生废弃物的产品,environment_waste,high,produits générant des déchets,L541-9核心对象,active
+fr_0161,fr,zh,conception des produits,产品设计,environment_waste,high,conception,废弃物预防前端环节,active
+fr_0162,fr,zh,production,生产,environment_waste,medium,fabrication,产品生命周期环节,active
+fr_0163,fr,zh,distribution,分销,environment_waste,medium,vente et distribution,产品生命周期环节,active
+fr_0164,fr,zh,fin de vie,寿命终止阶段,environment_waste,high,end-of-life,产品废弃管理阶段,active
+fr_0165,fr,zh,autorité administrative,行政机关,general_regulation,high,autorité compétente,环境法规执行主体,active
+fr_0166,fr,zh,fabrication,制造,environment_waste,medium,manufacture,行政机关可规制对象,active
+fr_0167,fr,zh,vente,销售,environment_waste,medium,sale,行政机关可规制对象,active
+fr_0168,fr,zh,mise sur le marché,投放市场,environment_waste,high,mettre sur le marché,EPR和产品合规核心术语,active
+fr_0169,fr,zh,acteur du marché,市场主体,environment_waste,medium,acteurs du marché,环境影响信息披露主体,active
+fr_0170,fr,zh,producteur,生产者,environment_waste,high,producteurs,EPR义务主体，含制造商/进口商等,active
+fr_0171,fr,zh,exportateur,出口商,environment_waste,medium,exportateurs,报告义务主体,active
+fr_0172,fr,zh,distributeur,经销商,environment_waste,high,distributeurs,EPR和回收义务主体,active
+fr_0173,fr,zh,éco-organisme,生态组织,environment_waste,high,eco-organisme;éco-organismes,法国EPR体系中的集体合规组织,active
+fr_0174,fr,zh,système individuel,个体系统,environment_waste,high,systèmes individuels,EPR合规路径之一,active
+fr_0175,fr,zh,responsabilité élargie du producteur,生产者责任延伸,environment_waste,high,REP;EPR,法国环境法核心机制,active
+fr_0176,fr,zh,REP,生产者责任延伸,environment_waste,high,responsabilité élargie du producteur,法语缩写，建议保留REP并译出,active
+fr_0177,fr,zh,EPR,生产者责任延伸,environment_waste,high,extended producer responsibility,英文缩写，资料中出现时统一处理,active
+fr_0178,fr,zh,prévention et gestion des déchets,废弃物预防和管理,environment_waste,high,prévention des déchets;gestion des déchets,EPR义务范围,active
+fr_0179,fr,zh,contenu recyclé,再生成分,environment_waste,high,taux de matière recyclée,产品环保特性核心术语,active
+fr_0180,fr,zh,matière recyclée incorporée,掺入的再生材料,environment_waste,high,matières recyclées incorporées,再生成分比例要求,active
+fr_0181,fr,zh,matière première renouvelable,可再生原材料,environment_waste,high,matières premières renouvelables,再生成分计算排除对象,active
+fr_0182,fr,zh,seuil minimal,最低阈值,environment_waste,medium,seuil minimum,法规指标要求,active
+fr_0183,fr,zh,trajectoire pluriannuelle,多年路线,environment_waste,medium,trajectoires pluriannuelles,再生成分比例逐年要求,active
+fr_0184,fr,zh,taux,比例,environment_waste,medium,taux minimum,指标比例术语,active
+fr_0185,fr,zh,recyclabilité,可回收性,environment_waste,high,recyclable,产品环保特性核心术语,active
+fr_0186,fr,zh,filière de recyclage,回收路径,environment_waste,high,voie de recyclage,2030可回收性要求术语,active
+fr_0187,fr,zh,recyclage,回收利用,environment_waste,high,recycler,废弃物管理核心术语,active
+fr_0188,fr,zh,réemploi,再使用,environment_waste,high,reuse,法国环境法重要术语，区别于réutilisation,active
+fr_0189,fr,zh,réutilisation,再利用,environment_waste,high,reutilization,区别于réemploi，常并列出现,active
+fr_0190,fr,zh,durabilité,耐用性,environment_waste,high,durability,产品环保特性和耐用性指数,active
+fr_0191,fr,zh,réparabilité,可修复性,environment_waste,high,repairability,维修指数核心术语,active
+fr_0192,fr,zh,compostabilité,可堆肥性,environment_waste,high,compostability,产品环保特性术语,active
+fr_0193,fr,zh,compostable,可堆肥,environment_waste,high,compostable,特定塑料产品声明受限术语,active
+fr_0194,fr,zh,biodégradable,可生物降解,environment_waste,high,biodégradable,法国环境法中禁止使用的泛化环保声明之一,active
+fr_0195,fr,zh,respectueux de l'environnement,环境友好,environment_waste,high,écologique;environmentally friendly,禁止/限制性环保声明之一,active
+fr_0196,fr,zh,allégation environnementale,环境声明,environment_waste,high,claim environnemental,产品包装环保宣传术语,active
+fr_0197,fr,zh,caractéristiques environnementales,环境特性,environment_waste,high,caractéristiques environnementales du produit,消费者信息披露核心内容,active
+fr_0198,fr,zh,performance environnementale,环境绩效,environment_waste,high,performances environnementales,生态调节依据,active
+fr_0199,fr,zh,information du consommateur,消费者信息告知,environment_waste,high,information des consommateurs,产品环保信息披露要求,active
+fr_0200,fr,zh,consommateur,消费者,environment_waste,high,consommateurs,信息告知对象,active
+fr_0201,fr,zh,substance dangereuse,有害物质,environment_waste,high,substances dangereuses,产品环保特性披露内容,active
+fr_0202,fr,zh,métaux précieux,贵金属,environment_waste,medium,precious metals,产品环保特性披露内容,active
+fr_0203,fr,zh,terres rares,稀土,environment_waste,high,rare earths,产品环保特性披露内容,active
+fr_0204,fr,zh,ressources renouvelables,可再生资源,environment_waste,high,renewable resources,产品环保特性披露内容,active
+fr_0205,fr,zh,indice de réparabilité,可修复性指数,environment_waste,high,repairability index,EEE销售端标识要求,active
+fr_0206,fr,zh,indice de durabilité,耐用性指数,environment_waste,high,durability index,2024起部分替代/补充可修复性指数,active
+fr_0207,fr,zh,équipements électriques et électroniques,电气和电子设备,environment_waste,high,EEE;équipement électrique et électronique,EPR产品类别，常缩写EEE,active
+fr_0208,fr,zh,EEE,电气和电子设备,environment_waste,high,équipements électriques et électroniques,法语/欧盟环境法规缩写,active
+fr_0209,fr,zh,pièces détachées,备件,environment_waste,high,pièces de rechange,维修指数评价因素,active
+fr_0210,fr,zh,compteur d'usage,使用计数器,environment_waste,medium,usage counter,维修指数相关因素,active
+fr_0211,fr,zh,fiabilité,可靠性,environment_waste,high,reliability,耐用性指数构成因素,active
+fr_0212,fr,zh,robustesse,坚固性,environment_waste,medium,robustness,耐用性指数构成因素,active
+fr_0213,fr,zh,signalétique de tri,分类标识,environment_waste,high,sorting signage,产品分类投放标识,active
+fr_0214,fr,zh,consignes de tri,分类投放说明,environment_waste,high,instructions de tri,生活用品和包装分类提示,active
+fr_0215,fr,zh,règles de tri,分类规则,environment_waste,high,règles du tri,废弃物分类规则,active
+fr_0216,fr,zh,emballage,包装,environment_waste,high,emballages,环境法重点产品类别,active
+fr_0217,fr,zh,emballage ménager,家庭包装,environment_waste,high,emballages ménagers,EPR产品类别,active
+fr_0218,fr,zh,emballage professionnel,专业包装,environment_waste,high,emballages professionnels,EPR产品类别,active
+fr_0219,fr,zh,emballage de boisson en verre,玻璃饮料包装,environment_waste,medium,glass beverage packaging,分类标识豁免对象,active
+fr_0220,fr,zh,suremballage,过度包装,environment_waste,high,emballage excessif,消费者举报平台对象,active
+fr_0221,fr,zh,plateforme numérique,数字平台,environment_waste,medium,digital platform,过度包装举报平台,active
+fr_0222,fr,zh,affichage environnemental,环境影响展示,environment_waste,high,environmental display;étiquetage environnemental,商品和服务环境影响信息披露,active
+fr_0223,fr,zh,impact environnemental,环境影响,environment_waste,high,impacts environnementaux,环境展示核心术语,active
+fr_0224,fr,zh,critères sociaux,社会标准,environment_waste,medium,social criteria,环境展示可能包含内容,active
+fr_0225,fr,zh,cycle de vie,生命周期,environment_waste,high,life cycle,环境影响评价范围,active
+fr_0226,fr,zh,émissions de gaz à effet de serre,温室气体排放,environment_waste,high,GES,环境影响展示核心指标,active
+fr_0227,fr,zh,gaz à effet de serre,温室气体,environment_waste,high,GES,气候影响指标,active
+fr_0228,fr,zh,biodiversité,生物多样性,environment_waste,high,biodiversity,环境影响指标,active
+fr_0229,fr,zh,consommation de ressources,资源消耗,environment_waste,high,resource consumption,环境影响指标,active
+fr_0230,fr,zh,ressources naturelles,自然资源,environment_waste,high,natural resources,环境影响指标,active
+fr_0231,fr,zh,données ouvertes,开放数据,environment_waste,medium,open data,环境展示数据公开要求,active
+fr_0232,fr,zh,format ouvert et automatisé,开放且自动化格式,environment_waste,medium,open automated format,环境数据披露格式要求,active
+fr_0233,fr,zh,comité des parties prenantes,利益相关方委员会,environment_waste,high,stakeholder committee,生态组织治理结构,active
+fr_0234,fr,zh,collectivités,地方公共机构,environment_waste,medium,collectivités territoriales,利益相关方之一,active
+fr_0235,fr,zh,association de consommateurs,消费者协会,environment_waste,medium,consumer groups,利益相关方之一,active
+fr_0236,fr,zh,organisation non gouvernementale,非政府组织,environment_waste,medium,ONG,利益相关方之一,active
+fr_0237,fr,zh,but non lucratif,非营利目的,environment_waste,high,sans but lucratif,生态组织属性,active
+fr_0238,fr,zh,audit indépendant,独立审计,environment_waste,high,audits indépendants,生态组织定期审计要求,active
+fr_0239,fr,zh,agrément des éco-organismes,生态组织认可,environment_waste,high,accréditation des éco-organismes,生态组织获批运营机制,active
+fr_0240,fr,zh,contribution financière,财务缴款,environment_waste,high,contributions financières,EPR资金机制核心术语,active
+fr_0241,fr,zh,contribution,缴款,environment_waste,high,contributions,EPR生产者缴费,active
+fr_0242,fr,zh,éco-modulation,生态调节,environment_waste,high,eco-modulation,根据环境绩效调整费用,active
+fr_0243,fr,zh,prime,奖励,environment_waste,high,bonus,生态调节中的正向激励,active
+fr_0244,fr,zh,pénalité,惩罚性费用,environment_waste,high,penalty,生态调节中的负向调节,active
+fr_0245,fr,zh,prix de vente hors taxe,不含税销售价格,environment_waste,medium,prix HT,惩罚上限计算基础,active
+fr_0246,fr,zh,couverture des coûts,成本覆盖,environment_waste,high,cost coverage,EPR费用覆盖范围,active
+fr_0247,fr,zh,collecte,收集,environment_waste,high,collection,废弃物管理环节,active
+fr_0248,fr,zh,transport,运输,environment_waste,high,transport des déchets,废弃物管理环节,active
+fr_0249,fr,zh,traitement,处理,environment_waste,high,traitement des déchets,废弃物管理环节,active
+fr_0250,fr,zh,gestion des données,数据管理,environment_waste,medium,data management,EPR成本覆盖范围,active
+fr_0251,fr,zh,déchets abandonnés,遗弃废弃物,environment_waste,high,litter;déchets sauvages,EPR清理成本相关术语,active
+fr_0252,fr,zh,nettoyage des déchets abandonnés,遗弃废弃物清理,environment_waste,high,cleaning up litter,EPR成本覆盖范围,active
+fr_0253,fr,zh,fonds réparation,维修基金,environment_waste,high,fonds de réparation,EPR维修资金机制,active
+fr_0254,fr,zh,fonds de réemploi et de réutilisation,再使用和再利用基金,environment_waste,high,reuse and reutilization fund,EPR资金机制,active
+fr_0255,fr,zh,réparateur labellisé,认证维修商,environment_waste,medium,réparateur certifié,维修基金使用对象,active
+fr_0256,fr,zh,économie sociale et solidaire,社会和团结经济,environment_waste,high,ESS,再使用基金重点受益主体,active
+fr_0257,fr,zh,ESS,社会和团结经济,environment_waste,high,économie sociale et solidaire,法国政策缩写，建议保留ESS并译出,active
+fr_0258,fr,zh,reprise par les distributeurs,经销商回收,environment_waste,high,reprise distributeur,经销商回收义务,active
+fr_0259,fr,zh,reprise un pour un,一换一回收,environment_waste,high,1 pour 1;un-pour-un,购买新品时回收旧品,active
+fr_0260,fr,zh,reprise un pour zéro,无购买回收,environment_waste,high,1 pour 0;un-pour-zéro,不购买新品也可回收,active
+fr_0261,fr,zh,place de marché en ligne,在线交易平台,environment_waste,high,marketplace,第三方销售平台EPR责任,active
+fr_0262,fr,zh,tiers vendeur,第三方卖家,environment_waste,medium,vendeur tiers,平台责任核验对象,active
+fr_0263,fr,zh,identifiant unique,唯一识别码,environment_waste,high,ID unique,生产者注册后获得的EPR识别码,active
+fr_0264,fr,zh,enregistrement auprès de l'autorité administrative,向行政机关登记,environment_waste,high,enregistrement,获得唯一识别码前提,active
+fr_0265,fr,zh,bouteille en plastique à usage unique,一次性塑料瓶,environment_waste,high,bouteilles plastiques à usage unique,塑料减量目标对象,active
+fr_0266,fr,zh,plastique à usage unique,一次性塑料,environment_waste,high,single-use plastic,法国2040目标核心术语,active
+fr_0267,fr,zh,emballage plastique à usage unique,一次性塑料包装,environment_waste,high,single-use plastic packaging,2040停止投放市场目标对象,active
+fr_0268,fr,zh,taux de collecte,收集率,environment_waste,high,collection rate,塑料瓶回收目标指标,active
+fr_0269,fr,zh,objectif de collecte,收集目标,environment_waste,high,target collection,回收目标指标,active
+fr_0270,fr,zh,consigne,押金制,environment_waste,high,deposit scheme,回收/再使用押金机制,active
+fr_0271,fr,zh,consigne pour recyclage,回收押金制,environment_waste,medium,deposit for recycling,塑料瓶政策机制,active
+fr_0272,fr,zh,consigne pour réemploi,再使用押金制,environment_waste,medium,deposit for reuse,塑料瓶政策机制,active
+fr_0273,fr,zh,déchets du bâtiment,建筑废弃物,environment_waste,high,déchets de construction,建筑和拆除类EPR对象,active
+fr_0274,fr,zh,déchets de construction,建筑废弃物,environment_waste,high,construction waste,建筑产品材料回收对象,active
+fr_0275,fr,zh,déchets de démolition,拆除废弃物,environment_waste,high,demolition waste,建筑拆除废弃物,active
+fr_0276,fr,zh,reprise gratuite,免费回收,environment_waste,high,free take-back,建筑废弃物等类别要求,active
+fr_0277,fr,zh,déchets triés,分类废弃物,environment_waste,high,déchets séparés,建筑废弃物免费回收前提,active
+fr_0278,fr,zh,maillage territorial,区域网点布局,environment_waste,medium,territorial coverage,收集点覆盖要求,active
+fr_0279,fr,zh,point de collecte,收集点,environment_waste,high,points de collecte,废弃物收集网络组成,active
+fr_0280,fr,zh,concertation avec les collectivités territoriales,与地方公共机构协商,environment_waste,medium,consultation with local authorities,收集网点设置程序,active
+fr_0281,fr,zh,bouteille de gaz,气瓶,environment_waste,high,bouteilles de gaz,押金或等效机制对象,active
+fr_0282,fr,zh,récipient sous pression,压力容器,environment_waste,medium,vessel under pressure,气瓶/容器相关术语,active
+fr_0283,fr,zh,navire de plaisance,游艇,environment_waste,medium,pleasure craft,特定EPR类别,active
+fr_0284,fr,zh,bateau de sport,运动船艇,environment_waste,medium,sports boat,特定EPR类别,active
+fr_0285,fr,zh,produits du tabac,烟草制品,environment_waste,high,tobacco products,EPR类别,active
+fr_0286,fr,zh,filtre en plastique,塑料滤嘴,environment_waste,high,filtres en plastique,烟草制品废弃物相关,active
+fr_0287,fr,zh,mégot de cigarette,烟蒂,environment_waste,high,mégots,烟草制品污染和火灾风险传播对象,active
+fr_0288,fr,zh,campagne de communication,宣传活动,environment_waste,medium,communication campaign,烟蒂火灾风险宣传,active
+fr_0289,fr,zh,risque d'incendie,火灾风险,environment_waste,high,fire risk,烟蒂丢弃相关风险,active
+fr_0290,fr,zh,zone forestière,森林区域,environment_waste,medium,forest area,火灾风险宣传重点区域,active
+fr_0291,fr,zh,amende administrative,行政罚款,general_regulation,high,administrative fine,环境法制裁措施,active
+fr_0292,fr,zh,astreinte journalière,每日强制罚款,general_regulation,high,daily penalty,持续违法的行政强制金,active
+fr_0293,fr,zh,personne physique,自然人,general_regulation,high,individual,罚款对象类型,active
+fr_0294,fr,zh,personne morale,法人,general_regulation,high,legal entity,罚款对象类型,active
+fr_0295,fr,zh,manquement,违规,general_regulation,high,breach;non-compliance,行政处罚触发原因,active
+fr_0296,fr,zh,non-respect,不遵守,general_regulation,high,non-conformité,法规违反表达,active
+fr_0297,fr,zh,fausse déclaration,虚假申报,general_regulation,high,false declaration,EPR登记或数据违规情形,active
+fr_0298,fr,zh,retrait de l'agrément,撤销认可,general_regulation,high,withdrawal of accreditation,生态组织处罚措施,active
+fr_0299,fr,zh,censeur d'Etat,国家监察员,general_regulation,medium,Censeur d'État,监督生态组织财务和非营利属性,active
+fr_0300,fr,zh,capacité financière,财务能力,general_regulation,medium,financial capacity,生态组织监管指标,active
+fr_0301,fr,zh,observatoire du réemploi,再使用观察站,environment_waste,medium,Observatory of Reuse,收集数据并提出再使用目标,active
+fr_0302,fr,zh,trajectoire nationale,国家路线,environment_waste,medium,national trajectory,再使用包装比例目标,active
+fr_0303,fr,zh,part des emballages réemployés,再使用包装占比,environment_waste,medium,share of reused packaging,再使用目标指标,active
+fr_0304,fr,zh,produits chimiques,化学品,environment_waste,high,chemical products,EPR产品类别,active
+fr_0305,fr,zh,piles et accumulateurs,电池和蓄电池,environment_waste,high,batteries and accumulators,EPR产品类别,active
+fr_0306,fr,zh,médicaments,药品,environment_waste,medium,medicines,EPR产品类别,active
+fr_0307,fr,zh,textiles d'habillement,服装纺织品,environment_waste,high,apparel textiles,EPR产品类别,active
+fr_0308,fr,zh,chaussures,鞋类,environment_waste,medium,footwear,EPR产品类别,active
+fr_0309,fr,zh,linge de maison,家用纺织品,environment_waste,medium,household linens,EPR产品类别,active
+fr_0310,fr,zh,jouets,玩具,environment_waste,medium,toys,EPR产品类别,active
+fr_0311,fr,zh,articles de sport et de loisirs,体育和休闲用品,environment_waste,medium,sports and leisure articles,EPR产品类别,active
+fr_0312,fr,zh,articles de bricolage et de jardin,DIY和园艺用品,environment_waste,medium,DIY and garden articles,EPR产品类别,active
+fr_0313,fr,zh,voitures particulières,乘用车,vehicle_general,high,passenger cars,EPR产品类别中的车辆类别,active
+fr_0314,fr,zh,camionnettes,厢式货车,vehicle_general,high,vans,EPR产品类别中的车辆类别,active
+fr_0315,fr,zh,deux ou trois roues,两轮或三轮车辆,vehicle_general,medium,2-3 wheelers,EPR产品类别中的车辆类别,active
+fr_0316,fr,zh,pneumatiques,轮胎,vehicle_general,high,tires,EPR产品类别,active
+fr_0317,fr,zh,huiles minérales ou synthétiques,矿物油或合成油,environment_waste,medium,mineral or synthetic oils,EPR产品类别,active
+fr_0318,fr,zh,gomme à mâcher synthétique non biodégradable,不可生物降解合成口香糖,environment_waste,medium,non-biodegradable synthetic chewing gum,EPR产品类别,active
+fr_0319,fr,zh,textiles sanitaires à usage unique,一次性卫生纺织品,environment_waste,high,single-use sanitary textiles,EPR产品类别,active
+fr_0320,fr,zh,lingettes,湿巾,environment_waste,medium,wipes,EPR产品类别,active
+fr_0321,fr,zh,engins de pêche contenant du plastique,含塑料渔具,environment_waste,medium,fishing gear containing plastic,EPR产品类别,active
