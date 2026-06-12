@@ -23,6 +23,7 @@ DEFAULT_INPUT_BY_LANG = {
     "ru": Path("termbase/manual_extracted_ru_terms_v0.2.csv"),
     "es": Path("termbase/manual_extracted_es_terms_v0.2.csv"),
     "fr": Path("termbase/manual_extracted_fr_terms_v0.2.csv"),
+    "de": Path("termbase/manual_extracted_de_terms_v0.2.csv"),
 }
 
 VALID_PRIORITY = {"high", "medium", "low"}
@@ -32,6 +33,15 @@ HIGH_DOMAINS = {
     "general_regulation",
     "vehicle_general",
     "vehicle_safety",
+    "vehicle_regulation",
+    "vehicle_inspection",
+    "vehicle_approval",
+    "vehicle_dimensions",
+    "vehicle_powertrain",
+    "vehicle_environment",
+    "vehicle_lighting",
+    "vehicle_equipment",
+    "vehicle_identification",
     "seatbelt_restraint",
     "seat_headrest",
     "seatbelt_reminder",
@@ -192,7 +202,7 @@ def resolve_input_path():
 
         return Path(arg)
 
-    return DEFAULT_INPUT_BY_LANG["fr"]
+    return DEFAULT_INPUT_BY_LANG["de"]
 
 def main():
     input_path = resolve_input_path()

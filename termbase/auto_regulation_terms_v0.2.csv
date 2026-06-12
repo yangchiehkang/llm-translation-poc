@@ -1258,3 +1258,329 @@ fr_0318,fr,zh,gomme à mâcher synthétique non biodégradable,不可生物降�
 fr_0319,fr,zh,textiles sanitaires à usage unique,一次性卫生纺织品,environment_waste,high,single-use sanitary textiles,EPR产品类别,active
 fr_0320,fr,zh,lingettes,湿巾,environment_waste,medium,wipes,EPR产品类别,active
 fr_0321,fr,zh,engins de pêche contenant du plastique,含塑料渔具,environment_waste,medium,fishing gear containing plastic,EPR产品类别,active
+de_0011,de,zh,Straßenverkehrs-Zulassungs-Ordnung,道路交通许可条例,vehicle_regulation,high,StVZO,德国车辆技术许可核心法规名称,active
+de_0012,de,zh,StVZO,道路交通许可条例,vehicle_regulation,high,Straßenverkehrs-Zulassungs-Ordnung,德国车辆技术法规缩写,active
+de_0013,de,zh,Straßenverkehrs-Ordnung,道路交通规则,vehicle_regulation,high,StVO,德国道路交通行为规则,active
+de_0014,de,zh,StVO,道路交通规则,vehicle_regulation,high,Straßenverkehrs-Ordnung,德国道路交通规则缩写,active
+de_0015,de,zh,Zulassung,许可,vehicle_regulation,high,Zulassung von Fahrzeugen,车辆上路许可/登记许可语境,active
+de_0016,de,zh,Zulassung von Fahrzeugen,车辆许可,vehicle_regulation,high,Fahrzeugzulassung,StVZO核心主题,active
+de_0017,de,zh,Zulassungsbehörde,许可机关,vehicle_regulation,high,Zulassungsbehörden,德国车辆许可主管机关,active
+de_0018,de,zh,Erlaubnisverfahren,许可程序,vehicle_regulation,medium,spezielles Erlaubnisverfahren,车辆需特殊许可时的程序,active
+de_0019,de,zh,Vorschrift,规定,general_regulation,medium,Vorschriften,法规条文通用术语，建议中优先级,active
+de_0020,de,zh,Verordnung,条例,general_regulation,high,Verordnungen,德国法规文件类型,active
+de_0021,de,zh,EU-Verordnung,欧盟条例,general_regulation,high,EU-Verordnungen,德国法规引用欧盟条例,active
+de_0022,de,zh,Grundregel,基本规则,general_regulation,medium,Grundregel der Zulassung,章节标题术语,active
+de_0023,de,zh,Einschränkung der Zulassung,限制许可,vehicle_regulation,high,Einschränkung,车辆许可限制措施,active
+de_0024,de,zh,Entziehung der Zulassung,撤销许可,vehicle_regulation,high,Entziehung,车辆许可撤销措施,active
+de_0025,de,zh,Frist zur Mängelbehebung,缺陷整改期限,vehicle_inspection,high,Mängelbehebungsfrist,车辆不合规时主管机关可设定期限,active
+de_0026,de,zh,Betrieb untersagen,禁止运行,vehicle_regulation,high,Betriebsuntersagung,不合规车辆监管措施,active
+de_0027,de,zh,Betrieb beschränken,限制运行,vehicle_regulation,medium,Betriebsbeschränkung,不合规车辆监管措施,active
+de_0028,de,zh,Vorführung des Fahrzeugs,车辆送检,vehicle_inspection,high,Fahrzeugvorführung,主管机关要求实车核查,active
+de_0029,de,zh,Sachverständigengutachten,专家鉴定报告,vehicle_inspection,high,Gutachten eines Sachverständigen,许可/检验常用证明材料,active
+de_0030,de,zh,Sachverständiger,专家,vehicle_inspection,high,amtlich anerkannter Sachverständiger,车辆技术检验专家,active
+de_0031,de,zh,amtlich anerkannter Sachverständiger,官方认可专家,vehicle_inspection,high,aaS,个别车辆运行许可需提交其鉴定报告,active
+de_0032,de,zh,aaS,官方认可专家,vehicle_inspection,high,amtlich anerkannter Sachverständiger,德国车辆检验领域缩写,active
+de_0033,de,zh,Betriebserlaubnis,运行许可,vehicle_approval,high,BE,StVZO核心术语，车辆可运行的许可,active
+de_0034,de,zh,Erteilung der Betriebserlaubnis,授予运行许可,vehicle_approval,high,Erteilung,运行许可颁发过程,active
+de_0035,de,zh,Wirksamkeit der Betriebserlaubnis,运行许可效力,vehicle_approval,medium,Wirksamkeit,运行许可有效性章节术语,active
+de_0036,de,zh,Erlöschen der Betriebserlaubnis,运行许可失效,vehicle_approval,high,Betriebserlaubnis erlischt,车辆改装等导致许可失效,active
+de_0037,de,zh,Allgemeine Betriebserlaubnis,一般运行许可,vehicle_approval,high,ABE,批量生产车辆或部件的运行许可,active
+de_0038,de,zh,ABE,一般运行许可,vehicle_approval,high,Allgemeine Betriebserlaubnis,德国车辆许可重要缩写,active
+de_0039,de,zh,Betriebserlaubnis für Einzelfahrzeuge,单车运行许可,vehicle_approval,high,Einzelbetriebserlaubnis;EBE,非批准型式车辆的运行许可,active
+de_0040,de,zh,EBE,单车运行许可,vehicle_approval,high,Betriebserlaubnis für Einzelfahrzeuge,个别车辆许可缩写,active
+de_0041,de,zh,Bauartgenehmigung,结构型式批准,vehicle_approval,high,Bauart-Genehmigung,车辆部件型式批准术语,active
+de_0042,de,zh,EU-Typgenehmigung,欧盟型式批准,vehicle_approval,high,EU type approval,车辆和部件欧盟型式认证,active
+de_0043,de,zh,Typgenehmigung,型式批准,vehicle_approval,high,type approval,车辆法规认证核心术语,active
+de_0044,de,zh,genehmigter Typ,经批准型式,vehicle_approval,high,genehmigten Typ,车辆型式批准状态,active
+de_0045,de,zh,genehmigte Fahrzeugart,经批准车辆类型,vehicle_approval,medium,Fahrzeugart,运行许可失效判断条件,active
+de_0046,de,zh,Kraftfahrt-Bundesamt,联邦机动车运输管理局,vehicle_approval,high,KBA,德国车辆型式批准主管机构,active
+de_0047,de,zh,KBA,联邦机动车运输管理局,vehicle_approval,high,Kraftfahrt-Bundesamt,德国车辆管理机构缩写,active
+de_0048,de,zh,Datenbestätigung,数据确认书,vehicle_approval,high,Datenbestätigung Muster 2d,ABE持有人为每辆车出具的文件,active
+de_0049,de,zh,Zulassungsbescheinigung Teil I,登记证书第一部分,vehicle_approval,high,Fahrzeugschein,德国车辆登记文件，类似行驶证,active
+de_0050,de,zh,Zulassungsbescheinigung Teil II,登记证书第二部分,vehicle_approval,high,Fahrzeugbrief,德国车辆登记文件，类似登记证书,active
+de_0051,de,zh,Prüfzeichen,检验标志,vehicle_approval,high,amtliches Prüfzeichen,经批准部件需带有的官方标志,active
+de_0052,de,zh,amtlich genehmigte Bauart,官方批准结构型式,vehicle_approval,high,amtlich genehmigten Bauart,特定车辆部件批准要求,active
+de_0053,de,zh,Fahrzeugteil,车辆部件,vehicle_general,high,Fahrzeugteile,需结构型式批准的对象,active
+de_0054,de,zh,Einbauabnahme,安装验收,vehicle_inspection,high,Einbauabnahmen,改装件安装后需立即检验的情形,active
+de_0055,de,zh,Teilegutachten,部件鉴定报告,vehicle_approval,high,parts certificate,改装件保持许可有效性的依据之一,active
+de_0056,de,zh,Oldtimer,老爷车,vehicle_general,high,historisches Fahrzeug,德国H牌照车辆分类,active
+de_0057,de,zh,Oldtimer-Gutachten,老爷车鉴定报告,vehicle_inspection,high,Gutachten für Oldtimer,H牌照申请所需报告,active
+de_0058,de,zh,vorschriftsmäßiger Zustand,合规状态,vehicle_inspection,high,vorschriftsgemäßer Zustand,老爷车/车辆检验条件,active
+de_0059,de,zh,Originalität,原始性,vehicle_inspection,medium,originaler Zustand,老爷车认定条件,active
+de_0060,de,zh,kulturelles Kraftfahrzeug,文化资产车辆,vehicle_general,medium,Kulturgut,老爷车价值认定语境,active
+de_0061,de,zh,Hauptuntersuchung,主检,vehicle_inspection,high,HU,德国车辆定期技术检验,active
+de_0062,de,zh,HU,主检,vehicle_inspection,high,Hauptuntersuchung,德国车辆定期检验缩写,active
+de_0063,de,zh,Sicherheitsprüfung,安全检验,vehicle_inspection,high,SP,重型商用车等需进行的安全检验,active
+de_0064,de,zh,SP,安全检验,vehicle_inspection,high,Sicherheitsprüfung,德国安全检验缩写,active
+de_0065,de,zh,Prüfplakette,检验标贴,vehicle_inspection,high,HU-Plakette,后牌照上显示下次主检日期的圆形标贴,active
+de_0066,de,zh,SP-Schild,安全检验标牌,vehicle_inspection,medium,Sicherheitsprüfungsschild,安全检验标志载体,active
+de_0067,de,zh,Untersuchungsbericht,检验报告,vehicle_inspection,high,Prüfbericht,车主需保存至下次检验,active
+de_0068,de,zh,Prüfintervall,检验周期,vehicle_inspection,high,Prüfintervalle,主检/安全检验周期,active
+de_0069,de,zh,Mangel,缺陷,vehicle_inspection,high,Mängel,车辆检验缺陷通用术语,active
+de_0070,de,zh,Mangelklasse,缺陷等级,vehicle_inspection,high,Mangelklassen,德国车辆检验缺陷分类,active
+de_0071,de,zh,ohne Mängel,无缺陷,vehicle_inspection,medium,OM,检验结果等级,active
+de_0072,de,zh,geringe Mängel,轻微缺陷,vehicle_inspection,high,GM,检验缺陷等级,active
+de_0073,de,zh,erhebliche Mängel,重大缺陷,vehicle_inspection,high,EM,检验缺陷等级,active
+de_0074,de,zh,gefährliche Mängel,危险缺陷,vehicle_inspection,high,VM,检验缺陷等级,active
+de_0075,de,zh,verkehrsunsicher,不具备交通安全性,vehicle_inspection,high,VU,严重检验结果，车辆不应继续上路,active
+de_0076,de,zh,Mängelbehebung,缺陷整改,vehicle_inspection,high,Beseitigung von Mängeln,检验不合格后的整改,active
+de_0077,de,zh,Zuteilung der Prüfplakette,发放检验标贴,vehicle_inspection,medium,Plakettenzuteilung,检验合格后发放标贴,active
+de_0078,de,zh,Halter,车主,vehicle_general,high,Fahrzeughalter,车辆运行和检验责任主体,active
+de_0079,de,zh,Fahrzeugführer,驾驶人,vehicle_general,high,Führer,车辆实际驾驶主体,active
+de_0080,de,zh,Inbetriebnahme,投入运行,vehicle_general,high,in Betrieb nehmen,车主不得允许不合规车辆投入运行,active
+de_0081,de,zh,Bau- und Betriebsvorschriften,结构和运行规定,vehicle_regulation,high,Bau- und Betriebsvorschrift,StVZO核心章节,active
+de_0082,de,zh,Beschaffenheit,结构状态,vehicle_regulation,medium,Ausrüstung und Beschaffenheit,车辆装备和结构条件,active
+de_0083,de,zh,Ausrüstung,装备,vehicle_safety,high,Ausstattung,车辆安全装备通用术语,active
+de_0084,de,zh,Abmessungen,尺寸,vehicle_dimensions,high,Maße,车辆尺寸法规核心术语,active
+de_0085,de,zh,Höchstwerte,最大限值,vehicle_dimensions,high,Höchstmaß,尺寸/重量最大允许值,active
+de_0086,de,zh,Breite,宽度,vehicle_dimensions,medium,Fahrzeugbreite,车辆尺寸参数,active
+de_0087,de,zh,Höhe,高度,vehicle_dimensions,medium,Fahrzeughöhe,车辆尺寸参数,active
+de_0088,de,zh,Länge,长度,vehicle_dimensions,medium,Fahrzeuglänge,车辆尺寸参数,active
+de_0089,de,zh,Einzelfahrzeug,单车,vehicle_dimensions,medium,einzelnes Fahrzeug,尺寸限值类别,active
+de_0090,de,zh,Anhänger,挂车,vehicle_general,high,trailer,车辆类别和尺寸重量法规高频术语,active
+de_0091,de,zh,Sattelkraftfahrzeug,半挂牵引组合车辆,vehicle_general,high,Sattelzug,德国车辆组合类别,active
+de_0092,de,zh,Lastzug,汽车列车,vehicle_general,high,Lkw mit Anhänger,货车加挂车组合,active
+de_0093,de,zh,Gelenkbus,铰接客车,vehicle_general,high,articulated bus,车辆长度限值类别,active
+de_0094,de,zh,Achslast,轴荷,vehicle_dimensions,high,Achslasten,车辆重量法规核心术语,active
+de_0095,de,zh,Einzelachslast,单轴轴荷,vehicle_dimensions,high,Einzelachse,轴荷限值术语,active
+de_0096,de,zh,Doppelachslast,双轴轴荷,vehicle_dimensions,high,Doppelachse,轴荷限值术语,active
+de_0097,de,zh,Antriebsachse,驱动轴,vehicle_dimensions,high,drive axle,轴荷限值中特殊轴类型,active
+de_0098,de,zh,Achsabstand,轴距,vehicle_dimensions,high,Abstand zwischen Achsen,双轴轴荷判定参数,active
+de_0099,de,zh,zulässiges Gesamtgewicht,允许总质量,vehicle_dimensions,high,zGG,车辆重量法规核心术语,active
+de_0100,de,zh,zGG,允许总质量,vehicle_dimensions,high,zulässiges Gesamtgewicht,德国车辆重量缩写,active
+de_0101,de,zh,Gesamtgewicht,总质量,vehicle_dimensions,high,total weight,车辆重量术语,active
+de_0102,de,zh,kombinierter Verkehr,联合运输,vehicle_dimensions,medium,Kombinierter Verkehr,允许44吨场景,active
+de_0103,de,zh,Teillängen-Einhaltung,分段长度符合性,vehicle_dimensions,medium,Teillängen,半挂车组合优化长度条件,active
+de_0104,de,zh,Luftfederung,空气悬架,vehicle_dimensions,high,air suspension,轴荷/总质量限值相关条件,active
+de_0105,de,zh,gelenkte Achse,转向轴,vehicle_dimensions,medium,gelenkten Achsen,四轴车辆总质量条件,active
+de_0106,de,zh,Motorleistung,发动机功率,vehicle_powertrain,high,engine power,车辆最低功率要求,active
+de_0107,de,zh,Kfz,机动车,vehicle_general,high,Kraftfahrzeug,德国机动车缩写,active
+de_0108,de,zh,Personenkraftwagen,乘用车,vehicle_general,high,Pkw,德国车辆类别术语,active
+de_0109,de,zh,Pkw,乘用车,vehicle_general,high,Personenkraftwagen,德国乘用车缩写,active
+de_0110,de,zh,Lastkraftwagen,载货汽车,vehicle_general,high,Lkw,德国货车类别术语,active
+de_0111,de,zh,Lkw,载货汽车,vehicle_general,high,Lastkraftwagen,德国货车缩写,active
+de_0112,de,zh,Kraftomnibus,客车,vehicle_general,high,Bus;Omnibus,德国法规中大型客车术语,active
+de_0113,de,zh,Bus,客车,vehicle_general,high,Kraftomnibus,车辆类别通用术语,active
+de_0114,de,zh,Zugmaschine,牵引车,vehicle_general,high,tractor unit,车辆类别术语,active
+de_0115,de,zh,land- und forstwirtschaftliche Zugmaschine,农林牵引车,vehicle_general,high,lof Zugmaschine,农业/林业车辆术语,active
+de_0116,de,zh,Kleinkraftrad,轻便摩托车,vehicle_general,medium,small motorcycle,§30a速度提高干预语境,active
+de_0117,de,zh,Mofa,助力车,vehicle_general,medium,moped,轮胎花纹深度特殊限值,active
+de_0118,de,zh,Leichtkraftrad,轻型摩托车,vehicle_general,medium,light motorcycle,轮胎花纹深度语境,active
+de_0119,de,zh,Fahrtenbuch,行车日志,vehicle_regulation,high,Fahrtenbuchauflage,无法确定违法驾驶人时可要求记录,active
+de_0120,de,zh,Zuwiderhandlung,违法行为,general_regulation,high,Verstoß,行政违法语境,active
+de_0121,de,zh,Verkehrsteilnehmer,交通参与者,vehicle_safety,high,road user,运行许可失效风险判断对象,active
+de_0122,de,zh,Gefährdung von Verkehrsteilnehmern,危及交通参与者,vehicle_safety,high,Gefährdung,运行许可失效条件之一,active
+de_0123,de,zh,Abgasverhalten,排放性能,vehicle_environment,high,emissions behavior,运行许可失效条件之一,active
+de_0124,de,zh,Geräuschverhalten,噪声性能,vehicle_environment,high,noise behavior,运行许可失效条件之一,active
+de_0125,de,zh,Sitze,座椅,vehicle_safety,high,Sitz,车辆安全装备术语,active
+de_0126,de,zh,Sicherheitsgurte,安全带,vehicle_safety,high,Sicherheitsgurt,StVZO安全装备术语,active
+de_0127,de,zh,Kopfstützen,头枕,vehicle_safety,high,Kopfstütze,座椅安全装备,active
+de_0128,de,zh,Kindersitz,儿童座椅,vehicle_safety,high,Kindersitze,儿童约束装置通用表达,active
+de_0129,de,zh,Rollstuhlstellplatz,轮椅停放位置,vehicle_safety,medium,Rollstuhl-Stellplatz,特殊座椅/乘员位置要求,active
+de_0130,de,zh,Erste-Hilfe-Material,急救用品,vehicle_safety,high,Erste Hilfe Material,车辆随车安全用品,active
+de_0131,de,zh,Verbandkasten,急救箱,vehicle_safety,high,Verbandskasten,车辆必备急救箱，DIN 13164,active
+de_0132,de,zh,DIN 13164,DIN 13164,general_regulation,medium,DIN-Norm 13164,急救箱标准编号，保留原文,active
+de_0133,de,zh,Feuerlöscher,灭火器,vehicle_safety,high,fire extinguisher,客车消防安全装备,active
+de_0134,de,zh,Warnweste,反光背心,vehicle_safety,high,high visibility vest,车辆必备警示用品,active
+de_0135,de,zh,Warndreieck,三角警告牌,vehicle_safety,high,warning triangle,车辆必备警示用品,active
+de_0136,de,zh,Warnleuchte,警示灯,vehicle_safety,high,warning lamp,特定车辆必备警示用品,active
+de_0137,de,zh,Warneinrichtungen,警示装置,vehicle_safety,high,warning devices,§53a章节术语,active
+de_0138,de,zh,Bereifung,轮胎配置,vehicle_safety,high,Reifen,§36轮胎要求章节术语,active
+de_0139,de,zh,Reifen,轮胎,vehicle_safety,high,Pneumatik,车辆部件基础术语,active
+de_0140,de,zh,Luftreifen,充气轮胎,vehicle_safety,high,pneumatic tire,需结构型式批准的部件,active
+de_0141,de,zh,Gleitschutzeinrichtung,防滑装置,vehicle_safety,medium,Gleitschutzeinrichtungen,轮胎相关部件,active
+de_0142,de,zh,Mindestprofiltiefe,最小胎纹深度,vehicle_safety,high,Profiltiefe,德国轮胎要求核心术语,active
+de_0143,de,zh,Profiltiefe,胎纹深度,vehicle_safety,high,tread depth,轮胎检查指标,active
+de_0144,de,zh,Winterreifen,冬季轮胎,vehicle_safety,high,winter tires,德国冬季轮胎要求,active
+de_0145,de,zh,Alpine-Symbol,阿尔卑斯符号,vehicle_safety,high,Berg mit Schneeflocke,冬季轮胎认证标志,active
+de_0146,de,zh,M+S-Reifen,M+S轮胎,vehicle_safety,medium,Matsch-und-Schnee-Reifen,过渡期允许使用的轮胎标识,active
+de_0147,de,zh,Bremsen,制动器,vehicle_safety,high,Bremse,车辆安全核心系统,active
+de_0148,de,zh,Betriebsbremse,行车制动器,vehicle_safety,high,service brake,两套独立制动系统之一,active
+de_0149,de,zh,Feststellbremse,驻车制动器,vehicle_safety,high,parking brake,两套独立制动系统之一,active
+de_0150,de,zh,Bremsverzögerung,制动减速度,vehicle_safety,high,Verzögerung,制动性能指标,active
+de_0151,de,zh,mittlere Vollverzögerung,平均充分制动减速度,vehicle_safety,high,Vollverzögerung,制动性能技术指标,active
+de_0152,de,zh,Steigung,上坡坡度,vehicle_safety,medium,grade,驻车制动保持能力场景,active
+de_0153,de,zh,Gefälle,下坡坡度,vehicle_safety,medium,downhill gradient,驻车制动保持能力场景,active
+de_0154,de,zh,Unterlegkeil,止轮楔,vehicle_safety,high,Unterlegkeile,特定车辆必备装备,active
+de_0155,de,zh,Gasanlage,燃气系统,vehicle_powertrain,high,Gasanlagen,LPG/CNG/LNG/氢气车辆系统,active
+de_0156,de,zh,Druckgasanlage,压力燃气系统,vehicle_powertrain,high,Druckgasanlagen,气体燃料车辆系统,active
+de_0157,de,zh,Gassystemeinbauprüfung,燃气系统安装检验,vehicle_inspection,high,GSP,燃气系统安装后强制检验,active
+de_0158,de,zh,GSP,燃气系统安装检验,vehicle_inspection,high,Gassystemeinbauprüfung,德国燃气系统检验缩写,active
+de_0159,de,zh,Gasanlagenprüfung,燃气装置检验,vehicle_inspection,high,GAP,燃气系统定期/维修后检验,active
+de_0160,de,zh,GAP,燃气装置检验,vehicle_inspection,high,Gasanlagenprüfung,德国燃气装置检验缩写,active
+de_0161,de,zh,lichttechnische Einrichtungen,灯光技术装置,vehicle_lighting,high,Beleuchtungseinrichtungen,车辆灯光法规核心术语,active
+de_0162,de,zh,Scheinwerfer,前照灯,vehicle_lighting,high,headlamp,车辆灯光装置,active
+de_0163,de,zh,Fernlicht,远光灯,vehicle_lighting,high,high beam,前照灯功能,active
+de_0164,de,zh,Abblendlicht,近光灯,vehicle_lighting,high,low beam,前照灯功能,active
+de_0165,de,zh,Leuchte,灯具,vehicle_lighting,medium,Leuchten,车辆照明设备通用词,active
+de_0166,de,zh,Schlussleuchte,后位灯,vehicle_lighting,high,rear light,车辆/自行车后灯,active
+de_0167,de,zh,Fahrtrichtungsanzeiger,转向指示灯,vehicle_lighting,high,Blinker,§54核心术语,active
+de_0168,de,zh,Blinklicht,闪烁灯光,vehicle_lighting,high,gelbes Blinklicht,转向指示要求,active
+de_0169,de,zh,Seitenmarkierungsleuchte,侧标志灯,vehicle_lighting,high,Seitenmarkierungsleuchten,长车辆侧面识别装置,active
+de_0170,de,zh,Rückstrahler,反射器,vehicle_lighting,high,Reflektor,车辆/自行车反光装置,active
+de_0171,de,zh,Großrückstrahler,大型后反射器,vehicle_lighting,medium,Großrückstrahler Kategorie Z,自行车后部反射器,active
+de_0172,de,zh,Pedalrückstrahler,踏板反射器,vehicle_lighting,medium,Pedalreflektor,自行车灯光装备,active
+de_0173,de,zh,Speichenreflektor,辐条反射器,vehicle_lighting,medium,Speichenreflektoren,自行车侧向反光装置,active
+de_0174,de,zh,retroreflektierende Streifen,逆反射条,vehicle_lighting,medium,reflektierende Streifen,自行车轮胎/轮圈反光条,active
+de_0175,de,zh,weißer Reflektor,白色反射器,vehicle_lighting,medium,Reflektor weiß,自行车前反射器,active
+de_0176,de,zh,roter Reflektor,红色反射器,vehicle_lighting,medium,Reflektor rot,自行车后反射器,active
+de_0177,de,zh,Lichtmaschine,发电机,vehicle_lighting,medium,Dynamo,自行车照明电源,active
+de_0178,de,zh,Dynamo,自行车发电机,vehicle_lighting,medium,Lichtmaschine,常见自行车电源术语,active
+de_0179,de,zh,Batterie,电池,vehicle_lighting,medium,battery,自行车照明电源,active
+de_0180,de,zh,wiederaufladbarer Energiespeicher,可充电储能装置,vehicle_lighting,medium,Akku,自行车照明电源,active
+de_0181,de,zh,Nennspannung,标称电压,vehicle_lighting,medium,nominal voltage,自行车照明电源参数,active
+de_0182,de,zh,Geschwindigkeitsmesser,速度表,vehicle_equipment,high,Tachometer,§57车辆监控装置,active
+de_0183,de,zh,Fahrtschreiber,行驶记录仪,vehicle_equipment,high,Tachograph,货运车辆和客车强制装备,active
+de_0184,de,zh,Geschwindigkeitsschilder,速度标牌,vehicle_equipment,medium,Geschwindigkeitsschild,有限速bbH车辆需要显示,active
+de_0185,de,zh,bauartbedingte Höchstgeschwindigkeit,设计最高车速,vehicle_general,high,bbH,德国车辆分类和设备要求核心参数,active
+de_0186,de,zh,bbH,设计最高车速,vehicle_general,high,bauartbedingte Höchstgeschwindigkeit,德国车辆法规常用缩写,active
+de_0187,de,zh,Fabrikschild,制造厂铭牌,vehicle_identification,high,Typenschild,车辆必须具有的铭牌,active
+de_0188,de,zh,Typenschild,型式铭牌,vehicle_identification,high,Fabrikschild,车辆识别铭牌,active
+de_0189,de,zh,Fahrzeug-Identifizierungsnummer,车辆识别代号,vehicle_identification,high,FIN,VIN在德语法规中的表达,active
+de_0190,de,zh,FIN,车辆识别代号,vehicle_identification,high,Fahrzeug-Identifizierungsnummer,德国VIN缩写,active
+de_0191,de,zh,Fahrzeugklasse,车辆类别,vehicle_general,high,Fahrzeugklassen,欧共体车辆分类,active
+de_0192,de,zh,EG-Fahrzeugklassen,欧共体车辆类别,vehicle_general,high,EG Fahrzeugklassen,附件XXIX车辆分类,active
+de_0193,de,zh,Klasse M,M类车辆,vehicle_general,high,Fahrzeuge zur Personenbeförderung,乘员运输车辆类别,active
+de_0194,de,zh,Klasse N,N类车辆,vehicle_general,high,Fahrzeuge zur Güterbeförderung,货物运输车辆类别,active
+de_0195,de,zh,Klasse O,O类车辆,vehicle_general,high,Anhänger,挂车类别,active
+de_0196,de,zh,Klasse L,L类车辆,vehicle_general,high,zwei- drei- und vierrädrige Fahrzeuge,轻型两三四轮车辆类别,active
+de_0197,de,zh,Klasse T,T类车辆,vehicle_general,medium,Zugmaschinen auf Rädern,轮式农用牵引车类别,active
+de_0198,de,zh,Klasse C,C类车辆,vehicle_general,medium,Zugmaschinen auf Gleisketten,履带式农用牵引车类别,active
+de_0199,de,zh,Fahrzeuge zur Personenbeförderung,载客车辆,vehicle_general,high,Personenbeförderung,车辆类别M定义,active
+de_0200,de,zh,Fahrzeuge zur Güterbeförderung,载货车辆,vehicle_general,high,Güterbeförderung,车辆类别N定义,active
+de_0201,de,zh,Ausnahmen,例外,vehicle_regulation,medium,Ausnahmegenehmigung,法规例外许可,active
+de_0202,de,zh,Ausnahmegenehmigung,例外许可,vehicle_regulation,high,Genehmigung einer Ausnahme,高等行政机关可授予,active
+de_0203,de,zh,höhere Verwaltungsbehörde,高级行政机关,general_regulation,medium,höheren Verwaltungsbehörden,例外许可主管机关,active
+de_0204,de,zh,Ordnungswidrigkeit,行政违法,general_regulation,high,Ordnungswidrigkeiten,违反StVZO/KrWG多属行政违法,active
+de_0205,de,zh,Bußgeld,罚款,general_regulation,high,Geldbuße,行政违法处罚术语,active
+de_0206,de,zh,Verstoß,违规,general_regulation,high,Verstöße,法规违反通用术语,active
+de_0207,de,zh,Schwertransport,重型运输,general_regulation,medium,heavy transport,例外许可典型场景,active
+de_0208,de,zh,Kreislaufwirtschaftsgesetz,循环经济法,environment_waste,high,KrWG,德国废弃物管理核心法律,active
+de_0209,de,zh,KrWG,循环经济法,environment_waste,high,Kreislaufwirtschaftsgesetz,德国循环经济法缩写,active
+de_0210,de,zh,Kreislaufwirtschaft,循环经济,environment_waste,high,circular economy,KrWG核心目标,active
+de_0211,de,zh,Abfallwirtschaft,废弃物管理,environment_waste,high,waste management,KrWG核心领域,active
+de_0212,de,zh,Abfallvermeidung,废弃物预防,environment_waste,high,Vermeidung,废弃物层级第一优先,active
+de_0213,de,zh,Abfallbewirtschaftung,废弃物经营管理,environment_waste,high,Bewirtschaftung von Abfällen,废弃物产生和处理全过程管理,active
+de_0214,de,zh,Ressourcenschonung,资源节约,environment_waste,high,Schonung natürlicher Ressourcen,KrWG立法目的,active
+de_0215,de,zh,natürliche Ressourcen,自然资源,environment_waste,high,natural resources,循环经济保护对象,active
+de_0216,de,zh,menschliche Gesundheit,人体健康,environment_waste,high,human health,废弃物管理保护目标,active
+de_0217,de,zh,Umwelt,环境,environment_waste,high,environment,废弃物管理保护目标,active
+de_0218,de,zh,Abfall,废弃物,environment_waste,high,Abfälle,KrWG基础概念,active
+de_0219,de,zh,gefährlicher Abfall,危险废弃物,environment_waste,high,gefährliche Abfälle,需特殊监管的废弃物,active
+de_0220,de,zh,Siedlungsabfall,城市生活废弃物,environment_waste,high,Siedlungsabfälle,住户和类似来源废弃物,active
+de_0221,de,zh,Bioabfall,生物废弃物,environment_waste,high,Bioabfälle,可生物降解园林/厨余等废弃物,active
+de_0222,de,zh,Klärschlamm,污水污泥,environment_waste,high,sewage sludge,单独收集和处理要求对象,active
+de_0223,de,zh,Altöl,废油,environment_waste,medium,waste oil,废弃物类别之一,active
+de_0224,de,zh,Altbatterie,废电池,environment_waste,medium,used battery,废弃物类别，可按上下文扩展,active
+de_0225,de,zh,Bau- und Abbruchabfälle,建筑和拆除废弃物,environment_waste,high,Bauabfälle;Abbruchabfälle,70%回收目标对象,active
+de_0226,de,zh,Deponierung,填埋,environment_waste,high,landfilling,2035填埋比例限制语境,active
+de_0227,de,zh,Deponie,填埋场,environment_waste,high,landfill,设施审批和关闭监管对象,active
+de_0228,de,zh,Abfallerzeuger,废弃物产生者,environment_waste,high,waste generator,废弃物责任主体,active
+de_0229,de,zh,Abfallbesitzer,废弃物持有人,environment_waste,high,Abfallinhaber,定义和义务主体,active
+de_0230,de,zh,Abfallinhaber,废弃物持有人,environment_waste,high,Abfallbesitzer,废弃物定义和交付义务主体,active
+de_0231,de,zh,sich entledigen,丢弃,environment_waste,high,Entledigung,判断是否为废弃物的核心动作,active
+de_0232,de,zh,Entledigungswille,丢弃意图,environment_waste,high,subjektiver Wille,废弃物定义中的主观意图,active
+de_0233,de,zh,Entledigungspflicht,丢弃义务,environment_waste,high,objektive Entledigungspflicht,废弃物定义中的客观要求,active
+de_0234,de,zh,Gemeinwohl,公共福祉,environment_waste,medium,public welfare,强制丢弃判断中的危害对象,active
+de_0235,de,zh,Gefährdung des Gemeinwohls,危害公共福祉,environment_waste,high,Gemeinwohlgefährdung,客观丢弃义务条件,active
+de_0236,de,zh,Nebenprodukt,副产品,environment_waste,high,by-product,不属于废弃物的条件之一,active
+de_0237,de,zh,Ende der Abfalleigenschaft,废弃物属性终止,environment_waste,high,End-of-Waste,经回收后不再作为废弃物的状态,active
+de_0238,de,zh,Verwertung,利用,environment_waste,high,recovery,废弃物管理核心术语，区别于Beseitigung,active
+de_0239,de,zh,Recycling,再循环,environment_waste,high,Recycling,Verwertung的一种，不含能量回收和回填,active
+de_0240,de,zh,Beseitigung,处置,environment_waste,high,disposal,非利用的废弃物处理方式,active
+de_0241,de,zh,energetische Verwertung,能量利用,environment_waste,high,energy recovery,其他利用方式之一,active
+de_0242,de,zh,Verfüllung,回填,environment_waste,medium,backfilling,其他利用方式之一,active
+de_0243,de,zh,Vorbereitung zur Wiederverwendung,再使用准备,environment_waste,high,preparation for re-use,废弃物层级第二优先,active
+de_0244,de,zh,Wiederverwendung,再使用,environment_waste,high,re-use,产品或部件再次使用,active
+de_0245,de,zh,Abfallhierarchie,废弃物层级,environment_waste,high,waste hierarchy,KrWG五级优先顺序,active
+de_0246,de,zh,Vermeidung,预防,environment_waste,high,prevention,废弃物层级第一位,active
+de_0247,de,zh,sonstige Verwertung,其他利用,environment_waste,high,other recovery,废弃物层级第四类,active
+de_0248,de,zh,Vorrang,优先,environment_waste,medium,priority,废弃物层级适用原则,active
+de_0249,de,zh,Vorsorgeprinzip,预防原则,environment_waste,high,principle of precaution,废弃物管理决策原则,active
+de_0250,de,zh,Nachhaltigkeit,可持续性,environment_waste,high,sustainability,废弃物管理决策原则,active
+de_0251,de,zh,Lebenszyklus,生命周期,environment_waste,high,life cycle,废弃物层级选择考虑范围,active
+de_0252,de,zh,Verwertungspflicht,利用义务,environment_waste,high,Duty to recover,废弃物持有人基本义务,active
+de_0253,de,zh,ordnungsgemäß und schadlos,适当且无害,environment_waste,high,proper and harmless,废弃物利用质量要求,active
+de_0254,de,zh,Schadstoffanreicherung,污染物富集,environment_waste,high,pollutant accumulation,判断利用是否无害的重要因素,active
+de_0255,de,zh,technisch möglich,技术上可行,environment_waste,medium,technische Möglichkeit,义务适用条件,active
+de_0256,de,zh,wirtschaftlich zumutbar,经济上合理,environment_waste,medium,wirtschaftliche Zumutbarkeit,义务适用条件,active
+de_0257,de,zh,unverhältnismäßige Kosten,不成比例成本,environment_waste,medium,disproportionate costs,判断经济合理性的依据,active
+de_0258,de,zh,hochwertige Verwertung,高质量利用,environment_waste,high,high-quality recovery,KrWG鼓励的利用方式,active
+de_0259,de,zh,Kaskadennutzung,级联利用,environment_waste,medium,cascading use,高质量利用示例,active
+de_0260,de,zh,getrennte Sammlung,分类收集,environment_waste,high,separate collection,高质量利用前提,active
+de_0261,de,zh,gemeinsame Sammlung,混合收集,environment_waste,medium,common collection,分类收集例外场景,active
+de_0262,de,zh,Vermischungsverbot,混合禁止,environment_waste,high,Mischungsverbot,危险废弃物不得混合的原则,active
+de_0263,de,zh,Qualitätssicherung,质量保证,environment_waste,high,quality assurance,生物废弃物/污泥土地利用安全机制,active
+de_0264,de,zh,Qualitätszeichennehmer,质量标志持有人,environment_waste,medium,quality mark holder,质量保证体系参与者,active
+de_0265,de,zh,unabhängiger Überwacher,独立监督员,environment_waste,medium,independent monitor,质量保证体系参与者,active
+de_0266,de,zh,öffentlich-rechtlicher Entsorgungsträger,公法废弃物处理主体,environment_waste,high,öffentlich-rechtliche Entsorgungsträger,公共废弃物管理机关/主体,active
+de_0267,de,zh,Entsorgungsträger,废弃物处理主体,environment_waste,high,waste management authority,废弃物管理责任主体,active
+de_0268,de,zh,Überlassungspflicht,交付义务,environment_waste,high,handover duty,住户需向公共处理主体交付废弃物,active
+de_0269,de,zh,private Haushaltungen,私人住户,environment_waste,medium,Haushalte,城市生活废弃物来源,active
+de_0270,de,zh,Eigenkompostierung,自行堆肥,environment_waste,medium,composting on own property,住户交付义务例外,active
+de_0271,de,zh,gewerbliche Sammlung,商业性收集,environment_waste,high,commercial collection,需提前向机关通知,active
+de_0272,de,zh,gemeinnützige Sammlung,公益性收集,environment_waste,high,charitable collection,需提前向机关通知,active
+de_0273,de,zh,Anzeige,通知,environment_waste,high,notification,废弃物收集活动通知义务,active
+de_0274,de,zh,Funktionsfähigkeit des öffentlich-rechtlichen Entsorgungsträgers,公法废弃物处理主体功能能力,environment_waste,medium,Funktionsfähigkeit,限制商业/公益收集的判断因素,active
+de_0275,de,zh,Produktverantwortung,产品责任,environment_waste,high,product responsibility,KrWG第三部分核心概念,active
+de_0276,de,zh,Vertreiber,经销商,environment_waste,high,distributor,产品责任主体,active
+de_0277,de,zh,Produktlebenszyklus,产品生命周期,environment_waste,high,life cycle of product,产品责任覆盖范围,active
+de_0278,de,zh,Rezyklat,再生料,environment_waste,high,recyclate,产品责任中优先使用对象,active
+de_0279,de,zh,kritische Rohstoffe,关键原材料,environment_waste,high,critical raw materials,产品标签信息内容,active
+de_0280,de,zh,Schadstoffe,污染物,environment_waste,high,pollutants,产品标签信息内容,active
+de_0281,de,zh,Kennzeichnung,标识,environment_waste,high,labeling,产品责任措施之一,active
+de_0282,de,zh,Rücknahmesystem,回收系统,environment_waste,high,take-back system,产品责任措施之一,active
+de_0283,de,zh,Pfandsystem,押金系统,environment_waste,high,deposit system,产品责任措施之一,active
+de_0284,de,zh,Obhutspflicht,照管义务,environment_waste,high,duty of care,确保产品配送中不提前成为废弃物,active
+de_0285,de,zh,Kostenbeteiligung,成本分担,environment_waste,high,cost sharing,清理公共空间废弃物费用参与,active
+de_0286,de,zh,Vermüllung,乱扔垃圾,environment_waste,high,littering,公共空间清理成本相关,active
+de_0287,de,zh,Einwegkunststoff,一次性塑料,environment_waste,high,single-use plastic,公共空间垃圾清理成本典型对象,active
+de_0288,de,zh,Abfallwirtschaftsplan,废弃物管理计划,environment_waste,high,waste management plan,联邦州制定并定期更新,active
+de_0289,de,zh,Abfallvermeidungsprogramm,废弃物预防计划,environment_waste,high,waste prevention program,联邦政府制定的国家计划,active
+de_0290,de,zh,Länder,联邦州,general_regulation,medium,Bundesländer,德国行政层级，制定废弃物管理计划,active
+de_0291,de,zh,Planfeststellung,规划审批,environment_waste,high,plan approval,填埋场正式审批程序,active
+de_0292,de,zh,Umweltverträglichkeitsprüfung,环境影响评价,environment_waste,high,UVP;EIA,填埋场审批需包含,active
+de_0293,de,zh,UVP,环境影响评价,environment_waste,high,Umweltverträglichkeitsprüfung,德国环境影响评价缩写,active
+de_0294,de,zh,Bundes-Immissionsschutzgesetz,联邦排放控制法,environment_waste,high,BImSchG,其他设施审批法律依据,active
+de_0295,de,zh,BImSchG,联邦排放控制法,environment_waste,high,Bundes-Immissionsschutzgesetz,德国设施许可重要法律缩写,active
+de_0296,de,zh,Deponieschließung,填埋场关闭,environment_waste,high,closure of landfill,运营者需通知并负责后续事项,active
+de_0297,de,zh,Rekultivierung,复垦,environment_waste,high,recultivation,填埋场关闭后责任,active
+de_0298,de,zh,Nachsorge,后续维护,environment_waste,high,aftercare,填埋场关闭后至少30年监管维护,active
+de_0299,de,zh,Sicherheitsleistung,保证金,environment_waste,high,financial security,覆盖关闭和后续维护成本,active
+de_0300,de,zh,öffentliche Beschaffung,公共采购,environment_waste,high,public procurement,公共部门优先采购环保产品要求,active
+de_0301,de,zh,ressourceneffizient,资源高效,environment_waste,high,resource-efficient,公共采购优先属性,active
+de_0302,de,zh,abfallarm,低废弃物,environment_waste,high,low-waste,公共采购优先属性,active
+de_0303,de,zh,reparierbar,可维修,environment_waste,high,repairable,公共采购优先属性,active
+de_0304,de,zh,recyclingfähig,可再循环,environment_waste,high,recyclable,公共采购优先属性,active
+de_0305,de,zh,Beratungspflicht,咨询义务,environment_waste,high,advice duty,公共废弃物管理主体义务,active
+de_0306,de,zh,Abfallberatung,废弃物咨询,environment_waste,medium,waste advice,关于预防和利用的咨询,active
+de_0307,de,zh,Registerpflicht,登记簿义务,environment_waste,high,register duty,废弃物设施和危险废弃物活动主体义务,active
+de_0308,de,zh,Nachweispflicht,证明义务,environment_waste,high,evidence duty,危险废弃物适当处置需证明,active
+de_0309,de,zh,Nachweis,证明文件,environment_waste,high,Nachweise,废弃物流向电子跟踪证明,active
+de_0310,de,zh,elektronisches Nachweisverfahren,电子证明程序,environment_waste,medium,electronic tracking,危险废弃物监管方式,active
+de_0311,de,zh,Sammler,收集者,environment_waste,high,collectors,废弃物活动主体,active
+de_0312,de,zh,Beförderer,运输者,environment_waste,high,transporters,废弃物活动主体,active
+de_0313,de,zh,Händler,交易商,environment_waste,medium,dealers,废弃物活动主体,active
+de_0314,de,zh,Makler,经纪人,environment_waste,medium,brokers,废弃物活动主体,active
+de_0315,de,zh,Erlaubnis,许可,environment_waste,high,permit,危险废弃物处理活动需正式许可,active
+de_0316,de,zh,A-Schild,A标志牌,environment_waste,high,A-Zeichen,运输废弃物车辆需显示的白底黑A反光标志,active
+de_0317,de,zh,Entsorgungsfachbetrieb,专业废弃物管理企业,environment_waste,high,specialized waste management company,经认证的废弃物管理企业,active
+de_0318,de,zh,Zertifizierung,认证,environment_waste,high,certification,专业废弃物管理企业资质过程,active
+de_0319,de,zh,technische Überwachungsorganisation,技术监督组织,environment_waste,medium,technical monitoring organization,认证机构类型,active
+de_0320,de,zh,Entsorgergemeinschaft,废弃物处理企业协会,environment_waste,medium,waste management association,可进行专业企业认证的组织,active
+de_0321,de,zh,Zuverlässigkeit,可靠性,environment_waste,high,reliability,专业企业人员/组织要求,active
+de_0322,de,zh,Fachkunde,专业知识,environment_waste,high,expertise,专业企业人员能力要求,active
+de_0323,de,zh,Abfallbeauftragter,废弃物专员,environment_waste,high,Abfallbeauftragte,waste officer，特定设施必须任命,active
+de_0324,de,zh,Bestellung eines Abfallbeauftragten,任命废弃物专员,environment_waste,high,appointing a waste officer,内部组织义务,active
+de_0325,de,zh,Abfallweg,废弃物流向,environment_waste,medium,Abfallwege,废弃物专员监督对象,active
+de_0326,de,zh,EMAS,生态管理和审计计划,environment_waste,high,Eco-Management and Audit Scheme,参与企业可能享有监管便利,active
+de_0327,de,zh,Überwachungserleichterung,监管便利,environment_waste,medium,regulatory easement,EMAS企业可能获得的待遇,active
+de_0328,de,zh,Beseitigungsverfahren,处置作业,environment_waste,high,Disposal Operations,KrWG附件1 D1-D15,active
+de_0329,de,zh,Verwertungsverfahren,利用作业,environment_waste,high,Recovery Operations,KrWG附件2 R1-R13,active
+de_0330,de,zh,Energieeffizienzformel,能效公式,environment_waste,medium,energy efficiency formula,焚烧利用作业相关,active
+de_0331,de,zh,Stand der Technik,技术现状,environment_waste,high,state of the art,判断设施技术要求的重要概念,active
+de_0332,de,zh,abfallarme Technologie,低废弃物技术,environment_waste,medium,low-waste technology,技术现状评价标准,active
+de_0333,de,zh,wirtschaftliche Instrumente,经济工具,environment_waste,medium,economic instruments,促进废弃物层级的政策工具,active
+de_0334,de,zh,Deponiesteuer,填埋税,environment_waste,medium,landfill tax,经济工具示例,active
+de_0335,de,zh,verursachergerechtes Gebührensystem,按量计费制度,environment_waste,medium,pay-as-you-throw system,经济工具示例,active
+de_0336,de,zh,Pfandregelung,押金制度,environment_waste,high,deposit scheme,经济工具和产品责任机制,active
