@@ -26,6 +26,7 @@ DEFAULT_INPUT_BY_LANG = {
     "de": Path("termbase/manual_extracted_de_terms_v0.2.csv"),
     "it": Path("termbase/manual_extracted_it_terms_v0.2.csv"),
     "no": Path("termbase/manual_extracted_no_terms_v0.2.csv"),
+    "id": Path("termbase/manual_extracted_id_terms_v0.2.csv"),
 }
 
 VALID_PRIORITY = {"high", "medium", "low"}
@@ -33,6 +34,7 @@ VALID_STATUS = {"active", "review", "deprecated"}
 
 HIGH_DOMAINS = {
     "general_regulation",
+
     "vehicle_general",
     "vehicle_safety",
     "vehicle_regulation",
@@ -52,6 +54,14 @@ HIGH_DOMAINS = {
     "vehicle_technical",
     "vehicle_repair",
     "vehicle_enforcement",
+    "vehicle_weight",
+    "vehicle_market",
+    "vehicle_modification",
+    "vehicle_testing",
+    "vehicle_structure",
+    "vehicle_design",
+    "vehicle_material",
+
     "road_traffic",
     "road_infrastructure",
     "road_transport",
@@ -64,14 +74,22 @@ HIGH_DOMAINS = {
     "road_accident",
     "road_penalty",
     "road_maintenance",
+
     "driver_license",
     "driver_training",
+
     "transport_general",
     "transport_labor",
+    "transport_tachograph",
+
     "parking",
     "dui",
     "data_protection",
     "labor_protection",
+
+    "environment_waste",
+    "environment_noise",
+
     "seatbelt_restraint",
     "seat_headrest",
     "seatbelt_reminder",
@@ -80,10 +98,7 @@ HIGH_DOMAINS = {
     "hvac",
     "anti_theft",
     "adas",
-    "vehicle_market",
-    "transport_tachograph",
     "metrology",
-    "environment_waste",
 }
 
 MEDIUM_DOMAINS = {
@@ -136,6 +151,11 @@ LOW_TERMS = {
 
     # it
     "gara atletica",
+
+    # id
+    "kuning muda",
+    "ruang merokok",
+    "lemari",
 }
 
 def clean(value):
@@ -235,7 +255,7 @@ def resolve_input_path():
 
         return Path(arg)
 
-    return DEFAULT_INPUT_BY_LANG["no"]
+    return DEFAULT_INPUT_BY_LANG["id"]
 
 def main():
     input_path = resolve_input_path()
