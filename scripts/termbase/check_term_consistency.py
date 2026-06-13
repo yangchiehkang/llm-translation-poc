@@ -3,7 +3,7 @@ import json
 import re
 import sys
 from pathlib import Path
-from typing import Dict, List, Optional
+from typing import Dict, List, Optional, Tuple
 
 import pandas as pd
 
@@ -15,6 +15,7 @@ if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
 from scripts.termbase.load_terms import load_terms
+from scripts.utils.lang_map import RFP_LANGUAGES, get_lang_name, is_rfp_language
 
 
 LANGS = [
@@ -23,6 +24,15 @@ LANGS = [
     "pt", "ru", "sv", "th", "vi",
 ]
 
+RFP_LANGS = list(RFP_LANGUAGES.keys())
+
+ERROR_TYPES = [
+    "no_error",
+    "missing",
+    "wrong_translation",
+    "partial_match",
+    "ambiguous",
+]
 
 SOURCE_FIELD_CANDIDATES = [
     "source",
@@ -36,7 +46,6 @@ SOURCE_FIELD_CANDIDATES = [
     "source_sentence",
 ]
 
-
 PREDICTION_FIELD_CANDIDATES = [
     "mt_text",
     "prediction",
@@ -49,7 +58,6 @@ PREDICTION_FIELD_CANDIDATES = [
     "target_text",
     "translated_text",
 ]
-
 
 ID_FIELD_CANDIDATES = [
     "id",
@@ -146,6 +154,130 @@ def term_exists_in_text(text: str, term: Dict, use_source_lang: bool = True) -> 
     return term_for_match in text_for_match
 
 
+def find_partial_target_match(expected_target: str, mt_text: str) -> bool:
+    expected = str(expected_target or "").strip()
+    mt = str(mt_text or "")
+
+    if not expected or not mt or len(expected) < 2:
+        return False
+
+    min_len = max(2, len(expected) // 2)
+
+    for length in range(len(expected) - 1, min_len - 1, -1):
+        for start in range(0, len(expected) - length + 1):
+            partial = expected[start:start + length]
+            if partial and partial in mt and partial != expected:
+                return True
+
+    return False
+
+
+def find_wrong_translation_hint(
+    source_term: str,
+    expected_target: str,
+    mt_text: str,
+    all_terms: List[Dict],
+) -> bool:
+    mt = str(mt_text or "").strip()
+
+    if not mt:
+        return False
+
+    source_term_norm = normalize_for_match(source_term, False)
+
+    for term in all_terms:
+        other_source = normalize_for_match(term.get("source_term", ""), False)
+        other_target = str(term.get("target_term", "") or "").strip()
+
+        if not other_source or not other_target:
+            continue
+
+        if other_source == source_term_norm:
+            continue
+
+        if other_target == expected_target:
+            continue
+
+        if other_source in source_term_norm or source_term_norm in other_source:
+            if other_target in mt and expected_target not in mt:
+                return True
+
+    return False
+
+
+def classify_term_error(
+    term: Dict,
+    mt_text: str,
+    all_terms: List[Dict],
+) -> Tuple[str, bool]:
+    expected_target = str(term.get("target_term", "") or "").strip()
+    source_term = str(term.get("source_term", "") or "").strip()
+
+    if term_exists_in_text(mt_text, term, use_source_lang=False):
+        return "no_error", True
+
+    if not str(mt_text or "").strip():
+        return "missing", False
+
+    if find_partial_target_match(expected_target, mt_text):
+        return "partial_match", False
+
+    if find_wrong_translation_hint(source_term, expected_target, mt_text, all_terms):
+        return "wrong_translation", False
+
+    if len(expected_target) <= 1 or len(source_term) <= 2:
+        return "ambiguous", False
+
+    if " " in source_term and len(source_term.split()) >= 2:
+        source_words = [w for w in source_term.split() if len(w) > 2]
+        if source_words and not find_partial_target_match(expected_target, mt_text):
+            return "wrong_translation", False
+
+    return "missing", False
+
+
+def make_lang_pair(src_lang_code: str, target_lang: str) -> str:
+    return f"{src_lang_code}2{target_lang}"
+
+
+def build_detail_row(
+    lang: str,
+    target_lang: str,
+    record_id: str,
+    source_text: str,
+    mt_text: str,
+    term: Dict,
+    error_type: str,
+    is_term_correct: bool,
+) -> Dict:
+    return {
+        "lang_pair": make_lang_pair(lang, target_lang),
+        "segment_id": record_id,
+        "source_text": source_text,
+        "mt_text": mt_text,
+        "source_term": term.get("source_term", ""),
+        "expected_target_term": term.get("target_term", ""),
+        "is_term_matched": True,
+        "is_term_correct": is_term_correct,
+        "error_type": error_type,
+        "term_priority": term.get("priority", ""),
+        "term_id": term.get("term_id", ""),
+        "domain": term.get("domain", ""),
+        "src_lang": lang,
+    }
+
+
+def count_error_types(rows: List[Dict]) -> Dict[str, int]:
+    counts = {error_type: 0 for error_type in ERROR_TYPES}
+
+    for row in rows:
+        error_type = row.get("error_type", "")
+        if error_type in counts:
+            counts[error_type] += 1
+
+    return counts
+
+
 def check_records_for_lang(
     lang: str,
     mt_path: Path,
@@ -162,6 +294,7 @@ def check_records_for_lang(
 
     detail_rows = []
     error_rows = []
+    high_priority_rows = []
 
     total_term_hits = 0
     correct_term_hits = 0
@@ -171,17 +304,15 @@ def check_records_for_lang(
     for index, record in enumerate(records, start=1):
         record_id = get_record_id(record, lang, index)
 
-        source = get_value(record, SOURCE_FIELD_CANDIDATES, "")
-        prediction = get_value(record, PREDICTION_FIELD_CANDIDATES, "")
+        source_text = get_value(record, SOURCE_FIELD_CANDIDATES, "")
+        mt_text = get_value(record, PREDICTION_FIELD_CANDIDATES, "")
 
-        if prediction:
+        if mt_text:
             records_with_prediction += 1
-
-        src_lang = str(record.get("src_lang", record.get("lang", lang)) or lang)
 
         for term in terms:
             source_hit = term_exists_in_text(
-                text=source,
+                text=source_text,
                 term=term,
                 use_source_lang=True,
             )
@@ -191,38 +322,35 @@ def check_records_for_lang(
 
             total_term_hits += 1
 
-            target_hit = term_exists_in_text(
-                text=prediction,
+            error_type, is_term_correct = classify_term_error(
                 term=term,
-                use_source_lang=False,
+                mt_text=mt_text,
+                all_terms=terms,
             )
 
-            if target_hit:
+            if is_term_correct:
                 correct_term_hits += 1
-                status = "correct"
-                error_type = ""
             else:
                 wrong_term_hits += 1
-                status = "wrong"
-                error_type = "target_term_missing"
 
-            row = {
-                "id": record_id,
-                "src_lang": src_lang,
-                "source_term": term.get("source_term", ""),
-                "expected_target_term": term.get("target_term", ""),
-                "domain": term.get("domain", ""),
-                "priority": term.get("priority", ""),
-                "source": source,
-                "prediction": prediction,
-                "status": status,
-                "error_type": error_type,
-            }
+            row = build_detail_row(
+                lang=lang,
+                target_lang=target_lang,
+                record_id=record_id,
+                source_text=source_text,
+                mt_text=mt_text,
+                term=term,
+                error_type=error_type,
+                is_term_correct=is_term_correct,
+            )
 
             detail_rows.append(row)
 
-            if status == "wrong":
+            if not is_term_correct:
                 error_rows.append(row)
+
+            if str(term.get("priority", "")).strip().lower() == "high":
+                high_priority_rows.append(row)
 
     rate = (
         correct_term_hits / total_term_hits * 100
@@ -230,8 +358,13 @@ def check_records_for_lang(
         else 0.0
     )
 
+    error_type_counts = count_error_types(detail_rows)
+
     summary_row = {
+        "lang_pair": make_lang_pair(lang, target_lang),
         "src_lang": lang,
+        "src_lang_name": get_lang_name(lang),
+        "is_rfp_language": is_rfp_language(lang),
         "mt_file": str(mt_path),
         "total_records": len(records),
         "records_with_prediction": records_with_prediction,
@@ -240,12 +373,32 @@ def check_records_for_lang(
         "correct_term_hits": correct_term_hits,
         "wrong_term_hits": wrong_term_hits,
         "term_consistency_rate": round(rate, 2),
+        "error_missing": error_type_counts["missing"],
+        "error_wrong_translation": error_type_counts["wrong_translation"],
+        "error_partial_match": error_type_counts["partial_match"],
+        "error_ambiguous": error_type_counts["ambiguous"],
+        "error_no_error": error_type_counts["no_error"],
     }
+
+    high_priority_total = len(high_priority_rows)
+    high_priority_correct = sum(
+        1 for row in high_priority_rows if row["is_term_correct"]
+    )
+    high_priority_rate = (
+        high_priority_correct / high_priority_total * 100
+        if high_priority_total > 0
+        else 0.0
+    )
+
+    summary_row["high_priority_total_hits"] = high_priority_total
+    summary_row["high_priority_correct_hits"] = high_priority_correct
+    summary_row["high_priority_tcr"] = round(high_priority_rate, 2)
 
     return {
         "summary": summary_row,
         "details": detail_rows,
         "errors": error_rows,
+        "high_priority": high_priority_rows,
     }
 
 
@@ -295,6 +448,69 @@ def find_mt_file(mt_root: Path, model: str, lang: str, target_lang: str) -> Opti
     return None
 
 
+def build_high_priority_summary(detail_rows: List[Dict]) -> pd.DataFrame:
+    rows = []
+
+    grouped: Dict[Tuple[str, str, str], Dict] = {}
+
+    for row in detail_rows:
+        if str(row.get("term_priority", "")).strip().lower() != "high":
+            continue
+
+        key = (
+            row.get("src_lang", ""),
+            row.get("source_term", ""),
+            row.get("expected_target_term", ""),
+        )
+
+        if key not in grouped:
+            grouped[key] = {
+                "lang_pair": row.get("lang_pair", ""),
+                "src_lang": row.get("src_lang", ""),
+                "source_term": row.get("source_term", ""),
+                "expected_target_term": row.get("expected_target_term", ""),
+                "term_id": row.get("term_id", ""),
+                "domain": row.get("domain", ""),
+                "total_hits": 0,
+                "correct_hits": 0,
+                "wrong_hits": 0,
+                "missing": 0,
+                "wrong_translation": 0,
+                "partial_match": 0,
+                "ambiguous": 0,
+            }
+
+        item = grouped[key]
+        item["total_hits"] += 1
+
+        if row.get("is_term_correct"):
+            item["correct_hits"] += 1
+        else:
+            item["wrong_hits"] += 1
+
+        error_type = row.get("error_type", "")
+        if error_type in item:
+            item[error_type] += 1
+
+    for item in grouped.values():
+        total = item["total_hits"]
+        item["term_consistency_rate"] = round(
+            item["correct_hits"] / total * 100 if total else 0.0,
+            2,
+        )
+        rows.append(item)
+
+    df = pd.DataFrame(rows)
+
+    if df.empty:
+        return df
+
+    return df.sort_values(
+        by=["src_lang", "total_hits", "source_term"],
+        ascending=[True, False, True],
+    ).reset_index(drop=True)
+
+
 def save_excel_report(
     summary_rows: List[Dict],
     detail_rows: List[Dict],
@@ -306,11 +522,36 @@ def save_excel_report(
     summary_df = pd.DataFrame(summary_rows)
     details_df = pd.DataFrame(detail_rows)
     errors_df = pd.DataFrame(error_rows)
+    high_priority_df = build_high_priority_summary(detail_rows)
+
+    detail_columns = [
+        "lang_pair",
+        "segment_id",
+        "source_text",
+        "mt_text",
+        "source_term",
+        "expected_target_term",
+        "is_term_matched",
+        "is_term_correct",
+        "error_type",
+        "term_priority",
+        "term_id",
+        "domain",
+        "src_lang",
+    ]
+
+    error_columns = detail_columns
+
+    if not details_df.empty:
+        details_df = details_df[[c for c in detail_columns if c in details_df.columns]]
+    if not errors_df.empty:
+        errors_df = errors_df[[c for c in error_columns if c in errors_df.columns]]
 
     with pd.ExcelWriter(output_path, engine="openpyxl") as writer:
-        summary_df.to_excel(writer, sheet_name="summary", index=False)
-        details_df.to_excel(writer, sheet_name="details", index=False)
-        errors_df.to_excel(writer, sheet_name="errors", index=False)
+        summary_df.to_excel(writer, sheet_name="summary_by_lang", index=False)
+        details_df.to_excel(writer, sheet_name="detail_by_segment", index=False)
+        errors_df.to_excel(writer, sheet_name="error_cases", index=False)
+        high_priority_df.to_excel(writer, sheet_name="high_priority_terms", index=False)
 
 
 def inspect_first_record(path: Path) -> None:
@@ -338,9 +579,35 @@ def inspect_first_record(path: Path) -> None:
         print(f"Prediction preview: {str(first.get(prediction_field, ''))[:160]}")
 
 
+def build_missing_summary(lang: str, target_lang: str) -> Dict:
+    return {
+        "lang_pair": make_lang_pair(lang, target_lang),
+        "src_lang": lang,
+        "src_lang_name": get_lang_name(lang),
+        "is_rfp_language": is_rfp_language(lang),
+        "mt_file": "",
+        "total_records": 0,
+        "records_with_prediction": 0,
+        "loaded_terms": 0,
+        "total_term_hits": 0,
+        "correct_term_hits": 0,
+        "wrong_term_hits": 0,
+        "term_consistency_rate": 0.0,
+        "error_missing": 0,
+        "error_wrong_translation": 0,
+        "error_partial_match": 0,
+        "error_ambiguous": 0,
+        "error_no_error": 0,
+        "high_priority_total_hits": 0,
+        "high_priority_correct_hits": 0,
+        "high_priority_tcr": 0.0,
+        "status": "mt_file_missing",
+    }
+
+
 def main():
     parser = argparse.ArgumentParser(
-        description="Check term consistency between source and MT prediction."
+        description="Check term consistency (TCR) and export v0.2 Excel report."
     )
 
     parser.add_argument(
@@ -353,13 +620,13 @@ def main():
     parser.add_argument(
         "--model",
         default="qwen-max",
-        help="MT model name.",
+        help="MT model name used in output filenames.",
     )
 
     parser.add_argument(
         "--mt-root",
-        default="data/mt",
-        help="MT root directory.",
+        default="data/mt/qwen-max-term",
+        help="MT root directory containing translation JSONL files.",
     )
 
     parser.add_argument(
@@ -376,7 +643,7 @@ def main():
 
     parser.add_argument(
         "--output",
-        default="data/report/term-consistency/term_consistency_report.xlsx",
+        default="data/report/termbase/term_consistency_v0.2.xlsx",
         help="Output Excel report path.",
     )
 
@@ -391,6 +658,11 @@ def main():
     mt_root = Path(args.mt_root)
     output_path = Path(args.output)
 
+    if not Path(args.termbase).exists():
+        print(f"ERROR: Termbase not found: {args.termbase}")
+        print("Please ensure termbase/auto_regulation_terms.csv exists before running.")
+        return 1
+
     summary_rows = []
     detail_rows = []
     error_rows = []
@@ -404,24 +676,12 @@ def main():
         )
 
         print("=" * 80)
-        print(f"Language: {lang}")
+        print(f"Language: {lang} ({get_lang_name(lang)})")
 
         if mt_path is None:
             print(f"MT file not found for language: {lang}")
-            summary_rows.append(
-                {
-                    "src_lang": lang,
-                    "mt_file": "",
-                    "total_records": 0,
-                    "records_with_prediction": 0,
-                    "loaded_terms": 0,
-                    "total_term_hits": 0,
-                    "correct_term_hits": 0,
-                    "wrong_term_hits": 0,
-                    "term_consistency_rate": 0.0,
-                    "status": "mt_file_missing",
-                }
-            )
+            summary = build_missing_summary(lang, args.target_lang)
+            summary_rows.append(summary)
             continue
 
         print(f"MT file: {mt_path}")
@@ -449,7 +709,15 @@ def main():
         print(f"Total term hits: {summary['total_term_hits']}")
         print(f"Correct term hits: {summary['correct_term_hits']}")
         print(f"Wrong term hits: {summary['wrong_term_hits']}")
-        print(f"Term consistency rate: {summary['term_consistency_rate']}%")
+        print(f"TCR: {summary['term_consistency_rate']}%")
+        print(
+            "Error types: "
+            f"missing={summary['error_missing']}, "
+            f"wrong_translation={summary['error_wrong_translation']}, "
+            f"partial_match={summary['error_partial_match']}, "
+            f"ambiguous={summary['error_ambiguous']}"
+        )
+        print(f"High priority TCR: {summary['high_priority_tcr']}%")
 
     save_excel_report(
         summary_rows=summary_rows,
@@ -462,6 +730,8 @@ def main():
     print(f"Report saved to: {output_path}")
     print("=" * 80)
 
+    return 0
+
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())
