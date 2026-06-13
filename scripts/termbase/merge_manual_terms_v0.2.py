@@ -27,6 +27,7 @@ DEFAULT_INPUT_BY_LANG = {
     "it": Path("termbase/manual_extracted_it_terms_v0.2.csv"),
     "no": Path("termbase/manual_extracted_no_terms_v0.2.csv"),
     "id": Path("termbase/manual_extracted_id_terms_v0.2.csv"),
+    "th": Path("termbase/manual_extracted_th_terms_v0.2.csv"),
 }
 
 VALID_PRIORITY = {"high", "medium", "low"}
@@ -34,6 +35,8 @@ VALID_STATUS = {"active", "review", "deprecated"}
 
 HIGH_DOMAINS = {
     "general_regulation",
+
+    "consumer_labeling",
 
     "vehicle_general",
     "vehicle_safety",
@@ -61,6 +64,13 @@ HIGH_DOMAINS = {
     "vehicle_structure",
     "vehicle_design",
     "vehicle_material",
+    "vehicle_maintenance",
+    "vehicle_documentation",
+
+    "ev_general",
+    "ev_powertrain",
+    "ev_battery",
+    "ev_safety",
 
     "road_traffic",
     "road_infrastructure",
@@ -91,9 +101,11 @@ HIGH_DOMAINS = {
     "environment_noise",
 
     "seatbelt_restraint",
+    "seatbelt_anchorage",
     "seat_headrest",
     "seatbelt_reminder",
-    "ev_safety",
+
+    "testing",
     "defrost_demisting",
     "hvac",
     "anti_theft",
@@ -102,7 +114,6 @@ HIGH_DOMAINS = {
 }
 
 MEDIUM_DOMAINS = {
-    "testing",
     "legal_expression",
 }
 
@@ -156,6 +167,11 @@ LOW_TERMS = {
     "kuning muda",
     "ruang merokok",
     "lemari",
+
+    # th
+    "ชื่อเต็ม",
+    "ชื่อย่อ",
+    "สัญลักษณ์",
 }
 
 def clean(value):
@@ -255,7 +271,7 @@ def resolve_input_path():
 
         return Path(arg)
 
-    return DEFAULT_INPUT_BY_LANG["id"]
+    return DEFAULT_INPUT_BY_LANG["th"]
 
 def main():
     input_path = resolve_input_path()
