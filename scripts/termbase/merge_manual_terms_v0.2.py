@@ -30,6 +30,7 @@ DEFAULT_INPUT_BY_LANG = {
     "th": Path("termbase/manual_extracted_th_terms_v0.2.csv"),
     "sv": Path("termbase/manual_extracted_sv_terms_v0.2.csv"),
     "nl": Path("termbase/manual_extracted_nl_terms_v0.2.csv"),
+    "pt": Path("termbase/manual_extracted_pt_terms_v0.2.csv"),
 }
 
 VALID_PRIORITY = {"high", "medium", "low"}
@@ -37,8 +38,24 @@ VALID_STATUS = {"active", "review", "deprecated"}
 
 HIGH_DOMAINS = {
     "general_regulation",
+    "general_enforcement",
 
-    "consumer_labeling",
+    "standardization",
+
+    "road_regulation",
+    "road_authority",
+    "road_safety",
+    "road_user",
+    "road_traffic",
+    "road_infrastructure",
+    "road_transport",
+    "road_enforcement",
+    "road_violation",
+    "road_crime",
+    "road_data",
+    "road_accident",
+    "road_penalty",
+    "road_maintenance",
 
     "vehicle_general",
     "vehicle_safety",
@@ -70,6 +87,18 @@ HIGH_DOMAINS = {
     "vehicle_documentation",
     "vehicle_tax",
     "vehicle_waste",
+    "vehicle_control",
+    "vehicle_geometry",
+
+    "seat",
+    "seatbelt_restraint",
+    "seatbelt_anchorage",
+    "seat_headrest",
+    "seatbelt_reminder",
+
+    "rear_monitoring",
+    "emergency_vehicle",
+    "public_service_vehicle",
 
     "ev_general",
     "ev_powertrain",
@@ -101,20 +130,6 @@ HIGH_DOMAINS = {
     "tax",
     "finance",
     "general_business",
-    "general_enforcement",
-
-    "road_traffic",
-    "road_infrastructure",
-    "road_transport",
-    "road_enforcement",
-    "road_violation",
-    "road_safety",
-    "road_crime",
-    "road_data",
-    "road_authority",
-    "road_accident",
-    "road_penalty",
-    "road_maintenance",
 
     "driver_license",
     "driver_training",
@@ -147,12 +162,8 @@ HIGH_DOMAINS = {
     "transboundary_waste",
     "rcode_dcode",
 
-    "seatbelt_restraint",
-    "seatbelt_anchorage",
-    "seat_headrest",
-    "seatbelt_reminder",
-
     "testing",
+    "chemical",
     "defrost_demisting",
     "hvac",
     "anti_theft",
@@ -321,7 +332,7 @@ def resolve_input_path():
 
         return Path(arg)
 
-    return DEFAULT_INPUT_BY_LANG["nl"]
+    return DEFAULT_INPUT_BY_LANG["pt"]
 
 def main():
     input_path = resolve_input_path()
