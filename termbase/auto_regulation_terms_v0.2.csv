@@ -2640,3 +2640,527 @@ th_0287,th,zh,ออกแบบสำหรับบรรทุกผู้โ
 th_0288,th,zh,ออกแบบสำหรับบรรทุกสินค้า,设计用于载货,vehicle_category,high,designed for carrying goods,N1类别定义,active
 th_0289,th,zh,น้ำหนักบรรทุก,载荷,vehicle_weight,high,load,标签和车辆分类均常见,active
 th_0290,th,zh,ผู้ขับรถ,驾驶员,road_traffic,high,driver,车辆法规基础主体,active
+sv_0015,sv,zh,Avfallsförordning,废弃物条例,environment_waste,high,Waste Ordinance,瑞典废弃物管理核心法规名称,active
+sv_0016,sv,zh,Avfallsförordningen,废弃物条例,environment_waste,high,Avfallsförordning 2020:614,法规名称带定冠词形式,active
+sv_0017,sv,zh,SFS,瑞典法规汇编,general_regulation,high,Svensk författningssamling,瑞典法律法规编号体系缩写,active
+sv_0018,sv,zh,SFS 2020:614,瑞典法规汇编2020年第614号,general_regulation,high,Avfallsförordning 2020:614,废弃物条例编号,active
+sv_0019,sv,zh,SFS 2023:908,瑞典法规汇编2023年第908号,general_regulation,medium,amendment,废弃物条例修订编号,active
+sv_0020,sv,zh,Miljöbalken,环境法典,environment_regulation,high,Environmental Code,瑞典环境法规核心法律,active
+sv_0021,sv,zh,Regeringsformen,政府组织法,general_regulation,high,Instrument of Government,瑞典宪制性法律之一，法规授权依据,active
+sv_0022,sv,zh,bestämmelser,规定,general_regulation,medium,provisions,法规条款通用术语,active
+sv_0023,sv,zh,kapitel,章,general_regulation,medium,Chapter,法规结构术语,active
+sv_0024,sv,zh,undantag,例外,general_regulation,medium,exemption,法规适用例外或分类收集豁免,active
+sv_0025,sv,zh,dispens,豁免许可,general_regulation,high,dispensation,主管机关针对个案批准的豁免,active
+sv_0026,sv,zh,tillsyn,监督,environment_enforcement,high,supervision,环境监管和废弃物合规检查核心术语,active
+sv_0027,sv,zh,tillsynsmyndighet,监督机关,environment_enforcement,high,supervisory authority,可批准部分豁免并执行监管,active
+sv_0028,sv,zh,straff,处罚,general_regulation,high,penalty,违反废弃物规定的处罚,active
+sv_0029,sv,zh,miljösanktionsavgift,环境制裁费,environment_enforcement,high,environmental sanction fee,特定违法适用的环境行政罚费,active
+sv_0030,sv,zh,Naturvårdsverket,瑞典环境保护署,environment_authority,high,Swedish Environmental Protection Agency,废弃物登记、国家废弃物规划和跨境转移主管机关,active
+sv_0031,sv,zh,Länsstyrelsen,省行政委员会,environment_authority,high,County Administrative Board,危险废弃物认定、运输许可和通知主管机关,active
+sv_0032,sv,zh,Havs- och vattenmyndigheten,海洋与水管理局,environment_authority,high,Swedish Agency for Marine and Water Management,海洋倾倒豁免主管机关之一,active
+sv_0033,sv,zh,kommun,市镇,municipal_waste,high,municipality,市政废弃物收集、信息和规划主体,active
+sv_0034,sv,zh,kommuner,市镇,municipal_waste,high,municipalities,复数形式，常见于市政责任条款,active
+sv_0035,sv,zh,avfall,废弃物,environment_waste,high,waste,瑞典废弃物法规基础术语,active
+sv_0036,sv,zh,avfallshantering,废弃物管理,environment_waste,high,waste management,废弃物收集、运输、处理、回收等总称,active
+sv_0037,sv,zh,avfallsförebyggande åtgärder,废弃物预防措施,environment_waste,high,waste prevention measures,减少废弃物产生的措施,active
+sv_0038,sv,zh,avfallsinnehavare,废弃物持有人,environment_waste,high,waste holder,负责分类、编码和记录的主体,active
+sv_0039,sv,zh,farligt avfall,危险废弃物,environment_waste,high,hazardous waste,附件3带星号或具有危险特性的废弃物,active
+sv_0040,sv,zh,icke-farligt avfall,非危险废弃物,environment_waste,high,non-hazardous waste,回填、运输阈值等场景使用,active
+sv_0041,sv,zh,bioavfall,生物废弃物,environment_waste,high,bio-waste,可生物降解园林、公园、食品和厨余废弃物,active
+sv_0042,sv,zh,matavfall,食物废弃物,environment_waste,high,food waste,由食品处理产生或构成的可生物降解废弃物,active
+sv_0043,sv,zh,livsmedelsavfall,食品废弃物,environment_waste,medium,food waste,与matavfall相近，视原文语境使用,active
+sv_0044,sv,zh,trädgårdsavfall,园林废弃物,environment_waste,high,garden waste,生物废弃物分类对象之一,active
+sv_0045,sv,zh,parkavfall,公园废弃物,environment_waste,high,park waste,生物废弃物分类对象之一,active
+sv_0046,sv,zh,textilavfall,纺织废弃物,environment_waste,high,textile waste,2025年起需分类投放的废弃物类别,active
+sv_0047,sv,zh,brännbart avfall,可燃废弃物,environment_waste,high,combustible waste,一旦燃烧过程开始无需补充能量即可燃烧的废弃物,active
+sv_0048,sv,zh,spillolja,废油,environment_waste,high,spill oil,必须单独收集且优先再生处理,active
+sv_0049,sv,zh,regenerering av spillolja,废油再生,environment_waste,high,regeneration of spill oil,通过精炼废油生产基础油的回收过程,active
+sv_0050,sv,zh,basolja,基础油,environment_waste,medium,base oil,废油再生产物,active
+sv_0051,sv,zh,återfylla,回填,environment_waste,high,backfilling,使用适宜非危险废弃物恢复开挖区域或景观塑形,active
+sv_0052,sv,zh,återfyllning,回填,environment_waste,high,backfilling,名词形式，对应回收操作R5相关场景,active
+sv_0053,sv,zh,handlare,交易商,environment_waste,high,trader,专业买卖废弃物的主体,active
+sv_0054,sv,zh,mäklare,经纪人,environment_waste,high,broker,专业安排废弃物处理的主体,active
+sv_0055,sv,zh,avfallsproducent,废弃物产生者,environment_waste,high,waste producer,建筑拆除废弃物分类和记录义务主体,active
+sv_0056,sv,zh,transportör,运输者,environment_transport,high,transporter,废弃物运输和记录义务主体,active
+sv_0057,sv,zh,insamlare,收集者,environment_waste,high,collector,废弃物收集和记录义务主体,active
+sv_0058,sv,zh,behandlare,处理者,environment_waste,high,treater,废弃物处理和记录义务主体,active
+sv_0059,sv,zh,mottagare,接收者,environment_transport,high,recipient,危险废弃物运输文件和记录字段,active
+sv_0060,sv,zh,avsändare,发送者,environment_transport,high,sender,危险废弃物运输文件签署主体,active
+sv_0061,sv,zh,säljare,卖方,environment_waste,medium,seller,交易商记录字段,active
+sv_0062,sv,zh,köpare,买方,environment_waste,medium,buyer,交易商记录字段,active
+sv_0063,sv,zh,förorenad jord,受污染土壤,environment_waste,high,contaminated soil,条例适用排除对象之一,active
+sv_0064,sv,zh,oförorenad uppgrävd jord,未污染开挖土壤,environment_waste,high,uncontaminated excavated soil,同一场地使用时排除适用,active
+sv_0065,sv,zh,utvinningsavfall,采掘废弃物,environment_waste,high,extractive waste,由2013:319另行规制的废弃物,active
+sv_0066,sv,zh,radioaktivt avfall,放射性废弃物,environment_waste,high,radioactive waste,条例适用排除对象之一,active
+sv_0067,sv,zh,använt kärnbränsle,乏核燃料,environment_waste,high,spent nuclear fuel,条例适用排除对象之一,active
+sv_0068,sv,zh,animaliska biprodukter,动物副产品,environment_waste,high,animal by-products,通常排除但用于焚烧填埋或沼气堆肥时例外,active
+sv_0069,sv,zh,koldioxid,二氧化碳,environment_waste,medium,carbon dioxide,地质封存用途排除适用,active
+sv_0070,sv,zh,geologisk lagring,地质封存,environment_waste,medium,geological storage,二氧化碳排除适用场景,active
+sv_0071,sv,zh,avfallskod,废弃物代码,environment_waste,high,waste code,附件3六位数废弃物分类代码,active
+sv_0072,sv,zh,sexsiffrig kod,六位数代码,environment_waste,high,six-digit code,废弃物分类编码形式,active
+sv_0073,sv,zh,avfallsklassificering,废弃物分类,environment_waste,high,waste classification,第二章核心内容,active
+sv_0074,sv,zh,farliga egenskaper,危险特性,environment_waste,high,hazardous properties,判定危险废弃物的依据之一,active
+sv_0075,sv,zh,koncentrationsgränser,浓度限值,environment_waste,high,concentration limits,POPs等物质超限时构成危险废弃物,active
+sv_0076,sv,zh,utspädning,稀释,environment_waste,high,dilution,不得通过稀释规避危险废弃物规则,active
+sv_0077,sv,zh,asterisk,星号,environment_waste,medium,*,附件3带星号代码表示危险废弃物,active
+sv_0078,sv,zh,Annex III,附件III,environment_regulation,high,Annex III to Directive 2008/98/EC,危险特性来源,active
+sv_0079,sv,zh,direktiv 2008/98/EG,2008/98/EC指令,environment_regulation,high,Waste Framework Directive,欧盟废弃物框架指令,active
+sv_0080,sv,zh,förordning (EU) 2019/1021,欧盟法规2019/1021,environment_regulation,high,POPs Regulation,持久性有机污染物法规,active
+sv_0081,sv,zh,PCDD/F,多氯二苯并二噁英/呋喃,environment_waste,high,dioxins and furans,危险废弃物浓度限值相关物质,active
+sv_0082,sv,zh,PCB,多氯联苯,environment_waste,high,polychlorinated biphenyls,危险废弃物浓度限值和运输许可相关物质,active
+sv_0083,sv,zh,DDT,滴滴涕,environment_waste,medium,dichlorodiphenyltrichloroethane,POPs限值相关物质,active
+sv_0084,sv,zh,flamskyddsmedel,阻燃剂,environment_waste,medium,flame retardants,POPs限值相关物质类别,active
+sv_0085,sv,zh,sortering,分类,environment_waste,high,sorting,废弃物分类投放和分类处理核心术语,active
+sv_0086,sv,zh,sortera,分类投放,environment_waste,high,sort,废弃物持有人义务,active
+sv_0087,sv,zh,separat insamling,单独收集,environment_waste,high,separate collection,生物废弃物、纺织品、包装等核心要求,active
+sv_0088,sv,zh,samla in separat,单独收集,environment_waste,high,collect separately,废油、渔具等要求,active
+sv_0089,sv,zh,förvara separat,单独储存,environment_waste,high,store separately,生物废弃物等分类后储存要求,active
+sv_0090,sv,zh,fastighetsnära insamling,近物业收集,municipal_waste,high,property-close collection,市镇对厨余等实行的近物业收集,active
+sv_0091,sv,zh,materialåtervinning,材料回收,environment_waste,high,material recycling,生物废弃物、包装废弃物优先处理方向,active
+sv_0092,sv,zh,återanvändning,再使用,environment_waste,high,reuse,纺织品、渔具等鼓励方向,active
+sv_0093,sv,zh,återvinning,回收,environment_waste,high,recycling;recovery,需按语境区分“再循环”或“利用”,active
+sv_0094,sv,zh,avfallsförebyggande,废弃物预防,environment_waste,high,waste prevention,市镇信息和国家规划核心内容,active
+sv_0095,sv,zh,invasiva främmande arter,外来入侵物种,environment_waste,high,invasive alien species,含外来入侵物种的园林公园废弃物需单独分类,active
+sv_0096,sv,zh,jätteloka,大猪草,environment_waste,medium,giant hogweed,外来入侵植物示例，按实际原文核验,active
+sv_0097,sv,zh,japanskt parkslide,日本虎杖,environment_waste,medium,Japanese knotweed,外来入侵植物示例,active
+sv_0098,sv,zh,ätlig olja,食用油,environment_waste,medium,edible oil,食物/厨余废弃物分类范围,active
+sv_0099,sv,zh,ätligt fett,食用脂肪,environment_waste,medium,edible fat,食物/厨余废弃物分类范围,active
+sv_0100,sv,zh,förpackningsavfall,包装废弃物,packaging_waste,high,packaging waste,需按材料分类投放,active
+sv_0101,sv,zh,förpackning,包装,packaging_waste,high,packaging,包装废弃物分类对象,active
+sv_0102,sv,zh,papper,纸,packaging_waste,medium,paper,包装分类材料之一,active
+sv_0103,sv,zh,papp,纸板,packaging_waste,medium,cardboard,包装分类材料之一,active
+sv_0104,sv,zh,plast,塑料,packaging_waste,high,plastic,包装和建筑拆除废弃物分类材料,active
+sv_0105,sv,zh,metall,金属,packaging_waste,high,metal,包装和建筑拆除废弃物分类材料,active
+sv_0106,sv,zh,färgat glas,有色玻璃,packaging_waste,high,colored glass,包装废弃物分类类别,active
+sv_0107,sv,zh,ofärgat glas,无色玻璃,packaging_waste,high,uncolored glass,包装废弃物分类类别,active
+sv_0108,sv,zh,retursystem,返还系统,packaging_waste,high,return system,塑料瓶和金属罐回收系统,active
+sv_0109,sv,zh,plastflaskor,塑料瓶,packaging_waste,medium,plastic bottles,返还系统对象,active
+sv_0110,sv,zh,metallburkar,金属罐,packaging_waste,medium,metal cans,返还系统对象,active
+sv_0111,sv,zh,trä,木材,environment_waste,high,wood,包装和建筑拆除废弃物分类类别,active
+sv_0112,sv,zh,innehåll,内容物,packaging_waste,medium,contents,包装需与内容物分离,active
+sv_0113,sv,zh,läkemedel,药品,environment_waste,medium,medicine,含药品包装可因便于处理而不分离,active
+sv_0114,sv,zh,bygg- och rivningsavfall,建筑和拆除废弃物,construction_waste,high,construction and demolition waste,必须至少按六类分类,active
+sv_0115,sv,zh,byggavfall,建筑废弃物,construction_waste,high,construction waste,建筑施工产生的废弃物,active
+sv_0116,sv,zh,rivningsavfall,拆除废弃物,construction_waste,high,demolition waste,拆除工程产生的废弃物,active
+sv_0117,sv,zh,mineraler,矿物材料,construction_waste,high,minerals,建筑拆除废弃物分类类别之一,active
+sv_0118,sv,zh,betong,混凝土,construction_waste,medium,concrete,矿物材料示例,active
+sv_0119,sv,zh,tegel,砖,construction_waste,medium,brick,矿物材料示例,active
+sv_0120,sv,zh,klinker,瓷砖,construction_waste,medium,tile,矿物材料示例,active
+sv_0121,sv,zh,sten,石材,construction_waste,medium,stone,矿物材料示例,active
+sv_0122,sv,zh,gips,石膏,construction_waste,high,gypsum,建筑拆除废弃物分类类别之一,active
+sv_0123,sv,zh,elavfall,电子电气废弃物,ewaste,high,e-waste,需分类处理以促进回收,active
+sv_0124,sv,zh,elektriska och elektroniska produkter,电气和电子产品,ewaste,high,electrical and electronic products,电子废弃物来源产品,active
+sv_0125,sv,zh,batterier,电池,ewaste,high,batteries,电子废弃物处理和储存要求对象,active
+sv_0126,sv,zh,ogenomtränglig yta,不渗透表面,ewaste,high,impermeable surface,电池储存要求,active
+sv_0127,sv,zh,skyddad från regn,防雨,ewaste,medium,protected from rain,电池储存要求,active
+sv_0128,sv,zh,förbrännas,焚烧,environment_waste,high,incinerated,电池等不得在未去除液体酸液时焚烧,active
+sv_0129,sv,zh,deponeras,填埋,environment_waste,high,landfilled,电池等不得在未去除液体酸液时填埋,active
+sv_0130,sv,zh,syror,酸液,ewaste,medium,acids,电池填埋或焚烧前应去除物质,active
+sv_0131,sv,zh,vätskor,液体,ewaste,medium,liquids,电池填埋或焚烧前应去除物质,active
+sv_0132,sv,zh,fiskeredskap,渔具,environment_waste,high,fishing gear,2024年底起单独收集以促进再使用和回收,active
+sv_0133,sv,zh,kvicksilveravfall,含汞废弃物,mercury_waste,high,mercury waste,含汞比例超过阈值须深岩层处置,active
+sv_0134,sv,zh,kvicksilver,汞,mercury_waste,high,mercury,含汞废弃物和运输许可关键物质,active
+sv_0135,sv,zh,djupt bergförvar,深岩层处置库,mercury_waste,high,deep bedrock repository,含汞废弃物特定处置设施,active
+sv_0136,sv,zh,extraordinära skäl,特殊重大理由,mercury_waste,high,extraordinary reasons,高汞含量废弃物豁免条件,active
+sv_0137,sv,zh,fartygsavfall,船舶废弃物,ship_waste,high,ship waste,港口接收设施相关废弃物,active
+sv_0138,sv,zh,oljeavfall,油类废弃物,ship_waste,high,oil waste,船舶接收设施废弃物类别,active
+sv_0139,sv,zh,toalettavfall,厕所废弃物,ship_waste,medium,toilet waste,船舶接收设施废弃物类别,active
+sv_0140,sv,zh,fast avfall,固体废弃物,ship_waste,high,solid waste,船舶接收设施废弃物类别,active
+sv_0141,sv,zh,mottagningsanordning,接收设施,ship_waste,high,reception facility,港口船舶废弃物接收设施,active
+sv_0142,sv,zh,hamn,港口,ship_waste,medium,port,船舶废弃物接收设施所在地,active
+sv_0143,sv,zh,förbud mot förbränning,焚烧禁令,environment_waste,high,prohibition of incineration,已为再使用或材料回收单独收集的废弃物不得焚烧,active
+sv_0144,sv,zh,dumpning,倾倒,environment_waste,high,dumping,环境法典原则上禁止倾倒废弃物,active
+sv_0145,sv,zh,ekonomisk zon,经济区,environment_waste,medium,economic zone,海洋倾倒豁免管辖范围,active
+sv_0146,sv,zh,tillstånd,许可,environment_permit,high,permit,运输废弃物等活动需取得许可,active
+sv_0147,sv,zh,transporttillstånd,运输许可,environment_permit,high,transport permit,专业运输废弃物或超过阈值运输需许可,active
+sv_0148,sv,zh,yrkesmässigt transportera avfall,专业运输废弃物,environment_transport,high,professionally transport waste,需要运输许可的行为,active
+sv_0149,sv,zh,egen verksamhet,自有业务,environment_transport,high,own business,自有业务运输废弃物许可阈值语境,active
+sv_0150,sv,zh,ton per år,吨每年,environment_transport,medium,tons per year,运输许可阈值单位,active
+sv_0151,sv,zh,kubikmeter per år,立方米每年,environment_transport,medium,cubic meters per year,运输许可阈值单位,active
+sv_0152,sv,zh,kilogram per år,千克每年,environment_transport,medium,kg per year,危险废弃物运输许可阈值单位,active
+sv_0153,sv,zh,liter per år,升每年,environment_transport,medium,liters per year,危险废弃物运输许可阈值单位,active
+sv_0154,sv,zh,cyanid,氰化物,environment_waste,high,cyanide,任何数量均触发运输许可的物质之一,active
+sv_0155,sv,zh,kadmium,镉,environment_waste,high,cadmium,任何数量均触发运输许可的物质之一,active
+sv_0156,sv,zh,PCB-produkter,PCB产品,environment_waste,high,PCB products,任何数量均触发运输许可的物质/产品之一,active
+sv_0157,sv,zh,anmälan,通知,general_regulation,high,notification,运输、收集、交易、经纪等活动通知义务,active
+sv_0158,sv,zh,anmälningsplikt,通知义务,general_regulation,high,notification obligation,低于许可阈值或特定活动需履行,active
+sv_0159,sv,zh,återkommande transporter,重复性运输,environment_transport,high,recurring transport,通知每五年更新一次,active
+sv_0160,sv,zh,förnyas vart femte år,每五年更新一次,general_regulation,medium,renewed every five years,重复性运输通知频率,active
+sv_0161,sv,zh,fastighetsägare,不动产所有人,municipal_waste,high,property owner,自行堆肥或处理市镇负责废弃物时需通知市镇,active
+sv_0162,sv,zh,kompostera,堆肥处理,municipal_waste,high,compost,不动产所有人处理废弃物方式之一,active
+sv_0163,sv,zh,spårbarhet,可追溯性,traceability,high,traceability,危险废弃物第六章核心主题,active
+sv_0164,sv,zh,anteckningsskyldighet,记录义务,traceability,high,recording obligation,危险废弃物可追溯核心义务,active
+sv_0165,sv,zh,anteckning,记录,traceability,high,record,危险废弃物运输前或接收后记录,active
+sv_0166,sv,zh,innan transport,运输前,traceability,medium,before transport,产生者记录义务时点,active
+sv_0167,sv,zh,två arbetsdagar,两个工作日,traceability,high,two working days,接收或记录后提交废弃物登记系统的期限,active
+sv_0168,sv,zh,vikt,重量,traceability,high,weight,危险废弃物记录和报告字段,active
+sv_0169,sv,zh,avfallstyp,废弃物类型,traceability,high,waste type,记录和运输文件字段,active
+sv_0170,sv,zh,datum,日期,general_regulation,medium,date,记录、运输和报告字段,active
+sv_0171,sv,zh,ursprung,来源,traceability,high,origin,运输者记录和监督检查字段,active
+sv_0172,sv,zh,destination,目的地,traceability,high,destination,运输者记录、出口报告和运输文件字段,active
+sv_0173,sv,zh,behandlingsmetod,处理方法,traceability,high,treatment method,处理者记录和出口报告字段,active
+sv_0174,sv,zh,tidigare innehavare,前持有人,traceability,high,previous holder,收集者和处理者记录字段,active
+sv_0175,sv,zh,Avfallsregistret,废弃物登记系统,traceability,high,Waste Register,瑞典环境保护署维护的电子登记系统,active
+sv_0176,sv,zh,elektroniskt register,电子登记系统,traceability,high,electronic register,危险废弃物数据提交系统,active
+sv_0177,sv,zh,lämnas elektroniskt,以电子方式提交,traceability,high,submitted electronically,废弃物记录数据提交要求,active
+sv_0178,sv,zh,bevaras i tre år,保存三年,traceability,high,retained for three years,产生者、收集者、交易商、处理者记录保存期限,active
+sv_0179,sv,zh,bevaras i tolv månader,保存十二个月,traceability,high,retained for twelve months,运输者记录保存期限,active
+sv_0180,sv,zh,transportdokument,运输文件,environment_transport,high,transport document,危险废弃物在瑞典境内运输随附文件,active
+sv_0181,sv,zh,pappersform,纸质形式,environment_transport,medium,paper form,运输文件形式之一,active
+sv_0182,sv,zh,elektronisk form,电子形式,environment_transport,medium,electronic form,运输文件形式之一,active
+sv_0183,sv,zh,undertecknas,签署,general_regulation,medium,signed,运输文件需由发送者和运输者签署,active
+sv_0184,sv,zh,kommunalt avfall,市政废弃物,municipal_waste,high,municipal waste,市镇报告、收集和出口报告核心类别,active
+sv_0185,sv,zh,hushållsavfall,生活废弃物,municipal_waste,high,household waste,市政废弃物典型来源,active
+sv_0186,sv,zh,verksamhetsavfall,经营活动废弃物,municipal_waste,medium,business waste,类似生活废弃物的商业来源废弃物,active
+sv_0187,sv,zh,rapportering,报告,reporting,high,reporting,第七章报告和信息义务核心术语,active
+sv_0188,sv,zh,rapportera,报告,reporting,high,report,市镇、专业收集者、出口者报告义务,active
+sv_0189,sv,zh,senast den 30 juni,不迟于6月30日,reporting,medium,by June 30,市镇向环境保护署年度报告期限,active
+sv_0190,sv,zh,senast den 28 februari,不迟于2月28日,reporting,medium,by February 28,专业收集者向市镇年度报告期限,active
+sv_0191,sv,zh,senast den 31 mars,不迟于3月31日,reporting,medium,by March 31,出口处理报告期限,active
+sv_0192,sv,zh,sammansättning,组成,reporting,medium,composition,专业收集者报告废弃物组成和重量,active
+sv_0193,sv,zh,föra ut ur Sverige,运出瑞典,transboundary_waste,high,transport out of Sweden,废油、市政废弃物和非危险建筑废弃物出口报告场景,active
+sv_0194,sv,zh,import,进口,transboundary_waste,high,import,废弃物跨境转移术语,active
+sv_0195,sv,zh,export,出口,transboundary_waste,high,export,废弃物跨境转移术语,active
+sv_0196,sv,zh,importör,进口商,transboundary_waste,high,importer,进口废弃物需证明有合规处理设施,active
+sv_0197,sv,zh,behörig myndighet,主管机关,transboundary_waste,high,competent authority,巴塞尔公约和欧盟1013/2006法规主管机关,active
+sv_0198,sv,zh,Baselkonventionen,巴塞尔公约,transboundary_waste,high,Basel Convention,跨境废弃物转移国际公约,active
+sv_0199,sv,zh,förordning (EG) nr 1013/2006,欧盟第1013/2006号法规,transboundary_waste,high,EU Regulation 1013/2006,废弃物转移法规,active
+sv_0200,sv,zh,EES,欧洲经济区,transboundary_waste,high,European Economic Area;EEA,出口报告目的地分类,active
+sv_0201,sv,zh,icke-EES,非欧洲经济区,transboundary_waste,medium,non-EEA,出口报告目的地分类,active
+sv_0202,sv,zh,begagnad elektrisk utrustning,二手电气设备,transboundary_waste,high,used electrical equipment,出口时证明非废弃物的对象,active
+sv_0203,sv,zh,äganderätt,所有权,transboundary_waste,medium,ownership,证明二手电气设备非废弃物的文件内容,active
+sv_0204,sv,zh,funktionstest,功能测试,transboundary_waste,high,functional test,证明二手电气设备非废弃物的要求,active
+sv_0205,sv,zh,farliga ämnen,危险物质,environment_waste,high,hazardous substances,二手设备检查和危险废弃物判定相关术语,active
+sv_0206,sv,zh,skydd mot skada,防损保护,transboundary_waste,medium,protection against damage,二手设备出口运输保护要求,active
+sv_0207,sv,zh,kommunala föreskrifter,市政规章,municipal_waste,high,municipal regulations,市镇可制定废弃物容器、分类、运输等规定,active
+sv_0208,sv,zh,avfallsbehållare,废弃物容器,municipal_waste,high,waste container,市政规章可规定设计和维护,active
+sv_0209,sv,zh,avfallsutrymme,废弃物空间,municipal_waste,high,waste space,市政规章可规定设计和维护,active
+sv_0210,sv,zh,utformning,设计,municipal_waste,medium,design,废弃物容器和空间要求,active
+sv_0211,sv,zh,underhåll,维护,municipal_waste,medium,maintenance,废弃物容器和空间要求,active
+sv_0212,sv,zh,informationskrav,信息要求,municipal_waste,high,information requirements,市镇可对企业规定的信息义务,active
+sv_0213,sv,zh,avfallsplan,废弃物计划,municipal_waste,high,waste plan,市政和国家层面规划术语,active
+sv_0214,sv,zh,kommunal avfallsplan,市政废弃物计划,municipal_waste,high,municipal waste plan,需包含包装、返还纸、预防和再使用促进等内容,active
+sv_0215,sv,zh,nationell avfallsplan,国家废弃物计划,environment_policy,high,national waste plan,由瑞典环境保护署确保存在并持续更新,active
+sv_0216,sv,zh,avfallsförebyggande program,废弃物预防计划,environment_policy,high,waste prevention program,国家层面废弃物预防规划,active
+sv_0217,sv,zh,returpapper,返还纸,municipal_waste,medium,return paper,市政废弃物计划内容之一,active
+sv_0218,sv,zh,främja återanvändning,促进再使用,environment_policy,high,promote reuse,市政废弃物计划和纺织废弃物信息义务内容,active
+sv_0219,sv,zh,ses över vart fjärde år,每四年审查一次,environment_policy,medium,reviewed every four years,市政废弃物计划审查频率,active
+sv_0220,sv,zh,avfallets ursprung,废弃物来源,environment_enforcement,high,waste origin,监督机关重点检查内容,active
+sv_0221,sv,zh,avfallets typ,废弃物类型,environment_enforcement,high,waste type,监督机关重点检查内容,active
+sv_0222,sv,zh,avfallets mängd,废弃物数量,environment_enforcement,high,waste quantity,监督机关重点检查内容,active
+sv_0223,sv,zh,avfallets destination,废弃物目的地,environment_enforcement,high,waste destination,监督机关重点检查内容,active
+sv_0224,sv,zh,återvinningsförfarande,回收操作,rcode_dcode,high,recovery operation,附件1 R-code 总称,active
+sv_0225,sv,zh,bortskaffningsförfarande,处置操作,rcode_dcode,high,disposal operation,附件2 D-code 总称,active
+sv_0226,sv,zh,R-kod,R代码,rcode_dcode,high,R-code,欧盟废弃物回收操作代码,active
+sv_0227,sv,zh,D-kod,D代码,rcode_dcode,high,D-code,欧盟废弃物处置操作代码,active
+sv_0228,sv,zh,R 1,作为燃料或其他方式产生能源,rcode_dcode,high,use principally as fuel or other means to generate energy,回收操作代码R1,active
+sv_0229,sv,zh,R 2,溶剂再生/回收,rcode_dcode,high,solvent reclamation/regeneration,回收操作代码R2,active
+sv_0230,sv,zh,R 3,有机物再循环/回收,rcode_dcode,high,recycling/reclamation of organic substances,回收操作代码R3，含堆肥和气化等,active
+sv_0231,sv,zh,R 4,金属及金属化合物再循环/回收,rcode_dcode,high,recycling/reclamation of metals and metal compounds,回收操作代码R4,active
+sv_0232,sv,zh,R 5,其他无机材料再循环/回收,rcode_dcode,high,recycling/reclamation of other inorganic materials,回收操作代码R5，含回填和土壤清洗,active
+sv_0233,sv,zh,R 9,油再精炼或其他再利用,rcode_dcode,high,oil re-refining or other reuses of oil,回收操作代码R9,active
+sv_0234,sv,zh,R 10,土地处理以利农业或生态改善,rcode_dcode,high,land treatment resulting in benefit to agriculture or ecological improvement,回收操作代码R10,active
+sv_0235,sv,zh,R 13,回收操作前储存,rcode_dcode,high,storage pending recovery operations,回收操作代码R13,active
+sv_0236,sv,zh,D 1,排入或置于土地上,rcode_dcode,high,deposit into or on to land,处置操作代码D1，典型为填埋,active
+sv_0237,sv,zh,D 3,深井注入,rcode_dcode,high,deep injection,处置操作代码D3，如注入盐矿,active
+sv_0238,sv,zh,D 5,专门设计的填埋,rcode_dcode,high,specially engineered landfill,处置操作代码D5,active
+sv_0239,sv,zh,D 7,排入海洋或海底,rcode_dcode,high,release into seas/oceans including sea-bed insertion,处置操作代码D7,active
+sv_0240,sv,zh,D 10,陆上焚烧,rcode_dcode,high,incineration on land,处置操作代码D10,active
+sv_0241,sv,zh,D 12,永久储存,rcode_dcode,high,permanent storage,处置操作代码D12，如容器置于矿井,active
+sv_0242,sv,zh,D 15,处置操作前储存,rcode_dcode,high,storage pending disposal operations,处置操作代码D15,active
+sv_0243,sv,zh,deponi,填埋场,environment_waste,high,landfill,处置操作和废弃物管理设施,active
+sv_0244,sv,zh,deponering,填埋,environment_waste,high,landfilling,废弃物处置方式之一,active
+sv_0245,sv,zh,förbränning,焚烧,environment_waste,high,incineration,废弃物处置或能源利用方式,active
+sv_0246,sv,zh,kompostering,堆肥,environment_waste,high,composting,有机废弃物回收方式之一,active
+sv_0247,sv,zh,förgasning,气化,environment_waste,medium,gasification,R3有机物回收方式之一,active
+sv_0248,sv,zh,jordtvätt,土壤清洗,environment_waste,medium,soil washing,R5无机材料回收方式之一,active
+sv_0249,sv,zh,avfallsbehandlingsanläggning,废弃物处理设施,environment_waste,high,waste treatment facility,附件3第19章相关类别,active
+sv_0250,sv,zh,vattenrening,水处理,environment_waste,medium,water treatment,附件3第19章来源之一,active
+sv_0251,sv,zh,primärproduktion,初级生产,environment_waste,medium,primary production,附件3第01-05章来源类别,active
+sv_0252,sv,zh,gruvdrift,采矿,environment_waste,medium,mining,初级生产废弃物来源之一,active
+sv_0253,sv,zh,jordbruk,农业,environment_waste,medium,agriculture,初级生产废弃物来源之一,active
+sv_0254,sv,zh,oljeraffinering,炼油,environment_waste,medium,oil refining,初级生产废弃物来源之一,active
+sv_0255,sv,zh,träbearbetning,木材加工,environment_waste,medium,wood processing,初级生产废弃物来源之一,active
+sv_0256,sv,zh,oorganiska kemiska processer,无机化学工艺,environment_waste,medium,inorganic chemical processes,附件3第06章废弃物来源,active
+sv_0257,sv,zh,organiska kemiska processer,有机化学工艺,environment_waste,medium,organic chemical processes,附件3第07章废弃物来源,active
+sv_0258,sv,zh,färg,涂料,environment_waste,medium,paint,附件3第08章涂料废弃物类别,active
+sv_0259,sv,zh,lack,清漆,environment_waste,medium,varnish,附件3第08章来源类别,active
+sv_0260,sv,zh,lim,胶粘剂,environment_waste,medium,glue,附件3第08章来源类别,active
+sv_0261,sv,zh,tryckfärg,油墨,environment_waste,medium,ink,附件3第08章来源类别,active
+sv_0262,sv,zh,termiska processer,热过程,environment_waste,medium,thermal processes,附件3第10章废弃物来源,active
+sv_0263,sv,zh,kraftverk,发电厂,environment_waste,medium,power plant,热过程废弃物来源之一,active
+sv_0264,sv,zh,stålindustri,钢铁工业,environment_waste,medium,steel industry,热过程废弃物来源之一,active
+sv_0265,sv,zh,metallindustri,金属工业,environment_waste,medium,metal industry,热过程废弃物来源之一,active
+sv_0266,sv,zh,glasindustri,玻璃工业,environment_waste,medium,glass industry,热过程废弃物来源之一,active
+sv_0267,sv,zh,keramikindustri,陶瓷工业,environment_waste,medium,ceramics industry,热过程废弃物来源之一,active
+sv_0268,sv,zh,absorptionsmedel,吸收剂,environment_waste,medium,absorbents,附件3第15章类别,active
+sv_0269,sv,zh,skyddskläder,防护服,environment_waste,medium,protective clothing,附件3第15章类别,active
+sv_0270,sv,zh,uttjänta fordon,报废车辆,environment_waste,high,end-of-life vehicles,附件3第16章未另列明废弃物类别之一,active
+sv_0271,sv,zh,kemikalier,化学品,environment_waste,high,chemicals,附件3第16章废弃物类别之一,active
+sv_0272,sv,zh,hälso- och sjukvård,医疗卫生服务,environment_waste,medium,healthcare,附件3第18章废弃物来源,active
+sv_0273,sv,zh,veterinär verksamhet,兽医服务,environment_waste,medium,veterinary services,附件3第18章废弃物来源,active
+nl_0015,nl,zh,Regeling,规定,general_regulation,high,regulation,荷兰部级规定或规章类文件常用名称,active
+nl_0016,nl,zh,Regeling beheer batterijen en accu’s 2008,2008年电池和蓄电池管理规定,battery_waste,high,Batterijenregeling,荷兰电池和蓄电池废弃物管理法规名称,active
+nl_0017,nl,zh,Subsidieregeling elektrische personenauto’s particulieren,个人电动乘用车补贴计划,ev_subsidy,high,SEPP,荷兰个人购买或租赁电动乘用车补贴法规名称,active
+nl_0018,nl,zh,SEPP,个人电动乘用车补贴计划,ev_subsidy,high,Subsidieregeling elektrische personenauto’s particulieren,荷兰电动车补贴计划常用缩写,active
+nl_0019,nl,zh,Wettenbank,法律数据库,general_regulation,medium,wetten.nl,荷兰官方法规检索平台术语,active
+nl_0020,nl,zh,wetten.nl,荷兰官方法律网站,general_regulation,medium,Wettenbank,荷兰法规来源平台,active
+nl_0021,nl,zh,geldig op,于……有效,general_regulation,medium,valid on,法规版本查询日期表达,active
+nl_0022,nl,zh,geldend van,有效期自,general_regulation,medium,effective from,法规适用期间表达,active
+nl_0023,nl,zh,t/m heden,至今,general_regulation,medium,tot en met heden,法规当前仍有效表达,active
+nl_0024,nl,zh,opschrift,标题,general_regulation,medium,title,法规原始标题术语,active
+nl_0025,nl,zh,aanhef,序言,general_regulation,medium,preamble,法规开头部分术语,active
+nl_0026,nl,zh,slotbepalingen,最终规定,general_regulation,high,final provisions,法规结尾章节术语,active
+nl_0027,nl,zh,inwerkingtreding,生效,general_regulation,high,entry into force,法规生效术语,active
+nl_0028,nl,zh,treedt in werking,生效,general_regulation,high,comes into force,法规生效表达,active
+nl_0029,nl,zh,vervalt,失效,general_regulation,high,expires,补贴计划到期或条款废止表达,active
+nl_0030,nl,zh,vervallen,已废止,general_regulation,medium,repealed;expired,法规条款废止标记,active
+nl_0031,nl,zh,aangehaald als,简称为,general_regulation,medium,cited as,法规引用名称表达,active
+nl_0032,nl,zh,artikel,条,general_regulation,high,Article,荷兰法规条文结构术语,active
+nl_0033,nl,zh,lid,款,general_regulation,high,paragraph,荷兰法规条文结构术语,active
+nl_0034,nl,zh,onderdeel,项,general_regulation,medium,subparagraph,荷兰法规条文结构术语,active
+nl_0035,nl,zh,formulier,表格,general_regulation,medium,form,报告或申请标准表格,active
+nl_0036,nl,zh,Staatscourant,政府公报,general_regulation,high,Government Gazette,荷兰官方公告载体,active
+nl_0037,nl,zh,Minister van Infrastructuur en Milieu,基础设施与环境部长,general_regulation,high,Minister of Infrastructure and Environment,旧部委名称，电池法规报告对象,active
+nl_0038,nl,zh,Minister van Infrastructuur en Waterstaat,基础设施与水管理部长,general_regulation,high,Minister of Infrastructure and Water Management,SEPP主管部长,active
+nl_0039,nl,zh,Wet milieubeheer,环境管理法,environment_regulation,high,Environmental Management Act,电池规定授权依据,active
+nl_0040,nl,zh,Besluit regeling voor uitgebreide producentenverantwoordelijkheid,生产者责任延伸安排决定,epr,high,EPR Decision,电池法规引用的EPR框架法规,active
+nl_0041,nl,zh,uitgebreide producentenverantwoordelijkheid,生产者责任延伸,epr,high,EPR,废弃电池回收和费用承担核心机制,active
+nl_0042,nl,zh,EU-verordening markttoezicht,欧盟市场监督条例,market_surveillance,high,EU Market Surveillance Regulation,电池市场监督执行章节引用法规,active
+nl_0043,nl,zh,markttoezicht,市场监督,market_surveillance,high,market surveillance,欧盟产品合规监管术语,active
+nl_0044,nl,zh,richtlijn 2006/66/EG,2006/66/EC指令,battery_regulation,high,Battery Directive,欧盟电池及废电池指令,active
+nl_0045,nl,zh,Richtlijn 91/157/EEG,91/157/EEC指令,battery_regulation,medium,Directive 91/157/EEC,被2006/66/EC废止的旧电池指令,active
+nl_0046,nl,zh,Richtlijn (EU) 2015/1535,欧盟2015/1535号指令,market_surveillance,medium,Directive EU 2015/1535,信息社会服务定义来源,active
+nl_0047,nl,zh,Besluit beheer elektrische en elektronische apparatuur,电气和电子设备管理决定,ewaste,high,WEEE Decision,设备定义和费用豁免相关法规,active
+nl_0048,nl,zh,Regeling afgedankte elektrische en elektronische apparatuur,废弃电气和电子设备规定,ewaste,high,WEEE Regulation,内置电池费用承担相关法规,active
+nl_0049,nl,zh,Besluit beheer autowrakken,报废汽车管理决定,vehicle_waste,high,End-of-Life Vehicles Decree,汽车残骸中电池费用承担相关法规,active
+nl_0050,nl,zh,batterij,电池,battery_general,high,battery,通过化学能直接转换产生电能的来源，含一次或二次电池单体,active
+nl_0051,nl,zh,accu,蓄电池,battery_general,high,accumulator;rechargeable battery,法规中与batterij并列，中文建议译为蓄电池,active
+nl_0052,nl,zh,batterijen en accu’s,电池和蓄电池,battery_general,high,batteries and accumulators,法规标题和义务对象核心组合术语,active
+nl_0053,nl,zh,batterijpak,电池包,battery_general,high,battery pack,由互连电池或蓄电池组成的完整单元,active
+nl_0054,nl,zh,batterijcel,电池单体,battery_general,high,battery cell,电池定义组成要素,active
+nl_0055,nl,zh,primaire batterijcel,一次电池单体,battery_general,high,primary battery cell,不可充电电池单体,active
+nl_0056,nl,zh,secundaire batterijcel,二次电池单体,battery_general,high,secondary battery cell,可充电电池单体,active
+nl_0057,nl,zh,chemische energie,化学能,battery_general,medium,chemical energy,电池产生电能的来源,active
+nl_0058,nl,zh,elektrische energie,电能,battery_general,medium,electrical energy,电池输出能量形式,active
+nl_0059,nl,zh,rechtstreekse omzetting,直接转换,battery_general,medium,direct conversion,电池定义表达,active
+nl_0060,nl,zh,draagbare batterij of accu,便携式电池或蓄电池,battery_category,high,portable battery or accumulator,密封、可手持且非工业/汽车用电池,active
+nl_0061,nl,zh,draagbare batterijen en accu’s,便携式电池和蓄电池,battery_category,high,portable batteries and accumulators,回收率和无偿回收核心对象,active
+nl_0062,nl,zh,afgedicht,密封,battery_category,medium,sealed,便携式电池定义条件之一,active
+nl_0063,nl,zh,met de hand kan worden gedragen,可手持携带,battery_category,medium,can be carried by hand,便携式电池定义条件之一,active
+nl_0064,nl,zh,industriële batterij of accu,工业电池或蓄电池,battery_category,high,industrial battery or accumulator,工业/专业用途或电动车使用的电池,active
+nl_0065,nl,zh,industriële batterijen en accu’s,工业电池和蓄电池,battery_category,high,industrial batteries and accumulators,生产者回收义务对象之一,active
+nl_0066,nl,zh,autobatterij of -accu,汽车启动电池或蓄电池,battery_category,high,automotive battery or accumulator,用于非电动车辆启动、照明或点火的电池,active
+nl_0067,nl,zh,autobatterijen en -accu’s,汽车启动电池和蓄电池,battery_category,high,automotive batteries and accumulators,报告表格中的电池类别,active
+nl_0068,nl,zh,elektrisch voertuig,电动车辆,ev_general,high,electric vehicle,工业电池定义和例外中使用,active
+nl_0069,nl,zh,apparatuur,设备,ewaste,high,equipment,可由电池或蓄电池供能的电气电子设备,active
+nl_0070,nl,zh,elektrische en elektronische apparatuur,电气和电子设备,ewaste,high,electrical and electronic equipment,设备定义来源,active
+nl_0071,nl,zh,ingebouwd,内置,ewaste,high,built-in,电池内置于设备或车辆中,active
+nl_0072,nl,zh,apparaat,器具,ewaste,medium,appliance;device,便携式电动工具等语境,active
+nl_0073,nl,zh,op de markt brengen,投放市场,market_access,high,placing on the market,首次向荷兰第三方提供产品，生产者定义核心术语,active
+nl_0074,nl,zh,op de markt aanbieden,在市场上提供,market_access,high,making available on the market,欧盟市场监督条例术语,active
+nl_0075,nl,zh,ter beschikking stellen,提供,market_access,high,make available,投放市场、禁售和回收点语境常用表达,active
+nl_0076,nl,zh,al dan niet tegen betaling,无论是否有偿,market_access,medium,whether or not against payment,投放市场定义中的表述,active
+nl_0077,nl,zh,aan een derde,向第三方,market_access,medium,to a third party,投放市场和禁售语境,active
+nl_0078,nl,zh,Nederlandse markt,荷兰市场,market_access,high,Dutch market,生产者首次投放对象市场,active
+nl_0079,nl,zh,Europese Gemeenschap,欧洲共同体,general_regulation,medium,European Community,旧法规用语，现多对应欧盟市场语境,active
+nl_0080,nl,zh,douanegebied van de Gemeenschap,共同体关税区,general_regulation,medium,customs territory of the Community,进口禁售条款用语,active
+nl_0081,nl,zh,producent,生产者,battery_epr,high,producer,首次将电池投放市场的职业主体，EPR责任主体,active
+nl_0082,nl,zh,distributeur,经销商,battery_epr,high,distributor,向最终用户供应电池或蓄电池的主体,active
+nl_0083,nl,zh,eindgebruiker,最终用户,battery_epr,high,end user,回收、信息披露和补贴使用主体之一,active
+nl_0084,nl,zh,importeur,进口商,battery_epr,high,importer,报废汽车和投放市场语境中的责任主体,active
+nl_0085,nl,zh,marktdeelnemer,市场经营者,market_surveillance,high,economic operator,欧盟市场监督条例中的主体,active
+nl_0086,nl,zh,aanbieder van diensten van de informatiemaatschappij,信息社会服务提供者,market_surveillance,high,provider of information society services,在线销售电池相关义务主体,active
+nl_0087,nl,zh,online te koop aanbieden,在线提供销售,market_surveillance,high,offer for sale online,市场监督章节禁止违规行为场景,active
+nl_0088,nl,zh,afgedankte batterijen of accu’s,废弃电池或蓄电池,battery_waste,high,waste batteries or accumulators,成为废物的电池或蓄电池,active
+nl_0089,nl,zh,afgedankte draagbare batterijen en accu’s,废弃便携式电池和蓄电池,battery_waste,high,waste portable batteries and accumulators,经销商无偿回收和生产者回收率对象,active
+nl_0090,nl,zh,afvalstoffen,废物,environment_waste,high,waste substances,废弃电池定义基础术语,active
+nl_0091,nl,zh,inzameling,收集,battery_waste,high,collection,废弃电池收集和报告核心术语,active
+nl_0092,nl,zh,gescheiden inzameling,分类收集,battery_waste,high,separate collection,电池不得混入生活垃圾的信息义务重点,active
+nl_0093,nl,zh,inzamelpercentage,收集率,battery_waste,high,collection rate,便携式电池生产者每年至少达到45%的指标,active
+nl_0094,nl,zh,inzameldoelstelling,收集目标,battery_waste,high,collection target,报告表格中便携式电池目标,active
+nl_0095,nl,zh,inzamelingscijfers,收集数据,battery_waste,medium,collection figures,报告表格中的统计数据,active
+nl_0096,nl,zh,inname,接收回收,battery_waste,high,take-back,生产者或经销商回收废弃电池的行为,active
+nl_0097,nl,zh,terugnemen,收回,battery_waste,high,take back,经销商/生产者回收义务动词,active
+nl_0098,nl,zh,kosteloos terugnemen,无偿收回,battery_waste,high,take back free of charge,经销商对最终用户废弃便携式电池义务,active
+nl_0099,nl,zh,inleveren,交回,battery_waste,high,return;hand in,最终用户将废弃电池交回回收点,active
+nl_0100,nl,zh,inzamelpunt,收集点,battery_waste,high,collection point,最终用户交回废弃电池地点,active
+nl_0101,nl,zh,innamepunt,回收接收点,battery_waste,high,take-back point,电池交回地点,active
+nl_0102,nl,zh,ophalen,提取回收,battery_waste,high,collect;pick up,生产者从经销商处提取已回收电池,active
+nl_0103,nl,zh,afstaan,移交,battery_waste,medium,hand over,经销商将回收电池移交生产者,active
+nl_0104,nl,zh,verwerking,处理,battery_waste,high,treatment,废弃电池在分类、准备材料回收或准备处置地点后的活动,active
+nl_0105,nl,zh,recycling als materiaal,材料回收,battery_waste,high,material recycling,处理后再次使用材料，不包括能量回收,active
+nl_0106,nl,zh,terugwinning van energie,能量回收,battery_waste,high,energy recovery,材料回收定义中排除的行为,active
+nl_0107,nl,zh,voorbereiden op recycling als materiaal,准备材料回收,battery_waste,high,preparing for material recycling,处理定义中的活动阶段,active
+nl_0108,nl,zh,voorbereiden op verwijdering,准备处置,battery_waste,high,preparing for disposal,处理定义中的活动阶段,active
+nl_0109,nl,zh,verwijdering,处置,battery_waste,high,disposal,废弃电池处理流程中的最终处置概念,active
+nl_0110,nl,zh,afvalbeheer,废物管理,environment_waste,high,waste management,回收、处理、再循环和其他废物管理总称,active
+nl_0111,nl,zh,overig afvalbeheer,其他废物管理,battery_waste,medium,other waste management,电池法规第三节标题术语,active
+nl_0112,nl,zh,best beschikbare technieken,最佳可用技术,environment_waste,high,BAT,battery treatment must use best available techniques,active
+nl_0113,nl,zh,bescherming van de gezondheid van de mens en het milieu,保护人体健康和环境,environment_waste,high,protection of human health and the environment,处理和回收技术要求目的,active
+nl_0114,nl,zh,gelijkwaardige omstandigheden,等同条件,battery_waste,high,equivalent conditions,欧共体外材料回收可计入时需证明的条件,active
+nl_0115,nl,zh,handelsbelemmering,贸易障碍,competition,high,trade barrier,生产者执行回收义务不得造成,active
+nl_0116,nl,zh,concurrentieverstoring,竞争扭曲,competition,high,distortion of competition,生产者执行义务不得造成,active
+nl_0117,nl,zh,kwik,汞,hazardous_substances,high,mercury,电池有害物质限值和化学符号标识对象,active
+nl_0118,nl,zh,cadmium,镉,hazardous_substances,high,cadmium,便携式电池有害物质限值对象,active
+nl_0119,nl,zh,lood,铅,hazardous_substances,high,lead,化学符号标识对象,active
+nl_0120,nl,zh,Hg,汞,hazardous_substances,high,kwik,汞的化学符号，标在回收标志下方,active
+nl_0121,nl,zh,Cd,镉,hazardous_substances,high,cadmium,镉的化学符号，标在回收标志下方,active
+nl_0122,nl,zh,Pb,铅,hazardous_substances,high,lood,铅的化学符号，标在回收标志下方,active
+nl_0123,nl,zh,gewichtsprocent,重量百分比,hazardous_substances,high,weight percent,汞、镉、铅限值单位,active
+nl_0124,nl,zh,meer dan 0,0005 gewichtsprocent kwik,汞含量超过0.0005重量百分比,medium,high,mercury over 0.0005 wt%,active
+nl_0125,nl,zh,nood- en alarmsystemen,应急和报警系统,battery_exception,medium,emergency and alarm systems,镉限制豁免用途之一,active
+nl_0126,nl,zh,noodverlichting,应急照明,battery_exception,medium,emergency lighting,应急系统示例,active
+nl_0127,nl,zh,medische apparatuur,医疗设备,battery_exception,high,medical equipment,镉限制豁免用途之一,active
+nl_0128,nl,zh,met de hand vast te houden apparaat,手持设备,battery_exception,medium,hand-held device,旧款镉电池工具豁免语境,active
+nl_0129,nl,zh,onderhoudswerkzaamheden,维护作业,battery_exception,medium,maintenance work,手持电动工具用途之一,active
+nl_0130,nl,zh,bouwwerkzaamheden,建筑作业,battery_exception,medium,construction work,手持电动工具用途之一,active
+nl_0131,nl,zh,tuinierwerkzaamheden,园艺作业,battery_exception,medium,gardening work,手持电动工具用途之一,active
+nl_0132,nl,zh,markering,标识,battery_marking,high,marking,电池和电池包必须带标志及化学符号,active
+nl_0133,nl,zh,symbool,符号,battery_marking,high,symbol,电池回收标志,active
+nl_0134,nl,zh,doorgekruiste klikobak,带叉号轮式垃圾桶,battery_marking,high,crossed-out wheeled bin,电池不得进入普通垃圾的标志,active
+nl_0135,nl,zh,chemisch symbool,化学符号,battery_marking,high,chemical symbol,Hg/Cd/Pb标识,active
+nl_0136,nl,zh,oppervlakte,面积,battery_marking,medium,surface area,回收标志尺寸要求,active
+nl_0137,nl,zh,grootste zijde,最大面,battery_marking,medium,largest side,符号面积计算基准,active
+nl_0138,nl,zh,verpakking,包装,battery_marking,high,packaging,电池本体符号过小时标在包装上,active
+nl_0139,nl,zh,capaciteit,容量,battery_marking,high,capacity,非工业电池需标注容量,active
+nl_0140,nl,zh,goed zichtbaar,清晰可见,battery_marking,high,clearly visible,标识显示要求,active
+nl_0141,nl,zh,duidelijk leesbaar,清晰可读,battery_marking,high,clearly legible,标识显示要求,active
+nl_0142,nl,zh,onuitwisbaar,不可擦除,battery_marking,high,indelible,标识耐久性要求,active
+nl_0143,nl,zh,informatie,信息,battery_information,medium,information,生产者和经销商信息义务章节,active
+nl_0144,nl,zh,volledig informeren,充分告知,battery_information,high,fully inform,生产者对最终用户的信息义务,active
+nl_0145,nl,zh,gezondheidseffecten,健康影响,battery_information,high,health effects,电池所用物质可能影响,active
+nl_0146,nl,zh,milieueffecten,环境影响,battery_information,high,environmental effects,电池所用物质可能影响,active
+nl_0147,nl,zh,huishoudelijk afval,生活垃圾,battery_information,high,household waste,电池不应投入的废物流,active
+nl_0148,nl,zh,restafval,剩余垃圾,battery_information,high,residual waste,报告表格中减少电池进入的对象,active
+nl_0149,nl,zh,betekenis van de symbolen,符号含义,battery_information,high,meaning of symbols,最终用户信息披露内容之一,active
+nl_0150,nl,zh,financiering,融资/费用承担,battery_finance,high,financing,生产者承担回收处理信息等全部费用,active
+nl_0151,nl,zh,kosten,费用,battery_finance,high,costs,生产者融资义务对象,active
+nl_0152,nl,zh,niet afzonderlijk getoond,不得单独列示,battery_finance,high,not shown separately,新便携式电池销售时不得向最终用户单列费用,active
+nl_0153,nl,zh,verslaglegging,报告,battery_reporting,high,reporting,电池法规第七节和附件表格主题,active
+nl_0154,nl,zh,verslag,报告,battery_reporting,high,report,制造商或生产者年度提交文件,active
+nl_0155,nl,zh,verslagjaar,报告年度,battery_reporting,high,reporting year,表格中统计年度,active
+nl_0156,nl,zh,voorafgaande kalenderjaar,上一日历年,battery_reporting,medium,previous calendar year,年度报告覆盖期间,active
+nl_0157,nl,zh,kalenderjaar,日历年,general_regulation,medium,calendar year,收集率和报告计算周期,active
+nl_0158,nl,zh,kwantitatieve gegevens,定量数据,battery_reporting,high,quantitative data,报告中需可核验的数据,active
+nl_0159,nl,zh,verifieerbare gegevens,可核验数据,battery_reporting,high,verifiable data,支撑报告数据的资料,active
+nl_0160,nl,zh,bewijsmateriaal,证明材料,battery_reporting,high,evidence,材料回收比例等数据需有证明,active
+nl_0161,nl,zh,jaarverslag,年度报告,battery_reporting,medium,annual report,可作为证明资料,active
+nl_0162,nl,zh,afvalverwerker,废物处理商,battery_reporting,high,waste processor,可提供报告支撑资料的主体,active
+nl_0163,nl,zh,collectieve uitvoeringsorganisatie,集体执行组织,epr,high,collective implementation organisation,可代表多个生产者或制造商提交报告,active
+nl_0164,nl,zh,aangesloten deelnemers,参与成员,epr,medium,affiliated participants,集体组织代表的生产者成员,active
+nl_0165,nl,zh,individuele producent,单个生产者,epr,medium,individual producer,报告主体类型之一,active
+nl_0166,nl,zh,KvK-nummer,商会注册号,general_business,medium,Chamber of Commerce number,荷兰企业注册编号字段,active
+nl_0167,nl,zh,contactpersoon,联系人,general_business,medium,contact person,报告表格字段,active
+nl_0168,nl,zh,ondertekenaar,签署人,general_business,medium,signatory,报告表格字段,active
+nl_0169,nl,zh,handtekening,签名,general_business,medium,signature,报告表格字段,active
+nl_0170,nl,zh,nikkel-cadmium,镍镉,battery_chemistry,high,nickel-cadmium,报告表格中材料回收比例分类,active
+nl_0171,nl,zh,loodzuur,铅酸,battery_chemistry,high,lead-acid,报告表格中材料回收比例分类,active
+nl_0172,nl,zh,overig,其他,general_regulation,low,other,报告分类兜底项,active
+nl_0173,nl,zh,elektrische personenauto,电动乘用车,ev_subsidy,high,electric passenger car,SEPP补贴对象核心术语,active
+nl_0174,nl,zh,personenauto,乘用车,vehicle_category,high,passenger car,SEPP补贴车辆类别,active
+nl_0175,nl,zh,particulieren,个人,ev_subsidy,high,private individuals,SEPP面向自然人私人消费者,active
+nl_0176,nl,zh,natuurlijke persoon,自然人,general_regulation,high,natural person,SEPP申请人资格核心条件,active
+nl_0177,nl,zh,aanvrager,申请人,ev_subsidy,high,applicant,提交补贴申请的自然人,active
+nl_0178,nl,zh,woonadres,居住地址,ev_subsidy,high,residential address,申请人需在荷兰有居住地址,active
+nl_0179,nl,zh,Nederland,荷兰,general_regulation,medium,Netherlands,法规适用国家和申请人居住地,active
+nl_0180,nl,zh,Rijksdienst voor Ondernemend Nederland,荷兰企业局,ev_subsidy,high,RVO,SEPP申请处理机构,active
+nl_0181,nl,zh,RVO,荷兰企业局,ev_subsidy,high,Rijksdienst voor Ondernemend Nederland,负责补贴申请处理的机构缩写,active
+nl_0182,nl,zh,subsidie,补贴,ev_subsidy,high,subsidy,SEPP核心财政支持术语,active
+nl_0183,nl,zh,subsidiebedrag,补贴金额,ev_subsidy,high,subsidy amount,新车和二手车按年度不同金额,active
+nl_0184,nl,zh,subsidieplafond,补贴上限,ev_subsidy,high,subsidy ceiling,年度类别预算总上限,active
+nl_0185,nl,zh,subsidieverlening,补贴授予,ev_subsidy,high,subsidy grant,部长作出授予决定的阶段,active
+nl_0186,nl,zh,subsidievaststelling,补贴确定,ev_subsidy,high,subsidy determination,授予后最终确定补贴的程序,active
+nl_0187,nl,zh,vaststelling,确定,ev_subsidy,high,determination,新车18个月/二手车6个月内申请,active
+nl_0188,nl,zh,aanvraag,申请,ev_subsidy,high,application,补贴申请文件或行为,active
+nl_0189,nl,zh,volledige aanvraag,完整申请,ev_subsidy,high,complete application,按收到日期排序分配补贴,active
+nl_0190,nl,zh,datum van ontvangst,收到日期,ev_subsidy,medium,date of receipt,补贴先到先得排序依据,active
+nl_0191,nl,zh,wie het eerst komt,het eerst maalt,先到先得,medium,high,first-come first-served,active
+nl_0192,nl,zh,loting,抽签,ev_subsidy,high,lottery,同日超额申请时确定顺序,active
+nl_0193,nl,zh,rangschikking,排序,ev_subsidy,medium,ranking,补贴申请优先顺序,active
+nl_0194,nl,zh,aanvraagperiode,申请期,ev_subsidy,high,application window,补贴申请开放时间,active
+nl_0195,nl,zh,kalenderjaar waarin de overeenkomst is gesloten,协议签订所在日历年,ev_subsidy,medium,calendar year of agreement,申请需在同一年度提交,active
+nl_0196,nl,zh,overeenkomst,协议,contract,high,agreement,购车或租赁合同统称,active
+nl_0197,nl,zh,koopovereenkomst,购买协议,contract,high,purchase agreement,购买新车或二手电动车的书面协议,active
+nl_0198,nl,zh,leaseovereenkomst,租赁协议,contract,high,lease agreement,私人租赁补贴所需合同,active
+nl_0199,nl,zh,schriftelijke overeenkomst,书面协议,contract,high,written agreement,SEPP购车/租赁条件之一,active
+nl_0200,nl,zh,operational lease,经营性租赁,contract,high,operationele lease,SEPP私人租赁协议类型,active
+nl_0201,nl,zh,lessor,出租方,contract,high,verhuurder;lessor,租赁协议中提供车辆的一方,active
+nl_0202,nl,zh,lessee,承租方,contract,high,huurder;lessee,租赁协议中使用车辆的一方,active
+nl_0203,nl,zh,Keurmerk Private Lease,私人租赁质量标志,contract,high,Private Lease Quality Mark,SEPP租赁协议必须满足的认证标志,active
+nl_0204,nl,zh,nieuwe personenauto,新乘用车,ev_subsidy,high,new passenger car,首次准入、首次荷兰登记和登记到名下日期相同的车辆,active
+nl_0205,nl,zh,gebruikte personenauto,二手乘用车,ev_subsidy,high,used passenger car,不符合新车定义的电动乘用车,active
+nl_0206,nl,zh,nieuwe elektrische personenauto,新电动乘用车,ev_subsidy,high,new electric passenger car,购买或租赁新车补贴对象,active
+nl_0207,nl,zh,gebruikte elektrische personenauto,二手电动乘用车,ev_subsidy,high,used electric passenger car,购买或租赁二手车补贴对象,active
+nl_0208,nl,zh,volledig emissievrij,完全零排放,ev_technical,high,fully emission-free,电动乘用车定义条件,active
+nl_0209,nl,zh,nul CO2-uitstoot,零二氧化碳排放,ev_technical,high,zero CO2 emissions,电动乘用车定义条件,active
+nl_0210,nl,zh,uitsluitend aangedreven door een elektromotor,仅由电动机驱动,ev_technical,high,powered exclusively by an electric motor,SEPP电动车技术条件,active
+nl_0211,nl,zh,elektromotor,电动机,ev_technical,high,electric motor,电动乘用车动力来源,active
+nl_0212,nl,zh,datum van eerste toelating,首次准入日期,vehicle_registration,high,date of first admission,新车定义和二手车原始目录价判断基准,active
+nl_0213,nl,zh,eerste inschrijving in Nederland,在荷兰首次登记,vehicle_registration,high,first registration in the Netherlands,新车定义条件之一,active
+nl_0214,nl,zh,tenaamstelling,登记到名下,vehicle_registration,high,name registration,车辆登记至申请人名下,active
+nl_0215,nl,zh,datum tenaamstelling,登记到名下日期,vehicle_registration,high,date of name registration,新车定义条件之一,active
+nl_0216,nl,zh,kentekenregister,车辆登记簿,vehicle_registration,high,vehicle register,车辆登记到申请人名下的登记系统,active
+nl_0217,nl,zh,op naam van de aanvrager,登记在申请人名下,vehicle_registration,high,in the applicant's name,补贴义务核心要求,active
+nl_0218,nl,zh,ononderbroken,不间断地,ev_subsidy,medium,uninterrupted,车辆需连续登记在申请人名下,active
+nl_0219,nl,zh,particulier vermogen,私人资产,ev_subsidy,high,private assets,购买车辆需属于申请人私人资产,active
+nl_0220,nl,zh,catalogusprijs,目录价格,ev_subsidy,high,catalog price,SEPP价格门槛依据，含VAT和BPM,active
+nl_0221,nl,zh,BPM,乘用车和摩托车税,vehicle_tax,high,Belasting van personenauto’s en motorrijwielen,目录价格定义相关荷兰车辆税,active
+nl_0222,nl,zh,btw,增值税,tax,high,VAT,目录价格包含项目之一,active
+nl_0223,nl,zh,Belasting van personenauto’s en motorrijwielen 1992,1992年乘用车和摩托车税法,vehicle_tax,high,BPM Act 1992,目录价格定义来源,active
+nl_0224,nl,zh,actieradius,续驶里程,ev_technical,high,range,SEPP最低120公里技术条件,active
+nl_0225,nl,zh,WLTP,全球统一轻型车辆测试程序,ev_technical,high,Worldwide Harmonized Light Vehicle Test Procedure,续驶里程测定优先方法,active
+nl_0226,nl,zh,NEDC,新欧洲驾驶循环,ev_technical,high,New European Driving Cycle,无WLTP数据时使用的续驶里程测定方法,active
+nl_0227,nl,zh,minimale actieradius,最低续驶里程,ev_technical,high,minimum range,SEPP要求至少120 km,active
+nl_0228,nl,zh,erkend autobedrijf,认可汽车企业,ev_subsidy,high,recognized car company,二手电动车购买补贴卖方要求,active
+nl_0229,nl,zh,autobedrijf,汽车企业,vehicle_market,high,car company,二手车卖方主体,active
+nl_0230,nl,zh,verkoper,卖方,contract,medium,seller,二手车购买协议主体,active
+nl_0231,nl,zh,eerder op naam gesteld,曾登记在……名下,vehicle_registration,high,previously registered in name,二手车不得曾登记于申请人或同住者名下,active
+nl_0232,nl,zh,op hetzelfde adres woonachtig,居住在同一地址,ev_subsidy,high,living at the same address,二手车既往登记限制对象,active
+nl_0233,nl,zh,subsidieontvanger,补贴接受人,ev_subsidy,high,subsidy recipient,获得SEPP补贴的申请人,active
+nl_0234,nl,zh,verplichtingen,义务,general_regulation,high,obligations,补贴条件和电池法规义务,active
+nl_0235,nl,zh,meldingsplicht,报告义务,general_regulation,high,reporting duty,补贴接受人对破产、变更等即时报告义务,active
+nl_0236,nl,zh,onverwijld melden,立即报告,general_regulation,high,notify immediately,SEPP补贴接受人的报告义务表达,active
+nl_0237,nl,zh,faillissement,破产,general_regulation,high,bankruptcy,补贴接受人需报告事项,active
+nl_0238,nl,zh,schuldsanering,债务重整,general_regulation,high,debt rescheduling,补贴接受人需报告事项,active
+nl_0239,nl,zh,surseance van betaling,延期付款,general_regulation,high,suspension of payments,补贴接受人需报告事项,active
+nl_0240,nl,zh,wijziging van omstandigheden,情况变更,general_regulation,high,change in circumstances,补贴相关重要变更需报告,active
+nl_0241,nl,zh,misbruik en oneigenlijk gebruik,滥用和不当使用,ev_subsidy,high,abuse and misuse,SEPP执行监管条款标题术语,active
+nl_0242,nl,zh,bestuurlijke boete,行政罚款,general_enforcement,high,administrative fine,滥用登记记录内容之一,active
+nl_0243,nl,zh,register,登记册,general_enforcement,high,registry,部长保存5年的滥用和不当使用记录,active
+nl_0244,nl,zh,verlaagd,降低,general_enforcement,medium,lowered,因申请人过错降低补贴授予,active
+nl_0245,nl,zh,ingetrokken,撤回,general_enforcement,high,withdrawn,因申请人过错撤回补贴授予,active
+nl_0246,nl,zh,gewijzigd,变更,general_enforcement,medium,modified,因申请人过错修改补贴授予,active
+nl_0247,nl,zh,gedraging,行为,general_enforcement,medium,conduct,导致处罚或补贴调整的行为性质,active
+nl_0248,nl,zh,terugbetaling,返还,ev_subsidy,high,repayment,未满足持有期限时部分返还补贴,active
+nl_0249,nl,zh,gedeeltelijk terugbetalen,部分返还,ev_subsidy,high,partially repay,3年内转让购买车辆时适用,active
+nl_0250,nl,zh,1/36e deel,三十六分之一,ev_subsidy,high,one thirty-sixth,购买车辆义务未履行月份返还计算比例,active
+nl_0251,nl,zh,1/48e deel,四十八分之一,ev_subsidy,high,one forty-eighth,租赁补贴按月支付比例,active
+nl_0252,nl,zh,maandelijkse termijnen,每月分期,ev_subsidy,high,monthly installments,租赁补贴支付方式,active
+nl_0253,nl,zh,voorschot,预付款,ev_subsidy,high,advance payment,SEPP不提供预付款,active
+nl_0254,nl,zh,geen voorschotten,不提供预付款,ev_subsidy,high,no advance payments,SEPP最终规定之一,active
+nl_0255,nl,zh,IBAN-rekening,IBAN账户,finance,high,IBAN account,补贴仅支付至申请人名下银行账户,active
+nl_0256,nl,zh,bankrekening,银行账户,finance,medium,bank account,补贴支付账户,active
+nl_0257,nl,zh,op naam van de aanvrager staande bankrekening,申请人名下银行账户,finance,high,bank account held by applicant,SEPP付款条件,active
+nl_0258,nl,zh,leveringstermijn,交付期限,ev_subsidy,medium,delivery time,超出确定申请期限时可延期,active
+nl_0259,nl,zh,verlenging,延期,general_regulation,medium,extension,决定期限或确定申请期限可延长,active
+nl_0260,nl,zh,beslistermijn,决定期限,general_regulation,high,decision period,部长13周内决定且可延长13周,active
+nl_0261,nl,zh,binnen 13 weken,13周内,general_regulation,medium,within 13 weeks,部长决定期限,active
+nl_0262,nl,zh,resterende periode,剩余期间,ev_subsidy,medium,remainder of the period,替换车辆需登记剩余义务期,active
+nl_0263,nl,zh,vervangende elektrische personenauto,替代电动乘用车,ev_subsidy,high,replacement electric passenger car,车辆替换不触发返还的条件之一,active
+nl_0264,nl,zh,behoudplicht,持有义务,ev_subsidy,high,retention obligation,购买3年或租赁4年登记保持义务,active
+nl_0265,nl,zh,drie jaar,三年,general_regulation,medium,three years,购买补贴车辆持有期限,active
+nl_0266,nl,zh,vier jaar,四年,general_regulation,medium,four years,租赁补贴车辆持有期限,active
+nl_0267,nl,zh,beëindiging van de leaseovereenkomst,租赁协议终止,contract,high,termination of lease agreement,提前终止时月度补贴停止,active
+nl_0268,nl,zh,voortijdig beëindigd,提前终止,contract,high,terminated early,租赁补贴停止支付触发情形,active
+nl_0269,nl,zh,uitbetaling,支付,finance,high,payment,补贴发放,active
+nl_0270,nl,zh,uitbetaald,已支付,finance,medium,paid,补贴支付状态,active
+nl_0271,nl,zh,kleine en compacte middenklasse,小型和紧凑型中级车,vehicle_category,medium,small and compact middle-class segment,SEPP政策目标车辆细分市场,active
+nl_0272,nl,zh,elektrisch rijden,电动出行,ev_policy,medium,electric driving,SEPP政策目标表述,active
+nl_0273,nl,zh,CO2-uitstoot,二氧化碳排放,ev_policy,high,CO2 emissions,SEPP减排目标,active
+nl_0274,nl,zh,particuliere consument,私人消费者,ev_policy,high,private consumer,SEPP政策受益群体,active
+nl_0275,nl,zh,koop,购买,contract,high,purchase,SEPP补贴场景之一,active
+nl_0276,nl,zh,lease,租赁,contract,high,lease,SEPP补贴场景之一,active
+nl_0277,nl,zh,aanschaf,购置,ev_subsidy,high,acquisition;purchase,购买电动车补贴语境常见词,active
+nl_0278,nl,zh,aanvrager kan slechts eenmaal subsidie ontvangen,申请人只能获得一次补贴,ev_subsidy,high,one-time subsidy per applicant,SEPP一般条件,active
+nl_0279,nl,zh,publicatiedatum,发布日期,general_regulation,medium,date of publication,书面购买协议签署日期条件,active

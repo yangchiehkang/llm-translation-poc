@@ -28,6 +28,8 @@ DEFAULT_INPUT_BY_LANG = {
     "no": Path("termbase/manual_extracted_no_terms_v0.2.csv"),
     "id": Path("termbase/manual_extracted_id_terms_v0.2.csv"),
     "th": Path("termbase/manual_extracted_th_terms_v0.2.csv"),
+    "sv": Path("termbase/manual_extracted_sv_terms_v0.2.csv"),
+    "nl": Path("termbase/manual_extracted_nl_terms_v0.2.csv"),
 }
 
 VALID_PRIORITY = {"high", "medium", "low"}
@@ -66,11 +68,40 @@ HIGH_DOMAINS = {
     "vehicle_material",
     "vehicle_maintenance",
     "vehicle_documentation",
+    "vehicle_tax",
+    "vehicle_waste",
 
     "ev_general",
     "ev_powertrain",
     "ev_battery",
     "ev_safety",
+    "ev_subsidy",
+    "ev_technical",
+    "ev_policy",
+
+    "battery_general",
+    "battery_category",
+    "battery_waste",
+    "battery_regulation",
+    "battery_epr",
+    "battery_exception",
+    "battery_marking",
+    "battery_information",
+    "battery_finance",
+    "battery_reporting",
+    "battery_chemistry",
+
+    "epr",
+    "ewaste",
+    "market_surveillance",
+    "market_access",
+    "hazardous_substances",
+    "competition",
+    "contract",
+    "tax",
+    "finance",
+    "general_business",
+    "general_enforcement",
 
     "road_traffic",
     "road_infrastructure",
@@ -99,6 +130,22 @@ HIGH_DOMAINS = {
 
     "environment_waste",
     "environment_noise",
+    "environment_regulation",
+    "environment_enforcement",
+    "environment_authority",
+    "environment_transport",
+    "environment_permit",
+    "environment_policy",
+
+    "municipal_waste",
+    "packaging_waste",
+    "construction_waste",
+    "mercury_waste",
+    "ship_waste",
+    "traceability",
+    "reporting",
+    "transboundary_waste",
+    "rcode_dcode",
 
     "seatbelt_restraint",
     "seatbelt_anchorage",
@@ -172,6 +219,9 @@ LOW_TERMS = {
     "ชื่อเต็ม",
     "ชื่อย่อ",
     "สัญลักษณ์",
+
+    # nl
+    "overig",
 }
 
 def clean(value):
@@ -271,7 +321,7 @@ def resolve_input_path():
 
         return Path(arg)
 
-    return DEFAULT_INPUT_BY_LANG["th"]
+    return DEFAULT_INPUT_BY_LANG["nl"]
 
 def main():
     input_path = resolve_input_path()
