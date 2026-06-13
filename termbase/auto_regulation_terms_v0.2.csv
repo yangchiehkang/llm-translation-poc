@@ -3579,3 +3579,557 @@ pt_0426,pt,zh,dispositivo luminoso de identificação dos veículos tipo táxi,�
 pt_0427,pt,zh,poder concedente do serviço,服务授权机关,general_regulation,medium,service granting authority,出租车发光标识监管主体,active
 pt_0428,pt,zh,inovações tecnológicas,技术创新,general_regulation,high,technological innovations,可经认证或国际法规认可接受,active
 pt_0429,pt,zh,legislação internacional reconhecida,认可的国际法规,general_regulation,high,recognized international legislation,技术创新合规证明依据,active
+vi_0015,vi,zh,QCVN,国家技术规范,general_regulation,high,Quy chuẩn kỹ thuật quốc gia,越南国家技术规范编号前缀,active
+vi_0016,vi,zh,QCVN 09:2024/BGTVT,越南国家技术规范QCVN 09:2024/BGTVT,vehicle_regulation,high,National Technical Regulation on Safety and Environmental Protection for Automobiles,汽车安全与环境保护国家技术规范,active
+vi_0017,vi,zh,QCVN 09:2015/BGTVT,越南国家技术规范QCVN 09:2015/BGTVT,vehicle_regulation,medium,previous version,被QCVN 09:2024/BGTVT替代的旧版规范,active
+vi_0018,vi,zh,BGTVT,交通运输部,general_regulation,high,Bộ Giao thông vận tải,越南交通运输部缩写，QCVN发布机关,active
+vi_0019,vi,zh,Bộ Giao thông vận tải,交通运输部,general_regulation,high,Ministry of Transport,发布QCVN 09:2024/BGTVT的主管部门,active
+vi_0020,vi,zh,Thông tư,通知/通函,general_regulation,high,Circular,越南部门规章文件类型,active
+vi_0021,vi,zh,Thông tư số 48/2024/TT-BGTVT,第48/2024/TT-BGTVT号通知,general_regulation,high,Circular No. 48/2024/TT-BGTVT,QCVN 09:2024/BGTVT发布依据,active
+vi_0022,vi,zh,Cục Đăng kiểm Việt Nam,越南登记局,road_authority,high,Vietnam Register,负责汽车检查、试验和认证的主管技术机构,active
+vi_0023,vi,zh,Cục Khoa học,Công nghệ và Môi trường,科学技术与环境局,medium,medium,Department of Science Technology and Environment,active
+vi_0024,vi,zh,quy chuẩn kỹ thuật quốc gia,国家技术规范,general_regulation,high,national technical regulation,QCVN全称核心术语,active
+vi_0025,vi,zh,an toàn kỹ thuật,技术安全,vehicle_safety,high,technical safety,QCVN 09核心监管目标之一,active
+vi_0026,vi,zh,bảo vệ môi trường,环境保护,environment,high,environmental protection,QCVN 09核心监管目标之一,active
+vi_0027,vi,zh,ô tô,汽车,vehicle_general,high,automobile,QCVN 09适用对象,active
+vi_0028,vi,zh,xe ô tô,汽车,vehicle_general,high,motor vehicle;automobile,越南法规中汽车常用表达,active
+vi_0029,vi,zh,ô tô sản xuất,生产汽车,vehicle_market,high,manufactured automobiles,适用新车来源之一,active
+vi_0030,vi,zh,ô tô lắp ráp,组装汽车,vehicle_market,high,assembled automobiles,适用新车来源之一,active
+vi_0031,vi,zh,ô tô nhập khẩu,进口汽车,vehicle_market,high,imported automobiles,适用新车来源之一,active
+vi_0032,vi,zh,sản xuất,生产,vehicle_market,medium,manufacture,车辆来源和企业活动术语,active
+vi_0033,vi,zh,lắp ráp,组装,vehicle_market,medium,assemble,车辆来源和企业活动术语,active
+vi_0034,vi,zh,nhập khẩu,进口,vehicle_market,high,import,进口车辆适用术语,active
+vi_0035,vi,zh,kiểm tra,检查,vehicle_approval,high,inspection,QCVN适用范围核心活动,active
+vi_0036,vi,zh,chứng nhận,认证,vehicle_approval,high,certification,QCVN适用范围核心活动,active
+vi_0037,vi,zh,hồ sơ kỹ thuật,技术文件,vehicle_approval,high,technical documentation,制造商和进口商需提交,active
+vi_0038,vi,zh,xe mẫu,样车,vehicle_approval,high,sample vehicle,用于试验认证,active
+vi_0039,vi,zh,sản xuất hàng loạt,批量生产,vehicle_approval,high,mass production,越南登记局进行工厂检查和质量审核的场景,active
+vi_0040,vi,zh,kiểm tra nhà xưởng,工厂检查,vehicle_approval,high,factory inspection,批量生产车辆管理要求,active
+vi_0041,vi,zh,đánh giá kiểm soát chất lượng,质量控制审核,vehicle_approval,high,quality control audit,批量生产车辆认证管理要求,active
+vi_0042,vi,zh,lộ trình áp dụng,实施路线图,general_regulation,high,roadmap for compliance,QCVN分阶段适用要求,active
+vi_0043,vi,zh,ngày có hiệu lực,生效日期,general_regulation,medium,effective date,法规实施时间术语,active
+vi_0044,vi,zh,kích thước bao,外廓尺寸,vehicle_dimensions,high,overall dimensions,车辆最大长度、宽度、高度要求,active
+vi_0045,vi,zh,chiều dài lớn nhất,最大长度,vehicle_dimensions,high,maximum length,车辆尺寸限值,active
+vi_0046,vi,zh,chiều rộng lớn nhất,最大宽度,vehicle_dimensions,high,maximum width,车辆尺寸限值,active
+vi_0047,vi,zh,chiều cao lớn nhất,最大高度,vehicle_dimensions,high,maximum height,车辆尺寸限值,active
+vi_0048,vi,zh,khối lượng,质量,vehicle_weight,high,mass,车辆质量和载荷计算通用术语,active
+vi_0049,vi,zh,khối lượng toàn bộ,总质量,vehicle_weight,high,total mass,车辆质量限值术语,active
+vi_0050,vi,zh,khối lượng toàn bộ thiết kế lớn nhất,最大设计总质量,vehicle_weight,high,maximum design mass,发动机功率和质量限值相关参数,active
+vi_0051,vi,zh,khối lượng bản thân,整备质量,vehicle_weight,high,curb mass;unladen mass,车辆空载状态质量,active
+vi_0052,vi,zh,tải trọng trục,轴荷,vehicle_weight,high,axle load,单轴和轴组质量限值,active
+vi_0053,vi,zh,trục đơn,单轴,vehicle_weight,high,single axle,轴荷限值类别之一,active
+vi_0054,vi,zh,cụm trục kép,双联轴组,vehicle_weight,high,tandem axle group,轴组质量限值类别之一,active
+vi_0055,vi,zh,cụm trục ba,三联轴组,vehicle_weight,high,tri-axle group,轴组质量限值类别之一,active
+vi_0056,vi,zh,khoảng cách trục,轴距/轴间距,vehicle_geometry,high,axle spacing;wheelbase,视上下文可指轴距或轴组轴间距,active
+vi_0057,vi,zh,chiều dài cơ sở,轴距,vehicle_geometry,high,wheelbase,车辆几何参数,active
+vi_0058,vi,zh,chiều dài cơ sở tính toán,计算轴距,vehicle_geometry,high,calculated wheelbase,后悬限值计算参数Lcs,active
+vi_0059,vi,zh,Lcs,计算轴距,vehicle_geometry,high,calculated wheelbase,后悬ROH比例基准,active
+vi_0060,vi,zh,vết bánh xe sau,后轮距,vehicle_geometry,high,rear track width,高度约束公式中的WT,active
+vi_0061,vi,zh,WT,后轮距,vehicle_geometry,medium,rear track width,最大高度约束参数,active
+vi_0062,vi,zh,khoảng sáng gầm xe,离地间隙,vehicle_geometry,high,ground clearance,越野车判定指标之一,active
+vi_0063,vi,zh,góc tiếp cận,接近角,vehicle_geometry,high,approach angle,越野车判定指标,active
+vi_0064,vi,zh,góc thoát,离去角,vehicle_geometry,high,departure angle,越野车判定指标,active
+vi_0065,vi,zh,ROH,后悬,vehicle_geometry,high,Rear Overhang,从后轴或后轴组中心至车辆最后端距离,active
+vi_0066,vi,zh,đuôi xe,车尾,vehicle_structure,medium,rear of vehicle,后悬测量相关部位,active
+vi_0067,vi,zh,điểm sau cùng của xe,车辆最后端点,vehicle_geometry,high,rearmost point of vehicle,ROH定义测量终点,active
+vi_0068,vi,zh,trục sau,后轴,vehicle_geometry,high,rear axle,ROH定义测量基准,active
+vi_0069,vi,zh,cụm trục sau,后轴组,vehicle_geometry,high,rear axle group,ROH定义测量基准,active
+vi_0070,vi,zh,xe tải tự đổ,自卸货车,vehicle_category,high,dump truck,最大尺寸表中的车辆类别,active
+vi_0071,vi,zh,xe khách nối toa,铰接客车,vehicle_category,high,articulated bus,最大长度20m的车辆类别,active
+vi_0072,vi,zh,xe buýt hai tầng,双层客车,vehicle_category,high,double-decker bus,最大高度4.2m的车辆类别,active
+vi_0073,vi,zh,xe chở người,载客汽车,vehicle_category,high,passenger vehicle,后悬限值和稳定性要求类别,active
+vi_0074,vi,zh,xe chở hàng,载货汽车,vehicle_category,high,cargo vehicle,后悬限值类别,active
+vi_0075,vi,zh,xe con,乘用车,vehicle_category,high,passenger car,制动距离和能源消耗适用类别,active
+vi_0076,vi,zh,xe tải,货车,vehicle_category,high,truck,制动和噪声类别,active
+vi_0077,vi,zh,xe buýt,客车,vehicle_category,high,bus,制动、噪声和悬架频率要求类别,active
+vi_0078,vi,zh,xe khách giường nằm,卧铺客车,special_vehicle,high,sleeper bus,QCVN专用车辆要求之一,active
+vi_0079,vi,zh,xe đưa đón học sinh,校车,special_vehicle,high,school bus,QCVN专用车辆要求之一,active
+vi_0080,vi,zh,xe nhà ở lưu động,旅居车,special_vehicle,high,motorhome;caravan,QCVN专用车辆要求之一,active
+vi_0081,vi,zh,công suất động cơ,发动机功率,vehicle_performance,high,engine power,每吨最大设计质量最低7.35 kW要求,active
+vi_0082,vi,zh,công suất,功率,vehicle_performance,medium,power,发动机和噪声限值分类参数,active
+vi_0083,vi,zh,khả năng tăng tốc,加速能力,vehicle_performance,high,acceleration capability,200m加速时间要求,active
+vi_0084,vi,zh,tốc độ lớn nhất,最高车速,vehicle_performance,high,maximum speed,QCVN要求不低于60 km/h,active
+vi_0085,vi,zh,khả năng leo dốc,爬坡能力,vehicle_performance,high,gradeability,满载状态下坡度要求,active
+vi_0086,vi,zh,độ dốc,坡度,vehicle_performance,medium,gradient,爬坡和驻车制动测试条件,active
+vi_0087,vi,zh,đầy tải,满载,vehicle_weight,medium,full load,爬坡能力测试状态,active
+vi_0088,vi,zh,ổn định ngang tĩnh,静态横向稳定性,vehicle_stability,high,static lateral stability,车辆倾斜角稳定性要求,active
+vi_0089,vi,zh,góc ổn định ngang tĩnh,静态横向稳定角,vehicle_stability,high,static lateral stability angle,载客车不低于28度等要求,active
+vi_0090,vi,zh,tần số dao động riêng,固有振动频率,vehicle_dynamics,high,natural vibration frequency,附录A悬架舒适性测试指标,active
+vi_0091,vi,zh,phần được treo của xe,车辆悬挂部分,vehicle_dynamics,high,suspended part of vehicle,固有振动频率测定对象,active
+vi_0092,vi,zh,phanh chính,行车制动器,braking,high,service brake,必须独立并作用于所有车轮,active
+vi_0093,vi,zh,phanh đỗ,驻车制动器,braking,high,parking brake,应能在20%坡度上保持车辆,active
+vi_0094,vi,zh,dẫn động phanh hai dòng,双回路制动传动,braking,high,dual-circuit brake actuation,行车制动要求,active
+vi_0095,vi,zh,tất cả các bánh xe,所有车轮,braking,medium,all wheels,行车制动应装备对象,active
+vi_0096,vi,zh,ABS,防抱死制动系统,braking,high,Anti-lock Braking System,卧铺客车强制配置,active
+vi_0097,vi,zh,hệ thống chống bó cứng phanh,防抱死制动系统,braking,high,ABS,越南语全称建议与ABS对应,active
+vi_0098,vi,zh,hiệu quả phanh,制动效能,braking,high,braking efficiency,制动距离限值相关指标,active
+vi_0099,vi,zh,quãng đường phanh,制动距离,braking,high,stopping distance,不同车辆类别限值不同,active
+vi_0100,vi,zh,không tải,空载,vehicle_weight,medium,unladen,制动测试状态之一,active
+vi_0101,vi,zh,hệ thống lái,转向系统,steering,high,steering system,QCVN技术安全核心系统,active
+vi_0102,vi,zh,vô lăng lái,方向盘,steering,high,steering wheel,自由转角限值测量对象,active
+vi_0103,vi,zh,độ rơ vô lăng lái,方向盘自由转角,steering,high,steering wheel play,乘用车/轻型车10度，其他15度,active
+vi_0104,vi,zh,bán kính quay vòng,转弯半径,steering,high,turning radius,最外侧车轮轨迹最大12m,active
+vi_0105,vi,zh,vết bánh xe ngoài cùng,最外侧车轮轨迹,steering,medium,outermost wheel track,转弯半径测量基准,active
+vi_0106,vi,zh,lốp xe,轮胎,wheel_tire,high,tire,应符合QCVN 34:2024/BGTVT,active
+vi_0107,vi,zh,QCVN 34:2024/BGTVT,越南国家技术规范QCVN 34:2024/BGTVT,wheel_tire,high,tire regulation,轮胎合规依据,active
+vi_0108,vi,zh,chắn bùn,挡泥板,wheel_tire,high,mudguard,QCVN强制要求,active
+vi_0109,vi,zh,che bánh xe,轮罩,wheel_tire,high,wheel cover,QCVN强制要求,active
+vi_0110,vi,zh,giường nằm,卧铺,special_vehicle,high,sleeper berth,卧铺客车布置对象,active
+vi_0111,vi,zh,bố trí dọc,纵向布置,special_vehicle,medium,longitudinal layout,卧铺应纵向布置,active
+vi_0112,vi,zh,tầng giường,卧铺层数,special_vehicle,medium,bed tier,卧铺最多两层,active
+vi_0113,vi,zh,khoảng cách giường,卧铺间距,special_vehicle,high,bed spacing,卧铺客车尺寸要求,active
+vi_0114,vi,zh,chiều rộng giường,卧铺宽度,special_vehicle,high,bed width,卧铺客车尺寸要求,active
+vi_0115,vi,zh,lối đi,通道,special_vehicle,high,aisle,卧铺客车通道宽度要求,active
+vi_0116,vi,zh,chiều rộng lối đi,通道宽度,special_vehicle,high,aisle width,不小于400mm,active
+vi_0117,vi,zh,dây đai an toàn,安全带,vehicle_safety,high,seat belt,卧铺和座椅安全要求,active
+vi_0118,vi,zh,dây đai an toàn hai điểm,两点式安全带,vehicle_safety,high,2-point seat belt,卧铺至少要求,active
+vi_0119,vi,zh,dây đai an toàn ba điểm,三点式安全带,vehicle_safety,high,3-point seat belt,前排外侧座椅要求,active
+vi_0120,vi,zh,lan can bảo vệ,防护栏,special_vehicle,high,guardrail,上层卧铺防护要求,active
+vi_0121,vi,zh,giường trên,上层卧铺,special_vehicle,medium,upper bed,需设置安全带和防护栏,active
+vi_0122,vi,zh,màu vàng đậm,深黄色,special_vehicle,medium,dark yellow,校车外观颜色要求,active
+vi_0123,vi,zh,biển hiệu SCHOOL BUS,SCHOOL BUS标识,special_vehicle,high,SCHOOL BUS signage,校车前后和侧面标识,active
+vi_0124,vi,zh,cần STOP tự động,自动STOP臂,special_vehicle,high,automatic STOP arm,校车上下学生时展开,active
+vi_0125,vi,zh,đèn cảnh báo,警示灯,special_vehicle,high,warning lights,校车上下学生时使用,active
+vi_0126,vi,zh,báo động trẻ em bị bỏ quên,遗忘儿童报警,special_vehicle,high,Forgotten Child Alarm,发动机停止3分钟后车内报警，未解除则车外报警,active
+vi_0127,vi,zh,báo động bên trong xe,车内报警,special_vehicle,high,internal alarm,遗忘儿童报警阶段之一,active
+vi_0128,vi,zh,báo động bên ngoài xe,车外报警,special_vehicle,high,external alarm,未在车尾解除时触发,active
+vi_0129,vi,zh,camera trong xe,车内摄像头,special_vehicle,high,internal camera,监控驾驶员和学生,active
+vi_0130,vi,zh,học sinh,学生,special_vehicle,medium,students,校车运输对象,active
+vi_0131,vi,zh,trẻ mầm non,学前儿童,special_vehicle,medium,preschool child,校车乘员质量计算30kg,active
+vi_0132,vi,zh,học sinh tiểu học,小学生,special_vehicle,medium,primary school student,校车乘员质量计算48kg,active
+vi_0133,vi,zh,học sinh trung học,中学生,special_vehicle,medium,secondary school student,校车乘员质量计算53kg,active
+vi_0134,vi,zh,khu vực ngủ,睡眠区,motorhome,medium,sleeping area,旅居车设施之一,active
+vi_0135,vi,zh,bàn ghế,桌椅,motorhome,medium,table and chairs,旅居车设施之一,active
+vi_0136,vi,zh,bếp,厨房,motorhome,medium,kitchen,旅居车设施之一,active
+vi_0137,vi,zh,khoang chứa đồ,储物空间,motorhome,medium,storage compartment,旅居车设施之一,active
+vi_0138,vi,zh,bồn nước sạch,清水箱,motorhome,high,clean water tank,旅居车卫生设施之一,active
+vi_0139,vi,zh,bồn nước xám,灰水箱,motorhome,high,greywater tank,旅居车卫生设施之一,active
+vi_0140,vi,zh,bồn nước đen,黑水箱,motorhome,high,blackwater tank,旅居车卫生设施之一,active
+vi_0141,vi,zh,bình chữa cháy,灭火器,vehicle_safety,high,fire extinguisher,旅居车、16座以上客车和危险货物车辆要求,active
+vi_0142,vi,zh,đồ nội thất,家具,motorhome,medium,furniture,旅居车内部设施需圆角和固定,active
+vi_0143,vi,zh,bo tròn,圆角处理,motorhome,medium,rounded,旅居车家具安全要求,active
+vi_0144,vi,zh,cố định chắc chắn,牢固固定,motorhome,high,securely fixed,旅居车家具安全要求,active
+vi_0145,vi,zh,xe điện thuần túy,纯电动汽车,ev_safety,high,pure electric vehicle;PEV,QCVN电动车安全要求对象,active
+vi_0146,vi,zh,PEV,纯电动汽车,ev_safety,high,Pure Electric Vehicle,建议保留缩写并译出,active
+vi_0147,vi,zh,xe hybrid,混合动力汽车,ev_safety,high,hybrid vehicle,HEV/PHEV统称,active
+vi_0148,vi,zh,HEV,混合动力电动汽车,ev_safety,high,Hybrid Electric Vehicle,非插电式混合动力车辆,active
+vi_0149,vi,zh,PHEV,插电式混合动力电动汽车,ev_safety,high,Plug-in Hybrid Electric Vehicle,插电式混合动力车辆,active
+vi_0150,vi,zh,hệ thống lưu trữ năng lượng điện có thể sạc lại,可充电电能储存系统,ev_safety,high,REESS,为电驱动提供能量的储能系统，不含普通启动电池,active
+vi_0151,vi,zh,REESS,可充电电能储存系统,ev_safety,high,Rechargeable Electrical Energy Storage System,电动车高压安全核心术语,active
+vi_0152,vi,zh,hệ thống truyền động điện,电驱动系统,ev_safety,high,electric propulsion system,REESS提供能量的对象,active
+vi_0153,vi,zh,ắc quy khởi động,启动蓄电池,ev_safety,high,starter battery,REESS定义中排除对象,active
+vi_0154,vi,zh,điện áp cao,高电压,ev_safety,high,high voltage,大于60V DC或30V AC rms,active
+vi_0155,vi,zh,dòng điện một chiều,直流电,ev_safety,medium,DC,direct current,active
+vi_0156,vi,zh,dòng điện xoay chiều,交流电,ev_safety,medium,AC,alternating current,active
+vi_0157,vi,zh,giá trị hiệu dụng,有效值,ev_safety,medium,rms,交流高压阈值基准,active
+vi_0158,vi,zh,dây cáp điện áp cao,高压电缆,ev_safety,high,high-voltage cable,应为橙色,active
+vi_0159,vi,zh,màu cam,橙色,ev_safety,medium,orange,高压电缆颜色要求,active
+vi_0160,vi,zh,điện trở cách điện,绝缘电阻,ev_safety,high,insulation resistance,电动车安全关键指标,active
+vi_0161,vi,zh,phương pháp đo điện trở cách điện,绝缘电阻测量方法,ev_safety,high,insulation resistance measurement method,附录Đ技术方法,active
+vi_0162,vi,zh,cấp bảo vệ,防护等级,ev_safety,high,protection level,IPXXD和IPXXB要求,active
+vi_0163,vi,zh,IPXXD,IPXXD防护等级,ev_safety,high,IPXXD,乘员区域高压防护等级,active
+vi_0164,vi,zh,IPXXB,IPXXB防护等级,ev_safety,high,IPXXB,其他区域高压防护等级,active
+vi_0165,vi,zh,khu vực hành khách,乘员区域,ev_safety,high,passenger area,IPXXD适用区域,active
+vi_0166,vi,zh,bảo vệ chống nước,防水保护,ev_safety,high,water protection,涉水后保持绝缘要求,active
+vi_0167,vi,zh,đi qua nước,涉水行驶,ev_safety,high,driving through water,100mm深水500m测试,active
+vi_0168,vi,zh,hệ thống cảnh báo âm thanh cho xe điện,电动车声响警示系统,ev_safety,high,AVAS,低速时发出声音警示行人,active
+vi_0169,vi,zh,AVAS,声响车辆警示系统,ev_safety,high,Acoustic Vehicle Alerting System,M1类车辆强制配置,active
+vi_0170,vi,zh,xe loại M1,M1类车辆,vehicle_category,high,Category M1,AVAS和ISOFIX适用车辆类别,active
+vi_0171,vi,zh,ISOFIX,ISOFIX儿童座椅固定装置,vehicle_safety,high,ISOFIX child seat anchor,M1车辆2026年起强制,active
+vi_0172,vi,zh,điểm neo ghế trẻ em ISOFIX,ISOFIX儿童座椅固定点,vehicle_safety,high,ISOFIX child seat anchors,实施路线图中的强制项目,active
+vi_0173,vi,zh,xe hydro,氢能汽车,hydrogen_vehicle,high,hydrogen vehicle,包括燃料电池车和氢内燃机车,active
+vi_0174,vi,zh,xe pin nhiên liệu hydro,氢燃料电池汽车,hydrogen_vehicle,high,hydrogen fuel cell vehicle,PFCEV/FCV相关术语,active
+vi_0175,vi,zh,xe sử dụng pin nhiên liệu,燃料电池汽车,hydrogen_vehicle,high,Fuel Cell Vehicle;FCV,氢能汽车类别之一,active
+vi_0176,vi,zh,FCV,燃料电池汽车,hydrogen_vehicle,high,Fuel Cell Vehicle,建议保留缩写并译出,active
+vi_0177,vi,zh,PFCEV,氢燃料电池电动汽车,hydrogen_vehicle,high,hydrogen fuel cell electric vehicle,摘要中氢燃料电池车辆缩写,active
+vi_0178,vi,zh,xe động cơ đốt trong sử dụng hydro,氢内燃机汽车,hydrogen_vehicle,high,hydrogen internal combustion engine vehicle,氢能汽车类别之一,active
+vi_0179,vi,zh,động cơ đốt trong,内燃机,powertrain,high,internal combustion engine,氢内燃机车辆相关术语,active
+vi_0180,vi,zh,hệ thống lưu trữ hydro nén,压缩氢储存系统,hydrogen_vehicle,high,CHSS,氢燃料电池车储氢系统,active
+vi_0181,vi,zh,CHSS,压缩氢储存系统,hydrogen_vehicle,high,Compressed Hydrogen Storage System,35MPa至70MPa压力等级,active
+vi_0182,vi,zh,van xả áp kích hoạt bằng nhiệt,热触发泄压装置,hydrogen_vehicle,high,TPRD,氢系统安全泄放装置,active
+vi_0183,vi,zh,TPRD,热触发泄压装置,hydrogen_vehicle,high,Thermally-activated Pressure Relief Device,排放方向需避开点火源和乘员等,active
+vi_0184,vi,zh,nguồn đánh lửa,点火源,hydrogen_vehicle,high,ignition source,TPRD排放应避开对象,active
+vi_0185,vi,zh,khoang bánh xe,轮罩区域,hydrogen_vehicle,medium,wheel well,TPRD排放应避开对象,active
+vi_0186,vi,zh,nhãn nhận dạng hydro,氢识别标签,hydrogen_vehicle,high,hydrogen identification label,蓝白菱形标签,active
+vi_0187,vi,zh,nhãn hình thoi,菱形标签,hydrogen_vehicle,medium,diamond label,氢车辆识别标签形式,active
+vi_0188,vi,zh,giới hạn khí thải,排放限值,emissions,high,emission limits,应符合QCVN 109:2024/BGTVT,active
+vi_0189,vi,zh,QCVN 109:2024/BGTVT,越南国家技术规范QCVN 109:2024/BGTVT,emissions,high,Level 5 Emissions,第5阶段排放要求依据,active
+vi_0190,vi,zh,mức 5,第5阶段,emissions,high,Level 5,排放标准阶段,active
+vi_0191,vi,zh,giới hạn ở chế độ không tải,怠速限值,emissions,high,idle limits,汽油车CO和HC要求,active
+vi_0192,vi,zh,chế độ không tải,怠速工况,emissions,high,idle mode,汽油车排放测试状态,active
+vi_0193,vi,zh,CO,一氧化碳,emissions,high,carbon monoxide,汽油车怠速排放限值项目,active
+vi_0194,vi,zh,HC,碳氢化合物,emissions,high,hydrocarbons,汽油车怠速排放限值项目,active
+vi_0195,vi,zh,ppm,百万分之一,emissions,medium,parts per million,HC浓度单位,active
+vi_0196,vi,zh,động cơ xăng,汽油发动机,emissions,high,gasoline engine,怠速排放限值对象,active
+vi_0197,vi,zh,động cơ diesel,柴油发动机,emissions,high,diesel engine,烟度限值对象,active
+vi_0198,vi,zh,độ khói,烟度,emissions,high,opacity,柴油车排放指标,active
+vi_0199,vi,zh,HSU,哈特里奇烟度单位,emissions,medium,Hartridge Smoke Unit,柴油烟度单位,active
+vi_0200,vi,zh,tiếng ồn,噪声,noise,high,noise,环保要求核心项目,active
+vi_0201,vi,zh,mức ồn lớn nhất,最大噪声级,noise,high,maximum noise level,车辆噪声限值,active
+vi_0202,vi,zh,dB(A),A计权分贝,noise,high,A-weighted decibel,噪声和喇叭声压级单位,active
+vi_0203,vi,zh,mức tiêu thụ năng lượng,能源消耗量,energy_consumption,high,energy consumption,QCVN测量管理项目,active
+vi_0204,vi,zh,đo mức tiêu thụ năng lượng,能源消耗量测量,energy_consumption,high,energy consumption measurement,8座以下乘用车适用,active
+vi_0205,vi,zh,xe chở người đến 8 chỗ,8座以下载客汽车,energy_consumption,high,passenger cars up to 8 seats,能源消耗测量适用对象,active
+vi_0206,vi,zh,xăng,汽油,energy_consumption,medium,gasoline,能源消耗单位L/100km,active
+vi_0207,vi,zh,dầu diesel,柴油,energy_consumption,medium,diesel,能源消耗单位L/100km,active
+vi_0208,vi,zh,khí thiên nhiên,天然气,energy_consumption,high,natural gas;NG,能源消耗单位m3/100km,active
+vi_0209,vi,zh,CNG,压缩天然气,energy_consumption,high,Compressed Natural Gas,能源消耗和附录B燃料箱相关,active
+vi_0210,vi,zh,LNG,液化天然气,energy_consumption,high,Liquefied Natural Gas,附录B燃料箱相关,active
+vi_0211,vi,zh,LPG,液化石油气,energy_consumption,high,Liquefied Petroleum Gas,附录B燃料箱相关,active
+vi_0212,vi,zh,hydro,氢,energy_consumption,high,hydrogen,能源消耗单位kg/100km,active
+vi_0213,vi,zh,điện năng,电能,energy_consumption,high,electric energy,能源消耗单位Wh/km,active
+vi_0214,vi,zh,lít/100 km,升/100公里,energy_consumption,medium,liters per 100 km,汽油/柴油消耗单位,active
+vi_0215,vi,zh,m3/100 km,立方米/100公里,energy_consumption,medium,cubic meters per 100 km,天然气/CNG消耗单位,active
+vi_0216,vi,zh,kg/100 km,千克/100公里,energy_consumption,medium,kg per 100 km,氢消耗单位,active
+vi_0217,vi,zh,Wh/km,瓦时/公里,energy_consumption,medium,watt-hour per km,电耗单位,active
+vi_0218,vi,zh,giá trị công bố của nhà sản xuất,制造商声明值,energy_consumption,high,manufacturer declared value,实测能耗不得超过其4%以上,active
+vi_0219,vi,zh,sai lệch cho phép,允许偏差,energy_consumption,high,tolerance,能耗测量允许+4%偏差,active
+vi_0220,vi,zh,kính chắn gió,风窗玻璃,safety_component,high,windshield,应采用夹层安全玻璃,active
+vi_0221,vi,zh,kính an toàn nhiều lớp,夹层安全玻璃,safety_component,high,laminated safety glass,风窗玻璃要求,active
+vi_0222,vi,zh,còi,喇叭,safety_component,high,horn,声级87-112 dB(A)在7m测量,active
+vi_0223,vi,zh,đo âm lượng còi,喇叭声级测量,safety_component,high,horn volume measurement,附录D方法,active
+vi_0224,vi,zh,gạt nước,刮水器,safety_component,high,wiper,至少2个速度，至少一个速度45次/分钟以上,active
+vi_0225,vi,zh,tốc độ gạt,刮水速度,safety_component,medium,wiper speed,刮水器性能参数,active
+vi_0226,vi,zh,đồng hồ tốc độ,车速表,safety_component,high,speedometer,必须显示km/h并满足误差要求,active
+vi_0227,vi,zh,sai số đồng hồ tốc độ,车速表误差,safety_component,high,speedometer error,允许0至V/10+6 km/h,active
+vi_0228,vi,zh,thiết bị quan sát gián tiếp,间接视野装置,indirect_vision,high,indirect vision device,附录C安装要求，含后视镜/摄像系统,active
+vi_0229,vi,zh,gương,后视镜,indirect_vision,high,mirror,间接视野装置之一,active
+vi_0230,vi,zh,camera,摄像头,indirect_vision,high,camera,间接视野装置之一,active
+vi_0231,vi,zh,lắp đặt thiết bị quan sát gián tiếp,间接视野装置安装,indirect_vision,high,installation of indirect vision devices,附录C主题,active
+vi_0232,vi,zh,hệ thống hỗ trợ người lái nâng cao,高级驾驶辅助系统,adas,high,ADAS,通过警告或干预辅助驾驶并提高道路安全,active
+vi_0233,vi,zh,ADAS,高级驾驶辅助系统,adas,high,Advanced Driver Assistance System,QCVN术语定义之一,active
+vi_0234,vi,zh,cảnh báo,警告,adas,medium,warning,ADAS功能方式之一,active
+vi_0235,vi,zh,can thiệp,干预,adas,medium,intervention,ADAS功能方式之一,active
+vi_0236,vi,zh,an toàn giao thông,道路安全,adas,high,road safety,ADAS目标,active
+vi_0237,vi,zh,lái xe tự động,自动驾驶,autonomous_driving,high,autonomous driving,附录M主题,active
+vi_0238,vi,zh,cấp độ lái xe tự động,自动驾驶等级,autonomous_driving,high,levels of autonomous driving,附录M从0级至5级,active
+vi_0239,vi,zh,cấp 0,0级,autonomous_driving,medium,Level 0,自动驾驶等级之一,active
+vi_0240,vi,zh,cấp 5,5级,autonomous_driving,medium,Level 5,自动驾驶等级之一,active
+vi_0241,vi,zh,thùng nhiên liệu,燃料箱,fuel_system,high,fuel tank,附录B中LPG/CNG/LNG燃料箱要求,active
+vi_0242,vi,zh,bình chứa LPG,LPG储罐,fuel_system,high,LPG tank,附录B对象,active
+vi_0243,vi,zh,bình chứa CNG,CNG储罐,fuel_system,high,CNG tank,附录B对象,active
+vi_0244,vi,zh,bình chứa LNG,LNG储罐,fuel_system,high,LNG tank,附录B对象,active
+vi_0245,vi,zh,xe chở hàng nguy hiểm,危险货物运输车辆,safety_component,high,hazardous cargo truck,需配置灭火器,active
+vi_0246,vi,zh,xe buýt từ 16 chỗ trở lên,16座及以上客车,safety_component,high,buses with 16 or more seats,需配置灭火器,active
+vi_0247,vi,zh,chỗ ngồi,座位,vehicle_interior,high,seat,座位数量和安全带配置相关,active
+vi_0248,vi,zh,hàng ghế trước,前排座椅,vehicle_interior,high,front row seats,校车不得设置学生座位的区域,active
+vi_0249,vi,zh,ghế ngoài phía trước,前排外侧座椅,vehicle_interior,high,front outer seat,三点式安全带要求对象,active
+vi_0250,vi,zh,khu vực người lái,驾驶员区域,vehicle_interior,medium,driver area,校车学生座椅布置限制相关,active
+vi_0251,vi,zh,người lái,驾驶员,road_user,high,driver,ADAS、校车和车辆控制相关主体,active
+vi_0252,vi,zh,hành khách,乘客,road_user,high,passenger,客车和安全要求对象,active
+vi_0253,vi,zh,nhà nhập khẩu,进口商,vehicle_market,high,importer,进口车辆认证主体,active
+vi_0254,vi,zh,tổ chức,组织,general_regulation,medium,organization,QCVN适用主体,active
+vi_0255,vi,zh,cá nhân,个人,general_regulation,medium,individual,QCVN适用主体,active
+vi_0256,vi,zh,yêu cầu kỹ thuật,技术要求,general_regulation,high,technical requirements,QCVN核心内容,active
+vi_0257,vi,zh,yêu cầu an toàn,安全要求,vehicle_safety,high,safety requirements,车辆技术安全要求,active
+vi_0258,vi,zh,yêu cầu bảo vệ môi trường,环境保护要求,environment,high,environmental protection requirements,QCVN环保要求,active
+vi_0259,vi,zh,phương pháp xác định,测定方法,testing,high,method for determining,附录技术方法常用表达,active
+vi_0260,vi,zh,phương pháp đo,测量方法,testing,high,measurement method,绝缘电阻、喇叭声级等测量方法,active
+vi_0261,vi,zh,điều kiện thử nghiệm,试验条件,testing,high,test conditions,车辆性能和安全试验通用术语,active
+vi_0262,vi,zh,quy trình thử nghiệm,试验程序,testing,high,test procedure,技术认证测试流程,active
+vi_0263,vi,zh,giá trị đo được,实测值,testing,high,measured value,能耗和性能测试结果,active
+vi_0264,vi,zh,giá trị giới hạn,限值,testing,high,limit value,尺寸、排放、噪声等限值通用术语,active
+vi_0265,vi,zh,tối đa,最大,testing,medium,maximum,限值表达,active
+vi_0266,vi,zh,tối thiểu,最小,testing,medium,minimum,限值表达,active
+vi_0267,vi,zh,không nhỏ hơn,不小于,general_regulation,medium,not less than,法规技术要求常用表达,active
+vi_0268,vi,zh,không lớn hơn,不大于,general_regulation,medium,not greater than,法规技术要求常用表达,active
+vi_0269,vi,zh,phù hợp với,符合,general_regulation,high,comply with,合规要求常用表达,active
+ar_0006,ar,zh,اللائحة الفنية للمركبات الكهربائية,电动汽车技术法规,ev_regulation,high,Technical Regulation for Electric Vehicles,沙特电动汽车法规正式名称核心术语,active
+ar_0007,ar,zh,الإصدار الثالث,第三版,general_regulation,medium,Third Edition,法规版本信息,active
+ar_0008,ar,zh,الهيئة السعودية للمواصفات والمقاييس والجودة,沙特标准、计量与质量组织,regulatory_authority,high,SASO,沙特技术法规和合格评定主管机构,active
+ar_0009,ar,zh,SASO,沙特标准、计量与质量组织,regulatory_authority,high,Saudi Standards Metrology and Quality Organization,建议保留缩写并译出,active
+ar_0010,ar,zh,مجلس إدارة الهيئة,组织董事会,regulatory_authority,medium,Board of Directors,批准技术法规的机构,active
+ar_0011,ar,zh,المملكة العربية السعودية,沙特阿拉伯王国,general_regulation,high,Kingdom of Saudi Arabia,法规适用国家,active
+ar_0012,ar,zh,المملكة,王国,general_regulation,medium,the Kingdom,法规中对沙特阿拉伯王国的简称,active
+ar_0013,ar,zh,الهيئة,本组织,general_regulation,medium,the Organization,法规中对SASO的简称,active
+ar_0014,ar,zh,الجريدة الرسمية,官方公报,general_regulation,high,Official Gazette,法规公布和生效起算依据,active
+ar_0015,ar,zh,تاريخ الاعتماد,批准日期,general_regulation,medium,approval date,法规审批信息,active
+ar_0016,ar,zh,تاريخ النشر,发布日期,general_regulation,medium,publication date,法规公布日期,active
+ar_0017,ar,zh,تاريخ النفاذ,生效日期,general_regulation,high,effective date,法规实施时间,active
+ar_0018,ar,zh,يدخل حيز النفاذ,生效,general_regulation,high,enter into force,法规生效表达,active
+ar_0019,ar,zh,الأحكام الانتقالية,过渡性规定,general_regulation,high,transitional provisions,法规第10条主题,active
+ar_0020,ar,zh,تصحيح الأوضاع,整改状态/纠正状态,general_regulation,high,corrective status adjustment,供应商365天整改期相关术语,active
+ar_0021,ar,zh,يلغي كل ما يتعارض معه,废止与其相抵触的规定,general_regulation,high,supersedes conflicting provisions,法规替代旧规定表达,active
+ar_0022,ar,zh,منظمة التجارة العالمية,世界贸易组织,international_trade,high,WTO,法规法律基础之一,active
+ar_0023,ar,zh,WTO,世界贸易组织,international_trade,high,World Trade Organization,建议保留缩写并译出,active
+ar_0024,ar,zh,اتفاقية العوائق الفنية أمام التجارة,技术性贸易壁垒协定,international_trade,high,TBT Agreement,WTO框架下技术法规协调依据,active
+ar_0025,ar,zh,TBT,技术性贸易壁垒,international_trade,high,Technical Barriers to Trade,建议保留缩写并译出,active
+ar_0026,ar,zh,اللائحة الفنية,技术法规,general_regulation,high,technical regulation,SASO强制性法规文件类型,active
+ar_0027,ar,zh,اللوائح الفنية,技术法规,general_regulation,high,technical regulations,复数形式，统一译法,active
+ar_0028,ar,zh,إجراءات تقويم المطابقة,合格评定程序,conformity_assessment,high,conformity assessment procedures,法规授权和执行核心术语,active
+ar_0029,ar,zh,تقويم المطابقة,合格评定,conformity_assessment,high,conformity assessment,认证和证书签发程序,active
+ar_0030,ar,zh,شهادة المطابقة,符合性证书,conformity_assessment,high,Conformity Certificate,供应商必须取得的证书,active
+ar_0031,ar,zh,شهادة مطابقة,符合性证书,conformity_assessment,high,certificate of conformity,无定冠词变体，统一译法,active
+ar_0032,ar,zh,الطراز 1a,1a型,conformity_assessment,high,Type 1a,符合性证书评定模式,active
+ar_0033,ar,zh,جهة مقبولة,认可机构,conformity_assessment,high,notified/accepted body,SASO认可或指定的合格评定机构,active
+ar_0034,ar,zh,إقرار المورد بالمطابقة,供应商符合性声明,conformity_assessment,high,Supplier Declaration of Conformity;SDoC,附录4核心文件,active
+ar_0035,ar,zh,SDoC,供应商符合性声明,conformity_assessment,high,Supplier Declaration of Conformity,建议保留缩写并译出,active
+ar_0036,ar,zh,إقرار المطابقة,符合性声明,conformity_assessment,high,Declaration of Conformity,供应商声明类文件,active
+ar_0037,ar,zh,ملف فني,技术文件,conformity_assessment,high,technical file,证明产品符合要求的资料集合,active
+ar_0038,ar,zh,الملف الفني,技术文件,conformity_assessment,high,technical file,定冠词形式，统一译法,active
+ar_0039,ar,zh,تقييم المخاطر,风险评估,conformity_assessment,high,risk assessment,技术文件必备材料之一,active
+ar_0040,ar,zh,وثيقة تقييم المخاطر,风险评估文件,conformity_assessment,high,risk assessment document,技术文件要求之一,active
+ar_0041,ar,zh,الرسومات التصميمية,设计图纸,conformity_assessment,medium,design drawings,技术文件组成部分,active
+ar_0042,ar,zh,الوثائق الفنية,技术资料,conformity_assessment,high,technical documentation,技术文件组成部分,active
+ar_0043,ar,zh,دليل التعليمات,说明书,vehicle_documentation,high,instruction manual,用户资料要求之一,active
+ar_0044,ar,zh,دليل المستخدم,用户手册,vehicle_documentation,high,user manual,供应商/制造商责任之一,active
+ar_0045,ar,zh,تحذيرات السلامة,安全警告,vehicle_documentation,high,safety warnings,技术文件和用户手册内容,active
+ar_0046,ar,zh,دليل التشغيل,操作指南,vehicle_documentation,high,operation guide,技术文件组成部分,active
+ar_0047,ar,zh,صحيفة بيانات سلامة المواد,材料安全数据表,battery_safety,high,MSDS,电池必须提供的安全资料,active
+ar_0048,ar,zh,MSDS,材料安全数据表,battery_safety,high,Material Safety Data Sheet,建议保留缩写并译出,active
+ar_0049,ar,zh,المتطلبات الأساسية,基本要求,general_regulation,high,essential requirements,与安全、健康、环境相关的强制要求,active
+ar_0050,ar,zh,متطلبات السلامة,安全要求,vehicle_safety,high,safety requirements,附录2核心内容,active
+ar_0051,ar,zh,متطلبات الأداء,性能要求,vehicle_performance,high,performance requirements,电动车续航和能耗要求,active
+ar_0052,ar,zh,المتطلبات المترولوجية,计量要求,metrology,high,metrological requirements,第4条要求采用国际单位制,active
+ar_0053,ar,zh,النظام الدولي للوحدات,国际单位制,metrology,high,SI Units,所有测量、设计和标识应采用,active
+ar_0054,ar,zh,وحدات النظام الدولي,国际单位制单位,metrology,high,SI units,计量要求核心术语,active
+ar_0055,ar,zh,المتطلبات الإدارية,行政要求,general_regulation,medium,administrative requirements,车辆适用交通法和实施条例,active
+ar_0056,ar,zh,نظام المرور,交通法,road_regulation,high,Traffic Law,沙特道路交通法规依据,active
+ar_0057,ar,zh,اللائحة التنفيذية,实施条例,general_regulation,high,executive regulation,交通法配套法规,active
+ar_0058,ar,zh,الجهات الرقابية,监管机构,market_surveillance,high,regulatory authorities,在海关、市场、工厂执行或监督法规的政府机构,active
+ar_0059,ar,zh,جهات مسح السوق,市场监管机构,market_surveillance,high,market surveillance authorities,负责确保市场产品符合安全和技术要求,active
+ar_0060,ar,zh,مسح السوق,市场监管,market_surveillance,high,market surveillance,法规目标和第7条核心程序,active
+ar_0061,ar,zh,المنافذ الجمركية,海关口岸,customs,high,customs ports,监管机构检查进口车辆文件的地点,active
+ar_0062,ar,zh,الجمارك,海关,customs,medium,customs,进口监管场景,active
+ar_0063,ar,zh,الأسواق,市场,market_surveillance,medium,markets,市场监管对象地点,active
+ar_0064,ar,zh,المستودعات,仓库,market_surveillance,medium,warehouses,市场监管对象地点,active
+ar_0065,ar,zh,المصانع,工厂,market_surveillance,medium,factories,监管机构执行地点之一,active
+ar_0066,ar,zh,العينات العشوائية,随机样品,market_surveillance,high,random samples,监管机构可抽取用于实验室测试,active
+ar_0067,ar,zh,الاختبارات المعملية,实验室测试,testing,high,laboratory testing,监管机构抽样测试用途,active
+ar_0068,ar,zh,الإجراءات الإدارية,行政措施,market_surveillance,high,administrative actions,不合规时可采取的措施,active
+ar_0069,ar,zh,حجز المنتج,扣押产品,market_surveillance,high,seizing the product,市场监管不合规处置措施,active
+ar_0070,ar,zh,استدعاء المنتج,召回产品,market_surveillance,high,product recall,不合规处置措施之一,active
+ar_0071,ar,zh,سحب المنتج,撤回产品,market_surveillance,high,withdraw the product,处罚和补救措施之一,active
+ar_0072,ar,zh,إتلاف المنتج,销毁产品,market_surveillance,high,destroy the product,不合规处置措施之一,active
+ar_0073,ar,zh,إعادة التصدير,退运/重新出口,customs,high,re-export,不合规产品处理方式之一,active
+ar_0074,ar,zh,إلغاء شهادة المطابقة,撤销符合性证书,conformity_assessment,high,cancel the Conformity Certificate,SASO在证实违规后可采取,active
+ar_0075,ar,zh,المخالفة,违规,general_enforcement,high,violation,第8条处罚核心术语,active
+ar_0076,ar,zh,المخالفات,违规行为,general_enforcement,high,violations,复数形式，统一译法,active
+ar_0077,ar,zh,العقوبات,处罚,general_enforcement,high,penalties,违规处理内容,active
+ar_0078,ar,zh,عدم المطابقة,不符合,conformity_assessment,high,non-compliance,产品不满足法规要求的状态,active
+ar_0079,ar,zh,منتج غير مطابق,不合格产品,conformity_assessment,high,non-compliant product,禁止制造、进口或展示,active
+ar_0080,ar,zh,الغش التجاري,商业欺诈,general_enforcement,high,commercial fraud,适用反商业欺诈法的处罚语境,active
+ar_0081,ar,zh,نظام مكافحة الغش التجاري,反商业欺诈法,general_enforcement,high,Anti-Commercial Fraud Law,违规处罚可能适用的法律,active
+ar_0082,ar,zh,المورد,供应商,supply_chain,high,supplier,包括本地制造商、授权代表或进口商,active
+ar_0083,ar,zh,الصانع,制造商,supply_chain,high,manufacturer,供应商定义之一,active
+ar_0084,ar,zh,الممثل المفوض,授权代表,supply_chain,high,authorized representative,外国制造商在沙特的代表,active
+ar_0085,ar,zh,المستورد,进口商,supply_chain,high,importer,供应商定义之一,active
+ar_0086,ar,zh,مسؤوليات المورد,供应商责任,supply_chain,high,supplier responsibilities,附录2及第4条要求,active
+ar_0087,ar,zh,التزامات المورد,供应商义务,supply_chain,high,supplier obligations,第4条标题术语,active
+ar_0088,ar,zh,بيانات المورد,供应商信息,conformity_assessment,medium,supplier details,SDoC内容之一,active
+ar_0089,ar,zh,بيانات المنتج,产品信息,conformity_assessment,medium,product details,SDoC内容之一,active
+ar_0090,ar,zh,العلامة التجارية,品牌,conformity_assessment,medium,brand,SDoC产品信息字段,active
+ar_0091,ar,zh,الطراز,型号,conformity_assessment,high,model/type,SDoC产品信息字段,active
+ar_0092,ar,zh,رقم الدفعة,批号,conformity_assessment,medium,batch number,SDoC产品识别字段,active
+ar_0093,ar,zh,الرقم التسلسلي,序列号,conformity_assessment,medium,serial number,SDoC产品识别字段,active
+ar_0094,ar,zh,التوقيع المعتمد,授权签名,conformity_assessment,medium,authorized signature,SDoC内容之一,active
+ar_0095,ar,zh,الشخص المسؤول,负责人,conformity_assessment,medium,responsible person,SDoC签署信息,active
+ar_0096,ar,zh,المركبة الكهربائية,电动汽车,ev_general,high,electric vehicle;EV,法规适用对象核心术语,active
+ar_0097,ar,zh,المركبات الكهربائية,电动汽车,ev_general,high,electric vehicles,复数形式，统一译法,active
+ar_0098,ar,zh,EV,电动汽车,ev_general,high,Electric Vehicle,建议保留缩写并译出,active
+ar_0099,ar,zh,مركبة كهربائية تعمل بالبطارية,电池电动汽车,ev_general,high,BEV,仅由可充电电池供能的车辆,active
+ar_0100,ar,zh,BEV,电池电动汽车,ev_general,high,Battery Electric Vehicle,建议保留缩写并译出,active
+ar_0101,ar,zh,مركبة كهربائية هجينة قابلة للشحن الخارجي,插电式混合动力电动汽车,ev_general,high,PHEV,同时含内燃机和电动机且电池可外接充电,active
+ar_0102,ar,zh,المركبة الهجينة القابلة للشحن,插电式混合动力汽车,ev_general,high,Plug-in Hybrid Vehicle,法规PHEV语境,active
+ar_0103,ar,zh,PHEV,插电式混合动力电动汽车,ev_general,high,Plug-in Hybrid Electric Vehicle,建议保留缩写并译出,active
+ar_0104,ar,zh,محرك كهربائي,电动机,ev_powertrain,high,electric motor,电动汽车驱动装置,active
+ar_0105,ar,zh,محركات كهربائية,电动机,ev_powertrain,high,electric motors,复数形式，统一译法,active
+ar_0106,ar,zh,محرك احتراق داخلي,内燃机,ev_powertrain,high,internal combustion engine;ICE,PHEV组成部分之一,active
+ar_0107,ar,zh,ICE,内燃机,ev_powertrain,high,Internal Combustion Engine,建议保留缩写并译出,active
+ar_0108,ar,zh,نظام تخزين الطاقة القابل لإعادة الشحن,可充电储能系统,battery_safety,high,REESS,为电驱动储存能量的系统,active
+ar_0109,ar,zh,نظام تخزين الطاقة الكهربائية القابل لإعادة الشحن,可充电电能储存系统,battery_safety,high,Rechargeable Electrical Energy Storage System,REESS更完整表述,active
+ar_0110,ar,zh,REESS,可充电储能系统,battery_safety,high,Rechargeable Energy Storage System,沙特法规电动车安全核心术语,active
+ar_0111,ar,zh,الدفع الكهربائي,电驱动,ev_powertrain,high,electric propulsion,REESS供能对象,active
+ar_0112,ar,zh,نظام الدفع الكهربائي,电驱动系统,ev_powertrain,high,electric power train,附录标准GSO ECE 100相关术语,active
+ar_0113,ar,zh,البطارية,电池,battery_safety,high,battery,BEV/PHEV储能部件,active
+ar_0114,ar,zh,بطارية قابلة لإعادة الشحن,可充电电池,battery_safety,high,rechargeable battery,BEV供能来源,active
+ar_0115,ar,zh,نظام إدارة البطارية,电池管理系统,battery_safety,high,BMS,虽然摘要未展开但与REESS保护高度相关,active
+ar_0116,ar,zh,BMS,电池管理系统,battery_safety,medium,Battery Management System,REESS过充过放过温保护相关,active
+ar_0117,ar,zh,الجهد العالي,高电压,ev_safety,high,high voltage,DC大于60V至1500V，AC大于30V至1000V RMS,active
+ar_0118,ar,zh,دائرة الجهد العالي,高压电路,ev_safety,high,high-voltage circuit,高电压分类对象之一,active
+ar_0119,ar,zh,مكوّن كهربائي عالي الجهد,高压电气部件,ev_safety,high,high-voltage electric component,高电压分类对象之一,active
+ar_0120,ar,zh,جهد التشغيل,工作电压,ev_safety,high,working voltage,高电压分类判定依据,active
+ar_0121,ar,zh,تيار مستمر,直流电,ev_safety,medium,DC,direct current,active
+ar_0122,ar,zh,DC,直流电,ev_safety,medium,Direct Current,高电压阈值单位语境,active
+ar_0123,ar,zh,تيار متردد,交流电,ev_safety,medium,AC,alternating current,active
+ar_0124,ar,zh,AC,交流电,ev_safety,medium,Alternating Current,充电接口和高电压阈值语境,active
+ar_0125,ar,zh,القيمة الفعالة,有效值,ev_safety,medium,RMS,交流电压阈值基准,active
+ar_0126,ar,zh,RMS,均方根值,ev_safety,medium,Root Mean Square,交流高压阈值基准,active
+ar_0127,ar,zh,الحماية من الصعق الكهربائي,电击防护,ev_safety,high,protection against electric shock,附录2安全要求核心内容,active
+ar_0128,ar,zh,الصعق الكهربائي,电击,ev_safety,high,electric shock,人员防护风险,active
+ar_0129,ar,zh,التلامس المباشر,直接接触,ev_safety,high,direct contact,人员接触带电高压部件,active
+ar_0130,ar,zh,التلامس غير المباشر,间接接触,ev_safety,high,indirect contact,人员接触外露导电部件,active
+ar_0131,ar,zh,الأجزاء الحية,带电部件,ev_safety,high,live parts,直接接触防护对象,active
+ar_0132,ar,zh,الأجزاء الحية عالية الجهد,高压带电部件,ev_safety,high,live high-voltage parts,直接接触定义对象,active
+ar_0133,ar,zh,الأجزاء الموصلة المكشوفة,外露导电部件,ev_safety,high,exposed conductive parts,间接接触防护对象,active
+ar_0134,ar,zh,الحاجز,屏障,ev_safety,high,barrier,防止直接接触高压部件的结构,active
+ar_0135,ar,zh,الحواجز عالية الجهد,高压屏障,ev_safety,high,high-voltage barriers,需工具拆卸或设置安全互锁,active
+ar_0136,ar,zh,الغلاف,外壳,ev_safety,high,enclosure,高压防护结构,active
+ar_0137,ar,zh,الأغلفة عالية الجهد,高压外壳,ev_safety,high,high-voltage enclosures,应贴高压警示标识,active
+ar_0138,ar,zh,درجة الحماية,防护等级,ev_safety,high,degree of protection,IPXXB/IPXXD要求,active
+ar_0139,ar,zh,IPXXB,IPXXB防护等级,ev_safety,high,IPXXB,防止手指接近危险部件,active
+ar_0140,ar,zh,IPXXD,IPXXD防护等级,ev_safety,high,IPXXD,防止试验线接近危险部件，乘员/行李舱要求,active
+ar_0141,ar,zh,حجرة الركاب,乘员舱,vehicle_structure,high,passenger compartment,高压带电部件IPXXD适用区域,active
+ar_0142,ar,zh,حجرة الأمتعة,行李舱,vehicle_structure,high,luggage compartment,高压带电部件IPXXD适用区域,active
+ar_0143,ar,zh,الهيكل الكهربائي,电气底盘,ev_safety,high,electrical chassis,外露导电部件应与其电连接,active
+ar_0144,ar,zh,موصل كهربائياً,电连接,ev_safety,medium,electrically connected,间接接触防护要求,active
+ar_0145,ar,zh,متصل جلفانياً,电流连接/电气连接,ev_safety,high,galvanically connected,外露导电部件与电气底盘连接要求,active
+ar_0146,ar,zh,مقاومة العزل,绝缘电阻,ev_safety,high,insulation resistance,DC和AC电路分别有最低要求,active
+ar_0147,ar,zh,مقاومة,电阻,ev_safety,medium,resistance,导电部件间电阻小于0.1Ω,active
+ar_0148,ar,zh,أوم,欧姆,ev_safety,medium,ohm,电阻单位,active
+ar_0149,ar,zh,Ω,欧姆,ev_safety,medium,ohm,电阻单位符号,active
+ar_0150,ar,zh,Ω/V,欧姆/伏,ev_safety,high,ohm per volt,绝缘电阻单位,active
+ar_0151,ar,zh,مقاومة العزل للتيار المستمر,直流电路绝缘电阻,ev_safety,high,DC insulation resistance,最低100Ω/V,active
+ar_0152,ar,zh,مقاومة العزل للتيار المتردد,交流电路绝缘电阻,ev_safety,high,AC insulation resistance,最低500Ω/V,active
+ar_0153,ar,zh,الحماية من الماء,防水保护,ev_safety,high,water protection,洗车、暴雨、淹水后保持绝缘电阻,active
+ar_0154,ar,zh,الغسيل,清洗,ev_safety,medium,washing,防水保护场景之一,active
+ar_0155,ar,zh,الأمطار الغزيرة,暴雨,ev_safety,medium,heavy rain,防水保护场景之一,active
+ar_0156,ar,zh,الغمر بالماء,浸水/涉水,ev_safety,high,flooding/water exposure,防水保护场景之一,active
+ar_0157,ar,zh,رمز الجهد العالي,高压符号,ev_safety,high,high-voltage symbol,黄色三角黑色箭头警示标识,active
+ar_0158,ar,zh,مثلث أصفر,黄色三角形,ev_safety,medium,yellow triangle,高压符号外观,active
+ar_0159,ar,zh,سهم أسود,黑色箭头,ev_safety,medium,black arrow,高压符号外观,active
+ar_0160,ar,zh,التحذيرات المرئية,视觉警告,ev_safety,high,visual warnings,高压标识和REESS故障提示,active
+ar_0161,ar,zh,تعريف الأسلاك,线缆识别,ev_safety,high,wiring identification,高压电缆应使用橙色外覆层,active
+ar_0162,ar,zh,كابلات الجهد العالي,高压电缆,ev_safety,high,high-voltage cables,应有橙色外覆层,active
+ar_0163,ar,zh,الغلاف الخارجي البرتقالي,橙色外覆层,ev_safety,high,orange outer covering,高压线缆识别要求,active
+ar_0164,ar,zh,اللون البرتقالي,橙色,ev_safety,medium,orange color,高压电缆颜色要求,active
+ar_0165,ar,zh,قفل أمان,安全互锁,ev_safety,high,safety interlock,高压屏障/外壳或充电状态相关安全功能,active
+ar_0166,ar,zh,الحماية من الشحن الزائد,过充保护,battery_safety,high,overcharge protection,REESS要求之一,active
+ar_0167,ar,zh,الشحن الزائد,过充,battery_safety,high,overcharge,REESS需防护的风险,active
+ar_0168,ar,zh,التفريغ الزائد,过放,battery_safety,high,over-discharge,REESS需防护的风险,active
+ar_0169,ar,zh,درجة الحرارة الزائدة,过温,battery_safety,high,over-temperature,REESS需防护的风险,active
+ar_0170,ar,zh,الدائرة القصيرة,短路,battery_safety,high,short circuit,REESS需防护的风险,active
+ar_0171,ar,zh,القصر الخارجي,外部短路,battery_safety,high,external short circuit,REESS安全试验项目之一,active
+ar_0172,ar,zh,اختبار الاهتزاز,振动试验,battery_testing,high,vibration test,REESS安全试验之一,active
+ar_0173,ar,zh,الصدمة الحرارية,热冲击,battery_testing,high,thermal shock,REESS安全试验之一,active
+ar_0174,ar,zh,الصدمة الميكانيكية,机械冲击,battery_testing,high,mechanical impact,REESS安全试验之一,active
+ar_0175,ar,zh,مقاومة الحريق,耐火性,battery_testing,high,fire resistance,REESS安全试验之一,active
+ar_0176,ar,zh,اختبارات السلامة,安全试验,battery_testing,high,safety tests,REESS应通过的测试统称,active
+ar_0177,ar,zh,نظام التحذير,警告系统,battery_safety,high,warning system,REESS故障或低电量时提示驾驶员,active
+ar_0178,ar,zh,فشل نظام تخزين الطاقة,储能系统故障,battery_safety,high,REESS failure,需向驾驶员发出视觉警告,active
+ar_0179,ar,zh,انخفاض مستوى الطاقة,低能量水平,battery_safety,high,low energy level,需向驾驶员警告,active
+ar_0180,ar,zh,إدارة الغازات,气体管理,battery_safety,high,gas management,防止车辆内危险气体积聚,active
+ar_0181,ar,zh,الغازات الخطرة,危险气体,battery_safety,high,hazardous gases,REESS气体管理对象,active
+ar_0182,ar,zh,تراكم الغازات الخطرة,危险气体积聚,battery_safety,high,accumulation of hazardous gases,需防止的安全风险,active
+ar_0183,ar,zh,السلامة التشغيلية,运行安全,ev_operation,high,operational safety,附录2章节,active
+ar_0184,ar,zh,وضع القيادة النشط,主动驾驶模式,ev_operation,high,active driving mode,车辆准备行驶状态,active
+ar_0185,ar,zh,جاهزية المركبة للقيادة,车辆准备行驶,ev_operation,high,vehicle ready to drive,需通过视觉或声音信号提示,active
+ar_0186,ar,zh,إشارة مرئية,视觉信号,ev_operation,medium,visual signal,主动驾驶模式提示方式之一,active
+ar_0187,ar,zh,إشارة صوتية,声音信号,ev_operation,medium,audible signal,主动驾驶模式提示方式之一,active
+ar_0188,ar,zh,قفل الشحن,充电互锁,ev_charging,high,charging interlock,车辆连接外部充电器时防止移动,active
+ar_0189,ar,zh,الشاحن الخارجي,外部充电器,ev_charging,high,external charger,充电互锁对象,active
+ar_0190,ar,zh,متصل فعلياً,物理连接,ev_charging,medium,physically connected,车辆与外部充电器连接状态,active
+ar_0191,ar,zh,التحكم في الاتجاه,方向控制,ev_operation,high,directional control,驾驶员应清楚获知前进/倒退方向,active
+ar_0192,ar,zh,الأمام,前进,ev_operation,medium,forward,方向控制状态之一,active
+ar_0193,ar,zh,الخلف,倒退,ev_operation,medium,reverse,方向控制状态之一,active
+ar_0194,ar,zh,استهلاك الطاقة,能耗,ev_performance,high,energy consumption,单位kWh/100km,active
+ar_0195,ar,zh,kWh/100km,千瓦时/100公里,ev_performance,high,kWh per 100 km,电动车能耗单位,active
+ar_0196,ar,zh,المدى الكهربائي,电动续航里程,ev_performance,high,electric range,营销续航应基于标准测试循环,active
+ar_0197,ar,zh,المدى التسويقي,宣传续航里程,ev_performance,high,marketing range,应基于标准化测试循环,active
+ar_0198,ar,zh,دورات اختبار قياسية,标准测试循环,ev_performance,high,standardized test cycles,续航宣传依据,active
+ar_0199,ar,zh,المدى الأدنى,最低续航里程,ev_performance,high,minimum range,满电总续航不得低于200km,active
+ar_0200,ar,zh,الشحنة الكاملة,满电,ev_performance,medium,full charge,续航里程测量状态,active
+ar_0201,ar,zh,مراكز الخدمة,服务中心,after_sales,high,service centers,维修电动车应配备训练有素技术人员,active
+ar_0202,ar,zh,الفنيون المدربون,受训技术人员,after_sales,high,trained technicians,电动车维修人员要求,active
+ar_0203,ar,zh,إصلاح المركبات الكهربائية,电动汽车维修,after_sales,high,EV repair,服务中心能力要求,active
+ar_0204,ar,zh,بطاقات الإنقاذ,救援卡,emergency_response,high,Rescue Sheets,提供给民防/应急响应人员的资料,active
+ar_0205,ar,zh,صحائف الإنقاذ,救援说明页,emergency_response,high,Rescue Sheets,同义表达，建议统一为救援卡,active
+ar_0206,ar,zh,الدفاع المدني,民防部门,emergency_response,high,civil defense,救援卡使用对象,active
+ar_0207,ar,zh,المستجيبون للطوارئ,应急响应人员,emergency_response,high,emergency responders,救援卡使用对象,active
+ar_0208,ar,zh,الإجراءات في حالة التصادم أثناء الشحن,充电期间碰撞处置程序,emergency_response,high,procedures in case of impact during charging,救援卡内容之一,active
+ar_0209,ar,zh,طرق مكافحة الحريق,灭火方法,emergency_response,high,firefighting methods,救援卡内容之一,active
+ar_0210,ar,zh,أنواع طفايات الحريق,灭火器类型,emergency_response,medium,types of extinguishers,救援卡应说明内容,active
+ar_0211,ar,zh,إخلاء الركاب,乘员疏散,emergency_response,high,passenger evacuation,救援卡内容之一,active
+ar_0212,ar,zh,عزل الجهد العالي,高压隔离,emergency_response,high,high-voltage isolation,救援卡核心安全步骤,active
+ar_0213,ar,zh,نظام الشحن conductive,传导式充电系统,ev_charging,high,conductive charging system,IEC 61851-1相关术语,active
+ar_0214,ar,zh,نظام الشحن الموصل للمركبات الكهربائية,电动汽车传导式充电系统,ev_charging,high,electric vehicle conductive charging system,标准SASO IEC 61851-1标题术语,active
+ar_0215,ar,zh,موصلات نظام الشحن الكهربائي,电动充电系统连接器,ev_charging,high,electric charging system connectors,附录3主题,active
+ar_0216,ar,zh,المقبس,插座/车辆插口,ev_charging,medium,inlet/socket,Type 2组件之一，依上下文译为插座或车辆插口,active
+ar_0217,ar,zh,القابس,插头,ev_charging,medium,plug,Type 2组件之一,active
+ar_0218,ar,zh,الموصل,连接器,ev_charging,high,connector,充电接口部件,active
+ar_0219,ar,zh,Type 2,Type 2接口,ev_charging,high,Type 2,交流充电接口标准,active
+ar_0220,ar,zh,النمط 2,Type 2接口,ev_charging,high,Type 2,阿文可能译写形式，建议保留Type 2,active
+ar_0221,ar,zh,نظام الشحن المشترك 2,组合充电系统2,ev_charging,high,Combined Charging System 2;CCS2,直流充电接口要求,active
+ar_0222,ar,zh,CCS 2,CCS 2组合充电系统,ev_charging,high,Combined Charging System 2,建议保留缩写并译出,active
+ar_0223,ar,zh,CCS 2 Type 2,CCS 2 Type 2接口,ev_charging,high,Combined Charging System 2 Type 2,沙特直流充电接口规定,active
+ar_0224,ar,zh,استيراد الشواحن,进口充电器,ev_charging,high,importation of chargers,禁止进口非规定类型充电器,active
+ar_0225,ar,zh,الشواحن,充电器,ev_charging,high,chargers,附录3限制对象,active
+ar_0226,ar,zh,استيراد الموصلات,进口连接器,ev_charging,medium,importation of connectors,禁止进口非规定类型连接器,active
+ar_0227,ar,zh,التوافقية,互操作性/兼容性,ev_charging,high,interoperability/compatibility,充电接口统一目的,active
+ar_0228,ar,zh,متوافق مع نظام الشحن,与充电系统兼容,ev_charging,high,compatible with charging system,供应商技术要求之一,active
+ar_0229,ar,zh,فئات المركبات,车辆类别,vehicle_category,high,vehicle categories,法规适用M类和N类,active
+ar_0230,ar,zh,الفئة M,M类,vehicle_category,high,Category M,至少四轮、用于载客的机动车,active
+ar_0231,ar,zh,الفئة N,N类,vehicle_category,high,Category N,至少四轮、用于载货的机动车,active
+ar_0232,ar,zh,M1,M1类,vehicle_category,high,Category M1,载客车子类别，按座位数和质量区分,active
+ar_0233,ar,zh,M2,M2类,vehicle_category,high,Category M2,高压外壳互锁例外类别之一,active
+ar_0234,ar,zh,M3,M3类,vehicle_category,high,Category M3,高压外壳互锁例外类别之一,active
+ar_0235,ar,zh,N1,N1类,vehicle_category,high,Category N1,载货车子类别,active
+ar_0236,ar,zh,N2,N2类,vehicle_category,high,Category N2,高压外壳互锁例外类别之一,active
+ar_0237,ar,zh,N3,N3类,vehicle_category,high,Category N3,高压外壳互锁例外类别之一,active
+ar_0238,ar,zh,مركبات بمحرك,机动车,vehicle_category,high,motor vehicles,M/N类车辆定义基础,active
+ar_0239,ar,zh,أربع عجلات على الأقل,至少四个车轮,vehicle_category,medium,at least four wheels,M/N类车辆定义条件,active
+ar_0240,ar,zh,نقل الركاب,载客,vehicle_category,high,carrying passengers,M类车辆用途,active
+ar_0241,ar,zh,نقل البضائع,载货,vehicle_category,high,carrying goods,N类车辆用途,active
+ar_0242,ar,zh,السرعة التصميمية,设计车速,vehicle_performance,high,design speed,法规适用超过25 km/h的电动车,active
+ar_0243,ar,zh,كم/ساعة,公里/小时,vehicle_performance,medium,km/h,设计速度单位,active
+ar_0244,ar,zh,الكتلة القصوى,最大质量,vehicle_weight,high,maximum mass,N/M子类别划分依据,active
+ar_0245,ar,zh,عدد المقاعد,座位数,vehicle_category,medium,seat count,M类子类别划分依据,active
+ar_0246,ar,zh,المواصفات القياسية السعودية,沙特标准,standards,high,Saudi standards,SASO标准体系,active
+ar_0247,ar,zh,المواصفات القياسية الخليجية,海湾标准,standards,high,Gulf standards,GSO标准体系,active
+ar_0248,ar,zh,المواصفات الدولية,国际标准,standards,high,international standards,无沙特或海湾标准时适用,active
+ar_0249,ar,zh,المواصفات الفنية,技术标准,standards,high,technical standards,附录1列明的适用标准,active
+ar_0250,ar,zh,المواصفات ذات العلاقة,相关标准,standards,medium,relevant standards,附录1-A标题语境,active
+ar_0251,ar,zh,SASO GSO,沙特/海湾标准,standards,high,SASO GSO,沙特采用海湾标准编号,active
+ar_0252,ar,zh,GSO,海湾标准化组织,standards,high,Gulf Standardization Organization,海湾标准前缀,active
+ar_0253,ar,zh,UNECE,联合国欧洲经济委员会,standards,high,United Nations Economic Commission for Europe,UNECE法规引用体系,active
+ar_0254,ar,zh,لائحة UNECE رقم 10,UNECE第10号法规,standards,high,UNECE Regulation No.10,电磁兼容性标准,active
+ar_0255,ar,zh,التوافق الكهرومغناطيسي,电磁兼容性,standards,high,EMC,UNECE R10主题,active
+ar_0256,ar,zh,EMC,电磁兼容性,standards,high,Electromagnetic Compatibility,建议保留缩写并译出,active
+ar_0257,ar,zh,GSO ECE 100,GSO ECE 100,standards,high,specific requirements for electric power train,电驱动系统特殊要求标准,active
+ar_0258,ar,zh,SASO IEC 61851-1,SASO IEC 61851-1,standards,high,electric vehicle conductive charging system,电动车传导式充电系统标准,active
+ar_0259,ar,zh,SASO ISO 6469-1,SASO ISO 6469-1,standards,high,on-board REESS safety specifications,车载REESS安全规范标准,active
+ar_0260,ar,zh,SASO GSO ISO 6469-3,SASO GSO ISO 6469-3,standards,high,protection of persons against electric shock,人员电击防护标准,active
+ar_0261,ar,zh,SASO GSO ISO 15118-1,SASO GSO ISO 15118-1,standards,high,vehicle to grid communication interface,车网通信接口标准,active
+ar_0262,ar,zh,واجهة الاتصال بين المركبة والشبكة,车网通信接口,ev_charging,high,Vehicle-to-grid communication interface,ISO 15118-1主题,active
+ar_0263,ar,zh,نظام تحديد هوية المركبة,车辆识别号系统,vehicle_identification,high,VIN requirements,SASO GSO 1780主题,active
+ar_0264,ar,zh,VIN,车辆识别号,vehicle_identification,high,Vehicle Identification Number,车辆识别标准核心术语,active
+ar_0265,ar,zh,أحزمة السلامة,安全带,vehicle_safety,high,safety belts,附录标准类别之一,active
+ar_0266,ar,zh,اختبار أحزمة السلامة,安全带试验,vehicle_safety,medium,safety belt testing,SASO GSO 96-97主题,active
+ar_0267,ar,zh,قابلية الاشتعال للمواد الداخلية,内饰材料可燃性,vehicle_safety,high,flammability of interior materials,SASO GSO 98主题,active
+ar_0268,ar,zh,الأقفال والمفصلات,门锁和铰链,vehicle_safety,high,locks and hinges,SASO GSO 420主题,active
+ar_0269,ar,zh,محددات السرعة,限速装置,vehicle_safety,high,speed limiters,SASO GSO 1625-26主题,active
+ar_0270,ar,zh,أنظمة الكبح,制动系统,braking,high,braking systems,ECE 13H主题,active
+ar_0271,ar,zh,سيارات الركوب,乘用车,vehicle_category,high,passenger cars,制动系统和轮胎标准对象,active
+ar_0272,ar,zh,حافلات مدرسية,校车,vehicle_category,high,school buses,SASO 2951主题,active
+ar_0273,ar,zh,الاقتصاد في الوقود,燃油经济性,environment_energy,high,fuel economy,轻型车标签和Saudi CAFÉ标准相关,active
+ar_0274,ar,zh,بطاقة اقتصاد الوقود,燃油经济性标签,environment_energy,high,fuel economy label,SASO 2847主题,active
+ar_0275,ar,zh,معيار الاقتصاد في الوقود للشركات,企业平均燃油经济性标准,environment_energy,high,Corporate Average Fuel Economy;CAFE,SASO 2864主题,active
+ar_0276,ar,zh,Saudi CAFÉ,沙特企业平均燃油经济性标准,environment_energy,high,Saudi Corporate Average Fuel Economy,建议保留专名并译出,active
+ar_0277,ar,zh,المرايا الخلفية,后视镜,customs,medium,rear-view mirrors,海关税则7009相关产品,active
+ar_0278,ar,zh,أقفال المركبات,车辆锁具,customs,medium,locks for vehicles,海关税则8301相关产品,active
+ar_0279,ar,zh,المحركات الكهربائية,电动机,customs,high,electric motors,海关税则8501相关产品,active
+ar_0280,ar,zh,شواحن البطاريات,电池充电器,customs,high,battery chargers,海关税则8504相关产品,active
+ar_0281,ar,zh,المراكم الرصاصية الحمضية,铅酸蓄电池,customs,high,lead-acid accumulators,海关税则8507相关产品,active
+ar_0282,ar,zh,المراكم,蓄电池,customs,medium,accumulators,海关税则8507相关产品,active
+ar_0283,ar,zh,معدات الإنارة والإشارة,照明和信号设备,customs,high,lighting and signalling equipment,海关税则8512相关产品,active
+ar_0284,ar,zh,مجموعات الأسلاك للمركبات,车辆线束,customs,high,wiring sets for vehicles,海关税则8544相关产品,active
+ar_0285,ar,zh,الجرارات,牵引车/拖拉机,customs,medium,tractors,海关税则8701相关类别,active
+ar_0286,ar,zh,الحافلات,客车,customs,medium,buses,海关税则8702相关类别,active
+ar_0287,ar,zh,سيارات الركاب,乘用车,customs,medium,passenger cars,海关税则8703相关类别,active
+ar_0288,ar,zh,المركبات الهجينة,混合动力车辆,customs,high,hybrid vehicles,海关税则8701-8703相关车辆类型,active
+ar_0289,ar,zh,قائمة التعرفة الجمركية,海关税则清单,customs,high,customs tariff list,附录1-B主题,active
+ar_0290,ar,zh,البند الجمركي,海关税号,customs,high,customs tariff heading,附录1-B产品编码,active
+ar_0291,ar,zh,المستهلك,消费者,consumer_protection,high,consumer,法规保护对象之一,active
+ar_0292,ar,zh,حماية المستهلك,消费者保护,consumer_protection,high,consumer protection,法规目的之一,active
+ar_0293,ar,zh,سلامة المنتجات,产品安全,consumer_protection,high,product safety,法规目标之一,active
+ar_0294,ar,zh,سلامة مستخدمي الطريق,道路使用者安全,road_safety,high,safety of road users,第3条目标之一,active
+ar_0295,ar,zh,مستخدمو الطريق,道路使用者,road_safety,high,road users,电动车安全保护对象,active
+ar_0296,ar,zh,حماية البيئة,环境保护,environment,high,environmental protection,法规目标之一,active
+ar_0297,ar,zh,الصحة,健康,general_regulation,medium,health,基本要求涵盖领域之一,active
+ar_0298,ar,zh,التوافق مع المتطلبات الفنية,符合技术要求,conformity_assessment,high,compliance with technical requirements,市场产品合规判定内容,active
+ar_0299,ar,zh,المتطلبات الفنية,技术要求,general_regulation,high,technical requirements,法规第4条供应商义务核心,active
+ar_0300,ar,zh,الإجراءات ذات الصلة,相关程序,general_regulation,medium,related procedures,技术法规定义涵盖内容,active
+ar_0301,ar,zh,طرق الإنتاج,生产方法,general_regulation,medium,production methods,技术法规定义涵盖内容,active
+ar_0302,ar,zh,الخصائص الفنية للمنتج,产品技术特性,general_regulation,high,product technical characteristics,技术法规定义内容,active
+ar_0303,ar,zh,بطاقة البيان,标签,labelling,high,label,计量、标准或产品信息标识语境,active
+ar_0304,ar,zh,الوسم,标识,labelling,high,marking,产品标识和警示标志术语,active
