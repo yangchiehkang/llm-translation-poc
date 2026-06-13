@@ -31,6 +31,8 @@ DEFAULT_INPUT_BY_LANG = {
     "sv": Path("termbase/manual_extracted_sv_terms_v0.2.csv"),
     "nl": Path("termbase/manual_extracted_nl_terms_v0.2.csv"),
     "pt": Path("termbase/manual_extracted_pt_terms_v0.2.csv"),
+    "vi": Path("termbase/manual_extracted_vi_terms_v0.2.csv"),
+    "ar": Path("termbase/manual_extracted_ar_terms_v0.2.csv"),
 }
 
 VALID_PRIORITY = {"high", "medium", "low"}
@@ -39,8 +41,17 @@ VALID_STATUS = {"active", "review", "deprecated"}
 HIGH_DOMAINS = {
     "general_regulation",
     "general_enforcement",
-
+    "government_agency",
+    "regulatory_authority",
+    "international_trade",
     "standardization",
+    "standards",
+    "conformity_assessment",
+    "market_surveillance",
+    "customs",
+    "supply_chain",
+    "consumer_protection",
+    "labelling",
 
     "road_regulation",
     "road_authority",
@@ -89,6 +100,27 @@ HIGH_DOMAINS = {
     "vehicle_waste",
     "vehicle_control",
     "vehicle_geometry",
+    "vehicle_performance",
+    "vehicle_stability",
+    "vehicle_dynamics",
+    "vehicle_interior",
+
+    "braking",
+    "steering",
+    "wheel_tire",
+    "special_vehicle",
+    "motorhome",
+    "hydrogen_vehicle",
+    "powertrain",
+    "emissions",
+    "noise",
+    "energy_consumption",
+    "safety_component",
+    "indirect_vision",
+    "autonomous_driving",
+    "fuel_system",
+    "environment",
+    "environment_energy",
 
     "seat",
     "seatbelt_restraint",
@@ -107,6 +139,10 @@ HIGH_DOMAINS = {
     "ev_subsidy",
     "ev_technical",
     "ev_policy",
+    "ev_regulation",
+    "ev_operation",
+    "ev_charging",
+    "ev_performance",
 
     "battery_general",
     "battery_category",
@@ -119,10 +155,14 @@ HIGH_DOMAINS = {
     "battery_finance",
     "battery_reporting",
     "battery_chemistry",
+    "battery_safety",
+    "battery_testing",
+
+    "after_sales",
+    "emergency_response",
 
     "epr",
     "ewaste",
-    "market_surveillance",
     "market_access",
     "hazardous_substances",
     "competition",
@@ -332,7 +372,7 @@ def resolve_input_path():
 
         return Path(arg)
 
-    return DEFAULT_INPUT_BY_LANG["pt"]
+    return DEFAULT_INPUT_BY_LANG["ar"]
 
 def main():
     input_path = resolve_input_path()
