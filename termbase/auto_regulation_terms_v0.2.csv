@@ -2362,3 +2362,281 @@ id_0216,id,zh,logam,金属,vehicle_material,medium,metal,货厢材料类型,acti
 id_0217,id,zh,non-logam,非金属,vehicle_material,medium,non-metal,货厢材料类型,active
 id_0218,id,zh,dump truck,自卸车,vehicle_structure,high,truk jungkit,货车车身设计类型,active
 id_0219,id,zh,tangki,罐体,vehicle_structure,high,tank,罐式车身设计对象,active
+th_0013,th,zh,พระราชบัญญัติคุ้มครองผู้บริโภค,消费者保护法,general_regulation,high,Consumer Protection Act,泰国消费者保护领域核心法律,active
+th_0014,th,zh,คณะกรรมการว่าด้วยฉลาก,标签委员会,general_regulation,high,Label Committee,发布受控标签商品公告的主管委员会,active
+th_0015,th,zh,ประกาศ,公告,general_regulation,high,Notification;Announcement,泰国法规文件类型,active
+th_0016,th,zh,อาศัยอำนาจตามความใน,依据……授权,general_regulation,medium,pursuant to,泰国法规开头常见授权表达,active
+th_0017,th,zh,มาตรา,条,general_regulation,high,Section,泰国法律条文结构术语,active
+th_0018,th,zh,ข้อ,条,general_regulation,high,Clause,泰国公告/规章条文结构术语,active
+th_0019,th,zh,พ.ศ.,佛历,general_regulation,high,B.E.,泰国年份纪年方式，翻译时可换算或保留,active
+th_0020,th,zh,ราชกิจจานุเบกษา,政府公报,general_regulation,high,Royal Gazette,泰国法规公布载体,active
+th_0021,th,zh,ใช้บังคับ,施行,general_regulation,high,come into force,法规生效/施行表达,active
+th_0022,th,zh,พ้นกำหนดหนึ่งร้อยแปดสิบวัน,届满一百八十日,general_regulation,medium,after 180 days,标签公告施行期限表达,active
+th_0023,th,zh,นับแต่วันประกาศ,自公告之日起,general_regulation,medium,from the date of publication,法规生效起算表达,active
+th_0024,th,zh,สินค้า,商品,general_regulation,high,goods,消费者标签监管对象,active
+th_0025,th,zh,สินค้าที่ควบคุมฉลาก,受控标签商品,consumer_labeling,high,label-controlled goods,标签公告核心术语,active
+th_0026,th,zh,ฉลาก,标签,consumer_labeling,high,label,消费者标签监管核心术语,active
+th_0027,th,zh,ฉลากสินค้า,商品标签,consumer_labeling,high,product label,受控标签商品需标注信息,active
+th_0028,th,zh,ข้อความ,文字,consumer_labeling,high,text,标签内容形式之一,active
+th_0029,th,zh,รูป,图形,consumer_labeling,medium,figure,标签内容形式之一,active
+th_0030,th,zh,รอยประดิษฐ์,标识图案,consumer_labeling,medium,mark;design,标签可使用的图案或标识,active
+th_0031,th,zh,ภาพ,图片,consumer_labeling,medium,image,标签内容形式之一,active
+th_0032,th,zh,ตรงต่อความเป็นจริง,真实准确,consumer_labeling,high,true to facts,标签内容基本要求,active
+th_0033,th,zh,ไม่ก่อให้เกิดความเข้าใจผิด,不得引人误解,consumer_labeling,high,not misleading,标签合规核心要求,active
+th_0034,th,zh,สาระสำคัญของสินค้า,商品重要内容,consumer_labeling,high,essential characteristics of goods,不得误导的对象,active
+th_0035,th,zh,ภาษาไทย,泰语,consumer_labeling,high,Thai language,标签必须使用泰语或泰语附外语,active
+th_0036,th,zh,ภาษาต่างประเทศ,外语,consumer_labeling,medium,foreign language,标签可附外语说明,active
+th_0037,th,zh,เห็นและอ่านได้ชัดเจน,清晰可见并可读,consumer_labeling,high,clearly visible and legible,标签展示要求,active
+th_0038,th,zh,ผลิตขึ้นเพื่อการส่งออก,为出口而生产,consumer_labeling,medium,produced for export,标签要求豁免情形,active
+th_0039,th,zh,ไม่ขายในประเทศไทย,不在泰国销售,consumer_labeling,medium,not sold in Thailand,出口商品标签豁免条件,active
+th_0040,th,zh,ผู้บริโภค,消费者,consumer_labeling,high,consumer,消费者保护法规核心主体,active
+th_0041,th,zh,ผู้ประกอบธุรกิจ,经营者,consumer_labeling,high,business operator,标签和保修信息责任主体,active
+th_0042,th,zh,รถยนต์,汽车,vehicle_general,high,motor vehicle;car,标签公告定义对象，含私人乘用车和私人货车,active
+th_0043,th,zh,รถยนต์ไฟฟ้า,电动汽车,ev_general,high,electric vehicle,标签公告核心对象,active
+th_0044,th,zh,รถยนต์นั่งส่วนบุคคล,私人乘用车,vehicle_category,high,private passenger car,标签公告中汽车定义范围,active
+th_0045,th,zh,รถยนต์บรรทุกส่วนบุคคล,私人载货汽车,vehicle_category,high,private truck;private goods vehicle,标签公告中汽车定义范围,active
+th_0046,th,zh,กำลังเครื่องยนต์,发动机动力,vehicle_powertrain,high,engine power,传统汽车动力来源,active
+th_0047,th,zh,กำลังไฟฟ้า,电力驱动,ev_general,high,electric power,电动汽车动力来源,active
+th_0048,th,zh,มอเตอร์ไฟฟ้า,电动机,ev_powertrain,high,electric motor,电动汽车标签必标信息之一,active
+th_0049,th,zh,ยังมิได้จดทะเบียน,尚未登记,vehicle_registration,high,not yet registered,标签公告适用未依法登记车辆,active
+th_0050,th,zh,กฎหมายว่าด้วยรถยนต์,汽车法,vehicle_registration,high,law on motor vehicles,车辆登记依据法律,active
+th_0051,th,zh,ชื่อประเภทหรือชนิดของสินค้า,商品类别或种类名称,consumer_labeling,high,name of type or kind of goods,标签必载事项之一,active
+th_0052,th,zh,ชื่อหรือเครื่องหมายการค้า,名称或商标,consumer_labeling,high,name or trademark,标签必载事项之一,active
+th_0053,th,zh,เครื่องหมายการค้า,商标,consumer_labeling,high,trademark,标签必载事项,active
+th_0054,th,zh,จดทะเบียนในประเทศไทย,在泰国注册,consumer_labeling,high,registered in Thailand,商标或名称注册要求,active
+th_0055,th,zh,ผู้สั่ง,订购方,vehicle_market,medium,ordering party,进口或销售相关主体,active
+th_0056,th,zh,ผู้นำเข้า,进口商,vehicle_market,high,importer,进口商品标签责任主体,active
+th_0057,th,zh,ราชอาณาจักร,王国,consumer_labeling,medium,Kingdom,泰国法规中指泰王国,active
+th_0058,th,zh,สินค้านำเข้า,进口商品,consumer_labeling,high,imported goods,需标注生产国,active
+th_0059,th,zh,ประเทศที่ผลิต,生产国,consumer_labeling,high,country of manufacture,进口商品标签必载事项,active
+th_0060,th,zh,สถานที่ตั้ง,地址,consumer_labeling,high,address;location,生产者或进口商地址,active
+th_0061,th,zh,ขนาด,尺寸,vehicle_dimensions,high,size,标签必载事项之一,active
+th_0062,th,zh,มิติ,维度,vehicle_dimensions,high,dimension,标签必载事项之一,active
+th_0063,th,zh,หน่วย,单位,general_regulation,medium,unit,尺寸、重量、价格等单位,active
+th_0064,th,zh,ชื่อเต็ม,全称,general_regulation,low,full name,单位表示方式之一,active
+th_0065,th,zh,ชื่อย่อ,缩写,general_regulation,low,abbreviation,单位表示方式之一,active
+th_0066,th,zh,สัญลักษณ์,符号,general_regulation,low,symbol,单位表示方式之一,active
+th_0067,th,zh,น้ำหนักของสินค้า,商品重量,vehicle_weight,high,product weight,标签必载事项之一,active
+th_0068,th,zh,การรองรับน้ำหนักบรรทุก,承载能力,vehicle_weight,high,load capacity,私人载货汽车标签必载事项,active
+th_0069,th,zh,รายละเอียดของสินค้า,商品详情,consumer_labeling,high,product details,标签必载事项,active
+th_0070,th,zh,ยี่ห้อรถ,车辆品牌,vehicle_market,high,vehicle brand,标签商品详情字段,active
+th_0071,th,zh,ยี่ห้อเครื่องยนต์,发动机品牌,vehicle_powertrain,high,engine brand,标签商品详情字段,active
+th_0072,th,zh,รุ่น,型号,vehicle_market,high,model,标签商品详情字段,active
+th_0073,th,zh,ระบบเกียร์,变速器系统,vehicle_powertrain,high,transmission system,标签必载事项之一,active
+th_0074,th,zh,ระบบขับเคลื่อน,驱动系统,vehicle_powertrain,high,drive system,标签必载事项之一,active
+th_0075,th,zh,ชนิดเชื้อเพลิง,燃料类型,vehicle_powertrain,high,fuel type,标签必载事项之一,active
+th_0076,th,zh,ความจุของเครื่องยนต์,发动机排量,vehicle_powertrain,high,engine displacement;engine capacity,标签必载事项之一,active
+th_0077,th,zh,ระยะเวลาและเงื่อนไขการรับประกันสินค้า,商品保修期限和条件,consumer_labeling,high,warranty period and conditions,标签必载事项,active
+th_0078,th,zh,การรับประกันสินค้า,商品保修,consumer_labeling,high,product warranty,车辆标签必载事项,active
+th_0079,th,zh,ส่วนควบ,附属部件,vehicle_equipment,high,accessory parts;components,保修对象之一,active
+th_0080,th,zh,อุปกรณ์ของสินค้า,商品设备,vehicle_equipment,high,equipment of goods,保修对象之一,active
+th_0081,th,zh,ไม่มี,无,consumer_labeling,high,None,无保修时必须标注“无”,active
+th_0082,th,zh,วิธีใช้,使用方法,consumer_labeling,high,instructions for use,标签必载事项之一,active
+th_0083,th,zh,วัตถุประสงค์ในการใช้งาน,使用目的,consumer_labeling,medium,purpose of use,使用方法说明目标,active
+th_0084,th,zh,ข้อแนะนำในการใช้,使用建议,consumer_labeling,high,usage recommendation,标签必载事项之一,active
+th_0085,th,zh,การดูแลรักษา,维护保养,vehicle_maintenance,high,maintenance,车辆或电动车使用维护建议,active
+th_0086,th,zh,คู่มือการใช้งาน,用户手册,vehicle_documentation,high,user manual,标签建议检查和学习的文件,active
+th_0087,th,zh,คู่มือช่วยเหลือฉุกเฉิน,紧急救援手册,vehicle_documentation,high,emergency assistance manual,车辆使用前建议学习文件,active
+th_0088,th,zh,ข้อควรระวัง,注意事项,consumer_labeling,high,precautions,标签必载安全信息,active
+th_0089,th,zh,ใช้อย่างปลอดภัย,安全使用,consumer_labeling,high,use safely,注意事项和警告目的,active
+th_0090,th,zh,ขับขี่อย่างมีสติและระมัดระวัง,清醒并谨慎驾驶,road_safety,medium,drive consciously and carefully,标签示例性注意事项,active
+th_0091,th,zh,ที่ชัน,陡坡,road_safety,medium,steep slope,标签驾驶注意事项示例,active
+th_0092,th,zh,คำเตือน,警告,consumer_labeling,high,warning,标签必载安全提示,active
+th_0093,th,zh,อาจถึงตายหรือพิการ หากไม่คาดเข็มขัดนิรภัย,不系安全带可能导致死亡或残疾,vehicle_safety,high,May cause death or disability if seat belt is not fastened,标签强制警告语，建议固定译法,active
+th_0094,th,zh,เข็มขัดนิรภัย,安全带,vehicle_safety,high,seat belt,标签警告和安全带固定点法规核心术语,active
+th_0095,th,zh,ตัวอักษรขนาดใหญ่กว่า,较大字号字体,consumer_labeling,medium,larger font,警告和注意事项显示要求,active
+th_0096,th,zh,สีตัดกับสีพื้น,与背景形成对比的颜色,consumer_labeling,medium,contrasting color,警告显示要求,active
+th_0097,th,zh,วัน เดือน ปีที่ผลิต,生产日期,consumer_labeling,high,date of manufacture,标签必载事项,active
+th_0098,th,zh,สัปดาห์และปีที่ผลิต,生产周和年份,consumer_labeling,medium,week and year of manufacture,无法明确日期时替代表达,active
+th_0099,th,zh,เดือนและปีที่ผลิต,生产月份和年份,consumer_labeling,medium,month and year of manufacture,无法明确日期时替代表达,active
+th_0100,th,zh,คุณภาพหรือคุณสมบัติของสินค้า,商品质量或特性,consumer_labeling,medium,quality or properties of goods,生产日期标注目的,active
+th_0101,th,zh,ราคา,价格,consumer_labeling,high,price,标签必载事项,active
+th_0102,th,zh,บาท,泰铢,consumer_labeling,high,baht,价格单位必须以泰铢标注,active
+th_0103,th,zh,เงินสกุลอื่น,其他货币,consumer_labeling,medium,other currency,价格可附加其他币种,active
+th_0104,th,zh,ประเภทของรถยนต์ไฟฟ้า,电动汽车类型,ev_general,high,type of electric vehicle,电动汽车标签额外必载事项,active
+th_0105,th,zh,รถยนต์ไฟฟ้าไฮบริด,混合动力电动汽车,ev_general,high,HEV,电动车类型之一,active
+th_0106,th,zh,HEV,混合动力电动汽车,ev_general,high,รถยนต์ไฟฟ้าไฮบริด,建议保留缩写并译出,active
+th_0107,th,zh,รถยนต์ไฟฟ้าปลั๊กอินไฮบริด,插电式混合动力电动汽车,ev_general,high,PHEV,电动车类型之一,active
+th_0108,th,zh,PHEV,插电式混合动力电动汽车,ev_general,high,รถยนต์ไฟฟ้าปลั๊กอินไฮบริด,建议保留缩写并译出,active
+th_0109,th,zh,รถยนต์ไฟฟ้าแบตเตอรี่,纯电动汽车,ev_general,high,BEV,电动车类型之一,active
+th_0110,th,zh,BEV,纯电动汽车,ev_general,high,รถยนต์ไฟฟ้าแบตเตอรี่,建议保留缩写并译出,active
+th_0111,th,zh,รถยนต์ไฟฟ้าเซลล์เชื้อเพลิง,燃料电池电动汽车,ev_general,high,FCEV,电动车类型之一,active
+th_0112,th,zh,FCEV,燃料电池电动汽车,ev_general,high,รถยนต์ไฟฟ้าเซลล์เชื้อเพลิง,建议保留缩写并译出,active
+th_0113,th,zh,กำลังสูงสุดของมอเตอร์ไฟฟ้า,电动机最大功率,ev_powertrain,high,maximum power of electric motor,电动汽车标签额外必载事项,active
+th_0114,th,zh,กำลังพิกัด,额定功率,ev_powertrain,high,rated power,电动机连续输出能力字段,active
+th_0115,th,zh,ผลิตได้อย่างต่อเนื่อง,可连续输出,ev_powertrain,medium,continuous output,额定功率说明,active
+th_0116,th,zh,ประเภทของแบตเตอรี่,电池类型,ev_battery,high,battery type,电动汽车标签额外必载事项,active
+th_0117,th,zh,แบตเตอรี่ที่ใช้สำหรับการขับเคลื่อนรถ,动力电池,ev_battery,high,traction battery,电动车驱动用电池，标签核心术语,active
+th_0118,th,zh,เงื่อนไขในการรับประกันแบตเตอรี่,电池保修条件,ev_battery,high,battery warranty conditions,电动车标签额外必载事项,active
+th_0119,th,zh,ขนาดความจุของแบตเตอรี่,电池容量,ev_battery,high,battery capacity,电动车标签额外必载事项,active
+th_0120,th,zh,ระยะทางโดยประมาณ,大致续驶里程,ev_battery,high,approximate driving range,满电可行驶距离,active
+th_0121,th,zh,การชาร์จแบตเตอรี่เต็มความจุ,电池充满电,ev_battery,high,full battery charge,续驶里程条件,active
+th_0122,th,zh,มาตรฐานความปลอดภัยระบบส่งกำลังด้วยไฟฟ้า,电力传动系统安全标准,ev_safety,high,electric powertrain safety standard,电动车标签额外信息,active
+th_0123,th,zh,ระบบส่งกำลังด้วยไฟฟ้า,电力传动系统,ev_safety,high,electric powertrain,电动车安全标准对象,active
+th_0124,th,zh,มอก.3026,泰国工业标准3026,ev_safety,high,TIS 3026,电力传动系统安全标准示例,active
+th_0125,th,zh,ข้อกำหนดทางเทคนิคยานยนต์ของสหประชาชาติ,联合国汽车技术法规,ev_safety,high,UN vehicle technical regulation,标签中引用UN Regulation No.100,active
+th_0126,th,zh,ข้อกำหนดที่ 100,第100号法规,ev_safety,high,UN Regulation No.100,电动车电安全法规引用,active
+th_0127,th,zh,UN Regulation No.100,联合国第100号法规,ev_safety,high,ข้อกำหนดที่ 100,建议保留英文法规编号并译出,active
+th_0128,th,zh,อัตราการใช้ไฟฟ้า,电耗率,ev_battery,high,electricity consumption rate,电动车标签额外必载事项,active
+th_0129,th,zh,ภาษาอังกฤษ,英语,consumer_labeling,medium,English,车辆品牌、发动机品牌、型号可用英语,active
+th_0130,th,zh,ขนาดความสูงของตัวอักษร,字体高度,consumer_labeling,medium,font height,标签文字尺寸要求,active
+th_0131,th,zh,ไม่น้อยกว่า ๒ มิลลิเมตร,不小于2毫米,consumer_labeling,high,not less than 2 mm,标签字体高度最低要求,active
+th_0132,th,zh,เอกสาร,文件,consumer_labeling,medium,document,标签可随附载体之一,active
+th_0133,th,zh,คู่มือ,手册,consumer_labeling,high,manual,标签可在手册中合并展示,active
+th_0134,th,zh,ป้าย,标牌,consumer_labeling,high,plate;sign,标签可设置或展示载体,active
+th_0135,th,zh,กรมการขนส่งทางบก,陆路运输厅,road_authority,high,Department of Land Transport;DLT,泰国机动车型式批准主管机关,active
+th_0136,th,zh,อธิบดีกรมการขนส่งทางบก,陆路运输厅厅长,road_authority,high,Director-General of DLT,安全带固定点公告发布主体,active
+th_0137,th,zh,กฎกระทรวง,部令,general_regulation,high,Ministerial Regulation,泰国法规文件类型,active
+th_0138,th,zh,ส่วนควบและเครื่องอุปกรณ์สำหรับรถ,车辆部件和设备,vehicle_equipment,high,vehicle parts and equipment,安全带固定点公告授权依据,active
+th_0139,th,zh,การให้ความเห็นชอบแบบ,型式批准,vehicle_approval,high,type approval,DLT公告核心制度术语,active
+th_0140,th,zh,แบบ,型式,vehicle_approval,high,type,车辆或部件批准对象,active
+th_0141,th,zh,คุณสมบัติ,资格/性能要求,general_regulation,high,qualification;properties,公告标题和技术要求术语,active
+th_0142,th,zh,ลักษณะ,特性,general_regulation,medium,characteristics,公告标题术语,active
+th_0143,th,zh,หลักเกณฑ์,准则,general_regulation,high,criteria,型式批准依据,active
+th_0144,th,zh,วิธีการ,方法,general_regulation,high,method,型式批准程序术语,active
+th_0145,th,zh,เงื่อนไข,条件,general_regulation,high,conditions,型式批准条件和标签保修条件均高频,active
+th_0146,th,zh,จุดยึดเข็มขัดนิรภัย,安全带固定点,seatbelt_anchorage,high,seat belt anchorage,DLT B.E.2560核心术语,active
+th_0147,th,zh,จุดยึดเข็มขัดนิรภัยใช้งานจริง,有效安全带固定点,seatbelt_anchorage,high,effective belt anchorage,用于确定安全带各部分相对佩戴者角度,active
+th_0148,th,zh,ชุดเข็มขัดนิรภัย,安全带总成,seatbelt_anchorage,high,seat belt assembly,固定到车辆或座椅结构上的部件,active
+th_0149,th,zh,โครงสร้างรถ,车辆结构,seatbelt_anchorage,high,vehicle structure,安全带固定点可附着部位,active
+th_0150,th,zh,โครงสร้างที่นั่ง,座椅结构,seatbelt_anchorage,high,seat structure,安全带固定点可附着部位,active
+th_0151,th,zh,พื้นรถ,地板,vehicle_structure,high,floor,车身下部结构，含加强件,active
+th_0152,th,zh,ตัวถังรถ,车身,vehicle_structure,high,vehicle body,地板与侧壁连接结构,active
+th_0153,th,zh,ผนังด้านข้าง,侧壁,vehicle_structure,medium,side wall,地板定义相关结构,active
+th_0154,th,zh,คานเสริมแรง,加强梁,vehicle_structure,medium,reinforcement beam,地板结构组成部分,active
+th_0155,th,zh,ที่นั่ง,座椅,seat_headrest,high,seat,安全带固定点法规基础术语,active
+th_0156,th,zh,เบาะนั่ง,座垫/座椅,seat_headrest,medium,seat cushion;seat,视上下文译为座椅或座垫,active
+th_0157,th,zh,ที่นั่งแถวหน้า,前排座椅,seat_headrest,high,front seat,安全带固定点数量和角度要求对象,active
+th_0158,th,zh,ที่นั่งผู้โดยสารด้านหน้า,前排乘客座椅,seat_headrest,high,front passenger seat,定义涉及最前H点和驾驶员R点,active
+th_0159,th,zh,ที่นั่งด้านข้าง,侧向座位,seat_headrest,medium,side seat,固定点最低数量表术语,active
+th_0160,th,zh,ที่นั่งกลาง,中间座位,seat_headrest,medium,center seat,固定点最低数量表术语,active
+th_0161,th,zh,ที่นั่งหันไปด้านหลัง,后向座椅,seat_headrest,high,rear-facing seat,最低固定点数量单列要求,active
+th_0162,th,zh,จุด H,H点,seat_headrest,high,H-point,座椅人体工程学基准点,active
+th_0163,th,zh,จุด R,R点,seat_headrest,high,R-point,设计参考点,active
+th_0164,th,zh,จุด H ที่อยู่หน้าสุด,最前H点,seat_headrest,medium,foremost H-point,前排乘客座椅定义要素,active
+th_0165,th,zh,ระนาบแนวดิ่งตามขวาง,垂直横向平面,seatbelt_anchorage,high,vertical transverse plane,前排座椅定义和动态试验限值术语,active
+th_0166,th,zh,ระนาบแนวกึ่งกลางตามยาวของรถ,车辆纵向中平面,seatbelt_anchorage,high,longitudinal median plane of vehicle,上固定点位置几何基准,active
+th_0167,th,zh,เขตอ้างอิง,参考区,seatbelt_anchorage,high,reference zone,头部冲击建模空间,active
+th_0168,th,zh,พื้นที่กระทบศีรษะ,头部冲击区域,seatbelt_anchorage,high,head impact area,附录技术术语,active
+th_0169,th,zh,หุ่นศีรษะทรงกลม,球形头模,testing,medium,spherical headform,165 mm直径头部冲击区域确定工具,active
+th_0170,th,zh,เส้นผ่านศูนย์กลาง,直径,vehicle_dimensions,medium,diameter,头模尺寸术语,active
+th_0171,th,zh,ฟังก์ชันจำกัดแรงที่ทรวงอก,胸部载荷限制功能,seatbelt_anchorage,high,thorax load limiter function,动态滑车试验适用条件之一,active
+th_0172,th,zh,ทรวงอก,胸部,seatbelt_anchorage,medium,thorax,载荷限制对象,active
+th_0173,th,zh,การชน,碰撞,road_safety,high,collision,载荷限制和动态测试场景,active
+th_0174,th,zh,การผลิตจำนวนมาก,批量生产,vehicle_market,high,mass production,每型每年超过100辆生产/进口,active
+th_0175,th,zh,การผลิตจำนวนน้อย,小批量生产,vehicle_market,high,small volume production,每型每年不超过100辆生产/进口,active
+th_0176,th,zh,ผลิต ประกอบ หรือนำเข้า,生产、组装或进口,vehicle_market,high,produce assemble or import,安全带固定点适用范围,active
+th_0177,th,zh,เพื่อจำหน่าย,用于销售,vehicle_market,high,for sale,适用范围条件,active
+th_0178,th,zh,เพื่อใช้ส่วนตัว,供个人使用,vehicle_market,medium,for personal use,超过数量阈值时适用,active
+th_0179,th,zh,รถยนต์นั่ง,乘用车,vehicle_category,high,passenger car,M1类车辆,active
+th_0180,th,zh,รถบรรทุก,载货汽车,vehicle_category,high,truck,N1类车辆,active
+th_0181,th,zh,M1,M1类车辆,vehicle_category,high,Category M1,至少四轮载客，不超过9座含驾驶员,active
+th_0182,th,zh,N1,N1类车辆,vehicle_category,high,Category N1,至少四轮载货，最大允许质量不超过3500 kg,active
+th_0183,th,zh,จำนวนที่นั่ง,座位数,vehicle_category,high,number of seats,M1/N1分类和报告字段,active
+th_0184,th,zh,รวมผู้ขับรถ,包括驾驶员,vehicle_category,medium,including driver,M1座位数条件,active
+th_0185,th,zh,มวลสูงสุดที่อนุญาต,最大允许质量,vehicle_weight,high,Maximum Authorized Mass;MAM,N1类别定义参数,active
+th_0186,th,zh,ไม่เกิน ๓,๕๐๐ กิโลกรัม,不超过3500千克,medium,high,not exceeding 3500 kg,active
+th_0187,th,zh,ห้องโดยสาร,乘员舱,vehicle_structure,high,passenger compartment,N1客货同舱条件相关术语,active
+th_0188,th,zh,ห้องบรรทุกสินค้า,货厢,vehicle_structure,high,cargo compartment,N1客货空间条件相关术语,active
+th_0189,th,zh,ข้อกำหนดทั่วไป,一般要求,general_regulation,high,general requirements,安全带固定点章节术语,active
+th_0190,th,zh,ตำแหน่งติดตั้ง,安装位置,seatbelt_anchorage,high,installation position,安全带固定点设计和布置要求,active
+th_0191,th,zh,การเลื่อนหลุดของเข็มขัด,安全带滑脱,seatbelt_anchorage,high,belt slipping,固定点设计需降低风险,active
+th_0192,th,zh,ขอบคม,锐边,vehicle_safety,high,sharp edge,应避免损伤安全带,active
+th_0193,th,zh,ที่นั่งหมุนได้,可旋转座椅,seat_headrest,medium,rotating seat,仅正常道路使用位置适用要求,active
+th_0194,th,zh,ตำแหน่งใช้งานปกติบนถนน,道路正常使用位置,seat_headrest,high,normal road use position,可旋转或可变方向座椅适用条件,active
+th_0195,th,zh,จำนวนจุดยึดขั้นต่ำ,最少固定点数量,seatbelt_anchorage,high,minimum number of anchorages,附录3核心要求,active
+th_0196,th,zh,รูเกลียว,螺纹孔,seatbelt_anchorage,high,threaded hole,固定点技术规格,active
+th_0197,th,zh,7/16 นิ้ว,7/16英寸,seatbelt_anchorage,high,7/16 inch,固定点螺纹孔规格,active
+th_0198,th,zh,20 UNF 2B,20 UNF 2B螺纹,seatbelt_anchorage,high,20 UNF 2B,固定点螺纹规格，保留原文,active
+th_0199,th,zh,จุดยึดด้านล่าง,下固定点,seatbelt_anchorage,high,lower anchorage,安全带固定点位置术语,active
+th_0200,th,zh,จุดยึดด้านบน,上固定点,seatbelt_anchorage,high,upper anchorage,安全带固定点位置术语,active
+th_0201,th,zh,มุมจุดยึดด้านล่าง,下固定点角度,seatbelt_anchorage,high,lower anchorage angle,技术规格核心参数,active
+th_0202,th,zh,ด้านหัวเข็มขัด,带扣侧,seatbelt_anchorage,high,buckle side,下固定点角度区分项,active
+th_0203,th,zh,ด้านที่ไม่ใช่หัวเข็มขัด,非带扣侧,seatbelt_anchorage,high,non-buckle side,下固定点角度区分项,active
+th_0204,th,zh,ระยะห่างระหว่างจุดยึดด้านล่าง,下固定点间距,seatbelt_anchorage,high,distance between lower anchorages,一般不得小于350 mm,active
+th_0205,th,zh,มิลลิเมตร,毫米,vehicle_dimensions,medium,mm,尺寸单位,active
+th_0206,th,zh,ระนาบแนวนอน,水平平面,seatbelt_anchorage,high,horizontal plane,上固定点位置几何基准,active
+th_0207,th,zh,จุด C,C点,seatbelt_anchorage,high,point C,上固定点位置判定点,active
+th_0208,th,zh,ขั้นตอนการทดสอบ,试验程序,testing,high,testing procedure,第二章核心内容,active
+th_0209,th,zh,โครงสร้างรถที่สมบูรณ์,完整车辆结构,testing,medium,completed vehicle structure,可用于试验对象,active
+th_0210,th,zh,รถที่สมบูรณ์,整车,testing,high,completed vehicle,可用于试验对象,active
+th_0211,th,zh,พนักพิงที่นั่ง,座椅靠背,seat_headrest,high,seat back,试验前需锁止或按角度设置,active
+th_0212,th,zh,ล็อก,锁止,seat_headrest,medium,lock,座椅靠背试验状态,active
+th_0213,th,zh,มุมใกล้เคียง 25 องศา,接近25度的角度,seat_headrest,medium,angle near 25 degrees,座椅靠背试验状态,active
+th_0214,th,zh,การยึดตรึงรถ,车辆固定,testing,high,securing the vehicle,试验条件要求,active
+th_0215,th,zh,เสริมความแข็งแรง,加强,testing,medium,reinforce,固定方法不得加强固定点或周边区域,active
+th_0216,th,zh,การทดสอบแรงสถิต,静载试验,testing,high,static load test,安全带固定点主要试验方式,active
+th_0217,th,zh,แรงสถิต,静载荷,testing,high,static load,安全带固定点测试载荷,active
+th_0218,th,zh,แรงดึง,拉力,testing,high,traction force,固定点试验载荷性质,active
+th_0219,th,zh,daN,十牛顿,testing,high,decanewton,固定点载荷单位，建议保留daN,active
+th_0220,th,zh,เข็มขัดนิรภัยแบบสามจุด,三点式安全带,vehicle_safety,high,3-point seat belt,固定点载荷表术语,active
+th_0221,th,zh,เข็มขัดนิรภัยแบบสองจุด,两点式安全带,vehicle_safety,high,2-point seat belt;lap belt,固定点载荷表术语,active
+th_0222,th,zh,เข็มขัดตัก,腰带,vehicle_safety,high,lap belt,两点式安全带,active
+th_0223,th,zh,ตัวดึงกลับ,卷收器,vehicle_safety,high,retractor,三点式安全带是否带卷收器,active
+th_0224,th,zh,ไม่มีตัวดึงกลับ,不带卷收器,vehicle_safety,medium,no retractor,三点式安全带分类,active
+th_0225,th,zh,แบบพิเศษชนิด S,S型特殊安全带,vehicle_safety,medium,S-type special belt,固定点载荷表术语,active
+th_0226,th,zh,แรงเฉื่อย,惯性载荷,testing,high,inertia load,座椅结构上固定点需增加载荷,active
+th_0227,th,zh,มวลของที่นั่ง,座椅质量,testing,high,mass of seat,惯性载荷计算基础,active
+th_0228,th,zh,การทดสอบพลวัต,动态试验,testing,high,dynamic test,附录8替代试验方式,active
+th_0229,th,zh,การทดสอบด้วยรถเลื่อน,滑车试验,testing,high,sled test,动态替代试验方式,active
+th_0230,th,zh,รถเลื่อน,滑车,testing,high,sled,动态试验设备,active
+th_0231,th,zh,ความเร็วรถเลื่อน,滑车速度,testing,medium,sled speed,动态试验参数,active
+th_0232,th,zh,การฉีกขาด,断裂,testing,high,rupture,动态试验合格判据之一,active
+th_0233,th,zh,เคลื่อนไปด้านหน้า,向前移动,testing,medium,move forward,上固定点位移限制表达,active
+th_0234,th,zh,การยื่นคำขอ,申请,vehicle_approval,high,application,型式批准程序术语,active
+th_0235,th,zh,เอกสารแสดงตน,身份证明文件,vehicle_approval,medium,identification documents,型式批准申请材料,active
+th_0236,th,zh,หนังสือรับรองการจดทะเบียนนิติบุคคล,公司注册证明,vehicle_approval,high,company registration certificate,型式批准申请材料,active
+th_0237,th,zh,เอกสารทางเทคนิค,技术文件,vehicle_approval,high,technical documentation,型式批准申请材料,active
+th_0238,th,zh,แบบแปลน,图纸,vehicle_approval,high,drawings,技术文件内容,active
+th_0239,th,zh,ตำแหน่งจุดยึด,固定点位置,seatbelt_anchorage,high,anchorage position,技术文件内容,active
+th_0240,th,zh,คุณลักษณะของวัสดุ,材料规格,vehicle_approval,high,material specifications,技术文件内容,active
+th_0241,th,zh,คำอธิบายทางเทคนิค,技术说明,vehicle_approval,medium,technical description,技术文件内容,active
+th_0242,th,zh,รถตัวแทน,代表车辆,vehicle_approval,high,representative vehicle,型式批准试验提交对象,active
+th_0243,th,zh,ชิ้นส่วนตัวแทน,代表部件,vehicle_approval,high,representative component,型式批准试验提交对象,active
+th_0244,th,zh,การควบคุมคุณภาพ,质量控制,vehicle_approval,high,quality control,型式批准申请证据要求,active
+th_0245,th,zh,ความสอดคล้องของการผลิต,生产一致性,vehicle_approval,high,Conformity of Production;COP,安全带固定点法规核心术语,active
+th_0246,th,zh,COP,生产一致性,vehicle_approval,high,ความสอดคล้องของการผลิต,建议保留缩写并译出,active
+th_0247,th,zh,หน่วยทดสอบ,试验机构,testing,high,testing unit,DLT认可试验结果来源之一,active
+th_0248,th,zh,หน่วยงานที่ได้รับความเห็นชอบ,认可机构,testing,high,approved unit,DLT认可的ISO 17025/17020机构,active
+th_0249,th,zh,ISO 17025,ISO 17025,testing,high,ISO 17025,实验室能力认可标准，保留编号,active
+th_0250,th,zh,ISO 17020,ISO 17020,testing,high,ISO 17020,检验机构认可标准，保留编号,active
+th_0251,th,zh,ISO 17021,ISO 17021,vehicle_approval,medium,ISO 17021,管理体系认证机构标准，COP评估相关,active
+th_0252,th,zh,ISO 9001,ISO 9001,vehicle_approval,medium,ISO 9001,COP程序认可质量体系标准,active
+th_0253,th,zh,ISO/TS 16949,ISO/TS 16949,vehicle_approval,medium,ISO/TS 16949,汽车行业质量管理体系标准,active
+th_0254,th,zh,UN ECE R14,联合国欧洲经济委员会第14号法规,seatbelt_anchorage,high,UN Regulation No.14,安全带固定点国际认证依据,active
+th_0255,th,zh,อนุกรมการแก้ไขเพิ่มเติม,修订系列,vehicle_approval,high,series of amendments,UN法规版本术语,active
+th_0256,th,zh,TIS 1467-2550,泰国工业标准1467-2550,seatbelt_anchorage,high,มอก.1467-2550,安全带固定点认可依据之一,active
+th_0257,th,zh,มอก.1467-2550,泰国工业标准1467-2550,seatbelt_anchorage,high,TIS 1467-2550,泰国工业标准编号，建议保留原文编号,active
+th_0258,th,zh,การตรวจประเมิน,审核评估,vehicle_approval,high,audit;assessment,COP质量体系审核,active
+th_0259,th,zh,ระบบคุณภาพ,质量体系,vehicle_approval,high,quality system,COP评估对象,active
+th_0260,th,zh,ปีละหนึ่งครั้ง,每年一次,vehicle_approval,medium,once per year,COP常规审核频率,active
+th_0261,th,zh,บันทึกผลการทดสอบ,试验记录,testing,high,test records,制造商需保存至少10年,active
+th_0262,th,zh,เก็บรักษา,保存,testing,medium,keep;retain,试验记录保存义务,active
+th_0263,th,zh,ไม่น้อยกว่า 10 ปี,不少于10年,testing,high,at least 10 years,试验记录保存期限,active
+th_0264,th,zh,การแก้ไขแบบที่ได้รับความเห็นชอบ,已批准型式变更,vehicle_approval,high,amendment to approved type,型式变更需报告或重新测试,active
+th_0265,th,zh,การทดสอบใหม่,重新试验,vehicle_approval,high,re-testing,型式变更后可能要求,active
+th_0266,th,zh,ใบรับรอง,证书,vehicle_approval,high,certificate,型式批准证书等通用术语,active
+th_0267,th,zh,พักใช้ใบรับรอง,暂停证书,vehicle_approval,high,suspension of certificate,可申诉情形之一,active
+th_0268,th,zh,เพิกถอนใบรับรอง,撤销证书,vehicle_approval,high,revocation of certificate,可申诉情形之一,active
+th_0269,th,zh,อุทธรณ์,申诉,vehicle_approval,high,appeal,向厅长申诉,active
+th_0270,th,zh,ภายใน 15 วัน,15日内,general_regulation,medium,within 15 days,证书暂停或撤销申诉期限,active
+th_0271,th,zh,รูปแบบใหม่,新车型,vehicle_approval,high,new model,实施时间表适用对象,active
+th_0272,th,zh,รูปแบบเดิม,既有车型,vehicle_approval,high,existing model,实施时间表适用对象,active
+th_0273,th,zh,เครื่องหมายรับรองแบบ,型式批准标志,vehicle_approval,high,type approval mark,附录13术语,active
+th_0274,th,zh,วงกลมที่มีตัวอักษร T,含字母T的圆圈,vehicle_approval,medium,circle containing the letter T,泰国型式批准标志组成,active
+th_0275,th,zh,ประเทศไทย,泰国,general_regulation,medium,Thailand,型式批准标志中字母T代表泰国,active
+th_0276,th,zh,หมายเลขการรับรองแบบ,型式批准编号,vehicle_approval,high,type approval number,批准标志组成之一,active
+th_0277,th,zh,หมายเลขการขยาย,扩展编号,vehicle_approval,medium,extension number,批准标志组成之一,active
+th_0278,th,zh,เครื่อง H-point สามมิติ,三维H点装置,testing,high,3D-H Machine,附录6用于确定H点和实际躯干角,active
+th_0279,th,zh,มุมลำตัวจริง,实际躯干角,seat_headrest,high,Actual Torso Angle,附录6测量术语,active
+th_0280,th,zh,อุปกรณ์ดึง,牵引装置,testing,high,traction device,附录7测试设备,active
+th_0281,th,zh,บล็อก,滑块,testing,medium,block,牵引装置组成,active
+th_0282,th,zh,รอก,滑轮,testing,medium,pulley,牵引装置组成,active
+th_0283,th,zh,มวลรถพร้อมใช้งาน,整备质量,vehicle_weight,high,mass in running order,N1分类公式参数M,active
+th_0284,th,zh,มวลที่อนุญาตทางเทคนิค,技术允许质量,vehicle_weight,high,technically permissible mass,N1分类公式参数P,active
+th_0285,th,zh,จำนวนที่นั่งไม่รวมผู้ขับรถ,不含驾驶员的座位数,vehicle_category,medium,number of seats excluding driver,N1分类公式参数N,active
+th_0286,th,zh,รถที่มีอย่างน้อยสี่ล้อ,至少四轮车辆,vehicle_category,medium,vehicle with at least four wheels,M1/N1定义条件,active
+th_0287,th,zh,ออกแบบสำหรับบรรทุกผู้โดยสาร,设计用于载客,vehicle_category,high,designed for carrying passengers,M1类别定义,active
+th_0288,th,zh,ออกแบบสำหรับบรรทุกสินค้า,设计用于载货,vehicle_category,high,designed for carrying goods,N1类别定义,active
+th_0289,th,zh,น้ำหนักบรรทุก,载荷,vehicle_weight,high,load,标签和车辆分类均常见,active
+th_0290,th,zh,ผู้ขับรถ,驾驶员,road_traffic,high,driver,车辆法规基础主体,active
