@@ -4133,3 +4133,358 @@ ar_0301,ar,zh,طرق الإنتاج,生产方法,general_regulation,medium,produ
 ar_0302,ar,zh,الخصائص الفنية للمنتج,产品技术特性,general_regulation,high,product technical characteristics,技术法规定义内容,active
 ar_0303,ar,zh,بطاقة البيان,标签,labelling,high,label,计量、标准或产品信息标识语境,active
 ar_0304,ar,zh,الوسم,标识,labelling,high,marking,产品标识和警示标志术语,active
+ms_0014,ms,zh,Garis Panduan Kelulusan Jenis Kenderaan,车辆型式批准指南,vehicle_approval,high,Vehicle Type Approval Guidelines,马来西亚VTA指南正式名称核心术语,active
+ms_0015,ms,zh,Garis Panduan Kelulusan Jenis Kenderaan (Pindaan) 2017,车辆型式批准指南（修订）2017,vehicle_approval,high,VTA Guidelines Amendment 2017,文件标题术语,active
+ms_0016,ms,zh,Kelulusan Jenis Kenderaan,车辆型式批准,vehicle_approval,high,Vehicle Type Approval,VTA全称核心术语,active
+ms_0017,ms,zh,VTA,车辆型式批准,vehicle_approval,high,Vehicle Type Approval,马来西亚新车型注册前强制程序,active
+ms_0018,ms,zh,homologasi,型式认证,vehicle_approval,high,homologation,与VTA并列使用的认证概念,active
+ms_0019,ms,zh,Jabatan Pengangkutan Jalan,道路交通局,road_authority,high,JPJ,马来西亚车辆型式批准主管机构,active
+ms_0020,ms,zh,JPJ,道路交通局,road_authority,high,Jabatan Pengangkutan Jalan,建议保留缩写并译出,active
+ms_0021,ms,zh,Bahagian Kejuruteraan Automotif,汽车工程部,road_authority,high,Automotive Engineering Division,JPJ负责VTA文件编制和检查的部门,active
+ms_0022,ms,zh,Ketua Pengarah JPJ,JPJ总监,road_authority,high,Director-General of JPJ,VTA委员会主席,active
+ms_0023,ms,zh,Jawatankuasa Kelulusan Jenis Kenderaan Kebangsaan,国家车辆型式批准委员会,vehicle_approval,high,National Committee for VTA,负责评估VTA申请,active
+ms_0024,ms,zh,Jawatankuasa VTA,VTA委员会,vehicle_approval,high,VTA Committee,VTA申请评估和批准机构,active
+ms_0025,ms,zh,Kementerian Pengangkutan,交通部,government_agency,high,MOT,马来西亚VTA委员会成员机构,active
+ms_0026,ms,zh,MOT,交通部,government_agency,high,Ministry of Transport,建议保留缩写并译出,active
+ms_0027,ms,zh,Kementerian Perdagangan Antarabangsa dan Industri,国际贸易与工业部,government_agency,high,MITI,VTA委员会成员机构，AP文件相关,active
+ms_0028,ms,zh,MITI,国际贸易与工业部,government_agency,high,Ministry of International Trade and Industry,建议保留缩写并译出,active
+ms_0029,ms,zh,Kementerian Perdagangan Dalam Negeri Koperasi dan Kepenggunaan,国内贸易、合作社与消费事务部,government_agency,medium,KPDNKK,VTA委员会成员机构,active
+ms_0030,ms,zh,KPDNKK,国内贸易、合作社与消费事务部,government_agency,medium,Ministry of Domestic Trade Co-operatives and Consumerism,旧部委缩写，按文件原文保留,active
+ms_0031,ms,zh,Suruhanjaya Pengangkutan Awam Darat,陆路公共交通委员会,government_agency,medium,SPAD,VTA委员会成员机构，旧机构名称,active
+ms_0032,ms,zh,SPAD,陆路公共交通委员会,government_agency,medium,Land Public Transport Commission,旧机构缩写，按文件原文保留,active
+ms_0033,ms,zh,Jabatan Alam Sekitar,环境局,government_agency,high,JAS;DOE,VTA委员会成员机构，排放和环境相关,active
+ms_0034,ms,zh,JAS,环境局,government_agency,high,Jabatan Alam Sekitar,马来语缩写,active
+ms_0035,ms,zh,DOE,环境局,government_agency,medium,Department of Environment,英文缩写变体,active
+ms_0036,ms,zh,Jabatan Kastam Diraja Malaysia,马来西亚皇家海关署,government_agency,high,KASTAM,VTA委员会成员机构，进口文件相关,active
+ms_0037,ms,zh,KASTAM,马来西亚皇家海关署,government_agency,high,Royal Malaysian Customs Department,建议保留缩写并译出,active
+ms_0038,ms,zh,Jabatan Standard Malaysia,马来西亚标准局,government_agency,high,DSM,VTA委员会成员机构，标准事务相关,active
+ms_0039,ms,zh,DSM,马来西亚标准局,government_agency,medium,Department of Standards Malaysia,建议保留缩写并译出,active
+ms_0040,ms,zh,Jabatan Keselamatan dan Kesihatan Pekerjaan,职业安全与健康局,government_agency,medium,DOSH,VTA委员会成员机构,active
+ms_0041,ms,zh,DOSH,职业安全与健康局,government_agency,medium,Department of Occupational Safety and Health,建议保留缩写并译出,active
+ms_0042,ms,zh,Institut Penyelidikan Keselamatan Jalan Raya Malaysia,马来西亚道路安全研究院,road_safety,high,MIROS,VTA委员会成员机构，道路安全研究机构,active
+ms_0043,ms,zh,MIROS,马来西亚道路安全研究院,road_safety,high,Malaysian Institute of Road Safety Research,建议保留缩写并译出,active
+ms_0044,ms,zh,Institut Piawaian dan Penyelidikan Perindustrian Malaysia,马来西亚标准与工业研究院,standardization,high,SIRIM,VTA委员会成员机构，测试和标准相关,active
+ms_0045,ms,zh,SIRIM,马来西亚标准与工业研究院,standardization,high,Standards and Industrial Research Institute of Malaysia,建议保留缩写并译出,active
+ms_0046,ms,zh,Pusat Pemeriksaan Kenderaan Berkomputer,计算机化车辆检验中心,vehicle_inspection,high,PUSPAKOM,马来西亚车辆检验机构,active
+ms_0047,ms,zh,PUSPAKOM,计算机化车辆检验中心,vehicle_inspection,high,Computerized Vehicle Inspection Centre,建议保留缩写并译出,active
+ms_0048,ms,zh,Kementerian Kewangan,财政部,government_agency,medium,MOF,VTA委员会成员机构,active
+ms_0049,ms,zh,MOF,财政部,government_agency,medium,Ministry of Finance,建议保留缩写并译出,active
+ms_0050,ms,zh,Polis Diraja Malaysia,马来西亚皇家警察,government_agency,medium,PDRM,VTA委员会成员机构,active
+ms_0051,ms,zh,PDRM,马来西亚皇家警察,government_agency,medium,Royal Malaysia Police,建议保留缩写并译出,active
+ms_0052,ms,zh,Dasar Automotif Nasional,国家汽车政策,vehicle_policy,high,National Automotive Policy,马来西亚参与WP29背景政策,active
+ms_0053,ms,zh,Forum Dunia bagi Pengharmonian Peraturan Kenderaan,车辆法规协调世界论坛,international_regulation,high,WP29,联合国车辆法规协调机制,active
+ms_0054,ms,zh,WP29,车辆法规协调世界论坛,international_regulation,high,World Forum for Harmonization of Vehicle Regulations,建议保留缩写并译出,active
+ms_0055,ms,zh,Peraturan Pertubuhan Bangsa-Bangsa Bersatu,联合国法规,international_regulation,high,UN Regulations,马来西亚VTA采用的质量和安全基准,active
+ms_0056,ms,zh,Peraturan UN,联合国法规,international_regulation,high,UN Regulations,文件常用简称,active
+ms_0057,ms,zh,UN Regulations,联合国法规,international_regulation,high,Peraturan UN,VTA合规核心标准体系,active
+ms_0058,ms,zh,Akta Pengangkutan Jalan 1987,1987年道路交通法,road_regulation,high,Road Transport Act 1987,VTA法律依据之一,active
+ms_0059,ms,zh,Kaedah-Kaedah Kenderaan Bermotor (Pembinaan dan Penggunaan) 1959,1959年机动车辆（构造和使用）规则,road_regulation,high,Motor Vehicles Construction and Use Rules 1959,VTA法律依据之一,active
+ms_0060,ms,zh,Kaedah-Kaedah Kenderaan Bermotor (Tali Pinggang Keledar) 1978,1978年机动车辆（安全带）规则,road_regulation,high,Motor Vehicles Seatbelts Rules 1978,VTA法律依据之一,active
+ms_0061,ms,zh,Kaedah-Kaedah Kenderaan Bermotor (Larangan Mengenai Jenis-Jenis Kaca Tertentu) 1991,1991年机动车辆（禁止特定类型玻璃）规则,road_regulation,high,Motor Vehicles Prohibition of Certain Types of Glass Rules 1991,VTA法律依据之一,active
+ms_0062,ms,zh,Kaedah-Kaedah Kenderaan Bermotor (Pembinaan Peralatan dan Penggunaan),机动车辆（构造、设备和使用）规则,road_regulation,high,Motor Vehicles Construction Equipment and Use Rules,车辆构造设备和使用相关法规,active
+ms_0063,ms,zh,Sistem Bahan Api Gas Petroleum Cecair,液化石油气燃料系统,fuel_system,high,LPG Fuel System,1982年规则相关术语,active
+ms_0064,ms,zh,Gas Petroleum Cecair,液化石油气,fuel_system,high,LPG,车辆燃料系统类别,active
+ms_0065,ms,zh,LPG,液化石油气,fuel_system,high,Liquefied Petroleum Gas,建议保留缩写并译出,active
+ms_0066,ms,zh,NGV,天然气汽车/天然气车辆,fuel_system,high,Natural Gas Vehicle,燃料系统技术资料项,active
+ms_0067,ms,zh,permohonan,申请,vehicle_approval,high,application,VTA流程核心动作,active
+ms_0068,ms,zh,pemohon,申请人,vehicle_approval,high,applicant,提交VTA资料和承担费用的主体,active
+ms_0069,ms,zh,surat permohonan rasmi,正式申请函,vehicle_approval,high,official application letter,VTA必交文件,active
+ms_0070,ms,zh,senarai semak permohonan,申请清单,vehicle_approval,high,application checklist,VTA必交文件，附录1,active
+ms_0071,ms,zh,portfolio,资料夹/申请资料包,vehicle_approval,medium,portfolio,VTA需提交两份资料包,active
+ms_0072,ms,zh,dokumen,文件,vehicle_approval,medium,document,VTA申请材料通用术语,active
+ms_0073,ms,zh,penyerahan dokumen,文件提交,vehicle_approval,high,document submission,VTA 20个工作日流程步骤之一,active
+ms_0074,ms,zh,semakan dokumen,文件核验,vehicle_approval,high,document verification,VTA流程步骤之一,active
+ms_0075,ms,zh,pemeriksaan kenderaan,车辆检查,vehicle_inspection,high,vehicle inspection,VTA流程步骤之一,active
+ms_0076,ms,zh,penyediaan laporan,报告编制,vehicle_approval,medium,report preparation,VTA流程步骤之一,active
+ms_0077,ms,zh,mesyuarat Jawatankuasa VTA,VTA委员会会议,vehicle_approval,high,VTA Committee Meeting,VTA审批流程步骤之一,active
+ms_0078,ms,zh,pengeluaran sijil,证书签发,vehicle_approval,high,certificate issuance,VTA流程步骤之一,active
+ms_0079,ms,zh,sijil VTA,VTA证书,vehicle_approval,high,VTA Certificate,车辆型式批准证书,active
+ms_0080,ms,zh,borang maklumat sijil VTA,VTA证书信息表,vehicle_approval,high,VTA Certificate Information Form,VTA必交文件，附录14,active
+ms_0081,ms,zh,Jadual I,表I,vehicle_approval,high,Schedule I,性能要求/UN法规合规资料,active
+ms_0082,ms,zh,Jadual II,表II,vehicle_approval,high,Schedule II,详细技术规格资料,active
+ms_0083,ms,zh,keperluan prestasi,性能要求,vehicle_approval,high,performance requirements,Jadual I内容,active
+ms_0084,ms,zh,spesifikasi teknikal,技术规格,vehicle_approval,high,technical specifications,Jadual II内容,active
+ms_0085,ms,zh,gambar foto,照片,vehicle_approval,medium,photographs,前视、侧视、后视照片,active
+ms_0086,ms,zh,pandangan hadapan,前视图,vehicle_approval,medium,front view,车辆照片要求之一,active
+ms_0087,ms,zh,pandangan sisi,侧视图,vehicle_approval,medium,side view,车辆照片要求之一,active
+ms_0088,ms,zh,pandangan belakang,后视图,vehicle_approval,medium,rear view,车辆照片要求之一,active
+ms_0089,ms,zh,nombor VIN,VIN号,vehicle_identification,high,VIN,车辆识别信息,active
+ms_0090,ms,zh,VIN,车辆识别号,vehicle_identification,high,Vehicle Identification Number,建议保留缩写并译出,active
+ms_0091,ms,zh,nombor casis,底盘号,vehicle_identification,high,chassis number,产品标签必列项目之一,active
+ms_0092,ms,zh,nombor enjin,发动机号,vehicle_identification,high,engine number,VTA必交照片和位置说明,active
+ms_0093,ms,zh,lokasi nombor enjin,发动机号位置,vehicle_identification,medium,engine number location,VTA照片说明要求,active
+ms_0094,ms,zh,lokasi nombor VIN,VIN号位置,vehicle_identification,medium,VIN location,VTA照片说明要求,active
+ms_0095,ms,zh,sijil pematuhan,合规证书,conformity_assessment,high,compliance certificate,新车型需提交的UN/MS合规证明,active
+ms_0096,ms,zh,laporan ujian,试验报告,conformity_assessment,high,test report,VTA合规证明文件,active
+ms_0097,ms,zh,softcopy,电子副本,vehicle_approval,medium,softcopy,证书和试验报告提交形式,active
+ms_0098,ms,zh,Approval Authority,批准机构,conformity_assessment,high,AA,WP29认可的认证批准机构,active
+ms_0099,ms,zh,AA,批准机构,conformity_assessment,high,Approval Authority,建议保留缩写并译出,active
+ms_0100,ms,zh,Technical Service,技术服务机构,conformity_assessment,high,TS,WP29认可的测试机构,active
+ms_0101,ms,zh,TS,技术服务机构,conformity_assessment,high,Technical Service,建议保留缩写并译出,active
+ms_0102,ms,zh,katalog teknikal,技术目录,vehicle_documentation,medium,technical catalog,VTA必交资料之一,active
+ms_0103,ms,zh,brosur,宣传册,vehicle_documentation,medium,brochure,VTA必交资料之一,active
+ms_0104,ms,zh,slaid pembentangan teknikal,技术演示幻灯片,vehicle_documentation,medium,technical presentation slide,VTA资料形式之一,active
+ms_0105,ms,zh,surat pengakuan pemohon,申请人声明函,vehicle_approval,high,applicant declaration letter,VTA必交文件，附录13,active
+ms_0106,ms,zh,lukisan kejuruteraan,工程图纸,vehicle_approval,high,engineering drawings,显示外廓尺寸的VTA文件,active
+ms_0107,ms,zh,dokumen kastam,海关文件,customs,high,customs documents,CBU车辆需提交,active
+ms_0108,ms,zh,laporan kastam,海关报告,customs,medium,customs report,CBU车辆资料之一,active
+ms_0109,ms,zh,AP,进口准证,customs,high,Approved Permit,MITI进口许可文件,active
+ms_0110,ms,zh,MITI AP,MITI进口准证,customs,high,MITI Approved Permit,重建车辆或CBU车辆提交文件,active
+ms_0111,ms,zh,CBU,整车进口,customs,high,Completely Built-Up,整车进口车辆类别,active
+ms_0112,ms,zh,kenderaan CBU,整车进口车辆,customs,high,Completely Built-Up vehicle,需提交AP或海关报告,active
+ms_0113,ms,zh,manual pembaikan,维修手册,vehicle_documentation,high,repair manual,9个受控事故维修部件需提交,active
+ms_0114,ms,zh,komponen terkawal,受控部件,vehicle_documentation,high,controlled components,事故维修相关9类部件,active
+ms_0115,ms,zh,komponen pembaikan kemalangan,事故维修部件,vehicle_documentation,high,accident-repair components,VTA维修手册要求对象,active
+ms_0116,ms,zh,model baharu,新车型,vehicle_approval,high,new model,VTA强制适用对象,active
+ms_0117,ms,zh,model sedia ada,既有车型,vehicle_approval,high,existing model,只需提交试验报告的车型类别,active
+ms_0118,ms,zh,kenderaan bina semula,重建车辆,vehicle_approval,high,rebuilt vehicle,需进行VTA并适用专门Jadual I,active
+ms_0119,ms,zh,bina semula,重建,vehicle_approval,high,rebuilt,重建车辆类别术语,active
+ms_0120,ms,zh,penandaan E,E标志,conformity_assessment,high,E-marking,重建车辆部件需提供照片证据,active
+ms_0121,ms,zh,penandaan MS,MS标志,conformity_assessment,high,MS marking,马来西亚标准标志,active
+ms_0122,ms,zh,MS,马来西亚标准,standardization,high,Malaysian Standard,合规证书或部件标志相关,active
+ms_0123,ms,zh,pemeriksaan fizikal,实车检查/物理检查,vehicle_inspection,high,physical inspection,按提交清单核验车辆,active
+ms_0124,ms,zh,pandu uji,试驾,vehicle_inspection,high,test drive,评估系统性能和稳定性,active
+ms_0125,ms,zh,ujian dinamik,动态测试,vehicle_inspection,high,dynamic testing,试驾和稳定性评估相关,active
+ms_0126,ms,zh,pegawai JPJ,JPJ官员,vehicle_inspection,high,JPJ officer,VTA检查执行人员,active
+ms_0127,ms,zh,ibu pejabat JPJ,JPJ总部,vehicle_inspection,medium,JPJ Headquarters,通常检查地点，位于布城,active
+ms_0128,ms,zh,Putrajaya,布城,vehicle_inspection,medium,Putrajaya,JPJ总部所在地,active
+ms_0129,ms,zh,kos perjalanan,差旅费用,vehicle_inspection,medium,travel costs,非总部检查由申请人承担,active
+ms_0130,ms,zh,kos makan,餐饮费用,vehicle_inspection,low,meal costs,非总部检查由申请人承担,active
+ms_0131,ms,zh,kos penginapan,住宿费用,vehicle_inspection,low,accommodation costs,非总部检查由申请人承担,active
+ms_0132,ms,zh,tangki bahan api,燃油箱,fuel_system,high,fuel tank,试驾时必须加满,active
+ms_0133,ms,zh,penuh,加满/满,fuel_system,medium,full,燃油箱试驾要求,active
+ms_0134,ms,zh,nombor perdagangan,试车牌/贸易牌照,vehicle_registration,high,trade plate,所有类别包括摩托车需提供,active
+ms_0135,ms,zh,plat perdagangan,试车牌/贸易牌照,vehicle_registration,high,trade plates,同义表达，统一译法,active
+ms_0136,ms,zh,cermin hadapan,前风挡玻璃,vehicle_structure,high,windscreen,需显示A4信息卡,active
+ms_0137,ms,zh,kad maklumat cermin hadapan,前风挡信息卡,vehicle_documentation,medium,windscreen information card,附录18模板,active
+ms_0138,ms,zh,pembentangan teknikal,技术说明/技术演示,vehicle_inspection,high,technical presentation,制造商向检查官说明技术规格,active
+ms_0139,ms,zh,ciri keselamatan khas,特殊安全特征,vehicle_safety,high,special safety features,技术演示重点内容,active
+ms_0140,ms,zh,protokol keselamatan,安全规程,vehicle_safety,high,safety protocol,检查时需说明的安全事项,active
+ms_0141,ms,zh,ditolak,被拒绝,vehicle_approval,medium,rejected,拒绝检查会导致申请被拒,active
+ms_0142,ms,zh,Pematuhan Pengeluaran,生产一致性,conformity_of_production,high,Conformity of Production,COP全称译法,active
+ms_0143,ms,zh,COP,生产一致性,conformity_of_production,high,Conformity of Production,确保量产车与VTA批准车型一致,active
+ms_0144,ms,zh,kenderaan pengeluaran besar-besaran,批量生产车辆,conformity_of_production,high,mass-produced vehicles,COP检查对象,active
+ms_0145,ms,zh,kekerapan,频次,conformity_of_production,medium,frequency,COP周期要求,active
+ms_0146,ms,zh,setiap tahun,每年,conformity_of_production,medium,every year,产量超过1000辆/年时COP频率,active
+ms_0147,ms,zh,setiap 2 tahun,每2年,conformity_of_production,medium,every 2 years,产量不超过1000辆/年时COP频率,active
+ms_0148,ms,zh,penarikan balik VTA,撤销VTA,conformity_of_production,high,VTA withdrawal,COP不合格后果之一,active
+ms_0149,ms,zh,larangan pendaftaran,禁止注册,vehicle_registration,high,registration ban,COP不合格后果之一,active
+ms_0150,ms,zh,penalti,处罚,general_enforcement,high,penalty,违反道路交通法的后果,active
+ms_0151,ms,zh,pelabelan produk,产品标签,labelling,high,product labelling,2014年起强制,active
+ms_0152,ms,zh,label produk,产品标签,labelling,high,product label,须防篡改并列明车辆参数,active
+ms_0153,ms,zh,kalis gangguan,防篡改,labelling,high,tamper-proof,产品标签要求,active
+ms_0154,ms,zh,nama pengeluar,制造商名称,labelling,medium,manufacturer name,产品标签内容之一,active
+ms_0155,ms,zh,nombor VTA,VTA编号,labelling,high,VTA number,产品标签内容之一,active
+ms_0156,ms,zh,Berat Dengan Muatan,总质量,vehicle_weight,high,BDM;Gross Vehicle Weight,马来语车辆总质量术语,active
+ms_0157,ms,zh,BDM,总质量,vehicle_weight,high,Berat Dengan Muatan,对应GVW，产品标签项目,active
+ms_0158,ms,zh,GVW,车辆总质量,vehicle_weight,high,Gross Vehicle Weight,产品标签项目之一,active
+ms_0159,ms,zh,Berat Gabungan Kasar,列车总质量,vehicle_weight,high,BGK;Gross Combination Weight,牵引车辆适用,active
+ms_0160,ms,zh,BGK,列车总质量,vehicle_weight,high,Berat Gabungan Kasar,对应GCW,active
+ms_0161,ms,zh,GCW,列车总质量,vehicle_weight,high,Gross Combination Weight,牵引车辆标签项目,active
+ms_0162,ms,zh,kadar beban gandar,轴荷额定值,vehicle_weight,high,axle load rating,产品标签按每轴列明,active
+ms_0163,ms,zh,gandar,车轴,vehicle_geometry,high,axle,车辆分类和技术规格核心术语,active
+ms_0164,ms,zh,panggil balik,召回,market_surveillance,high,recall,JPJ可要求技术缺陷车辆召回,active
+ms_0165,ms,zh,prosedur panggil balik,召回程序,market_surveillance,high,recall procedure,附录20主题,active
+ms_0166,ms,zh,carta alir panggil balik,召回流程图,market_surveillance,medium,recall process flowchart,附录20模板,active
+ms_0167,ms,zh,kecacatan teknikal,技术缺陷,market_surveillance,high,technical defect,触发召回的原因,active
+ms_0168,ms,zh,kos ditanggung oleh pengeluar,费用由制造商承担,market_surveillance,medium,costs borne by manufacturer,召回成本责任,active
+ms_0169,ms,zh,facelift,改款,vehicle_approval,high,facelift,既有车型外观或小系统改进,active
+ms_0170,ms,zh,penambahbaikan,改进,vehicle_approval,medium,improvement,facelift定义中使用,active
+ms_0171,ms,zh,pengubahsuaian,改装/变更,vehicle_approval,high,modification,与VTA文件不同需14天内通知,active
+ms_0172,ms,zh,notifikasi perubahan,变更通知,vehicle_approval,high,notification of changes,VTA批准后要求,active
+ms_0173,ms,zh,dalam tempoh 14 hari,14天内,vehicle_approval,medium,within 14 days,改款或变更通知期限,active
+ms_0174,ms,zh,komponen dikawal UN,受UN法规管控部件,conformity_assessment,high,UN-regulated component,改款涉及时需提交合规证书,active
+ms_0175,ms,zh,diwartakan,已刊宪,general_regulation,high,gazetted,UN法规在马来西亚公告实施状态,active
+ms_0176,ms,zh,dikuatkuasakan,已实施/已强制执行,general_regulation,high,enforced,UN法规实施状态,active
+ms_0177,ms,zh,pelan pelaksanaan,实施计划,general_regulation,high,implementation plan,UN法规分阶段实施计划,active
+ms_0178,ms,zh,fasa,阶段,general_regulation,medium,phase,UN法规实施分期,active
+ms_0179,ms,zh,kategori kenderaan,车辆类别,vehicle_category,high,vehicle category,L/M/N/O/G分类,active
+ms_0180,ms,zh,Kategori L,L类,vehicle_category,high,Category L,摩托车和轻便摩托车类别,active
+ms_0181,ms,zh,Kategori M,M类,vehicle_category,high,Category M,载客车辆类别,active
+ms_0182,ms,zh,Kategori N,N类,vehicle_category,high,Category N,载货车辆类别,active
+ms_0183,ms,zh,Kategori O,O类,vehicle_category,high,Category O,挂车类别,active
+ms_0184,ms,zh,Kategori G,G类,vehicle_category,high,Category G,越野车辆类别,active
+ms_0185,ms,zh,motosikal,摩托车,vehicle_category,high,motorcycle,L类车辆,active
+ms_0186,ms,zh,moped,轻便摩托车,vehicle_category,high,moped,L1/L2类别相关,active
+ms_0187,ms,zh,kenderaan penumpang,载客车辆,vehicle_category,high,passenger vehicle,M类车辆,active
+ms_0188,ms,zh,kenderaan barangan,载货车辆,vehicle_category,high,goods vehicle,N类车辆,active
+ms_0189,ms,zh,kenderaan perdagangan,商用车辆,vehicle_category,medium,commercial vehicle,N类语境常用译法,active
+ms_0190,ms,zh,treler,挂车,vehicle_category,high,trailer,O类车辆,active
+ms_0191,ms,zh,kenderaan luar jalan,越野车辆,vehicle_category,high,off-road vehicle,G类车辆,active
+ms_0192,ms,zh,L1,L1类,vehicle_category,medium,Category L1,两轮50cc以下且最高50km/h以下,active
+ms_0193,ms,zh,L2,L2类,vehicle_category,medium,Category L2,三轮50cc以下且最高50km/h以下,active
+ms_0194,ms,zh,L3,L3类,vehicle_category,medium,Category L3,两轮超过50cc或超过50km/h,active
+ms_0195,ms,zh,L4,L4类,vehicle_category,medium,Category L4,两轮带边车，超过50cc或50km/h,active
+ms_0196,ms,zh,L5,L5类,vehicle_category,medium,Category L5,对称三轮，超过50cc或50km/h,active
+ms_0197,ms,zh,L6,L6类,vehicle_category,medium,Category L6,轻型四轮车类别,active
+ms_0198,ms,zh,L7,L7类,vehicle_category,medium,Category L7,四轮车类别,active
+ms_0199,ms,zh,M1,M1类,vehicle_category,high,Category M1,含驾驶员不超过9座载客车辆,active
+ms_0200,ms,zh,M2,M2类,vehicle_category,high,Category M2,超过9座且最大质量不超过5吨,active
+ms_0201,ms,zh,M3,M3类,vehicle_category,high,Category M3,超过9座且最大质量超过5吨,active
+ms_0202,ms,zh,N1,N1类,vehicle_category,high,Category N1,最大质量不超过3.5吨载货车辆,active
+ms_0203,ms,zh,N2,N2类,vehicle_category,high,Category N2,最大质量超过3.5吨且不超过12吨,active
+ms_0204,ms,zh,N3,N3类,vehicle_category,high,Category N3,最大质量超过12吨,active
+ms_0205,ms,zh,O1,O1类,vehicle_category,medium,Category O1,最大质量不超过0.75吨挂车,active
+ms_0206,ms,zh,O2,O2类,vehicle_category,medium,Category O2,最大质量0.75至3.5吨挂车,active
+ms_0207,ms,zh,O3,O3类,vehicle_category,medium,Category O3,最大质量3.5至10吨挂车,active
+ms_0208,ms,zh,O4,O4类,vehicle_category,medium,Category O4,最大质量超过10吨挂车,active
+ms_0209,ms,zh,jenis,型式,vehicle_approval,high,type,车型分类层级之一,active
+ms_0210,ms,zh,varian,变型,vehicle_approval,high,variant,车型分类层级之一,active
+ms_0211,ms,zh,versi,版本,vehicle_approval,high,version,车型分类层级之一,active
+ms_0212,ms,zh,pengeluar yang sama,同一制造商,vehicle_approval,medium,same manufacturer,型式定义条件之一,active
+ms_0213,ms,zh,struktur casis,底盘结构,vehicle_structure,high,chassis structure,L类型式定义条件,active
+ms_0214,ms,zh,rangka,车架,vehicle_structure,high,frame,L类车辆结构术语,active
+ms_0215,ms,zh,unit kuasa,动力单元,powertrain,high,power unit,L类型式定义条件,active
+ms_0216,ms,zh,prinsip unit kuasa,动力单元原理,powertrain,medium,power unit principle,内燃/电动区分,active
+ms_0217,ms,zh,enjin pembakaran dalaman,内燃机,powertrain,high,internal combustion engine,动力单元类型之一,active
+ms_0218,ms,zh,elektrik,电动,powertrain,high,electric,动力单元类型之一,active
+ms_0219,ms,zh,bentuk badan,车身形状,vehicle_structure,high,bodywork shape,变型定义条件之一,active
+ms_0220,ms,zh,kitaran operasi,运行循环,powertrain,medium,operating cycle,L类变型定义条件之一,active
+ms_0221,ms,zh,jenis kotak gear,变速箱类型,powertrain,high,gearbox type,变型定义条件之一,active
+ms_0222,ms,zh,perbezaan jisim,质量差异,vehicle_weight,medium,mass difference,L类变型判定不超过20%,active
+ms_0223,ms,zh,kapasiti silinder,气缸排量,powertrain,high,cylinder capacity,车型版本或变型判定参数,active
+ms_0224,ms,zh,keluaran kuasa,功率输出,powertrain,high,power output,车型版本或变型判定参数,active
+ms_0225,ms,zh,reka bentuk struktur badan utama,车身主要结构设计,vehicle_structure,high,essential body structure design,M/N类型式定义条件,active
+ms_0226,ms,zh,badan galas beban,承载式车身,vehicle_structure,medium,self-supporting body,M/N类车身结构类型,active
+ms_0227,ms,zh,rangka berasingan,非承载式车架/独立车架,vehicle_structure,medium,separate frame,M/N类车身结构类型,active
+ms_0228,ms,zh,bilangan pintu,车门数量,vehicle_structure,high,number of doors,M/N类变型条件之一,active
+ms_0229,ms,zh,jenis loji kuasa,动力装置类型,powertrain,high,power plant type,内燃/电动区分,active
+ms_0230,ms,zh,prinsip kerja,工作原理,powertrain,medium,working principle,PI/CI区分,active
+ms_0231,ms,zh,PI,点燃式,engine,high,Positive Ignition,汽油发动机工作原理,active
+ms_0232,ms,zh,CI,压燃式,engine,high,Compression Ignition,柴油发动机工作原理,active
+ms_0233,ms,zh,bilangan gandar,车轴数量,vehicle_geometry,high,number of axles,M/N类变型条件之一,active
+ms_0234,ms,zh,jisim maksimum bermuatan,最大装载质量,vehicle_weight,high,maximum laden mass,车型版本定义参数,active
+ms_0235,ms,zh,jenis bahan api,燃料类型,fuel_system,high,fuel type,车型版本定义和技术资料参数,active
+ms_0236,ms,zh,kapasiti tempat duduk,座位容量,vehicle_interior,high,seating capacity,车型版本定义参数,active
+ms_0237,ms,zh,bilangan tempat duduk,座位数,vehicle_interior,high,seat count,M类分类和版本定义参数,active
+ms_0238,ms,zh,pemacu empat roda,四轮驱动,powertrain,high,4WD,G类越野车要求,active
+ms_0239,ms,zh,4WD,四轮驱动,powertrain,high,four-wheel drive,G类越野车要求,active
+ms_0240,ms,zh,kunci pembeza,差速锁,powertrain,high,differential lock,G类越野车要求,active
+ms_0241,ms,zh,mekanisme kunci pembeza,差速锁机构,powertrain,high,differential locking mechanism,G类越野车要求,active
+ms_0242,ms,zh,keupayaan mendaki cerun,爬坡能力,vehicle_performance,high,gradient climbing ability,G类越野车技术要求,active
+ms_0243,ms,zh,kecerunan,坡度,vehicle_performance,medium,gradient,G类越野车爬坡要求,active
+ms_0244,ms,zh,sudut hadapan,接近角,vehicle_geometry,high,approach angle,G类几何要求,active
+ms_0245,ms,zh,sudut masuk,接近角,vehicle_geometry,high,approach angle,可能出现的同义表达,active
+ms_0246,ms,zh,sudut keluar,离去角,vehicle_geometry,high,departure angle,G类几何要求,active
+ms_0247,ms,zh,sudut ramp,纵向通过角,vehicle_geometry,high,ramp angle,G类几何要求,active
+ms_0248,ms,zh,jarak kelegaan bumi,离地间隙,vehicle_geometry,high,ground clearance,G类和技术规格参数,active
+ms_0249,ms,zh,kelegaan bawah gandar,轴下离地间隙,vehicle_geometry,high,clearance under axles,G类几何要求,active
+ms_0250,ms,zh,kelegaan antara gandar,轴间离地间隙,vehicle_geometry,high,clearance between axles,G类几何要求,active
+ms_0251,ms,zh,sekurang-kurangnya separuh roda dipacu,至少半数车轮被驱动,vehicle_performance,medium,at least half the wheels driven,N3G/M3G越野车要求,active
+ms_0252,ms,zh,dimensi,尺寸,vehicle_dimensions,high,dimensions,Jadual II技术资料类别,active
+ms_0253,ms,zh,dimensi keseluruhan,外廓尺寸,vehicle_dimensions,high,overall dimensions,工程图纸和技术规格项目,active
+ms_0254,ms,zh,panjang,长度,vehicle_dimensions,high,length,技术规格参数,active
+ms_0255,ms,zh,lebar,宽度,vehicle_dimensions,high,width,技术规格参数,active
+ms_0256,ms,zh,tinggi,高度,vehicle_dimensions,high,height,技术规格参数,active
+ms_0257,ms,zh,jarak roda,轴距,vehicle_geometry,high,wheelbase,技术规格参数,active
+ms_0258,ms,zh,juluran hadapan,前悬,vehicle_geometry,high,front overhang,技术规格参数,active
+ms_0259,ms,zh,juluran belakang,后悬,vehicle_geometry,high,rear overhang,技术规格参数,active
+ms_0260,ms,zh,bulatan pusingan,转弯圆,steering,high,turning circle,技术规格参数,active
+ms_0261,ms,zh,berat,重量/质量,vehicle_weight,high,weight,技术规格类别,active
+ms_0262,ms,zh,berat kosong,整备质量,vehicle_weight,high,kerb weight,技术规格参数,active
+ms_0263,ms,zh,kadar gandar,轴额定值,vehicle_weight,high,axle rating,技术规格参数,active
+ms_0264,ms,zh,reka bentuk BDM,设计车辆总质量,vehicle_weight,high,design GVW,技术规格参数,active
+ms_0265,ms,zh,enjin,发动机,engine,high,engine,技术规格类别,active
+ms_0266,ms,zh,pengeluar enjin,发动机制造商,engine,medium,engine manufacturer,技术规格参数,active
+ms_0267,ms,zh,model enjin,发动机型号,engine,medium,engine model,技术规格参数,active
+ms_0268,ms,zh,nisbah mampatan,压缩比,engine,high,compression ratio,技术规格参数,active
+ms_0269,ms,zh,lengkung kuasa,功率曲线,engine,medium,power curve,技术规格参数,active
+ms_0270,ms,zh,lengkung tork,扭矩曲线,engine,medium,torque curve,技术规格参数,active
+ms_0271,ms,zh,sistem penyejukan,冷却系统,engine,high,cooling system,技术规格参数,active
+ms_0272,ms,zh,sistem pelinciran,润滑系统,engine,high,lubrication system,技术规格参数,active
+ms_0273,ms,zh,motor elektrik,电动机,ev_powertrain,high,electric motor,混合动力/电动车技术资料项,active
+ms_0274,ms,zh,kuasa terkadar,额定功率,ev_powertrain,high,rated power,电机技术参数,active
+ms_0275,ms,zh,kuasa maksimum,最大功率,ev_powertrain,high,maximum power,电机技术参数,active
+ms_0276,ms,zh,tork,扭矩,powertrain,high,torque,发动机/电机参数,active
+ms_0277,ms,zh,jenis bateri,电池类型,ev_powertrain,high,battery type,电动车技术参数,active
+ms_0278,ms,zh,kapasiti bateri,电池容量,ev_powertrain,high,battery capacity,电动车技术参数,active
+ms_0279,ms,zh,penggunaan tenaga,能耗,ev_powertrain,high,energy consumption,电动车参数，Wh/100km,active
+ms_0280,ms,zh,Wh/100km,瓦时/100公里,ev_powertrain,medium,Wh per 100 km,电动车能耗单位,active
+ms_0281,ms,zh,sistem bahan api,燃料系统,fuel_system,high,fuel system,技术规格类别,active
+ms_0282,ms,zh,bahan tangki,油箱材料,fuel_system,medium,tank material,燃料系统参数,active
+ms_0283,ms,zh,kapasiti tangki,油箱容量,fuel_system,medium,tank capacity,燃料系统参数,active
+ms_0284,ms,zh,lokasi tangki,油箱位置,fuel_system,medium,tank location,燃料系统参数,active
+ms_0285,ms,zh,transmisi,变速器,powertrain,high,transmission,技术规格类别,active
+ms_0286,ms,zh,nisbah gear,传动比,powertrain,high,gear ratio,变速器参数,active
+ms_0287,ms,zh,klac,离合器,powertrain,medium,clutch,变速器参数,active
+ms_0288,ms,zh,bilangan kelajuan,挡位数,powertrain,medium,number of speeds,变速器参数,active
+ms_0289,ms,zh,jenis pembeza,差速器类型,powertrain,high,differential type,传动系统参数,active
+ms_0290,ms,zh,brek servis,行车制动器,braking,high,service brake,制动系统参数,active
+ms_0291,ms,zh,brek parkir,驻车制动器,braking,high,parking brake,制动系统参数,active
+ms_0292,ms,zh,brek tambahan,辅助制动器,braking,high,auxiliary brake,制动系统参数,active
+ms_0293,ms,zh,ABS,防抱死制动系统,braking,high,Anti-lock Braking System,制动系统配置,active
+ms_0294,ms,zh,EBD,电子制动力分配系统,braking,high,Electronic Brakeforce Distribution,制动系统配置,active
+ms_0295,ms,zh,ESC,电子稳定控制系统,vehicle_safety,high,Electronic Stability Control,R140相关系统,active
+ms_0296,ms,zh,peralatan keselamatan,安全装备,vehicle_safety,high,safety equipment,技术规格类别,active
+ms_0297,ms,zh,tali pinggang keledar,安全带,vehicle_safety,high,safety belt,UN R16和技术规格项目,active
+ms_0298,ms,zh,penambat tali pinggang keledar,安全带固定点,vehicle_safety,high,safety belt anchorage,UN R14主题,active
+ms_0299,ms,zh,penahan kepala,头枕,vehicle_safety,high,head restraint,安全装备项目,active
+ms_0300,ms,zh,beg udara,安全气囊,vehicle_safety,high,airbag,安全装备项目,active
+ms_0301,ms,zh,modul beg udara,安全气囊模块,vehicle_safety,high,airbag module,安全装备项目,active
+ms_0302,ms,zh,pencahayaan,照明,vehicle_lighting,high,lighting,技术规格类别,active
+ms_0303,ms,zh,lampu hadapan,前照灯,vehicle_lighting,high,headlamp,照明技术规格项目,active
+ms_0304,ms,zh,lampu kabus,雾灯,vehicle_lighting,high,fog lamp,照明技术规格项目,active
+ms_0305,ms,zh,lampu nyalaan siang,日间行车灯,vehicle_lighting,high,DRL,照明技术规格项目,active
+ms_0306,ms,zh,DRL,日间行车灯,vehicle_lighting,high,Daytime Running Lamp,建议保留缩写并译出,active
+ms_0307,ms,zh,pemantul cahaya,回复反射器,vehicle_lighting,high,reflex reflector,UN R3主题，不建议译为普通反光片,active
+ms_0308,ms,zh,HID,高强度气体放电灯,vehicle_lighting,medium,High Intensity Discharge,前照灯光源类型,active
+ms_0309,ms,zh,LED,LED,vehicle_lighting,medium,Light Emitting Diode,前照灯/光源类型,active
+ms_0310,ms,zh,halogen,卤素灯,vehicle_lighting,medium,halogen,前照灯光源类型,active
+ms_0311,ms,zh,lampu brek,制动灯,vehicle_lighting,high,brake lamp,重建车辆Jadual I项目之一,active
+ms_0312,ms,zh,lampu penunjuk arah,转向指示灯,vehicle_lighting,high,indicator lamp,direction indicator,active
+ms_0313,ms,zh,lampu plat pendaftaran belakang,后牌照灯,vehicle_lighting,high,rear registration plate lamp,UN R4主题,active
+ms_0314,ms,zh,cermin keselamatan,安全玻璃,vehicle_safety,high,safety glass,UN R43主题,active
+ms_0315,ms,zh,cermin,玻璃/后视镜,vehicle_safety,medium,glass;mirror,需按上下文判断，R43为玻璃，R46为后视镜,active
+ms_0316,ms,zh,cermin pandang belakang,后视镜,vehicle_safety,high,rear-view mirror,UN R46主题,active
+ms_0317,ms,zh,tayar,轮胎,wheel_tire,high,tyre,UN R30/R54主题,active
+ms_0318,ms,zh,tayar pneumatik,充气轮胎,wheel_tire,high,pneumatic tyre,R30/R54主题,active
+ms_0319,ms,zh,perlindungan perlanggaran hadapan,正面碰撞保护,vehicle_safety,high,frontal collision protection,UN R94主题,active
+ms_0320,ms,zh,perlindungan perlanggaran sisi,侧面碰撞保护,vehicle_safety,high,lateral collision protection,UN R95主题,active
+ms_0321,ms,zh,perlanggaran hadapan,正面碰撞,vehicle_safety,high,frontal collision,UN R94语境,active
+ms_0322,ms,zh,perlanggaran sisi,侧面碰撞,vehicle_safety,high,lateral collision,UN R95语境,active
+ms_0323,ms,zh,kenderaan elektrik bateri,电池电动汽车,ev_general,high,battery electric vehicle,UN R100主题,active
+ms_0324,ms,zh,kenderaan elektrik,电动汽车,ev_general,high,electric vehicle,技术规格和UN R100语境,active
+ms_0325,ms,zh,kenderaan hibrid,混合动力车辆,ev_general,high,hybrid vehicle,技术规格涉及电机项目,active
+ms_0326,ms,zh,asap diesel,柴油烟度,emissions,high,diesel smoke,UN R24主题，DOE相关,active
+ms_0327,ms,zh,bahan pencemar gas,气态污染物,emissions,high,gaseous pollutants,UN R83主题,active
+ms_0328,ms,zh,pelepasan bunyi,噪声排放,noise,high,noise emission,UN R41/R51主题,active
+ms_0329,ms,zh,pelepasan CO2,二氧化碳排放,emissions,high,CO2 emission,UN R101主题,active
+ms_0330,ms,zh,penggunaan bahan api,燃料消耗量,environment_energy,high,fuel consumption,UN R101和EEV相关,active
+ms_0331,ms,zh,EEV,节能车辆,environment_energy,medium,Energy Efficient Vehicle,马来西亚汽车政策常用缩写，R101语境,active
+ms_0332,ms,zh,kunci pintu,门锁,vehicle_safety,high,door latch,R11主题,active
+ms_0333,ms,zh,engsel pintu,车门铰链,vehicle_safety,high,door hinge,R11主题,active
+ms_0334,ms,zh,kelengkapan dalaman,内饰件,vehicle_safety,high,interior fittings,R21主题,active
+ms_0335,ms,zh,unjuran luaran,外部凸出物,vehicle_safety,high,external projections,R26主题,active
+ms_0336,ms,zh,pencegahan risiko kebakaran,火灾风险预防,vehicle_safety,high,prevention of fire risks,R34主题,active
+ms_0337,ms,zh,sistem penahan kanak-kanak,儿童约束系统,vehicle_safety,high,child restraint system,R44主题,active
+ms_0338,ms,zh,ECRS,增强型儿童约束系统,vehicle_safety,high,Enhanced Child Restraint System,R129主题,active
+ms_0339,ms,zh,sistem penahan kanak-kanak dipertingkatkan,增强型儿童约束系统,vehicle_safety,high,ECRS,R129主题,active
+ms_0340,ms,zh,peranti had laju,限速装置,vehicle_safety,high,speed limitation device,R89主题，M2/M3/N2/N3强制,active
+ms_0341,ms,zh,pembinaan bas,客车构造,vehicle_safety,high,bus construction,R107主题,active
+ms_0342,ms,zh,keselamatan pejalan kaki,行人安全,vehicle_safety,high,pedestrian safety,R127主题,active
+ms_0343,ms,zh,sumber cahaya LED,LED光源,vehicle_lighting,high,LED light source,R128主题,active
+ms_0344,ms,zh,kab kenderaan perdagangan,商用车驾驶室,vehicle_safety,high,cabs of commercial vehicles,R29主题,active
+ms_0345,ms,zh,sistem amaran keluar lorong,车道偏离警告系统,adas,high,LDWS,R130主题,active
+ms_0346,ms,zh,LDWS,车道偏离警告系统,adas,high,Lane Departure Warning System,建议保留缩写并译出,active
+ms_0347,ms,zh,sistem brek kecemasan termaju,高级紧急制动系统,adas,high,AEBS,R131主题,active
+ms_0348,ms,zh,AEBS,高级紧急制动系统,adas,high,Advanced Emergency Braking System,建议保留缩写并译出,active
+ms_0349,ms,zh,sistem ESC,电子稳定控制系统,vehicle_safety,high,ESC system,R140主题,active
+ms_0350,ms,zh,gangguan radio,无线电干扰,emc,medium,radio interference,R10主题,active
+ms_0351,ms,zh,penindasan gangguan radio,无线电干扰抑制,emc,high,radio interference suppression,R10主题,active
+ms_0352,ms,zh,mekanisme stereng,转向机构,steering,high,steering mechanism,R12主题,active
+ms_0353,ms,zh,pengukuran kuasa enjin,发动机功率测量,engine,high,measurement of engine power,R85主题,active
+ms_0354,ms,zh,kenderaan membawa barang berbahaya,危险货物运输车辆,vehicle_category,high,carriage of dangerous goods vehicles,R105主题,active
+ms_0355,ms,zh,sistem dalam talian,在线系统,digitalization,high,online system,REVAMP数字化VTA流程,active
+ms_0356,ms,zh,REVAMP,REVAMP系统,digitalization,high,VTA online transformation system,JPJ VTA数字化系统名称,active
+ms_0357,ms,zh,muat naik dokumen,上传文件,digitalization,medium,upload documents,REVAMP流程动作,active
+ms_0358,ms,zh,pengurangan penggunaan kertas,减少纸张使用,digitalization,low,reduced paper usage,REVAMP收益之一,active
+ms_0359,ms,zh,serahan kaunter fizikal,实体柜台提交,digitalization,medium,physical counter submission,REVAMP拟取消的提交方式,active
+ms_0360,ms,zh,borang,表格,general_document,high,form,VTA申请和证书信息表,active
+ms_0361,ms,zh,carta alir,流程图,general_document,medium,flowchart,召回和COP流程图,active
+ms_0362,ms,zh,format pelabelan produk,产品标签格式,labelling,high,product labelling format,附录22/23主题,active
+ms_0363,ms,zh,jadual komprehensif,综合表,general_document,medium,comprehensive table,附录24 UN法规适用车型表,active
+ms_0364,ms,zh,dikuatkuasakan mengikut kategori kenderaan,按车辆类别实施,general_regulation,medium,enforced by vehicle category,附录24主题说明,active
+ms_0365,ms,zh,penasihat,顾问,general_document,low,advisor,致谢部分人员角色,active
+ms_0366,ms,zh,ketua,负责人,general_document,low,head,致谢部分人员角色,active
+ms_0367,ms,zh,setiausaha,秘书,general_document,low,secretary,致谢部分人员角色,active
+ms_0368,ms,zh,ahli jawatankuasa,委员会成员,general_document,low,committee member,致谢部分人员角色,active
