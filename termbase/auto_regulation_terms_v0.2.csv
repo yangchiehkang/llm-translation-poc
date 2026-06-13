@@ -3164,3 +3164,418 @@ nl_0276,nl,zh,lease,租赁,contract,high,lease,SEPP补贴场景之一,active
 nl_0277,nl,zh,aanschaf,购置,ev_subsidy,high,acquisition;purchase,购买电动车补贴语境常见词,active
 nl_0278,nl,zh,aanvrager kan slechts eenmaal subsidie ontvangen,申请人只能获得一次补贴,ev_subsidy,high,one-time subsidy per applicant,SEPP一般条件,active
 nl_0279,nl,zh,publicatiedatum,发布日期,general_regulation,medium,date of publication,书面购买协议签署日期条件,active
+pt_0015,pt,zh,RESOLUÇÃO CONTRAN,CONTRAN决议,general_regulation,high,CONTRAN Resolution,巴西国家交通委员会发布的法规文件类型,active
+pt_0016,pt,zh,CONTRAN,国家交通委员会,road_authority,high,Conselho Nacional de Trânsito,巴西道路交通法规主管机构,active
+pt_0017,pt,zh,Conselho Nacional de Trânsito,国家交通委员会,road_authority,high,CONTRAN,巴西国家级交通规范制定机构,active
+pt_0018,pt,zh,Código de Trânsito Brasileiro,巴西交通法典,road_regulation,high,CTB,巴西道路交通基础法律,active
+pt_0019,pt,zh,CTB,巴西交通法典,road_regulation,high,Código de Trânsito Brasileiro,法规授权依据和处罚依据,active
+pt_0020,pt,zh,Diário Oficial da União,联邦官方公报,general_regulation,high,DOU,巴西联邦法规公布载体,active
+pt_0021,pt,zh,DOU,联邦官方公报,general_regulation,medium,Diário Oficial da União,巴西官方公报缩写,active
+pt_0022,pt,zh,Art.,条,general_regulation,high,Artigo,巴西法规条文结构术语,active
+pt_0023,pt,zh,Parágrafo único,唯一款,general_regulation,medium,sole paragraph,巴西法规常见条文结构,active
+pt_0024,pt,zh,inciso,项,general_regulation,medium,item,巴西法规条文结构术语,active
+pt_0025,pt,zh,alínea,目,general_regulation,medium,subitem,巴西法规条文结构术语,active
+pt_0026,pt,zh,caput,条首,general_regulation,medium,main clause,巴西法条中指条文主体部分,active
+pt_0027,pt,zh,entra em vigor,生效,general_regulation,high,comes into force,法规生效表达,active
+pt_0028,pt,zh,revogadas,废止,general_regulation,high,repealed,法规废止表达,active
+pt_0029,pt,zh,disposições gerais,一般规定,general_regulation,medium,general provisions,章节标题术语,active
+pt_0030,pt,zh,disposições finais,最终规定,general_regulation,medium,final provisions,章节标题术语,active
+pt_0031,pt,zh,órgão máximo executivo de trânsito da União,联邦最高交通执行机关,road_authority,high,highest federal traffic executive body,车型代码和认证相关主管机关,active
+pt_0032,pt,zh,órgão executivo de trânsito do Estado,州交通执行机关,road_authority,high,state traffic executive body,特殊黄琥珀灯安装授权机关,active
+pt_0033,pt,zh,Ministério da Infraestrutura,基础设施部,general_regulation,medium,Ministry of Infrastructure,CONTRAN决议发布机关栏位,active
+pt_0034,pt,zh,Sistema Nacional de Trânsito,国家交通系统,road_authority,medium,National Traffic System,CONTRAN第759号决议授权背景,active
+pt_0035,pt,zh,PNATRANS,国家交通死亡和伤害减少计划,road_safety,medium,Plano Nacional de Redução de Mortes e Lesões no Trânsito,安全法规协调背景,active
+pt_0036,pt,zh,Plano Nacional de Redução de Mortes e Lesões no Trânsito,国家交通死亡和伤害减少计划,road_safety,medium,PNATRANS,巴西道路安全政策文件,active
+pt_0037,pt,zh,Regulamentos Técnicos das Nações Unidas,联合国技术法规,vehicle_approval,high,UN Regulations;ONU/UNECE,替代性合规证明依据,active
+pt_0038,pt,zh,ONU/UNECE,联合国/欧洲经济委员会,vehicle_approval,high,United Nations/ECE,巴西法规认可的国际技术法规体系,active
+pt_0039,pt,zh,FMVSS,美国联邦机动车安全标准,vehicle_approval,high,Federal Motor Vehicle Safety Standards,替代性合规证明依据,active
+pt_0040,pt,zh,Normas Federais de Segurança dos Veículos Motorizados,美国联邦机动车安全标准,vehicle_approval,high,FMVSS,CONTRAN第970号使用的FMVSS葡语表述,active
+pt_0041,pt,zh,Normativas Norte Americanas,北美法规,vehicle_approval,medium,North American standards,CONTRAN第949号中替代试验依据表述,active
+pt_0042,pt,zh,UN-R135,联合国第135号法规,vehicle_safety,high,UN Regulation No.135,侧柱碰撞替代合规依据,active
+pt_0043,pt,zh,FMVSS 214,美国联邦机动车安全标准214,vehicle_safety,high,Federal Motor Vehicle Safety Standard 214,侧面碰撞/柱碰撞替代合规依据,active
+pt_0044,pt,zh,ABNT,巴西技术标准协会,standardization,high,Associação Brasileira de Normas Técnicas,巴西国家标准机构,active
+pt_0045,pt,zh,NBR,巴西标准,standardization,high,Norma Brasileira,ABNT标准编号前缀,active
+pt_0046,pt,zh,NBR 13776,巴西标准NBR 13776,vehicle_category,high,ABNT NBR 13776,特殊车辆定义依据,active
+pt_0047,pt,zh,ABNT NBR 16187,巴西标准ABNT NBR 16187,testing,high,3D manikin standard,三维人体模型/点H相关标准,active
+pt_0048,pt,zh,ASTM B117-03,ASTM B117-03,testing,medium,salt spray test standard,后方监测外部部件盐雾腐蚀试验依据,active
+pt_0049,pt,zh,homologação compulsória,强制认证,vehicle_approval,high,compulsory approval,车辆改装豁免条件相关术语,active
+pt_0050,pt,zh,certificação,认证,vehicle_approval,high,certification,创新技术或装置合规证明方式,active
+pt_0051,pt,zh,código de Marca/Modelo/Versão,品牌/型号/版本代码,vehicle_approval,high,MMV code,巴西车型项目适用日期判断核心术语,active
+pt_0052,pt,zh,novo projeto,新项目/新车型项目,vehicle_approval,high,new project,从未获得品牌/型号/版本代码的车型,active
+pt_0053,pt,zh,projeto derivado,派生项目,vehicle_approval,high,derived project,与既有基础车型具有结构和形状相似性的车型项目,active
+pt_0054,pt,zh,modelo básico de veículo,基础车型,vehicle_approval,high,basic vehicle model,派生车型判断依据,active
+pt_0055,pt,zh,importador,进口商,vehicle_market,high,importer,进口车辆合规责任主体,active
+pt_0056,pt,zh,nacionais e importados,国产和进口,vehicle_market,high,national and imported,适用车辆范围表达,active
+pt_0057,pt,zh,produzidos ou importados,生产或进口,vehicle_market,high,produced or imported,适用日期相关表达,active
+pt_0058,pt,zh,facultada sua antecipação total ou parcial,允许全部或部分提前实施,general_regulation,medium,voluntary total or partial early adoption,实施日期条款常用表达,active
+pt_0059,pt,zh,descumprimento,不遵守,general_enforcement,high,non-compliance,违法处罚触发条件,active
+pt_0060,pt,zh,infrator,违法者,general_enforcement,medium,offender,处罚对象,active
+pt_0061,pt,zh,penalidades e medidas administrativas,处罚和行政措施,general_enforcement,high,penalties and administrative measures,CTB处罚术语,active
+pt_0062,pt,zh,infração,违法行为,general_enforcement,high,traffic violation,交通违法处罚语境,active
+pt_0063,pt,zh,manual do veículo,车辆手册,vehicle_documentation,high,vehicle manual,照明信号装置识别、位置和使用说明载体,active
+pt_0064,pt,zh,literatura oficial do fabricante,制造商官方资料,vehicle_documentation,medium,manufacturer official literature,灯泡替换或新增装置是否允许的依据,active
+pt_0065,pt,zh,dispositivo de sinalização,信号装置,vehicle_lighting,high,signalling device,向道路其他使用者发出光信号的装置,active
+pt_0066,pt,zh,sistemas de sinalização,信号系统,vehicle_lighting,high,signalling systems,CONTRAN第970号核心对象,active
+pt_0067,pt,zh,sistemas de iluminação,照明系统,vehicle_lighting,high,lighting systems,CONTRAN第970号核心对象,active
+pt_0068,pt,zh,dispositivo luminoso,发光装置,vehicle_lighting,high,luminous device,出租车标识、特殊灯等通用术语,active
+pt_0069,pt,zh,fonte luminosa,光源,vehicle_lighting,high,light source,回复反射器和灯具测试术语,active
+pt_0070,pt,zh,fonte de luz,光源,vehicle_lighting,high,light source,气体放电灯及LED等术语,active
+pt_0071,pt,zh,lâmpada,灯泡,vehicle_lighting,high,lamp bulb,照明信号系统部件,active
+pt_0072,pt,zh,lâmpadas originais,原装灯泡,vehicle_lighting,high,original bulbs,不得随意替换不同功率或技术灯泡,active
+pt_0073,pt,zh,lâmpadas queimadas,烧坏的灯泡,vehicle_lighting,high,burnt-out bulbs,CTB处罚情形之一,active
+pt_0074,pt,zh,LED,LED,vehicle_lighting,high,light-emitting diode,不可替换光源测试常见技术,active
+pt_0075,pt,zh,fontes não substituíveis,不可替换光源,vehicle_lighting,high,non-replaceable light sources,测试电压为6.75V或13.5V的光源类型,active
+pt_0076,pt,zh,fonte de luz de descarga de gás,气体放电光源,vehicle_lighting,high,gas-discharge light source,气体放电前照灯相关术语,active
+pt_0077,pt,zh,farol,前照灯,vehicle_lighting,high,headlamp,用于照明车辆前方道路的装置,active
+pt_0078,pt,zh,farol principal,主前照灯,vehicle_lighting,high,main-beam/headlamp,法规附件中前照灯核心术语,active
+pt_0079,pt,zh,faróis principais,主前照灯,vehicle_lighting,high,headlamps,附件II/X等对象,active
+pt_0080,pt,zh,farol de facho alto,远光灯,vehicle_lighting,high,main-beam headlamp;high beam,强制装置，最大强度225000 cd,active
+pt_0081,pt,zh,farol de facho baixo,近光灯,vehicle_lighting,high,dipped-beam headlamp;low beam,强制装置，垂直倾角要求,active
+pt_0082,pt,zh,facho alto,远光光束,vehicle_lighting,high,high beam,前照灯光束类型,active
+pt_0083,pt,zh,facho baixo,近光光束,vehicle_lighting,high,low beam,dipped beam,active
+pt_0084,pt,zh,facho de luz assimétrico,非对称光束,vehicle_lighting,high,asymmetric light beam,附件XVIII前照灯要求对象,active
+pt_0085,pt,zh,facho de luz simétrico,对称光束,vehicle_lighting,high,symmetric light beam,附件XIX前照灯要求对象,active
+pt_0086,pt,zh,farol com facho de luz assimétrico,非对称光束前照灯,vehicle_lighting,high,asymmetric-beam headlamp,摩托车照明附件XVIII术语,active
+pt_0087,pt,zh,farol com facho de luz simétrico,对称光束前照灯,vehicle_lighting,high,symmetric-beam headlamp,摩托车照明附件XIX术语,active
+pt_0088,pt,zh,farol de neblina,雾灯,vehicle_lighting,high,fog lamp,改善雾、烟、强雨、尘云中道路照明与可见性,active
+pt_0089,pt,zh,farol de neblina dianteiro,前雾灯,vehicle_lighting,high,front fog lamp,可选装置，白色或黄色,active
+pt_0090,pt,zh,lanterna de neblina traseira,后雾灯,vehicle_lighting,high,rear fog lamp,红色信号装置，距制动灯至少100 mm,active
+pt_0091,pt,zh,farol de rodagem diurna,日间行车灯,vehicle_lighting,high,DRL;daytime running lamp,用于日间使车辆更易被看到,active
+pt_0092,pt,zh,DRL,日间行车灯,vehicle_lighting,high,farol de rodagem diurna,发动机启动自动点亮，主灯开启时熄灭,active
+pt_0093,pt,zh,lanterna de posição traseira,后位置灯,vehicle_lighting,high,rear position lamp,从后方指示车辆存在,active
+pt_0094,pt,zh,lanterna de posição dianteira,前位置灯,vehicle_lighting,high,front position lamp,从前方指示车辆存在,active
+pt_0095,pt,zh,lanterna de posição lateral,侧位置灯,vehicle_lighting,high,side marker lamp,CONTRAN第970号附件XIII术语,active
+pt_0096,pt,zh,lanternas de posição dianteiras e traseiras,前后位置灯,vehicle_lighting,high,front and rear position lamps,附件VI对象,active
+pt_0097,pt,zh,lanterna de freio,制动灯,vehicle_lighting,high,stop lamp;brake lamp,指示车辆正在制动或停止,active
+pt_0098,pt,zh,lanternas indicadoras de direção,转向指示灯,vehicle_lighting,high,direction indicators,指示驾驶员向左右改变方向意图,active
+pt_0099,pt,zh,indicador de direção,转向指示灯,vehicle_lighting,high,direction indicator,附件XVII/XXI核心装置,active
+pt_0100,pt,zh,lanterna de advertência,危险警告灯,vehicle_lighting,high,hazard warning lamp,所有转向灯同时工作表示车辆紧急或危险状态,active
+pt_0101,pt,zh,pisca-alerta,危险警告灯,vehicle_lighting,high,hazard warning signal,巴西葡语常用俗称,active
+pt_0102,pt,zh,lanterna de iluminação de placa de identificação do veículo,车辆识别牌照明灯,vehicle_lighting,high,license plate lamp,用于照亮车辆识别牌,active
+pt_0103,pt,zh,lanterna de iluminação da placa traseira,后牌照灯,vehicle_lighting,high,rear registration plate lamp,附件VII/XXI术语,active
+pt_0104,pt,zh,iluminação de placa,牌照照明,vehicle_lighting,high,plate illumination,必须照亮整个牌照空间,active
+pt_0105,pt,zh,lanterna de marcha-a-ré,倒车灯,vehicle_lighting,high,reversing lamp,CONTRAN第970号附件IV术语,active
+pt_0106,pt,zh,lanterna de estacionamento,驻车灯,vehicle_lighting,medium,parking lamp,附件IX术语,active
+pt_0107,pt,zh,lanternas delimitadoras traseiras,后示廓灯,vehicle_lighting,high,rear end-outline marker lamps,附件VI涉及术语,active
+pt_0108,pt,zh,dispositivo de sinalização de frenagem de emergência,紧急制动信号装置,vehicle_lighting,high,emergency stop signal,970号实施条款中提及,active
+pt_0109,pt,zh,retrorrefletor,回复反射器,vehicle_lighting,high,retro-reflector,利用非车辆自身光源的回复反射指示车辆存在,active
+pt_0110,pt,zh,retrorrefletor traseiro,后回复反射器,vehicle_lighting,high,rear retro-reflector,强制红色非三角形装置,active
+pt_0111,pt,zh,retrorreflexão,回复反射,vehicle_lighting,high,retro-reflection,回复反射器工作原理,active
+pt_0112,pt,zh,superfície aparente,表观表面,vehicle_lighting,high,apparent surface,几何可见角内应可见的灯具表面,active
+pt_0113,pt,zh,superfície iluminante,发光表面,vehicle_lighting,high,illuminating surface,回复反射器最小面积要求,active
+pt_0114,pt,zh,ângulos de visibilidade geométrica,几何可见角,vehicle_lighting,high,geometric visibility angles,确定灯具可见最小立体角范围,active
+pt_0115,pt,zh,ângulo sólido,立体角,vehicle_lighting,medium,solid angle,几何可见角定义术语,active
+pt_0116,pt,zh,centro de referência,参考中心,vehicle_lighting,high,centre of reference,灯具几何可见性和测量基准点,active
+pt_0117,pt,zh,eixo de referência,参考轴,vehicle_lighting,high,axis of reference,灯具安装和测量基准轴,active
+pt_0118,pt,zh,plano de rolamento,行驶平面,vehicle_lighting,high,running plane,参考轴安装关系基准,active
+pt_0119,pt,zh,plano mediano longitudinal,纵向中平面,vehicle_lighting,high,longitudinal median plane,灯具对称性和参考轴安装基准,active
+pt_0120,pt,zh,simetria,对称性,vehicle_lighting,medium,symmetry,成对灯具安装要求,active
+pt_0121,pt,zh,características fotométricas,光度特性,vehicle_lighting,high,photometric characteristics,成对灯具应相同,active
+pt_0122,pt,zh,fotométricas,光度的,vehicle_lighting,medium,photometric,灯具性能要求常用形容词,active
+pt_0123,pt,zh,intensidade luminosa,发光强度,vehicle_lighting,high,luminous intensity,单位cd，附件XXI核心参数,active
+pt_0124,pt,zh,coeficiente de intensidade luminosa,发光强度系数,vehicle_lighting,high,CIL;coefficient of luminous intensity,回复反射器性能指标,active
+pt_0125,pt,zh,CIL,发光强度系数,vehicle_lighting,high,coeficiente de intensidade luminosa,单位mcd/lux,active
+pt_0126,pt,zh,candela,坎德拉,vehicle_lighting,high,cd,发光强度单位,active
+pt_0127,pt,zh,cd,坎德拉,vehicle_lighting,high,candela,灯具强度单位,active
+pt_0128,pt,zh,lux,勒克斯,vehicle_lighting,high,lux,照度单位,active
+pt_0129,pt,zh,luminância,亮度,vehicle_lighting,high,luminance,牌照灯测量指标，单位cd/m²,active
+pt_0130,pt,zh,fluxo luminoso,光通量,vehicle_lighting,high,luminous flux,前照灯分类和测试参数,active
+pt_0131,pt,zh,fluxo luminoso de referência,参考光通量,vehicle_lighting,high,reference luminous flux,标准灯泡测试条件,active
+pt_0132,pt,zh,lâmpadas padrão,标准灯泡,vehicle_lighting,high,standard lamps,测试以参考光通量进行,active
+pt_0133,pt,zh,classe A,A类,vehicle_lighting,medium,Class A,前照灯/回复反射器类别,active
+pt_0134,pt,zh,classe B,B类,vehicle_lighting,medium,Class B,前照灯类别,active
+pt_0135,pt,zh,classe C,C类,vehicle_lighting,medium,Class C,对称光束前照灯类别,active
+pt_0136,pt,zh,classe D,D类,vehicle_lighting,medium,Class D,对称光束前照灯类别,active
+pt_0137,pt,zh,classes IA e IB,IA和IB类,vehicle_lighting,high,Classes IA and IB,普通回复反射器类别,active
+pt_0138,pt,zh,classe IVA,IVA类,vehicle_lighting,high,Class IVA,重型/特定车辆高性能回复反射器类别,active
+pt_0139,pt,zh,linha de corte,明暗截止线,vehicle_lighting,high,cut-off line,近光光束核心要求,active
+pt_0140,pt,zh,corte,截止线,vehicle_lighting,high,cut-off,前照灯近光光型术语,active
+pt_0141,pt,zh,cotovelo-ombro,肘肩部,vehicle_lighting,high,elbow-shoulder,非对称近光截止线右侧抬高部分,active
+pt_0142,pt,zh,ofuscamento,眩目,vehicle_lighting,high,glare,近光B50L限值用于防眩,active
+pt_0143,pt,zh,proteção contra ofuscamento,防眩保护,vehicle_lighting,high,glare protection,前照灯测试目的之一,active
+pt_0144,pt,zh,inclinação vertical,垂直倾角,vehicle_lighting,high,vertical inclination,近光灯安装调整要求,active
+pt_0145,pt,zh,orientação vertical do farol de luz baixa,近光灯垂直方向,vehicle_lighting,high,vertical orientation of low beam,970号实施条款涉及项目,active
+pt_0146,pt,zh,dispositivo de regulagem dos faróis baixos,近光灯调节装置,vehicle_lighting,high,low-beam adjustment device,970号实施条款涉及项目,active
+pt_0147,pt,zh,regulagem individual,单独调节,vehicle_lighting,medium,individual adjustment,组合灯具也应可调节,active
+pt_0148,pt,zh,unidades compostas,组合单元,vehicle_lighting,medium,composite units,前照灯调节语境,active
+pt_0149,pt,zh,dispositivos de comutação,切换装置,vehicle_lighting,high,switching devices,远近光切换装置,active
+pt_0150,pt,zh,acionamentos,操作次数,vehicle_lighting,medium,operations,切换装置耐久要求50000次,active
+pt_0151,pt,zh,emissão de luz vermelha frontal,前方红光发射,vehicle_lighting,high,front red light emission,禁止造成混淆的照明情形,active
+pt_0152,pt,zh,luz branca traseira,后方白光,vehicle_lighting,high,rear white light,禁止造成混淆的照明情形,active
+pt_0153,pt,zh,luzes intermitentes,闪烁灯光,vehicle_lighting,high,flashing lights,通常仅限转向和危险警告,active
+pt_0154,pt,zh,luzes rotativas,旋转灯光,vehicle_lighting,high,rotating lights,特殊应急或服务灯组成,active
+pt_0155,pt,zh,luzes estroboscópicas,频闪灯,vehicle_lighting,high,stroboscopic lights,高强度闪光补充信号装置,active
+pt_0156,pt,zh,flashes de alta intensidade,高强度闪光,vehicle_lighting,medium,high-intensity flashes,频闪灯发光形式,active
+pt_0157,pt,zh,lanternas especiais de emergência,特殊应急灯,vehicle_lighting,high,special emergency lamps,红/蓝或组合旋转或闪烁灯,active
+pt_0158,pt,zh,lanternas especiais para prestação de serviços,特殊服务灯,vehicle_lighting,high,special service lamps,公用事业车辆使用的黄琥珀色特殊灯,active
+pt_0159,pt,zh,lanterna especial de emergência,特殊应急灯,vehicle_lighting,high,special emergency lamp,应急车辆专用灯具,active
+pt_0160,pt,zh,lanterna especial para prestação de serviços,特殊服务灯,vehicle_lighting,high,special service lamp,公用事业服务车辆专用灯具,active
+pt_0161,pt,zh,cor vermelha,红色,vehicle_lighting,medium,red color,灯光颜色要求,active
+pt_0162,pt,zh,cor azul,蓝色,vehicle_lighting,medium,blue color,应急特殊灯颜色,active
+pt_0163,pt,zh,cor amarelo-âmbar,黄琥珀色,vehicle_lighting,high,yellow-amber color,公用事业特殊服务灯颜色,active
+pt_0164,pt,zh,âmbar,琥珀色,vehicle_lighting,high,amber,转向灯等颜色要求,active
+pt_0165,pt,zh,branca,白色,vehicle_lighting,medium,white,灯具颜色要求,active
+pt_0166,pt,zh,amarela,黄色,vehicle_lighting,medium,yellow,前雾灯可用颜色之一,active
+pt_0167,pt,zh,incolor,无色,vehicle_lighting,medium,colorless,回复反射器颜色类别之一,active
+pt_0168,pt,zh,coordenadas CIE,CIE色度坐标,vehicle_lighting,high,CIE coordinates,回复反射器颜色判定,active
+pt_0169,pt,zh,reflexão seletiva,选择性反射,vehicle_lighting,medium,selective reflection,无色回复反射器不得具有,active
+pt_0170,pt,zh,conexões elétricas,电气连接,vehicle_lighting,high,electrical connections,灯具联动和自动点亮要求,active
+pt_0171,pt,zh,ligar automaticamente,自动点亮,vehicle_lighting,high,switch on automatically,日间行车灯要求,active
+pt_0172,pt,zh,desligar,熄灭/关闭,vehicle_lighting,medium,switch off,灯具联动要求,active
+pt_0173,pt,zh,funcionamento simultâneo,同时工作,vehicle_lighting,high,simultaneous operation,灯具联动及八个前照灯限制语境,active
+pt_0174,pt,zh,mais de oito faróis,超过八个前照灯,vehicle_lighting,high,more than eight headlamps,禁止同时安装并运行的情形,active
+pt_0175,pt,zh,sistema elétrico,电气系统,vehicle_lighting,high,electrical system,违规附加灯具是否完全断开判断依据,active
+pt_0176,pt,zh,potência,功率,vehicle_lighting,medium,power,灯泡替换限制涉及参数,active
+pt_0177,pt,zh,tecnologia diferente,不同技术,vehicle_lighting,medium,different technology,灯泡替换限制涉及条件,active
+pt_0178,pt,zh,películas,膜片,vehicle_lighting,medium,films,不得贴附于照明或信号装置,active
+pt_0179,pt,zh,adesivos,贴纸,vehicle_lighting,medium,stickers,不得贴附于灯具,active
+pt_0180,pt,zh,pinturas,涂漆,vehicle_lighting,medium,paintings,不得施加于灯具,active
+pt_0181,pt,zh,material original do fabricante,制造商原装材料,vehicle_lighting,medium,manufacturer original material,灯具表面材料限制例外,active
+pt_0182,pt,zh,automóvel,汽车,vehicle_category,high,automobile,适用车型之一,active
+pt_0183,pt,zh,camioneta,客货两用车,vehicle_category,high,station wagon/van,巴西车辆类别，需结合车型定义,active
+pt_0184,pt,zh,caminhonete,轻型货车,vehicle_category,high,pickup truck,适用车型之一,active
+pt_0185,pt,zh,utilitário,多用途车,vehicle_category,high,utility vehicle,适用车型之一,active
+pt_0186,pt,zh,caminhão,货车,vehicle_category,high,truck,970号照明适用车型之一,active
+pt_0187,pt,zh,caminhão trator,牵引货车,vehicle_category,high,truck tractor,970号照明适用车型之一,active
+pt_0188,pt,zh,ônibus,客车,vehicle_category,high,bus,970号照明适用车型之一,active
+pt_0189,pt,zh,micro-ônibus,小型客车,vehicle_category,high,minibus,970号照明适用车型之一,active
+pt_0190,pt,zh,reboque,挂车,vehicle_category,high,trailer,970号照明适用车型之一,active
+pt_0191,pt,zh,semirreboque,半挂车,vehicle_category,high,semi-trailer,970号照明适用车型之一,active
+pt_0192,pt,zh,motocicleta,摩托车,vehicle_category,high,motorcycle,970号附件XVII-XXI适用车型之一,active
+pt_0193,pt,zh,motoneta,轻便摩托车/踏板摩托车,vehicle_category,high,motor scooter,巴西车型分类,active
+pt_0194,pt,zh,ciclomotor,轻便摩托车,vehicle_category,high,moped,巴西车型分类,active
+pt_0195,pt,zh,triciclo,三轮车,vehicle_category,high,tricycle,970号适用车型之一,active
+pt_0196,pt,zh,quadriciclo,四轮车,vehicle_category,high,quadricycle,970号适用车型之一,active
+pt_0197,pt,zh,veículos de emergência,应急车辆,vehicle_category,high,emergency vehicles,可使用红蓝特殊应急灯的车辆,active
+pt_0198,pt,zh,veículos prestadores de serviços de utilidade pública,公用事业服务车辆,vehicle_category,high,public utility service vehicles,可使用黄琥珀色特殊服务灯的车辆,active
+pt_0199,pt,zh,veículos fora-de-estrada,越野车辆,vehicle_category,high,off-road vehicles,部分法规豁免对象,active
+pt_0200,pt,zh,veículos de uso exclusivo fora-de-estrada,专用越野车辆,vehicle_category,high,exclusive off-road vehicles,949号豁免对象,active
+pt_0201,pt,zh,veículos especiais,特殊车辆,vehicle_category,high,special vehicles,按NBR 13776定义的豁免对象,active
+pt_0202,pt,zh,veículos de uso bélico,军用车辆,vehicle_category,high,military vehicles,豁免对象,active
+pt_0203,pt,zh,veículos incompletos,不完整车辆,vehicle_category,high,incomplete vehicles,照明和后方监测豁免或临时行驶要求对象,active
+pt_0204,pt,zh,veículos inacabados,未完工车辆,vehicle_category,high,unfinished vehicles,临时行驶需具备照明信号装置,active
+pt_0205,pt,zh,Chassi/Cabine,底盘/驾驶室,vehicle_category,high,chassis/cab,后方报警监测豁免对象,active
+pt_0206,pt,zh,fabricantes de pequena série,小批量制造商,vehicle_market,high,small series manufacturers,豁免对象,active
+pt_0207,pt,zh,fabricantes de veículos artesanais,手工车辆制造商,vehicle_market,high,artisanal vehicle manufacturers,豁免对象,active
+pt_0208,pt,zh,réplicas de veículos,车辆复制品,vehicle_category,high,vehicle replicas,豁免对象,active
+pt_0209,pt,zh,automóveis de carroçaria Buggy,Buggy车身汽车,vehicle_category,high,Buggy body automobiles,豁免对象,active
+pt_0210,pt,zh,Peso Bruto Total,车辆总质量,vehicle_weight,high,PBT;gross vehicle weight,949号柱碰撞适用条件之一,active
+pt_0211,pt,zh,PBT,车辆总质量,vehicle_weight,high,Peso Bruto Total,不超过3500 kg的适用条件,active
+pt_0212,pt,zh,massa de referência,参考质量,vehicle_weight,high,reference mass,点R高度测量车辆状态,active
+pt_0213,pt,zh,peso em ordem de marcha,整备质量,vehicle_weight,high,mass in running order,后方检测测试车辆载荷状态,active
+pt_0214,pt,zh,veículo descarregado,空载车辆,vehicle_weight,medium,unladen vehicle,整备质量说明,active
+pt_0215,pt,zh,tanque de combustível,燃油箱,vehicle_general,medium,fuel tank,测试车辆状态条件,active
+pt_0216,pt,zh,fluídos e lubrificantes,液体和润滑剂,vehicle_general,medium,fluids and lubricants,整备质量状态要求,active
+pt_0217,pt,zh,equipamentos obrigatórios,强制装备,vehicle_general,high,mandatory equipment,整备质量状态要求,active
+pt_0218,pt,zh,sistema de alerta traseiro,后方报警系统,rear_monitoring,high,rear warning system,759号强制系统之一,active
+pt_0219,pt,zh,sistema de monitoramento traseiro,后方监测系统,rear_monitoring,high,rear monitoring system,759号强制系统之一,active
+pt_0220,pt,zh,sistema de alerta e detecção traseira,后方报警与探测系统,rear_monitoring,high,rear warning and detection system,附件I定义核心术语,active
+pt_0221,pt,zh,sistema de visibilidade traseira,后方可视系统,rear_monitoring,high,rear visibility system,附件II定义核心术语,active
+pt_0222,pt,zh,visibilidade traseira,后方可视性,rear_monitoring,high,rear visibility,附件II核心主题,active
+pt_0223,pt,zh,imagem traseira,后方图像,rear_monitoring,high,rear image,倒车时显示的车辆后方视觉图像,active
+pt_0224,pt,zh,visão indireta,间接视野,rear_monitoring,high,indirect vision,通过显示器提供后方图像,active
+pt_0225,pt,zh,mostrador,显示器,rear_monitoring,high,display,显示后方图像的装置,active
+pt_0226,pt,zh,campo de visão,视野,rear_monitoring,high,field of view,后方可视系统要求之一,active
+pt_0227,pt,zh,vista padrão,默认视图,rear_monitoring,high,default view,每次挂倒挡时应默认显示合规后方图像,active
+pt_0228,pt,zh,tempo de resposta,响应时间,rear_monitoring,high,response time,后方图像应在倒车开始2秒内显示,active
+pt_0229,pt,zh,tempo de permanência,保持时间,rear_monitoring,high,display persistence time,倒车结束后不应继续显示,active
+pt_0230,pt,zh,desativação,停用,rear_monitoring,high,deactivation,系统或图像停用条件,active
+pt_0231,pt,zh,durabilidade,耐久性,rear_monitoring,high,durability,后方可视系统经环境试验后仍需满足要求,active
+pt_0232,pt,zh,uso da marcha à ré,倒挡使用期间,rear_monitoring,high,use of reverse gear,后方图像显示时段定义,active
+pt_0233,pt,zh,marcha à ré,倒挡,vehicle_control,high,reverse gear,后方报警/监测系统激活条件,active
+pt_0234,pt,zh,marcha-ré,倒挡,vehicle_control,high,reverse gear,拼写变体，统一译法,active
+pt_0235,pt,zh,seletor de marcha,换挡选择器,vehicle_control,high,gear selector,倒挡使用期间定义,active
+pt_0236,pt,zh,posição reversa,倒挡位置,vehicle_control,high,reverse position,后方图像可见性持续条件,active
+pt_0237,pt,zh,transmissão automática,自动变速器,vehicle_control,high,automatic transmission,P挡条件下检测系统可保持停用,active
+pt_0238,pt,zh,marcha de bloqueio das rodas motrizes,驱动轮锁止挡,vehicle_control,high,parking gear,通常称P挡,active
+pt_0239,pt,zh,P (parking),P挡,vehicle_control,high,parking position,自动变速器停车挡,active
+pt_0240,pt,zh,freio de estacionamento,驻车制动器,vehicle_control,high,parking brake,激活时探测系统可保持停用,active
+pt_0241,pt,zh,ignição ligada,点火接通,vehicle_control,medium,ignition on,后方报警系统自动启停条件,active
+pt_0242,pt,zh,sistema de partida com a chave,钥匙启动系统,vehicle_control,medium,key starting system,响应时间测试步骤,active
+pt_0243,pt,zh,alerta sonoro,声音报警,rear_monitoring,high,audible alert,后方报警系统至少应提供,active
+pt_0244,pt,zh,alerta acústico,声学报警,rear_monitoring,high,acoustic alert,声音报警定义表达,active
+pt_0245,pt,zh,alerta visual,视觉报警,rear_monitoring,high,visual alert,可选补充声音报警的装置,active
+pt_0246,pt,zh,alerta intermitente,间歇报警,rear_monitoring,high,intermittent alert,检测到障碍物时发出,active
+pt_0247,pt,zh,aviso de falha,故障警告,rear_monitoring,high,failure warning,系统检测故障后可发出声/视觉警告,active
+pt_0248,pt,zh,função de detecção de falha,故障检测功能,rear_monitoring,high,failure detection function,系统激活后至少执行一次,active
+pt_0249,pt,zh,obstáculo,障碍物,rear_monitoring,high,obstacle,后方报警对象,active
+pt_0250,pt,zh,objeto crítico,关键目标物,rear_monitoring,high,critical object,后方检测测试用标准目标物,active
+pt_0251,pt,zh,objeto de ensaio,试验目标物,testing,high,test object,后方可视性测试圆柱目标,active
+pt_0252,pt,zh,poste cilíndrico,圆柱杆,testing,high,cylindrical post,后方检测关键目标物,active
+pt_0253,pt,zh,cilindro,圆柱体,testing,medium,cylinder,后方可视目标物形状,active
+pt_0254,pt,zh,campo de detecção traseira,后方探测区域,rear_monitoring,high,rear detection field,由R1和R2监测区组成,active
+pt_0255,pt,zh,zona de detecção,探测区,rear_monitoring,high,detection zone,障碍物报警有效区域,active
+pt_0256,pt,zh,zona de monitoramento,监测区,rear_monitoring,high,monitoring zone,后方检测覆盖率计算区域,active
+pt_0257,pt,zh,zona de monitoramento horizontal traseira,后方水平监测区,rear_monitoring,high,rear horizontal monitoring zone,覆盖率图示术语,active
+pt_0258,pt,zh,taxa de cobertura,覆盖率,rear_monitoring,high,coverage rate,后方监测区检测性能指标,active
+pt_0259,pt,zh,taxa de detecção mínima,最低检测率,rear_monitoring,high,minimum detection rate,R1/R2区域内至少87%,active
+pt_0260,pt,zh,grade de referência,参考网格,testing,high,reference grid,10×10 cm检测位置网格,active
+pt_0261,pt,zh,células,网格单元,testing,medium,cells,参考网格组成,active
+pt_0262,pt,zh,malha,网格区域,testing,medium,mesh,覆盖率计算区域,active
+pt_0263,pt,zh,sensor,传感器,rear_monitoring,high,sensor,探测目标物的部件,active
+pt_0264,pt,zh,limitações de capacidade de detecção,探测能力限制,rear_monitoring,medium,detection capability limitations,A距离不计入监测区原因,active
+pt_0265,pt,zh,engate traseiro,后拖钩,rear_monitoring,medium,rear hitch,不得作为车辆后限,active
+pt_0266,pt,zh,limite traseiro do veículo,车辆后端边界,rear_monitoring,high,rear limit of vehicle,后方监测区测量基准,active
+pt_0267,pt,zh,plano vertical tangente,切向垂直平面,testing,high,tangent vertical plane,车辆后端/保险杠测量基准,active
+pt_0268,pt,zh,plano vertical transversal,横向垂直平面,testing,high,transverse vertical plane,目标物布置测量基准,active
+pt_0269,pt,zh,plano vertical longitudinal,纵向垂直平面,testing,high,longitudinal vertical plane,目标物左右位置测量基准,active
+pt_0270,pt,zh,eixo longitudinal,纵向轴,vehicle_geometry,high,longitudinal axis,监测区和灯具对称基准,active
+pt_0271,pt,zh,linha de centro longitudinal,纵向中心线,vehicle_geometry,high,longitudinal centerline,目标布置和方向盘调整基准,active
+pt_0272,pt,zh,eixo traseiro,后轴,vehicle_geometry,high,rear axle,监测区宽度L测量基准,active
+pt_0273,pt,zh,eixo dianteiro,前轴,vehicle_geometry,high,front axle,949号侧柱碰撞适用条件测量基准,active
+pt_0274,pt,zh,para-choque traseiro,后保险杠,vehicle_structure,high,rear bumper,后方可视目标物距离测量基准,active
+pt_0275,pt,zh,carroceria,车身,vehicle_structure,high,bodywork,派生项目和门开启判断相关术语,active
+pt_0276,pt,zh,coluna A,A柱,vehicle_structure,high,A-pillar,派生车型结构相似性边界,active
+pt_0277,pt,zh,parte dianteira da carroceria,车身前部,vehicle_structure,high,front part of bodywork,派生项目判断区域,active
+pt_0278,pt,zh,semelhança estrutural e de forma,结构和形状相似性,vehicle_structure,medium,structural and shape similarity,派生项目定义条件,active
+pt_0279,pt,zh,assento,座椅,seat,high,seat,949号点R和后方监测驾驶员座椅设置术语,active
+pt_0280,pt,zh,banco,座椅,seat,high,seat,巴西葡语常用车辆座椅术语,active
+pt_0281,pt,zh,assento do condutor,驾驶员座椅,seat,high,driver seat,后方可视试验调整对象,active
+pt_0282,pt,zh,encosto do banco,座椅靠背,seat,high,seat back,按25°躯干角调整,active
+pt_0283,pt,zh,ponto R,R点,seat,high,R point,侧碰撞适用条件中的座椅参考点,active
+pt_0284,pt,zh,Ponto H,H点,seat,high,H point,人体工程学基准点,active
+pt_0285,pt,zh,manequim tridimensional,三维人体模型,testing,high,three-dimensional manikin,确定H点和座椅靠背角工具,active
+pt_0286,pt,zh,condutor masculino 50-percentil,第50百分位男性驾驶员,testing,high,50th percentile male driver,后方可视性眼点布置基准,active
+pt_0287,pt,zh,parte vertical do torso,躯干垂直部分,seat,medium,vertical torso part,靠背角调整基准,active
+pt_0288,pt,zh,ângulo do encosto do banco,座椅靠背角,seat,high,seat back angle,试验座椅设置参数,active
+pt_0289,pt,zh,faixa de ajuste longitudinal,纵向调节范围,seat,high,longitudinal adjustment range,驾驶员座椅设置要求,active
+pt_0290,pt,zh,faixa de ajuste vertical,垂直调节范围,seat,high,vertical adjustment range,驾驶员座椅设置要求,active
+pt_0291,pt,zh,ponto médio,中点,seat,medium,midpoint,座椅纵向调节位置,active
+pt_0292,pt,zh,ponto mais baixo,最低点,seat,medium,lowest point,座椅垂直调节位置,active
+pt_0293,pt,zh,apoios de cabeça,头枕,seat,high,head restraints,若遮挡显示器拍摄可调节或拆除,active
+pt_0294,pt,zh,ponto central do olho,眼点中心,testing,high,eye midpoint,后方可视性测量参考点,active
+pt_0295,pt,zh,Mf,前视眼点中心,testing,high,forward-looking eye midpoint,点H上方635 mm且后方96 mm,active
+pt_0296,pt,zh,Mr,旋转后眼点中心,testing,high,rotated eye midpoint,计算视距和相机位置基准,active
+pt_0297,pt,zh,centro da articulação da cabeça/pescoço,头颈关节中心,testing,high,head/neck joint center,后方可视测试参考点J,active
+pt_0298,pt,zh,J2,J2点,testing,medium,J2 point,后方图像视线旋转参考点,active
+pt_0299,pt,zh,distância de visão,视距,testing,high,viewing distance,Mr到后方图像中心的实际距离,active
+pt_0300,pt,zh,ângulo visual,视角,testing,high,visual angle,后方图像目标物尺寸要求,active
+pt_0301,pt,zh,arco,弧分/弧,testing,medium,arc,视觉角度单位语境,active
+pt_0302,pt,zh,fator de escala,比例因子,testing,high,scale factor,由照片中50 mm尺段计算,active
+pt_0303,pt,zh,régua,标尺,testing,medium,ruler,后方图像测量工具,active
+pt_0304,pt,zh,câmera fotográfica,照相机,testing,medium,photographic camera,后方图像测量设备,active
+pt_0305,pt,zh,câmera de vídeo,摄像机,testing,medium,video camera,后方图像测量设备,active
+pt_0306,pt,zh,plano de imagem da câmera,相机成像平面,testing,high,camera image plane,相机定位基准,active
+pt_0307,pt,zh,lente da câmera,相机镜头,testing,medium,camera lens,测量设备部件,active
+pt_0308,pt,zh,extração dos dados fotográficos,摄影数据提取,testing,high,photographic data extraction,后方图像测量步骤,active
+pt_0309,pt,zh,choque lateral,侧面碰撞,vehicle_safety,high,side impact,949号乘员保护核心场景,active
+pt_0310,pt,zh,impacto lateral,侧面碰撞,vehicle_safety,high,side impact,949号标题术语,active
+pt_0311,pt,zh,impacto lateral contra barreira deformável,侧面碰撞可变形壁障,vehicle_safety,high,side impact against deformable barrier,949号保护要求之一,active
+pt_0312,pt,zh,impacto lateral em poste,侧面柱碰撞,vehicle_safety,high,side pole impact,949号保护要求之一,active
+pt_0313,pt,zh,choque lateral contra poste,侧面柱碰撞,vehicle_safety,high,side pole collision,949号条文表达,active
+pt_0314,pt,zh,barreira deformável,可变形壁障,vehicle_safety,high,deformable barrier,侧面碰撞试验对象,active
+pt_0315,pt,zh,poste,柱,vehicle_safety,high,pole,侧面柱碰撞对象,active
+pt_0316,pt,zh,proteção aos ocupantes,乘员保护,vehicle_safety,high,occupant protection,949号决议核心要求,active
+pt_0317,pt,zh,ocupantes,乘员,vehicle_safety,high,occupants,侧碰撞保护对象,active
+pt_0318,pt,zh,requisitos de desempenho,性能要求,vehicle_safety,high,performance requirements,759/949号决议核心术语,active
+pt_0319,pt,zh,procedimentos de ensaio,试验程序,testing,high,test procedures,合规试验流程,active
+pt_0320,pt,zh,resultados de ensaios,试验结果,testing,high,test results,替代性合规证明材料,active
+pt_0321,pt,zh,ensaio a 90º,90度试验,vehicle_safety,high,90-degree test,侧面碰撞附件I试验,active
+pt_0322,pt,zh,ensaio a 63º,63度试验,vehicle_safety,high,63-degree test,侧面碰撞附件II试验,active
+pt_0323,pt,zh,ângulo agudo alfa,锐角α,vehicle_geometry,high,acute angle alpha,949号轻型货车柱碰撞适用条件,active
+pt_0324,pt,zh,plano horizontal,水平平面,vehicle_geometry,high,horizontal plane,几何测量基准,active
+pt_0325,pt,zh,plano transversal angular,横向倾斜平面,vehicle_geometry,high,angular transverse plane,949号α角测量平面,active
+pt_0326,pt,zh,L101-L114,L101-L114距离,vehicle_geometry,medium,L101-L114,点R到后轴中心距离,active
+pt_0327,pt,zh,L114,L114距离,vehicle_geometry,medium,L114,前轴中心到驾驶员点R距离,active
+pt_0328,pt,zh,relação,比值,vehicle_geometry,medium,ratio,949号适用条件中距离关系,active
+pt_0329,pt,zh,teste de corrosão,腐蚀试验,testing,high,corrosion test,后方可视系统和回复反射器耐久试验,active
+pt_0330,pt,zh,névoa salina,盐雾,testing,high,salt spray,腐蚀试验介质,active
+pt_0331,pt,zh,teste de exposição à umidade,湿度暴露试验,testing,high,humidity exposure test,后方可视系统耐久试验之一,active
+pt_0332,pt,zh,teste de exposição à temperatura,温度暴露试验,testing,high,temperature exposure test,后方可视系统耐久试验之一,active
+pt_0333,pt,zh,ensaios ambientais,环境试验,testing,high,environmental tests,外部部件耐久性试验,active
+pt_0334,pt,zh,componentes externos,外部部件,testing,high,external components,后方可视系统环境试验对象,active
+pt_0335,pt,zh,estrutura própria para ensaios ambientais,环境试验专用结构,testing,medium,environmental test fixture,外部部件安装载体,active
+pt_0336,pt,zh,umidade relativa,相对湿度,testing,high,relative humidity,湿度暴露试验参数,active
+pt_0337,pt,zh,ciclos consecutivos,连续循环,testing,medium,consecutive cycles,湿度/温度试验循环描述,active
+pt_0338,pt,zh,intervalo,间隔,testing,medium,interval,环境试验循环间隔,active
+pt_0339,pt,zh,submersão,浸没,testing,high,immersion,回复反射器耐水试验,active
+pt_0340,pt,zh,penetração de água,进水,testing,high,water ingress,浸没试验判定项目,active
+pt_0341,pt,zh,combustíveis,燃料,testing,medium,fuels,回复反射器耐化学性试验介质,active
+pt_0342,pt,zh,óleos,油类,testing,medium,oils,回复反射器耐油性试验介质,active
+pt_0343,pt,zh,óleos detergentes,清净油,testing,medium,detergent oils,回复反射器耐化学性试验介质,active
+pt_0344,pt,zh,impacto,冲击,testing,high,impact,IVA类回复反射器钢球跌落试验,active
+pt_0345,pt,zh,esfera de aço,钢球,testing,medium,steel ball,回复反射器冲击试验工具,active
+pt_0346,pt,zh,lentes de material plástico,塑料材料透镜,vehicle_lighting,high,plastic material lenses,前照灯严苛试验对象,active
+pt_0347,pt,zh,lentes plásticas,塑料透镜,vehicle_lighting,high,plastic lenses,同义简写,active
+pt_0348,pt,zh,mudança de temperatura,温度变化,testing,high,temperature change,塑料透镜试验之一,active
+pt_0349,pt,zh,agentes atmosféricos,大气因素,testing,high,atmospheric agents,塑料透镜耐候试验,active
+pt_0350,pt,zh,radiação,辐射,testing,medium,radiation,耐候试验条件,active
+pt_0351,pt,zh,pulverização de água,喷水,testing,medium,water spray,耐候试验条件,active
+pt_0352,pt,zh,resistência química,耐化学性,testing,high,chemical resistance,塑料透镜试验之一,active
+pt_0353,pt,zh,deterioração mecânica,机械劣化,testing,high,mechanical deterioration,塑料透镜喷砂试验,active
+pt_0354,pt,zh,pulverização,喷射/喷雾,testing,medium,spraying,喷砂或喷水语境,active
+pt_0355,pt,zh,areia de sílica,硅砂,testing,medium,silica sand,塑料透镜机械劣化介质,active
+pt_0356,pt,zh,dureza Mohr,莫氏硬度,testing,medium,Mohr hardness,硅砂硬度参数，原文Mohr可能对应Mohs,active
+pt_0357,pt,zh,aderência,附着力,testing,high,adhesion,塑料透镜胶带试验,active
+pt_0358,pt,zh,fita adesiva,胶带,testing,medium,adhesive tape,附着力试验工具,active
+pt_0359,pt,zh,superfície reticulada,网格划格表面,testing,medium,cross-hatched surface,胶带附着力试验表面状态,active
+pt_0360,pt,zh,n-heptano,正庚烷,chemical,medium,n-heptane,耐化学试验混合物成分,active
+pt_0361,pt,zh,tolueno,甲苯,chemical,medium,toluene,耐化学试验混合物成分,active
+pt_0362,pt,zh,toluol,甲苯,chemical,medium,toluene,葡语/旧称变体,active
+pt_0363,pt,zh,tricloroetileno,三氯乙烯,chemical,medium,trichloroethylene,耐化学试验混合物成分,active
+pt_0364,pt,zh,xileno,二甲苯,chemical,medium,xylene,耐化学试验混合物成分,active
+pt_0365,pt,zh,NaCl,氯化钠,chemical,medium,sodium chloride,盐雾试验溶液成分,active
+pt_0366,pt,zh,placa de identificação do veículo,车辆识别牌,vehicle_registration,high,vehicle identification plate,牌照灯照明对象,active
+pt_0367,pt,zh,placa traseira,后牌照,vehicle_registration,high,rear plate,后牌照灯照明对象,active
+pt_0368,pt,zh,espaço da placa,牌照空间,vehicle_registration,high,plate space,牌照灯应照亮的区域,active
+pt_0369,pt,zh,gradiente,梯度,vehicle_lighting,high,gradient,牌照照明亮度变化限值,active
+pt_0370,pt,zh,incidência,入射角,vehicle_lighting,high,incidence,牌照灯最大角度82°,active
+pt_0371,pt,zh,ângulo de divergência,发散角,vehicle_lighting,high,angle of divergence,回复反射器CIL测试参数,active
+pt_0372,pt,zh,iluminação 0°,0度照明,vehicle_lighting,medium,illumination 0°,回复反射器测试角度条件,active
+pt_0373,pt,zh,distribuição de luz no espaço,空间光分布,vehicle_lighting,high,light distribution in space,附件XXI灯具强度分布要求,active
+pt_0374,pt,zh,ângulos de visibilidade,可见角,vehicle_lighting,high,visibility angles,垂直/水平可见性参数,active
+pt_0375,pt,zh,vertical,垂直,vehicle_lighting,medium,vertical,光分布角度方向,active
+pt_0376,pt,zh,horizontal,水平,vehicle_lighting,medium,horizontal,光分布角度方向,active
+pt_0377,pt,zh,uniformidade,均匀性,vehicle_lighting,high,uniformity,各方向强度不得低于分布百分比要求,active
+pt_0378,pt,zh,grade de distribuição,分布网格,vehicle_lighting,high,distribution grid,灯具空间光分布要求表,active
+pt_0379,pt,zh,estabilização,稳定化,testing,high,stabilization,灯具1分钟和30分钟工作后测量热稳定性,active
+pt_0380,pt,zh,estabilidade térmica,热稳定性,testing,high,thermal stability,LED/不可替换光源测试目的,active
+pt_0381,pt,zh,operação,运行,testing,medium,operation,测试时间条件,active
+pt_0382,pt,zh,freado,被制动,vehicle_control,medium,being braked,制动灯指示状态,active
+pt_0383,pt,zh,parado,停止,vehicle_control,medium,stopped,制动灯/警告灯状态,active
+pt_0384,pt,zh,freio de serviço,行车制动器,vehicle_control,high,service brake,制动灯激活条件,active
+pt_0385,pt,zh,condutor,驾驶员,road_user,high,driver,法规基础主体,active
+pt_0386,pt,zh,motorista,驾驶员,road_user,high,driver,后方报警系统定义用词,active
+pt_0387,pt,zh,usuários da via,道路使用者,road_user,high,road users,信号装置对象,active
+pt_0388,pt,zh,operador do veículo,车辆操作者,road_user,medium,vehicle operator,后方图像提供对象,active
+pt_0389,pt,zh,serviço de urgência,紧急服务,emergency_vehicle,high,urgent service,应急灯使用条件,active
+pt_0390,pt,zh,policiamento ostensivo,公开警务,emergency_vehicle,medium,overt policing,应急灯使用条件之一,active
+pt_0391,pt,zh,preservação da ordem pública,维护公共秩序,emergency_vehicle,medium,preservation of public order,应急灯使用条件之一,active
+pt_0392,pt,zh,livre circulação,自由通行,emergency_vehicle,high,free circulation,应急车辆优先权之一,active
+pt_0393,pt,zh,livre parada,自由停车,emergency_vehicle,high,free stopping,应急/公用事业车辆特权之一,active
+pt_0394,pt,zh,livre estacionamento,自由泊车,emergency_vehicle,high,free parking,应急/公用事业车辆特权之一,active
+pt_0395,pt,zh,prerrogativas de prioridade de trânsito,交通优先特权,emergency_vehicle,high,traffic priority privileges,应急灯和声音装置共同使用条件,active
+pt_0396,pt,zh,dispositivos sonoros,声音装置,emergency_vehicle,high,audible devices,应急车辆自由通行/停车时与特殊灯共同使用,active
+pt_0397,pt,zh,dispositivo de alarme sonoro,声音报警装置,emergency_vehicle,high,audible alarm device,CTB处罚条款中与特殊应急灯共同识别车辆,active
+pt_0398,pt,zh,socorro de incêndio e salvamento,消防和救援,emergency_vehicle,high,firefighting and rescue,允许使用特殊应急灯的车辆用途,active
+pt_0399,pt,zh,salvamento difuso,广域救援,emergency_vehicle,medium,diffuse rescue,允许使用特殊应急灯的车辆用途,active
+pt_0400,pt,zh,polícia,警察,emergency_vehicle,high,police,允许使用特殊应急灯的车辆用途,active
+pt_0401,pt,zh,fiscalização e operação de trânsito,交通执法和交通运行,emergency_vehicle,high,traffic inspection and operation,允许使用特殊应急灯的车辆用途,active
+pt_0402,pt,zh,ambulâncias,救护车,emergency_vehicle,high,ambulances,允许使用特殊应急灯的车辆,active
+pt_0403,pt,zh,serviços de utilidade pública,公用事业服务,public_service_vehicle,high,public utility services,黄琥珀特殊灯使用场景,active
+pt_0404,pt,zh,manutenção e reparo,维护和修理,public_service_vehicle,medium,maintenance and repair,公用事业服务车辆用途,active
+pt_0405,pt,zh,redes de energia elétrica,电力网络,public_service_vehicle,medium,electricity networks,公用事业服务对象,active
+pt_0406,pt,zh,redes de água e esgotos,供水和污水网络,public_service_vehicle,medium,water and sewerage networks,公用事业服务对象,active
+pt_0407,pt,zh,gás combustível canalizado,管道燃气,public_service_vehicle,medium,piped fuel gas,公用事业服务对象,active
+pt_0408,pt,zh,comunicações,通信,public_service_vehicle,medium,communications,公用事业服务对象,active
+pt_0409,pt,zh,sinalização viária,道路标志标线,public_service_vehicle,high,road signage,道路维护和标志车辆用途,active
+pt_0410,pt,zh,guindastes,起重机车辆,public_service_vehicle,medium,cranes,公用事业服务车辆类别,active
+pt_0411,pt,zh,guinchos,拖车,public_service_vehicle,high,tow trucks,公用事业服务车辆类别,active
+pt_0412,pt,zh,plataformas de socorro veicular,车辆救援平台车,public_service_vehicle,medium,vehicle rescue platforms,公用事业服务车辆类别,active
+pt_0413,pt,zh,pane mecânica,机械故障,public_service_vehicle,medium,mechanical breakdown,救援车辆服务对象,active
+pt_0414,pt,zh,pane elétrica,电气故障,public_service_vehicle,medium,electrical breakdown,救援车辆服务对象,active
+pt_0415,pt,zh,transporte de valores,押运运输,public_service_vehicle,medium,cash/valuables transport,特殊车辆用途,active
+pt_0416,pt,zh,escolta de cargas superdimensionadas,超限货物护送,public_service_vehicle,medium,escort of oversized loads,公用事业服务车辆用途之一,active
+pt_0417,pt,zh,recolhimento de lixo,垃圾收集,public_service_vehicle,medium,waste collection,公用事业服务车辆用途之一,active
+pt_0418,pt,zh,linhas e estações metroferroviárias,轨道交通线路和车站,public_service_vehicle,medium,metro-rail lines and stations,公用事业服务对象,active
+pt_0419,pt,zh,área de isolamento,隔离区域,public_service_vehicle,medium,isolation area,公用事业服务现场交通安全区域,active
+pt_0420,pt,zh,dispositivos de sinalização auxiliar,辅助信号装置,public_service_vehicle,high,auxiliary signalling devices,公用事业现场道路上辅助装置,active
+pt_0421,pt,zh,acionamento,启用/操作,vehicle_control,high,activation,灯具或系统启动动作,active
+pt_0422,pt,zh,energização,通电,vehicle_lighting,high,energization,特殊服务灯行驶中禁止通电语境,active
+pt_0423,pt,zh,sem obstrução de qualquer natureza,无任何遮挡,vehicle_lighting,high,without obstruction of any kind,特殊灯安装可见性要求,active
+pt_0424,pt,zh,qualquer ângulo de aproximação,任意接近角度,vehicle_lighting,high,any angle of approach,特殊灯可见性要求,active
+pt_0425,pt,zh,veículos transporte escolar,校车,vehicle_category,high,school transport vehicles,970号附件XV信号灯对象,active
+pt_0426,pt,zh,dispositivo luminoso de identificação dos veículos tipo táxi,出租车发光识别装置,vehicle_lighting,high,luminous identification device for taxis,由服务授权机关另行规定,active
+pt_0427,pt,zh,poder concedente do serviço,服务授权机关,general_regulation,medium,service granting authority,出租车发光标识监管主体,active
+pt_0428,pt,zh,inovações tecnológicas,技术创新,general_regulation,high,technological innovations,可经认证或国际法规认可接受,active
+pt_0429,pt,zh,legislação internacional reconhecida,认可的国际法规,general_regulation,high,recognized international legislation,技术创新合规证明依据,active
