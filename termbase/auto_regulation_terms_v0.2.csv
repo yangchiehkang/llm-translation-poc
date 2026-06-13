@@ -1861,3 +1861,298 @@ it_0288,it,zh,autovettura,乘用车,vehicle_general,high,passenger car,道路法
 it_0289,it,zh,autocarro,载货汽车,vehicle_general,high,truck,道路法典车辆类别,active
 it_0290,it,zh,autobus,客车,vehicle_general,high,bus,道路法典车辆类别,active
 it_0291,it,zh,rimorchio,挂车,vehicle_general,high,trailer,车辆类别和超限运输语境,active
+no_0015,no,zh,Vegtrafikkloven,道路交通法,road_traffic,high,vtrl,挪威道路交通核心法律名称,active
+no_0016,no,zh,vtrl,道路交通法,road_traffic,high,Vegtrafikkloven,挪威道路交通法缩写,active
+no_0017,no,zh,Samferdselsdepartementet,交通部,general_regulation,high,Ministry of Transport,挪威道路交通主管部委,active
+no_0018,no,zh,Kongen,国王,general_regulation,medium,King,挪威法规授权主体，常用于“国王可规定”,active
+no_0019,no,zh,departementet,部,general_regulation,medium,Ministry,法规中常指主管部委,active
+no_0020,no,zh,lov,法律,general_regulation,high,Act,法规文件类型,active
+no_0021,no,zh,kapittel,章,general_regulation,medium,Chapter,法规结构术语,active
+no_0022,no,zh,paragraf,条,general_regulation,high,§,法规条文结构术语,active
+no_0023,no,zh,virkeområde,适用范围,general_regulation,high,scope,法律适用范围术语,active
+no_0024,no,zh,bestemmelse,规定,general_regulation,medium,bestemmelser,法规条款通用术语,active
+no_0025,no,zh,unntak,例外,general_regulation,medium,exemption,法规适用例外,active
+no_0026,no,zh,tillatelse,许可,general_regulation,high,permission,交通活动、赛事、车辆使用等许可,active
+no_0027,no,zh,samtykke,同意,general_regulation,medium,consent,警察或主管机关同意,active
+no_0028,no,zh,påbud,强制要求,general_regulation,medium,mandatory order,交通规则中命令性要求,active
+no_0029,no,zh,forbud,禁止,general_regulation,high,prohibition,交通管制和车辆装备禁令,active
+no_0030,no,zh,midlertidig forbud,临时禁止,general_regulation,medium,temporary prohibition,因道路状况、施工、环境等临时禁止通行,active
+no_0031,no,zh,gebyr,费用,general_regulation,high,fee,停车费、钉胎费、行政收费等,active
+no_0032,no,zh,avgift,收费,general_regulation,high,charge,道路交通相关收费或费用,active
+no_0033,no,zh,erstatning,赔偿,general_regulation,medium,compensation,设置交通标志造成损害或不便时赔偿,active
+no_0034,no,zh,Svalbard,斯瓦尔巴,general_regulation,medium,Svalbard,道路交通法特殊地域适用对象,active
+no_0035,no,zh,Jan Mayen,扬马延,general_regulation,medium,Jan Mayen,道路交通法特殊地域适用对象,active
+no_0036,no,zh,veg,道路,road_infrastructure,high,vei;road,挪威道路交通法基础定义，官方文本常用veg,active
+no_0037,no,zh,gate,街道,road_infrastructure,medium,street,道路定义包含对象,active
+no_0038,no,zh,torg,广场,road_infrastructure,medium,square,道路定义包含对象,active
+no_0039,no,zh,opplagsplass,堆放场,road_infrastructure,medium,storage area,道路定义包含对象,active
+no_0040,no,zh,parkeringsplass,停车场,road_infrastructure,high,parking lot,道路定义包含对象,active
+no_0041,no,zh,holdeplass,停靠站,road_infrastructure,high,stop,道路定义包含对象,active
+no_0042,no,zh,bru,桥梁,road_infrastructure,medium,bridge,道路定义包含对象,active
+no_0043,no,zh,ferjekai,渡轮码头,road_infrastructure,medium,ferry quay,与道路直接连接的码头,active
+no_0044,no,zh,kai,码头,road_infrastructure,medium,quay,道路定义中与道路直接连接的码头,active
+no_0045,no,zh,trafikk,交通,road_traffic,high,traffic,道路交通法基础术语,active
+no_0046,no,zh,ferdsel,通行,road_traffic,high,travel;traffic,包括在道路或区域停留,active
+no_0047,no,zh,kjøring,驾驶,road_traffic,high,driving,车辆驾驶行为,active
+no_0048,no,zh,vegtrafikk,道路交通,road_traffic,high,road traffic,法律名称和适用对象术语,active
+no_0049,no,zh,sporvogn,有轨电车,vehicle_general,medium,tram,国王决定道路上轨道车辆规则适用范围,active
+no_0050,no,zh,skinnekjøretøy,轨道车辆,vehicle_general,medium,rail vehicle,道路上轨道车辆规则适用对象,active
+no_0051,no,zh,fører,驾驶人,road_traffic,high,driver,交通规则、执法和事故义务主体,active
+no_0052,no,zh,eier,所有人,vehicle_general,high,owner,车辆登记、停车、罚款连带责任主体,active
+no_0053,no,zh,vognfører,车辆驾驶人,road_traffic,medium,driver,部分语境可与fører对应,active
+no_0054,no,zh,trafikant,交通参与者,road_traffic,high,road user,道路交通参与主体,active
+no_0055,no,zh,gående,行人,road_traffic,high,pedestrian,交通规则适用对象,active
+no_0056,no,zh,syklende,骑行者,road_traffic,high,cyclist,交通规则适用对象,active
+no_0057,no,zh,ridende,骑乘者,road_traffic,medium,rider,交通规则适用对象，骑马等,active
+no_0058,no,zh,grunnregler for trafikk,交通基本规则,road_traffic,high,basic rules for traffic,道路交通法第3条核心内容,active
+no_0059,no,zh,hensynsfullt,体谅地,road_traffic,medium,considerately,交通基本规则要求,active
+no_0060,no,zh,aktpågivende,注意地,road_traffic,medium,alert,交通基本规则要求,active
+no_0061,no,zh,varsomt,谨慎地,road_traffic,medium,cautiously,交通基本规则要求,active
+no_0062,no,zh,fare,危险,road_safety,high,danger,交通基本规则避免对象,active
+no_0063,no,zh,skade,损害,road_safety,high,damage,交通基本规则避免对象,active
+no_0064,no,zh,hindre,妨碍,road_traffic,medium,hinder,不得不必要妨碍其他交通,active
+no_0065,no,zh,forstyrre,扰乱,road_traffic,medium,disturb,不得不必要扰乱其他交通,active
+no_0066,no,zh,trafikkregler,交通规则,road_traffic,high,traffic rules,国王制定的一般规则,active
+no_0067,no,zh,kommunale trafikkregler,市政交通规则,road_traffic,medium,municipal traffic regulations,部委可制定或授权制定,active
+no_0068,no,zh,Statens vegvesen,国家公路管理局,road_authority,high,Norwegian Public Roads Administration,挪威道路交通和车辆监管核心机构,active
+no_0069,no,zh,kommune,市镇,road_authority,high,municipality,交通规则、停车、低排放区等地方主体,active
+no_0070,no,zh,politiet,警察,road_enforcement,high,police,交通管制、执法、事故处理主体,active
+no_0071,no,zh,lokalt politi,地方警察,road_enforcement,medium,local police,地方交通规则和管制主体,active
+no_0072,no,zh,trafikkskilt,交通标志,road_traffic,high,traffic sign,道路交通法第5条核心术语,active
+no_0073,no,zh,signal,信号,road_traffic,high,traffic signal,交通管制信号,active
+no_0074,no,zh,oppmerking,标线,road_traffic,high,road marking,道路交通标线,active
+no_0075,no,zh,offentlig trafikkskilt,官方交通标志,road_traffic,high,official traffic sign,必须遵守且不得仿冒或损坏,active
+no_0076,no,zh,vegmerking,道路标线,road_traffic,high,road marking,与oppmerking近义，具体按原文使用,active
+no_0077,no,zh,vegsperring,道路屏障,road_infrastructure,medium,road barrier,禁止改变、移除或损坏,active
+no_0078,no,zh,plassering av skilt,设置标志,road_traffic,medium,installation of signs,主管机关有权在私有或公有财产设置,active
+no_0079,no,zh,privat eiendom,私人财产,general_regulation,medium,private property,设置交通标志或事故调查进入对象,active
+no_0080,no,zh,offentlig eiendom,公共财产,general_regulation,medium,public property,设置交通标志或车辆移除场景,active
+no_0081,no,zh,fartsregler,速度规则,road_traffic,high,speed rules,道路交通法第6条核心术语,active
+no_0082,no,zh,fart,速度,road_traffic,high,speed,速度规则基础术语,active
+no_0083,no,zh,fartsgrense,限速,road_traffic,high,speed limit,城市/非城市及特殊限速,active
+no_0084,no,zh,tettbygd strøk,建成区,road_traffic,high,urban area,一般限速50 km/t,active
+no_0085,no,zh,utenfor tettbygd strøk,非建成区,road_traffic,high,rural area,一般限速80 km/t,active
+no_0086,no,zh,km/t,公里每小时,road_traffic,high,km/h,挪威语速度单位表达,active
+no_0087,no,zh,kjøreforhold,行驶条件,road_traffic,medium,driving conditions,速度需根据地点、天气、能见度和交通调整,active
+no_0088,no,zh,værforhold,天气条件,road_traffic,medium,weather conditions,速度调整因素,active
+no_0089,no,zh,siktforhold,能见度条件,road_traffic,medium,visibility conditions,速度调整因素,active
+no_0090,no,zh,miljøhensyn,环境因素,road_traffic,medium,environmental reasons,可设定较低限速或交通限制,active
+no_0091,no,zh,organisert konkurransekjøring,有组织竞赛驾驶,road_traffic,medium,organized racing,封闭赛道可豁免限速,active
+no_0092,no,zh,treningskjøring,训练驾驶,road_traffic,medium,training driving,封闭道路或赛道豁免场景,active
+no_0093,no,zh,lukket bane,封闭赛道,road_traffic,medium,closed track,竞赛和训练豁免限速场景,active
+no_0094,no,zh,sykkelritt,自行车赛,road_traffic,high,cycling race,开放道路上举行需许可,active
+no_0095,no,zh,alminnelig ferdsel,一般通行,road_traffic,high,general traffic,道路开放状态表达,active
+no_0096,no,zh,privat vakthold,私人警戒人员,road_traffic,medium,private guards,自行车赛许可可能要求,active
+no_0097,no,zh,vilkårsparkering,条件停车,parking,high,conditional parking,挪威停车管理核心术语，涉及收费、时限或其他条件,active
+no_0098,no,zh,parkering,停车,parking,high,parking,停车管理基础术语,active
+no_0099,no,zh,betaling,支付,parking,medium,payment,条件停车要素之一,active
+no_0100,no,zh,tidsbegrensning,时间限制,parking,high,time limit,条件停车要素之一,active
+no_0101,no,zh,parkeringsvirksomhet,停车经营活动,parking,medium,parking operation,停车管理经营主体活动,active
+no_0102,no,zh,operatør,经营者,parking,medium,operator,条件停车经营主体,active
+no_0103,no,zh,meldeplikt,报告义务,parking,high,reporting duty,停车经营者要求之一,active
+no_0104,no,zh,registrering,登记,vehicle_registration,high,registration,车辆登记或停车经营登记,active
+no_0105,no,zh,ansvarsforsikring,责任保险,parking,high,liability insurance,停车经营者要求之一,active
+no_0106,no,zh,universell utforming,通用设计,parking,high,universal design,停车区域要求,active
+no_0107,no,zh,skiltplan,标志方案,parking,medium,sign plan,停车区域管理要求,active
+no_0108,no,zh,kontrollsanksjon,管控处罚,parking,high,control sanction,条件停车违规制裁术语,active
+no_0109,no,zh,solidaransvar,连带责任,parking,high,joint liability,驾驶人与车主之间停车违规责任,active
+no_0110,no,zh,fjerning av kjøretøy,车辆移除,parking,high,vehicle removal,停车违规或妨碍交通时移除,active
+no_0111,no,zh,parkeringstillatelse for forflytningshemmede,行动不便人士停车许可,parking,high,disabled parking permit,条件停车例外规则,active
+no_0112,no,zh,elbil,电动汽车,vehicle_general,high,electric vehicle,停车费折扣和收费规则对象,active
+no_0113,no,zh,hydrogenbil,氢燃料汽车,vehicle_general,medium,hydrogen vehicle,停车费折扣和收费规则对象,active
+no_0114,no,zh,fossilt drivstoff,化石燃料,vehicle_environment,medium,fossil fuel,停车费比较基准车辆,active
+no_0115,no,zh,Parkeringsklagenemnda,停车申诉委员会,parking,high,Parking Appeal Board,独立停车申诉机构,active
+no_0116,no,zh,trafikkregulering,交通管制,road_enforcement,high,traffic regulation,警察可根据情况进行交通管制,active
+no_0117,no,zh,stenge veg,封闭道路,road_enforcement,high,road closure,警察交通管制措施之一,active
+no_0118,no,zh,pålegg fra politiet,警察指令,road_enforcement,high,police instruction,所有人须立即服从,active
+no_0119,no,zh,muntlig pålegg,口头指令,road_enforcement,medium,verbal instruction,警察指令形式之一,active
+no_0120,no,zh,trafikkontroll,交通检查,road_enforcement,high,traffic control,警察或国家公路管理局检查,active
+no_0121,no,zh,stans for kontroll,停车接受检查,road_enforcement,high,stop for control,驾驶人义务,active
+no_0122,no,zh,fremvise dokumenter,出示文件,road_enforcement,high,present documents,接受检查时义务,active
+no_0123,no,zh,Tollvesenet,海关,road_enforcement,medium,Customs,可受委托执行部分交通检查,active
+no_0124,no,zh,Tolletaten,海关署,road_enforcement,medium,Norwegian Customs,可进行初步酒精/毒品检测,active
+no_0125,no,zh,utrykningskjøretøy,紧急车辆,road_traffic,high,emergency vehicle,可偏离普通交通规则,active
+no_0126,no,zh,politibil,警车,road_traffic,medium,police vehicle,交通规则豁免对象之一,active
+no_0127,no,zh,vegvedlikeholdskjøretøy,道路养护车辆,road_traffic,medium,road maintenance vehicle,交通规则豁免对象之一,active
+no_0128,no,zh,trafikkuhell,交通事故,road_accident,high,traffic accident,事故义务和调查核心术语,active
+no_0129,no,zh,trafikkulykke,交通事故,road_accident,high,road accident,事故调查语境常用词,active
+no_0130,no,zh,plikter ved trafikkuhell,交通事故义务,road_accident,high,duties in case of accident,道路交通法第12条核心内容,active
+no_0131,no,zh,stanse straks,立即停车,road_accident,high,stop immediately,事故相关人员义务,active
+no_0132,no,zh,hjelpe skadde personer,救助受伤人员,road_accident,high,help injured persons,事故义务之一,active
+no_0133,no,zh,hjelpe skadde dyr,救助受伤动物,road_accident,medium,help injured animals,事故义务之一,active
+no_0134,no,zh,varsle politiet,通知警察,road_accident,high,notify police,死亡或非轻微伤害时义务,active
+no_0135,no,zh,ikke ubetydelig skade,非轻微伤害,road_accident,high,non-insignificant injury,事故通知警察触发条件,active
+no_0136,no,zh,skadested,事故现场,road_accident,high,accident scene,事故后不得擅自离开,active
+no_0137,no,zh,forlate stedet,离开现场,road_accident,high,leave the scene,需警察同意，除非必要,active
+no_0138,no,zh,rydde vegen,清理道路,road_accident,medium,clear the road,事故后车辆阻碍交通时义务,active
+no_0139,no,zh,spor,痕迹,road_accident,medium,traces,事故证据之一,active
+no_0140,no,zh,bevis,证据,road_accident,high,evidence,事故现场不得擅自清除,active
+no_0141,no,zh,sikre bevis,保全证据,road_accident,high,secure evidence,事故调查机关权力,active
+no_0142,no,zh,vekt,重量,vehicle_technical,high,weight,车辆技术要求,active
+no_0143,no,zh,mål,尺寸,vehicle_technical,high,dimensions,车辆技术要求,active
+no_0144,no,zh,last,载荷,vehicle_technical,high,load,车辆技术要求,active
+no_0145,no,zh,passasjerkapasitet,载客能力,vehicle_technical,medium,passenger capacity,车辆技术要求,active
+no_0146,no,zh,vedlikehold,维护,vehicle_technical,high,maintenance,车辆一般要求之一,active
+no_0147,no,zh,utrustning,装备,vehicle_technical,high,equipment,车辆必须适当装备,active
+no_0148,no,zh,bygget,构造,vehicle_technical,medium,built,车辆构造要求,active
+no_0149,no,zh,elektronisk betalingsenhet,电子支付单元,vehicle_technical,high,electronic payment unit,3500 kg以上车辆公共道路支付设备要求,active
+no_0150,no,zh,offentlig veg,公共道路,road_infrastructure,high,public road,电子支付单元使用场景,active
+no_0151,no,zh,fartsskriver,行驶记录仪,vehicle_equipment,high,tachograph,记录驾驶/休息时间、速度、位置,active
+no_0152,no,zh,kjøre- og hviletid,驾驶和休息时间,transport_labor,high,driving and rest time,行驶记录仪记录和运输监管核心数据,active
+no_0153,no,zh,posisjon,位置,vehicle_equipment,medium,position,行驶记录仪记录内容,active
+no_0154,no,zh,endring av kjøretøy,车辆改装,vehicle_technical,high,vehicle modification,禁止超限提高速度或功率,active
+no_0155,no,zh,maksimal hastighet,最高速度,vehicle_technical,high,maximum speed,摩托车/轻便摩托车改装限制,active
+no_0156,no,zh,effekt,功率,vehicle_technical,high,power,摩托车/轻便摩托车改装限制,active
+no_0157,no,zh,motorsykkel,摩托车,vehicle_general,high,motorcycle,车辆改装限制对象,active
+no_0158,no,zh,moped,轻便摩托车,vehicle_general,high,moped,车辆改装限制对象,active
+no_0159,no,zh,piggdekk,钉胎,vehicle_environment,high,studded tires,市镇可征收钉胎费,active
+no_0160,no,zh,piggdekkgebyr,钉胎费,vehicle_environment,high,studded tire fee,环境措施之一,active
+no_0161,no,zh,lavutslippssone,低排放区,vehicle_environment,high,low-emission zone,市镇经部委同意可设立,active
+no_0162,no,zh,forbudt utstyr,禁用设备,vehicle_equipment,high,prohibited equipment,道路交通法第13a条,active
+no_0163,no,zh,varsle om trafikkontroll,提示交通检查,vehicle_equipment,high,warn about traffic controls,禁用设备用途之一,active
+no_0164,no,zh,forstyrre trafikkontroll,干扰交通检查,vehicle_equipment,high,disturb traffic controls,禁用设备用途之一,active
+no_0165,no,zh,manipulere fartsskriver,操纵行驶记录仪,vehicle_equipment,high,manipulate tachograph,禁用设备用途之一,active
+no_0166,no,zh,fartsmåler,速度表,vehicle_equipment,high,speedometer,禁用操纵对象之一,active
+no_0167,no,zh,alkolås,酒精锁,vehicle_equipment,high,alcolock,商业运输车辆可强制安装,active
+no_0168,no,zh,utslippskontrollsystem,排放控制系统,vehicle_environment,high,emission control system,禁用设备不得操纵对象之一,active
+no_0169,no,zh,CO2-utslipp,二氧化碳排放,vehicle_environment,high,CO2 emissions,车辆制造商排放要求,active
+no_0170,no,zh,utslippskrav,排放要求,vehicle_environment,high,emission requirements,M/N/O类车辆制造商义务,active
+no_0171,no,zh,EØS-forpliktelser,欧洲经济区义务,general_regulation,medium,EEA obligations,挪威履行EEA车辆排放义务,active
+no_0172,no,zh,godkjenning av kjøretøy,车辆批准,vehicle_approval,high,approval of vehicles,道路交通法第14条,active
+no_0173,no,zh,undersøkelse,检查,vehicle_approval,medium,investigation,车辆批准前检查,active
+no_0174,no,zh,kontroll,检查,vehicle_inspection,high,control;inspection,车辆检查和交通检查通用术语,active
+no_0175,no,zh,registreringsmyndighet,登记机关,vehicle_registration,high,registration authority,车辆所有权变更通知对象,active
+no_0176,no,zh,omregistrering,重新登记,vehicle_registration,high,re-registration,车辆未重新登记可禁止使用,active
+no_0177,no,zh,eierskifte,所有权变更,vehicle_registration,high,change of ownership,新旧车主3日内通知登记机关,active
+no_0178,no,zh,trygdeerklæring,保险声明,vehicle_insurance,high,insurance declaration,登记时依据汽车责任法需提交,active
+no_0179,no,zh,bilansvarslova,汽车责任法,vehicle_insurance,high,Automobile Liability Act,车辆登记保险依据法律,active
+no_0180,no,zh,kjennemerke,号牌,vehicle_registration,high,license plate,机动车使用需安装合法号牌,active
+no_0181,no,zh,lovlige kjennemerker,合法号牌,vehicle_registration,high,legal license plates,机动车使用条件,active
+no_0182,no,zh,vognkort,车辆登记证,vehicle_registration,high,registration certificate,机动车使用时须随车携带,active
+no_0183,no,zh,uregistrert kjøretøy,未登记车辆,vehicle_registration,high,unregistered vehicle,公共道路停车不得超过14日,active
+no_0184,no,zh,uten kjennemerke,无号牌,vehicle_registration,high,unplated,公共道路停车限制对象,active
+no_0185,no,zh,ervervsmessig transport,营运运输,transport_general,high,commercial transport,酒精锁可强制适用对象,active
+no_0186,no,zh,transport mot vederlag,有偿运输,transport_general,high,transport for hire,商业运输车辆酒精锁语境,active
+no_0187,no,zh,kjøretøykontroll,车辆检查,vehicle_inspection,high,vehicle inspection,车辆所有人按要求送检,active
+no_0188,no,zh,periodisk kjøretøykontroll,周期性车辆检验,vehicle_inspection,high,EU-kontroll,挪威车辆定期检验制度,active
+no_0189,no,zh,EU-kontroll,欧盟检验,vehicle_inspection,high,periodisk kjøretøykontroll,挪威常用车辆定期检验名称,active
+no_0190,no,zh,godkjent verksted,认可维修厂,vehicle_inspection,high,approved workshop,周期性车辆检验执行主体,active
+no_0191,no,zh,godkjent kontrollør,认可检验员,vehicle_inspection,high,approved inspector,周期性车辆检验人员,active
+no_0192,no,zh,teknisk leder,技术负责人,vehicle_inspection,high,technical manager,维修厂或检验机构管理人员,active
+no_0193,no,zh,politiattest,无犯罪记录证明,vehicle_inspection,high,police certificate,检验员和技术负责人需提交,active
+no_0194,no,zh,verksted,维修厂,vehicle_repair,high,workshop,车辆维修保养改装主体,active
+no_0195,no,zh,reparasjon,修理,vehicle_repair,high,repair,机动车和挂车作业类型,active
+no_0196,no,zh,ombygging,改装,vehicle_repair,high,modification,机动车和挂车作业类型,active
+no_0197,no,zh,tilhenger,挂车,vehicle_general,high,trailer,维修和车辆管理对象,active
+no_0198,no,zh,førerkort,驾驶证,driver_license,high,driving license,驾驶资格核心证件,active
+no_0199,no,zh,førerrett,驾驶权,driver_license,high,driving right,丧失驾驶权、撤销驾驶权核心术语,active
+no_0200,no,zh,kompetansebevis,能力证明,driver_license,medium,competency certificate,特定车辆类别驾驶要求,active
+no_0201,no,zh,førerkortklasse,驾驶证类别,driver_license,high,license category,驾驶资格类别,active
+no_0202,no,zh,minst alder,最低年龄,driver_license,medium,minimum age,取得驾驶资格年龄条件,active
+no_0203,no,zh,vandel,品行,driver_license,high,conduct,申请驾驶证需具有良好品行,active
+no_0204,no,zh,edruelighet,清醒守法状态,driver_license,high,sobriety,申请或持有驾驶证资格要求,active
+no_0205,no,zh,helsekrav,健康要求,driver_license,high,health requirements,视力、身体、精神健康要求,active
+no_0206,no,zh,synskrav,视力要求,driver_license,high,vision requirements,驾驶证健康要求之一,active
+no_0207,no,zh,Statsforvalteren,国家行政长官,driver_license,high,State Administrator,驾驶人健康要求不满足时通知对象,active
+no_0208,no,zh,førerprøve,驾驶考试,driver_license,high,driving test,作弊可导致禁考期,active
+no_0209,no,zh,juks,作弊,driver_license,medium,cheating,驾驶考试作弊语境,active
+no_0210,no,zh,sperrefrist,等待期,driver_license,high,waiting period,无证驾驶或特定违法后取得驾驶证限制期,active
+no_0211,no,zh,kjøre uten førerkort,无证驾驶,driver_license,high,driving without a license,导致取得驾驶证等待期,active
+no_0212,no,zh,øvingskjøring,练习驾驶,driver_training,high,practice driving,取得驾驶证前训练驾驶,active
+no_0213,no,zh,ledsager,陪同监督人,driver_training,high,supervisor,练习驾驶时陪同人，法律上视为驾驶人,active
+no_0214,no,zh,elev,学员,driver_training,medium,student,练习驾驶主体,active
+no_0215,no,zh,gyldig førerkort,有效驾驶证,driver_license,high,valid license,驾驶和监督条件,active
+no_0216,no,zh,sammenhengende,连续地,driver_training,medium,continuously,陪同人需连续持证5年,active
+no_0217,no,zh,påvirket av alkohol,受酒精影响,dui,high,influence of alcohol,不得驾驶状态,active
+no_0218,no,zh,påvirket av annet berusende eller bedøvende middel,受其他麻醉或致醉物质影响,dui,high,influence of drugs,不得驾驶状态,active
+no_0219,no,zh,promille,千分比血醇浓度,dui,high,BAC promille,挪威酒驾血液酒精浓度单位,active
+no_0220,no,zh,blodalkoholkonsentrasjon,血液酒精浓度,dui,high,BAC,超过0.2 promille禁止驾驶,active
+no_0221,no,zh,utåndingsluft,呼出气体,dui,medium,breath air,呼气酒精浓度检测对象,active
+no_0222,no,zh,alkoholkonsentrasjon i utåndingsluft,呼气酒精浓度,dui,high,breath alcohol concentration,超过0.1 mg/L禁止驾驶,active
+no_0223,no,zh,berusende middel,致醉物质,dui,high,intoxicating substance,毒驾相关术语,active
+no_0224,no,zh,bedøvende middel,麻醉性物质,dui,high,narcotic substance,毒驾相关术语,active
+no_0225,no,zh,gyldig resept,有效处方,dui,medium,valid prescription,按处方用药例外条件,active
+no_0226,no,zh,etterfølgende alkoholnytelse,驾驶后饮酒,dui,high,post-driving alcohol consumption,明知或应知将被调查时6小时内禁止,active
+no_0227,no,zh,alkotest,酒精初筛测试,dui,high,preliminary breath test,警察可实施初步酒精检测,active
+no_0228,no,zh,rustest,毒品初筛测试,dui,high,drug test,警察可实施初步毒品检测,active
+no_0229,no,zh,klinisk undersøkelse,临床检查,dui,high,clinical examination,初筛显示受影响后进一步检查,active
+no_0230,no,zh,blodprøve,血样,dui,high,blood sample,酒驾毒驾证据采集方式,active
+no_0231,no,zh,spyttprøve,唾液样本,dui,high,saliva sample,毒品检测采样方式,active
+no_0232,no,zh,utåndingsprøve,呼气样本,dui,high,breathalyzer test,酒精检测方式,active
+no_0233,no,zh,lege,医生,dui,medium,doctor,可采集血样/唾液样本人员,active
+no_0234,no,zh,sykepleier,护士,dui,medium,nurse,可采集血样/唾液样本人员,active
+no_0235,no,zh,bioingeniør,生物工程师,dui,medium,bioengineer,可采集血样/唾液样本人员,active
+no_0236,no,zh,tjenestetid,服务时间,dui,high,service time,职业驾驶人禁酒禁毒时间范围,active
+no_0237,no,zh,yrkesmessig edruelighet,职业清醒要求,dui,high,professional sobriety,人员或货物运输岗位驾驶人要求,active
+no_0238,no,zh,transport av personer,人员运输,transport_general,high,transport of persons,职业清醒要求对象,active
+no_0239,no,zh,transport av gods,货物运输,transport_general,high,transport of goods,职业清醒要求对象,active
+no_0240,no,zh,straff,刑罚,road_penalty,high,penalty,道路交通违法处罚总称,active
+no_0241,no,zh,bot,罚金,road_penalty,high,fine,道路交通违法常见处罚,active
+no_0242,no,zh,fengsel,监禁,road_penalty,high,imprisonment,严重违法处罚,active
+no_0243,no,zh,betinget fengsel,缓刑监禁,road_penalty,medium,suspended prison,酒驾量刑可能结果,active
+no_0244,no,zh,ubetinget fengsel,无条件监禁,road_penalty,high,unconditional prison,严重酒驾或累犯常见处罚,active
+no_0245,no,zh,gjentakelse,再犯,road_penalty,high,recidivism,酒驾再犯从重处罚,active
+no_0246,no,zh,parkeringsgebyr,停车罚费,parking,high,parking fee/fine,停车违规处罚费用,active
+no_0247,no,zh,forhøyelse,加收,road_penalty,medium,increase,停车费逾期未缴加收50%,active
+no_0248,no,zh,Tingretten,地区法院,road_penalty,high,District Court,停车罚费申诉机关,active
+no_0249,no,zh,forenklet forelegg,简易罚单,road_penalty,high,simplified fine,警察可当场开具，需立即接受才有效,active
+no_0250,no,zh,forelegg,罚单,road_penalty,high,fine notice,刑事/行政简化处罚文书,active
+no_0251,no,zh,tap av førerrett,丧失驾驶权,driver_license,high,loss of driving rights,酒驾等违法导致,active
+no_0252,no,zh,inndragning av førerkort,扣留驾驶证,driver_license,high,seizure of driving license,警察可临时扣留,active
+no_0253,no,zh,midlertidig beslag,临时扣押,road_enforcement,high,temporary seizure,有正当怀疑时可临时扣证,active
+no_0254,no,zh,skjellig grunn til mistanke,正当怀疑理由,road_enforcement,high,justifiable suspicion,临时扣证前提,active
+no_0255,no,zh,varig tap av førerrett,永久丧失驾驶权,driver_license,high,permanent loss of driving rights,特定再犯或事故不救助情形,active
+no_0256,no,zh,tilbakekall av førerrett,撤销驾驶权,driver_license,high,revocation of driving rights,健康、视力、技能或品行不满足时,active
+no_0257,no,zh,kjøreferdighet,驾驶技能,driver_license,high,driving skills,撤销驾驶权判断因素,active
+no_0258,no,zh,bruksforbud,使用禁止,vehicle_enforcement,high,use prohibition,车辆不合规时禁止使用,active
+no_0259,no,zh,beslag av kjennemerker,扣押号牌,vehicle_enforcement,high,seizure of plates,车辆未重登、检验不合格等情况下措施,active
+no_0260,no,zh,beslag av dokumenter,扣押文件,vehicle_enforcement,high,seizure of documents,车辆不合规时执法措施,active
+no_0261,no,zh,usikret last,未固定载荷,vehicle_enforcement,high,unsecured load,可导致禁止使用车辆,active
+no_0262,no,zh,trafikkfarlig stand,危及交通安全状态,vehicle_enforcement,high,unsafe condition,车辆可被禁止使用,active
+no_0263,no,zh,mangler,缺陷,vehicle_inspection,high,defects,检验不合格或未整改缺陷,active
+no_0264,no,zh,tilbakeholdsrett,留置权,vehicle_enforcement,high,retention right,为确保罚款或费用支付可扣留车辆,active
+no_0265,no,zh,fjerning,移除,vehicle_enforcement,high,removal,违法停放、妨碍交通或施工时移除车辆,active
+no_0266,no,zh,oppbevaring,保管,vehicle_enforcement,medium,storage,被移除车辆保管,active
+no_0267,no,zh,snørydding,清雪,road_maintenance,medium,snow plowing,妨碍清雪可被移车,active
+no_0268,no,zh,vegarbeid,道路施工,road_maintenance,high,road work,妨碍道路施工可被移车,active
+no_0269,no,zh,vrak,残骸,vehicle_enforcement,medium,wreck,车辆残骸可立即处理,active
+no_0270,no,zh,salg av kjøretøy,车辆出售,vehicle_enforcement,medium,sale of vehicle,通知后3个月无人认领可出售,active
+no_0271,no,zh,panterett,留置担保权,vehicle_enforcement,high,lien,未缴罚金和费用对车辆享有法定担保,active
+no_0272,no,zh,lovbestemt panterett,法定担保权,vehicle_enforcement,high,statutory lien,优先于多数其他权利,active
+no_0273,no,zh,trafikksikkerhet,交通安全,road_safety,high,road safety,道路交通法核心目标,active
+no_0274,no,zh,trafikksikkerhetstiltak,交通安全措施,road_safety,high,road safety measures,县级市镇协调职责,active
+no_0275,no,zh,Fylkeskommunen,县级市镇,road_authority,high,county municipality,协调交通安全措施主体,active
+no_0276,no,zh,skoleskyss,校车/学生交通,road_safety,medium,school transport,部委可规定相关交通安全措施,active
+no_0277,no,zh,personopplysninger,个人数据,data_protection,high,personal data,公共机关可为交通安全等处理,active
+no_0278,no,zh,sensitive personopplysninger,敏感个人数据,data_protection,high,sensitive personal data,GDPR第9/10条数据,active
+no_0279,no,zh,behandling av personopplysninger,个人数据处理,data_protection,high,processing of personal data,道路安全、事故分析和证照登记管理目的,active
+no_0280,no,zh,ulykkesanalyse,事故分析,road_accident,high,accident analysis,个人数据处理和致命事故分析目的,active
+no_0281,no,zh,savnet person,失踪人员,data_protection,medium,missing person,数据可向警察共享目的之一,active
+no_0282,no,zh,identifisering,身份识别,data_protection,medium,identification,数据共享目的之一,active
+no_0283,no,zh,etterforskning,调查,road_accident,high,investigation,事故调查或刑事调查,active
+no_0284,no,zh,ulykkesundersøkelse,事故调查,road_accident,high,accident investigation,第七章核心内容,active
+no_0285,no,zh,undersøkelsesmyndighet,调查机关,road_accident,high,investigation authority,部委指定的事故调查机关,active
+no_0286,no,zh,Havarikommisjonen,事故调查委员会,road_accident,high,Accident Investigation Board,具体机构可按官方译名进一步核验,active
+no_0287,no,zh,sivilrettslig ansvar,民事责任,road_accident,high,civil liability,事故调查机关不认定责任类型之一,active
+no_0288,no,zh,strafferettslig ansvar,刑事责任,road_accident,high,criminal liability,事故调查机关不认定责任类型之一,active
+no_0289,no,zh,beslaglegge kjøretøy,扣押车辆,road_accident,high,seize vehicles,事故调查机关取证权力,active
+no_0290,no,zh,vrakrester,残骸,road_accident,medium,wreckage,事故调查可扣押对象,active
+no_0291,no,zh,dokumenter,文件,road_accident,medium,documents,事故调查可查阅对象,active
+no_0292,no,zh,obduksjonsrapport,尸检报告,road_accident,high,autopsy report,事故调查可调取材料,active
+no_0293,no,zh,medisinske resultater,医学结果,road_accident,medium,medical results,事故调查可获取材料,active
+no_0294,no,zh,forklaringsplikt,说明义务,road_accident,high,duty to explain,所有人向事故调查机关提供信息义务,active
+no_0295,no,zh,taushetsplikt,保密义务,general_regulation,high,confidentiality duty,说明义务可突破保密义务,active
+no_0296,no,zh,bruk som bevis,作为证据使用,road_accident,high,use as evidence,依说明义务提供的信息不得用于后续刑案指控本人,active
+no_0297,no,zh,straffesak,刑事案件,road_accident,high,criminal case,证据使用限制语境,active
+no_0298,no,zh,ansettelsesvern,就业保护,labor_protection,medium,employment protection,向事故调查机关作说明的员工保护,active
+no_0299,no,zh,arbeidsgiver,雇主,labor_protection,medium,employer,不得因员工作说明而制裁,active
+no_0300,no,zh,sanksjonere,制裁,labor_protection,medium,sanction,就业保护语境,active
+no_0301,no,zh,grov uaktsomhet,重大过失,general_regulation,high,gross negligence,就业保护例外条件,active
+no_0302,no,zh,Ulykkesanalysegruppen,事故分析组,road_accident,high,Accident Analysis Group,国家公路管理局开展致命事故深入分析机构,active
+no_0303,no,zh,dybdeanalyse,深入分析,road_accident,high,in-depth analysis,所有致命道路事故分析方式,active
+no_0304,no,zh,dødsulykke,致命事故,road_accident,high,fatal accident,事故分析组分析对象,active
+no_0305,no,zh,politidokumenter,警方案卷,road_accident,medium,police records,事故分析组可访问材料,active
+no_0306,no,zh,årsak,原因,road_accident,medium,cause,事故分析目的之一,active
+no_0307,no,zh,rettskraft,法律效力,general_regulation,medium,legal force,可扩展法律程序术语，摘要未突出但同类文本常见,active
+no_0308,no,zh,klage,申诉,general_regulation,high,appeal,停车处罚、行政决定等救济方式,active
+no_0309,no,zh,klagenemnd,申诉委员会,general_regulation,high,appeal board,停车申诉委员会等机构类型,active
