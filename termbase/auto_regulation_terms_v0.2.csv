@@ -2156,3 +2156,209 @@ no_0306,no,zh,årsak,原因,road_accident,medium,cause,事故分析目的之一,
 no_0307,no,zh,rettskraft,法律效力,general_regulation,medium,legal force,可扩展法律程序术语，摘要未突出但同类文本常见,active
 no_0308,no,zh,klage,申诉,general_regulation,high,appeal,停车处罚、行政决定等救济方式,active
 no_0309,no,zh,klagenemnd,申诉委员会,general_regulation,high,appeal board,停车申诉委员会等机构类型,active
+id_0014,id,zh,Peraturan Menteri,部长条例,general_regulation,high,Permen,印尼部级法规文件类型,active
+id_0015,id,zh,Peraturan Menteri Lingkungan Hidup dan Kehutanan,环境与林业部长条例,general_regulation,high,Permen LHK,印尼环境与林业部法规文件类型,active
+id_0016,id,zh,Peraturan Menteri Perhubungan,交通部长条例,general_regulation,high,Permenhub,印尼交通部法规文件类型,active
+id_0017,id,zh,Menteri Lingkungan Hidup dan Kehutanan,环境与林业部长,general_regulation,high,Menteri LHK,印尼环境噪声法规主管部长,active
+id_0018,id,zh,Menteri Perhubungan,交通部长,general_regulation,high,Minister of Transportation,机动车型式试验法规主管部长,active
+id_0019,id,zh,Kementerian Lingkungan Hidup dan Kehutanan,环境与林业部,general_regulation,high,KLHK,印尼环境与林业主管部门,active
+id_0020,id,zh,Kementerian Perhubungan,交通部,general_regulation,high,Kemenhub,印尼交通主管部门,active
+id_0021,id,zh,Direktur Jenderal,总司长,general_regulation,high,Dirjen,申请型式试验时提交对象,active
+id_0022,id,zh,pemerintah,政府,general_regulation,medium,Government,设施建设采购等责任主体,active
+id_0023,id,zh,ketentuan,规定,general_regulation,medium,provision,法规条款通用术语,active
+id_0024,id,zh,pasal,条,general_regulation,high,Article,印尼法规条文结构术语,active
+id_0025,id,zh,diundangkan,公布,general_regulation,high,promulgated,法规公布日期表达,active
+id_0026,id,zh,ditetapkan,制定,general_regulation,high,enacted,法规制定日期表达,active
+id_0027,id,zh,berlaku,生效,general_regulation,high,effective,法规生效表达,active
+id_0028,id,zh,tanggal pengundangan,公布日期,general_regulation,high,date of promulgation,法规生效起算依据,active
+id_0029,id,zh,tanggal penetapan,制定日期,general_regulation,medium,date of enactment,法规元数据术语,active
+id_0030,id,zh,masa transisi,过渡期,general_regulation,high,transition period,噪声标准实施期限相关术语,active
+id_0031,id,zh,ketentuan peralihan,过渡规定,general_regulation,high,transitional provisions,法规过渡条款,active
+id_0032,id,zh,baku mutu,质量标准,environment_noise,high,quality standard,环境法规核心术语，常见于Baku Mutu,active
+id_0033,id,zh,baku mutu kebisingan,噪声质量标准,environment_noise,high,Noise Quality Standard,P.56/2019核心术语,active
+id_0034,id,zh,kebisingan,噪声,environment_noise,high,noise,机动车噪声法规核心术语,active
+id_0035,id,zh,emisi suara,声排放,environment_noise,high,sound emission,机动车直接排放声能,active
+id_0036,id,zh,energi suara,声能,environment_noise,medium,sound energy,噪声质量标准定义中术语,active
+id_0037,id,zh,batas maksimum,最大限值,environment_noise,high,maximum limit,噪声质量标准核心限制,active
+id_0038,id,zh,desibel,分贝,environment_noise,high,dB,噪声测量单位,active
+id_0039,id,zh,dB(A),分贝A计权,environment_noise,high,decibel A-weighted,噪声测试结果单位，建议保留dB(A),active
+id_0040,id,zh,pencemaran udara,空气污染,environment_noise,high,air pollution,P.56/2019法律依据之一,active
+id_0041,id,zh,pengendalian pencemaran udara,空气污染控制,environment_noise,high,Air Pollution Control,政府条例41/1999主题,active
+id_0042,id,zh,kendaraan bermotor tipe baru,新型机动车,vehicle_approval,high,new type motor vehicle,P.56/2019噪声标准适用对象,active
+id_0043,id,zh,kendaraan bermotor yang sedang diproduksi,在产机动车,vehicle_approval,high,motor vehicle currently in production,P.56/2019噪声标准适用对象,active
+id_0044,id,zh,tipe baru,新型,vehicle_approval,high,new type,车辆型式状态术语,active
+id_0045,id,zh,sedang diproduksi,在产,vehicle_approval,high,in production,车辆生产状态术语,active
+id_0046,id,zh,diproduksi,生产,vehicle_market,medium,produced,车辆生产行为,active
+id_0047,id,zh,diimpor,进口,vehicle_market,high,imported,新型或在产车辆进入印尼市场行为,active
+id_0048,id,zh,Indonesia,印度尼西亚,general_regulation,medium,Republik Indonesia,法规适用国家,active
+id_0049,id,zh,kategori kendaraan,车辆类别,vehicle_category,high,vehicle category,机动车分类总称,active
+id_0050,id,zh,kategori M,M类车辆,vehicle_category,high,Category M,四轮及以上载客车辆,active
+id_0051,id,zh,kategori N,N类车辆,vehicle_category,high,Category N,四轮及以上载货车辆,active
+id_0052,id,zh,kategori L,L类车辆,vehicle_category,high,Category L,少于四轮车辆,active
+id_0053,id,zh,kategori L3,L3类车辆,vehicle_category,high,Sub-category L3,两轮车，排量或最高车速超过阈值,active
+id_0054,id,zh,sub-kategori M1,M1子类车辆,vehicle_category,high,M1,除驾驶员外不超过8座的载客车辆,active
+id_0055,id,zh,sub-kategori M2,M2子类车辆,vehicle_category,high,M2,超过8座且GVW不超过5吨的载客车辆,active
+id_0056,id,zh,sub-kategori M3,M3子类车辆,vehicle_category,high,M3,超过8座且GVW超过5吨的载客车辆,active
+id_0057,id,zh,sub-kategori N1,N1子类车辆,vehicle_category,high,N1,GVW不超过3.5吨的载货车辆,active
+id_0058,id,zh,sub-kategori N2,N2子类车辆,vehicle_category,high,N2,GVW超过3.5吨且不超过12吨的载货车辆,active
+id_0059,id,zh,sub-kategori N3,N3子类车辆,vehicle_category,high,N3,GVW超过12吨的载货车辆,active
+id_0060,id,zh,kendaraan angkutan orang,载客车辆,vehicle_category,high,passenger transport vehicle,M类车辆定义,active
+id_0061,id,zh,kendaraan angkutan barang,载货车辆,vehicle_category,high,goods transport vehicle,N类车辆定义,active
+id_0062,id,zh,beroda empat atau lebih,四轮或四轮以上,vehicle_category,medium,four-wheeled or more,M/N类车辆定义条件,active
+id_0063,id,zh,kurang dari empat roda,少于四轮,vehicle_category,medium,fewer than four wheels,L类车辆定义条件,active
+id_0064,id,zh,kapasitas silinder,气缸排量,vehicle_powertrain,high,cylinder capacity,L类车辆分类参数,active
+id_0065,id,zh,kecepatan maksimum,最高车速,vehicle_technical,high,max speed,L类车辆分类参数,active
+id_0066,id,zh,kecepatan rancang bangun maksimum,最高设计车速,vehicle_technical,high,maximum design speed,PM30/2020 L类车辆分类参数,active
+id_0067,id,zh,cm3,立方厘米,vehicle_powertrain,medium,cc,发动机排量单位,active
+id_0068,id,zh,km/jam,公里每小时,vehicle_technical,high,km/h,印尼语速度单位表达,active
+id_0069,id,zh,berat kendaraan bermotor,机动车重量,vehicle_weight,medium,vehicle weight,检测项目和分类参数,active
+id_0070,id,zh,berat kotor kendaraan,车辆总重,vehicle_weight,high,GVW;Gross Vehicle Weight,印尼法规中常与JBB相关,active
+id_0071,id,zh,JBB,允许总质量,vehicle_weight,high,Jumlah Berat yang Diperbolehkan,印尼车辆重量关键缩写，常译为允许总质量,active
+id_0072,id,zh,JBI,准许组合总质量,vehicle_weight,high,Jumlah Berat yang Diizinkan,车身检查报告重量数据字段，需按原文核验具体语境,active
+id_0073,id,zh,berat kosong,整备质量,vehicle_weight,high,empty weight,车身实车检查报告字段,active
+id_0074,id,zh,daya angkut,载重量,vehicle_weight,high,carrying capacity,车辆可承载货物或人员能力,active
+id_0075,id,zh,tenaga mesin,发动机功率,vehicle_powertrain,high,engine power,测试报告和车型规格字段,active
+id_0076,id,zh,kW,千瓦,vehicle_powertrain,high,kilowatt,发动机功率单位，保留原文,active
+id_0077,id,zh,PMR,功率质量比,environment_noise,high,Power Mass Ratio,L3摩托车噪声标准参数,active
+id_0078,id,zh,rasio daya terhadap massa,功率质量比,environment_noise,high,power/mass ratio,噪声标准附加条件,active
+id_0079,id,zh,putaran mesin,发动机转速,vehicle_powertrain,high,RPM,噪声测试和技术规格字段,active
+id_0080,id,zh,RPM,每分钟转数,vehicle_powertrain,medium,revolutions per minute,发动机转速单位，建议保留RPM,active
+id_0081,id,zh,laboratorium,实验室,testing,high,laboratory,噪声测试执行机构,active
+id_0082,id,zh,laboratorium terakreditasi,认可实验室,testing,high,accredited laboratory,噪声测试和型式试验外部检测要求,active
+id_0083,id,zh,badan akreditasi nasional,国家认可机构,testing,high,national accreditation body,实验室资质来源,active
+id_0084,id,zh,badan akreditasi internasional,国际认可机构,testing,medium,international accreditation body,实验室资质来源,active
+id_0085,id,zh,KAN,国家认可委员会,testing,high,Komite Akreditasi Nasional,印尼国内认可机构缩写,active
+id_0086,id,zh,ILAC,国际实验室认可合作组织,testing,high,International Laboratory Accreditation Cooperation,国际实验室认可组织，保留缩写,active
+id_0087,id,zh,APLAC,亚太实验室认可合作组织,testing,medium,Asia Pacific Laboratory Accreditation Cooperation,国际实验室认可组织，保留缩写,active
+id_0088,id,zh,masa berlaku akreditasi,认可有效期,testing,medium,validity period of accreditation,实验室数据字段,active
+id_0089,id,zh,metode pengujian,试验方法,testing,high,testing method,噪声标准和公告格式核心字段,active
+id_0090,id,zh,uji tipe,型式试验,vehicle_approval,high,pengujian tipe,印尼机动车型式试验核心术语,active
+id_0091,id,zh,pengujian tipe kendaraan bermotor,机动车型式试验,vehicle_approval,high,Uji Tipe Kendaraan Bermotor,PM30/2020核心主题,active
+id_0092,id,zh,sertifikat uji tipe,型式试验证书,vehicle_approval,high,SUT,机动车型式试验结果证书,active
+id_0093,id,zh,Sertifikat Uji Tipe Kendaraan Bermotor,机动车型式试验证书,vehicle_approval,high,SUT,交通主管机关签发的证书,active
+id_0094,id,zh,SUT,型式试验证书,vehicle_approval,high,Sertifikat Uji Tipe,印尼车辆型式试验证书缩写,active
+id_0095,id,zh,uji tipe enjin induk,母型发动机型式试验,testing,high,parent engine type test,噪声标准初始认证测试,active
+id_0096,id,zh,enjin induk,母型发动机,vehicle_powertrain,high,parent engine,噪声测试认证术语,active
+id_0097,id,zh,uji petik,抽查试验,testing,high,spot check,在产车辆一致性/监督抽查,active
+id_0098,id,zh,uji petik produksi massal,批量生产抽查试验,testing,high,mass production spot check,在产车辆持续监督测试,active
+id_0099,id,zh,hasil uji,试验结果,testing,high,test result,报告和公开公告核心字段,active
+id_0100,id,zh,laporan hasil uji,试验结果报告,testing,high,test report,部长年度评估和主管机关提交材料,active
+id_0101,id,zh,laporan uji petik,抽查试验报告,testing,high,spot check report,年度评估和监督抽查材料,active
+id_0102,id,zh,evaluasi,评估,general_regulation,high,evaluation,部长至少每年进行合规评估,active
+id_0103,id,zh,evaluasi tahunan,年度评估,general_regulation,high,annual evaluation,噪声合规监督机制,active
+id_0104,id,zh,peninjauan kembali,复审,general_regulation,medium,review,噪声质量标准至少每5年复审,active
+id_0105,id,zh,kajian berkala,定期审查,general_regulation,medium,periodic review,噪声标准定期审查表达,active
+id_0106,id,zh,7 hari kerja,7个工作日,general_regulation,medium,seven working days,交通机关提交结果给部长的期限,active
+id_0107,id,zh,pengumuman kepada masyarakat,向公众公告,general_regulation,high,public announcement,制造商/进口商公开噪声测试结果义务,active
+id_0108,id,zh,media cetak,印刷媒体,general_regulation,medium,print media,公告渠道之一,active
+id_0109,id,zh,media elektronik,电子媒体,general_regulation,medium,electronic media,公告渠道之一,active
+id_0110,id,zh,promosi merek,品牌推广,vehicle_market,medium,brand promotion,公开噪声测试结果场景,active
+id_0111,id,zh,merek,品牌,vehicle_market,high,brand,车辆身份和公告字段,active
+id_0112,id,zh,nama dagang,商品名,vehicle_market,medium,trade name,噪声报告通用数据字段,active
+id_0113,id,zh,importir,进口商,vehicle_market,high,importer,法规义务主体,active
+id_0114,id,zh,perakit,组装商,vehicle_market,high,assembler,型式试验申请主体,active
+id_0115,id,zh,modifikator,改装方,vehicle_modification,high,modifier,车辆改装申请主体,active
+id_0116,id,zh,Agen Pemegang Merek,品牌持有人代理商,vehicle_market,high,APM,车辆改装需获得其建议/推荐,active
+id_0117,id,zh,APM,品牌持有人代理商,vehicle_market,high,Agen Pemegang Merek,印尼汽车法规高频缩写,active
+id_0118,id,zh,bengkel umum,普通维修厂,vehicle_repair,high,general workshop,经工业主管部长指定可进行改装,active
+id_0119,id,zh,bengkel,维修厂,vehicle_repair,high,workshop,车辆维修和改装主体,active
+id_0120,id,zh,ditunjuk oleh Menteri,由部长指定,general_regulation,medium,appointed by Minister,改装维修厂授权要求,active
+id_0121,id,zh,rekomendasi,推荐意见,vehicle_modification,high,recommendation,改装车辆需取得APM推荐,active
+id_0122,id,zh,modifikasi kendaraan bermotor,机动车改装,vehicle_modification,high,vehicle modification,PM30/2020第4条核心内容,active
+id_0123,id,zh,persetujuan tipe modifikasi,改装型式批准,vehicle_modification,high,modification type approval,改装申请程序核心术语,active
+id_0124,id,zh,tata cara,程序,general_regulation,medium,procedure,部长条例另行规定程序,active
+id_0125,id,zh,ban cadangan,备胎,vehicle_equipment,high,spare tire,PM30/2020允许替代传统备胎,active
+id_0126,id,zh,ban run-flat,缺气保用轮胎,vehicle_equipment,high,run-flat tire,备胎替代技术之一,active
+id_0127,id,zh,indikator tekanan ban,胎压指示器,vehicle_equipment,high,tire pressure indicator,缺气保用轮胎配套要求,active
+id_0128,id,zh,peralatan perbaikan ban,轮胎修理工具包,vehicle_equipment,high,tire repair kit,备胎替代技术之一,active
+id_0129,id,zh,teknologi lain yang setara,其他等效技术,vehicle_equipment,medium,other equivalent technology,备胎替代技术兜底表述,active
+id_0130,id,zh,petunjuk penggunaan di jalan,道路使用说明,vehicle_equipment,high,road usage instructions,备胎替代技术必须附带,active
+id_0131,id,zh,dongkrak,千斤顶,vehicle_equipment,high,jack,使用替代技术时可免配,active
+id_0132,id,zh,kunci pembuka mur roda,车轮螺母扳手,vehicle_equipment,high,wheel nut wrench,使用替代技术时可免配,active
+id_0133,id,zh,ban cadangan sementara,临时备胎,vehicle_equipment,high,temporary spare tire,PM30/2020规定直径公差和黄色轮辋,active
+id_0134,id,zh,toleransi diameter luar,外径公差,vehicle_equipment,medium,overall diameter tolerance,临时备胎要求,active
+id_0135,id,zh,pelek kuning,黄色轮辋,vehicle_equipment,high,yellow rim,临时备胎安装要求,active
+id_0136,id,zh,batas kecepatan maksimum,最高速度限制,vehicle_equipment,medium,maximum speed limit,临时备胎使用说明内容,active
+id_0137,id,zh,batas jarak tempuh,行驶距离限制,vehicle_equipment,medium,distance limit,临时备胎使用说明内容,active
+id_0138,id,zh,uji emisi gas buang,尾气排放试验,vehicle_testing,high,exhaust emission test,摩托车道路适用性和EV豁免项目,active
+id_0139,id,zh,uji rem,制动试验,vehicle_testing,high,brake test,摩托车标准测试项目,active
+id_0140,id,zh,uji lampu utama,前照灯试验,vehicle_testing,high,headlight test,摩托车标准测试项目,active
+id_0141,id,zh,uji tingkat suara klakson,喇叭声级试验,vehicle_testing,high,horn sound level test,摩托车标准测试项目,active
+id_0142,id,zh,uji berat kendaraan,车辆重量试验,vehicle_testing,medium,vehicle weight test,摩托车标准测试项目,active
+id_0143,id,zh,uji akurasi alat penunjuk kecepatan,速度表精度试验,vehicle_testing,high,speedometer accuracy test,摩托车标准测试项目,active
+id_0144,id,zh,uji tingkat kebisingan,噪声级试验,vehicle_testing,high,noise level test,摩托车标准测试项目,active
+id_0145,id,zh,uji unjuk kerja mesin,发动机性能试验,vehicle_testing,high,engine performance test,摩托车标准测试项目,active
+id_0146,id,zh,uji kemampuan jalan,道路能力试验,vehicle_testing,medium,road capability test,摩托车标准测试项目,active
+id_0147,id,zh,uji rem parkir,驻车制动试验,vehicle_testing,high,parking brake test,JBB不低于400 kg摩托车需进行,active
+id_0148,id,zh,sepeda motor,摩托车,vehicle_general,high,motorcycle,PM30/2020检测对象,active
+id_0149,id,zh,kendaraan listrik,电动车辆,ev_safety,high,electric vehicle,PM30/2020专门测试对象,active
+id_0150,id,zh,motor listrik,电动机,ev_safety,high,electric motor,电动车动力来源,active
+id_0151,id,zh,kendaraan bermotor listrik,电动机动车,ev_safety,high,electric motor vehicle,印尼法规中电动车正式表达,active
+id_0152,id,zh,kendaraan listrik murni,纯电动车辆,ev_safety,high,pure electric vehicle,免于尾气排放试验,active
+id_0153,id,zh,akumulator,蓄电池,ev_safety,high,accumulator;battery,电动车测试项目之一,active
+id_0154,id,zh,uji unjuk kerja akumulator,蓄电池性能试验,ev_safety,high,accumulator performance test,电动车强制测试项目,active
+id_0155,id,zh,peralatan pengisian ulang,充电设备,ev_safety,high,charging equipment,电动车强制测试项目,active
+id_0156,id,zh,perlindungan terhadap sentuh listrik,电触碰防护,ev_safety,high,protection against electrical touch,电动车安全测试项目,active
+id_0157,id,zh,keselamatan fungsional,功能安全,ev_safety,high,functional safety,电动车安全测试项目,active
+id_0158,id,zh,emisi hidrogen,氢排放,ev_safety,medium,hydrogen emissions,电动车测试项目之一,active
+id_0159,id,zh,permohonan pengujian fisik,实车试验申请,vehicle_approval,high,physical testing application,PM30/2020申请程序术语,active
+id_0160,id,zh,sistem berbasis teknologi informasi,基于信息技术的系统,general_regulation,medium,IT-based system,型式试验在线申请系统,active
+id_0161,id,zh,gambar teknik,技术图纸,vehicle_approval,high,technical drawing,型式试验申请材料,active
+id_0162,id,zh,foto kendaraan,车辆照片,vehicle_approval,medium,vehicle photo,申请和检验附件材料,active
+id_0163,id,zh,brosur kendaraan,车辆宣传册,vehicle_approval,medium,vehicle brochure,申请材料之一,active
+id_0164,id,zh,landasan,底盘,vehicle_structure,high,chassis,印尼法规高频术语，可指车辆底盘或底盘车,active
+id_0165,id,zh,biaya uji tipe,型式试验费,vehicle_approval,high,type testing fee,申请人义务之一,active
+id_0166,id,zh,PNBP,非税国家收入,general_regulation,high,Penerimaan Negara Bukan Pajak,型式试验费性质，印尼行政收费重要缩写,active
+id_0167,id,zh,surat pernyataan pelepasan tanggung jawab,责任豁免声明,general_regulation,medium,liability waiver,未投保车辆测试损坏风险相关文件,active
+id_0168,id,zh,surat pengantar uji tipe,型式试验介绍信,vehicle_approval,high,Type Test Introduction Letter,线上审核通过后签发，用于送检,active
+id_0169,id,zh,Unit Pelaksana Uji Tipe,型式试验实施单位,vehicle_approval,high,UPUT,官方型式试验执行单位,active
+id_0170,id,zh,UPUT,型式试验实施单位,vehicle_approval,high,Unit Pelaksana Uji Tipe,印尼车辆试验机构缩写,active
+id_0171,id,zh,pengujian di luar fasilitas resmi,官方设施外试验,vehicle_testing,high,testing outside official facilities,PM30/2020允许的特殊测试安排,active
+id_0172,id,zh,antrian pengujian,试验排队,vehicle_testing,medium,testing queue,超过20个工作日可外部测试条件之一,active
+id_0173,id,zh,hari kerja,工作日,general_regulation,medium,working day,期限表达,active
+id_0174,id,zh,pejabat yang kompeten,主管官员,general_regulation,medium,competent official,外部试验见证人员,active
+id_0175,id,zh,disaksikan,见证,general_regulation,medium,witnessed,外部实验室测试需由主管官员见证,active
+id_0176,id,zh,pemohon,申请人,general_regulation,high,applicant,型式试验和改装申请主体,active
+id_0177,id,zh,APBN,国家预算,general_regulation,high,Anggaran Pendapatan dan Belanja Negara,见证官员费用由国家预算承担,active
+id_0178,id,zh,jalan umum,公共道路,road_traffic,high,public road,底盘行驶安全要求适用场景,active
+id_0179,id,zh,rumah-rumah kendaraan,车身制造厂,vehicle_structure,high,karoseri;bodybuilder,印尼车身制造行业术语，常用karoseri,active
+id_0180,id,zh,karoseri,车身制造厂,vehicle_structure,high,bodybuilder,底盘送往车身厂或车身完工检查语境,active
+id_0181,id,zh,ruang pamer,展厅,vehicle_market,medium,showroom,底盘可行驶前往的地点之一,active
+id_0182,id,zh,lampu utama,前照灯,vehicle_lighting,high,headlight,底盘上路安全要求之一,active
+id_0183,id,zh,lampu penunjuk arah,转向指示灯,vehicle_lighting,high,turn signal,底盘上路安全要求之一,active
+id_0184,id,zh,lampu rem,制动灯,vehicle_lighting,high,brake light,底盘上路安全要求之一,active
+id_0185,id,zh,lampu posisi,位置灯,vehicle_lighting,high,position light,底盘上路安全要求之一,active
+id_0186,id,zh,lampu mundur,倒车灯,vehicle_lighting,high,reverse light,底盘上路安全要求之一,active
+id_0187,id,zh,rem utama,主制动器,vehicle_safety,high,main brake,底盘上路安全要求之一,active
+id_0188,id,zh,rem parkir,驻车制动器,vehicle_safety,high,parking brake,底盘上路和摩托车试验项目,active
+id_0189,id,zh,alat penunjuk kecepatan,速度表,vehicle_equipment,high,speedometer,检测项目和底盘安全要求,active
+id_0190,id,zh,tempat duduk pengemudi,驾驶员座椅,vehicle_safety,high,driver seat,底盘无车身状态上路要求,active
+id_0191,id,zh,sabuk keselamatan,安全带,vehicle_safety,high,seat belt,底盘上路安全要求之一,active
+id_0192,id,zh,perisai kolong,后下部防护装置,vehicle_safety,high,rear underrun protection,底盘上路安全要求，印尼法规特色术语,active
+id_0193,id,zh,kabin,驾驶室,vehicle_structure,high,cabin,无驾驶室底盘需佩戴头盔反光背心,active
+id_0194,id,zh,helm SNI,SNI头盔,vehicle_safety,medium,SNI helmet,无驾驶室底盘驾驶人佩戴要求,active
+id_0195,id,zh,rompi pemantul cahaya,反光背心,vehicle_safety,high,reflective vest,无驾驶室底盘驾驶人要求,active
+id_0196,id,zh,stiker pemantul cahaya,反光贴,vehicle_safety,high,reflective sticker,底盘行驶标识要求,active
+id_0197,id,zh,kuning muda,浅黄色,general_regulation,low,light yellow,反光贴颜色，低优先级,active
+id_0198,id,zh,sisi depan,前侧,vehicle_structure,medium,front side,反光贴位置,active
+id_0199,id,zh,sisi belakang,后侧,vehicle_structure,medium,rear side,反光贴位置,active
+id_0200,id,zh,surat jalan perusahaan,公司通行证明,vehicle_approval,medium,company travel permit,底盘上路文件要求,active
+id_0201,id,zh,salinan Sertifikat Uji Tipe Landasan,底盘型式试验证书副本,vehicle_approval,high,copy of Chassis Type Test Certificate,底盘上路文件要求,active
+id_0202,id,zh,rancang bangun,设计方案,vehicle_design,high,design approval;vehicle body design,车身设计批准核心术语,active
+id_0203,id,zh,persetujuan rancang bangun,设计方案批准,vehicle_design,high,design approval,车身设计批准制度核心术语,active
+id_0204,id,zh,badan kendaraan,车身,vehicle_structure,high,vehicle body,客车和货车车身设计对象,active
+id_0205,id,zh,bodi bus,客车车身,vehicle_structure,high,bus body,车身设计批准对象之一,active
+id_0206,id,zh,tempat duduk,座椅,vehicle_structure,high,seat,客车车身设计内容,active
+id_0207,id,zh,posisi pintu,车门位置,vehicle_structure,medium,door position,客车车身设计内容,active
+id_0208,id,zh,jenis pintu,车门类型,vehicle_structure,medium,door type,客车车身设计内容,active
+id_0209,id,zh,fasilitas darurat,应急设施,vehicle_safety,high,emergency facilities,车身实车检查范围,active
+id_0210,id,zh,pintu darurat,应急出口,vehicle_safety,high,emergency exit,实车检查清单字段,active
+id_0211,id,zh,toilet,卫生间,vehicle_structure,medium,toilet,客车便利设施,active
+id_0212,id,zh,ruang merokok,吸烟区,vehicle_structure,low,smoking area,客车便利设施,active
+id_0213,id,zh,lemari,储物柜,vehicle_structure,low,cabinet,客车便利设施,active
+id_0214,id,zh,bak muatan tertutup,封闭式货厢,vehicle_structure,high,closed cargo body,货车车身设计类型,active
+id_0215,id,zh,bak muatan terbuka,开放式货厢,vehicle_structure,high,open cargo body,货车车身设计类型,active
+id_0216,id,zh,logam,金属,vehicle_material,medium,metal,货厢材料类型,active
+id_0217,id,zh,non-logam,非金属,vehicle_material,medium,non-metal,货厢材料类型,active
+id_0218,id,zh,dump truck,自卸车,vehicle_structure,high,truk jungkit,货车车身设计类型,active
+id_0219,id,zh,tangki,罐体,vehicle_structure,high,tank,罐式车身设计对象,active
