@@ -33,6 +33,7 @@ DEFAULT_INPUT_BY_LANG = {
     "pt": Path("termbase/manual_extracted_pt_terms_v0.2.csv"),
     "vi": Path("termbase/manual_extracted_vi_terms_v0.2.csv"),
     "ar": Path("termbase/manual_extracted_ar_terms_v0.2.csv"),
+    "ms": Path("termbase/manual_extracted_ms_terms_v0.2.csv"),
 }
 
 VALID_PRIORITY = {"high", "medium", "low"}
@@ -41,17 +42,21 @@ VALID_STATUS = {"active", "review", "deprecated"}
 HIGH_DOMAINS = {
     "general_regulation",
     "general_enforcement",
+    "general_document",
     "government_agency",
     "regulatory_authority",
     "international_trade",
+    "international_regulation",
     "standardization",
     "standards",
     "conformity_assessment",
+    "conformity_of_production",
     "market_surveillance",
     "customs",
     "supply_chain",
     "consumer_protection",
     "labelling",
+    "digitalization",
 
     "road_regulation",
     "road_authority",
@@ -68,6 +73,7 @@ HIGH_DOMAINS = {
     "road_penalty",
     "road_maintenance",
 
+    "vehicle_policy",
     "vehicle_general",
     "vehicle_safety",
     "vehicle_regulation",
@@ -112,15 +118,17 @@ HIGH_DOMAINS = {
     "motorhome",
     "hydrogen_vehicle",
     "powertrain",
+    "engine",
+    "emc",
     "emissions",
     "noise",
     "energy_consumption",
+    "environment_energy",
     "safety_component",
     "indirect_vision",
     "autonomous_driving",
     "fuel_system",
     "environment",
-    "environment_energy",
 
     "seat",
     "seatbelt_restraint",
@@ -273,6 +281,15 @@ LOW_TERMS = {
 
     # nl
     "overig",
+
+    # ms
+    "kos makan",
+    "kos penginapan",
+    "pengurangan penggunaan kertas",
+    "penasihat",
+    "ketua",
+    "setiausaha",
+    "ahli jawatankuasa",
 }
 
 def clean(value):
@@ -372,7 +389,7 @@ def resolve_input_path():
 
         return Path(arg)
 
-    return DEFAULT_INPUT_BY_LANG["ar"]
+    return DEFAULT_INPUT_BY_LANG["ms"]
 
 def main():
     input_path = resolve_input_path()
