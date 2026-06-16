@@ -631,7 +631,7 @@ def main():
 
     parser.add_argument(
         "--termbase",
-        default="termbase/auto_regulation_terms.csv",
+        default="termbase/auto_regulation_terms_v0.2.csv",
         help="Termbase CSV path.",
     )
 
@@ -656,11 +656,20 @@ def main():
     args = parser.parse_args()
 
     mt_root = Path(args.mt_root)
-    output_path = Path(args.output)
+    if not mt_root.is_absolute():
+        mt_root = PROJECT_ROOT / mt_root
 
-    if not Path(args.termbase).exists():
-        print(f"ERROR: Termbase not found: {args.termbase}")
-        print("Please ensure termbase/auto_regulation_terms.csv exists before running.")
+    output_path = Path(args.output)
+    if not output_path.is_absolute():
+        output_path = PROJECT_ROOT / output_path
+
+    termbase_path = Path(args.termbase)
+    if not termbase_path.is_absolute():
+        termbase_path = PROJECT_ROOT / termbase_path
+
+    if not termbase_path.exists():
+        print(f"ERROR: Termbase not found: {termbase_path}")
+        print("Please ensure termbase/auto_regulation_terms_v0.2.csv exists before running.")
         return 1
 
     summary_rows = []
@@ -692,7 +701,7 @@ def main():
         result = check_records_for_lang(
             lang=lang,
             mt_path=mt_path,
-            termbase_path=args.termbase,
+            termbase_path=str(termbase_path),
             target_lang=args.target_lang,
         )
 
