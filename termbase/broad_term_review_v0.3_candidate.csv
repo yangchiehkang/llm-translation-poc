@@ -1,0 +1,16 @@
+﻿candidate_id,term_id,source_lang,source_term,current_target_term,domain,current_priority,suggested_priority,suggested_status,reason,exclude_from_core_high_terms,decision_status
+BROAD-0001,en_0001,en,vehicle,车辆,general,high,low,review,Broad or structural term; not suitable for strict core high term acceptance.,yes,candidate
+BROAD-0002,en_0002,en,motor vehicle,机动车,general,high,low,review,Broad or structural term; not suitable for strict core high term acceptance.,yes,candidate
+BROAD-0003,en_0007,en,component,零部件,general,medium,low,review,Broad or structural term; not suitable for strict core high term acceptance.,yes,candidate
+BROAD-0004,en_0024,en,requirement,要求,general,medium,low,review,Broad or structural term; not suitable for strict core high term acceptance.,yes,candidate
+BROAD-0005,en_0025,en,shall,应,modal,high,low,review,Broad or structural term; not suitable for strict core high term acceptance.,yes,candidate
+BROAD-0006,en_0027,en,must,必须,modal,high,low,review,Broad or structural term; not suitable for strict core high term acceptance.,yes,candidate
+BROAD-0007,en_0028,en,may,可,modal,medium,low,review,Broad or structural term; not suitable for strict core high term acceptance.,yes,candidate
+BROAD-0008,en_0029,en,should,宜,modal,medium,low,review,Broad or structural term; not suitable for strict core high term acceptance.,yes,candidate
+BROAD-0009,en_0035,en,standard,标准,general,high,low,review,Broad or structural term; not suitable for strict core high term acceptance.,yes,candidate
+BROAD-0010,en_0037,en,annex,附件,document,medium,low,review,Broad or structural term; not suitable for strict core high term acceptance.,yes,candidate
+BROAD-0011,en_0038,en,appendix,附录,document,medium,low,review,Broad or structural term; not suitable for strict core high term acceptance.,yes,candidate
+BROAD-0012,en_0039,en,paragraph,段落,document,medium,low,review,Broad or structural term; not suitable for strict core high term acceptance.,yes,candidate
+BROAD-0013,en_0050,en,scope,适用范围,general_regulation,low,low,review,Broad or structural term; not suitable for strict core high term acceptance.,yes,candidate
+BROAD-0014,en_0051,en,requirements,要求,general_regulation,high,low,review,Broad or structural term; not suitable for strict core high term acceptance.,yes,candidate
+BROAD-0015,fr_0021,fr,article,条,general_regulation,high,low,review,Broad or structural term; not suitable for strict core high term acceptance.,yes,candidate

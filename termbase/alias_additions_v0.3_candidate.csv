@@ -1,0 +1,199 @@
+﻿candidate_id,term_id,source_lang,source_term,target_term,current_alias,suggested_alias,reason,evidence_source,decision_status
+ALIAS-0001,en_0003,en,type approval,型式认证,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0002,en_0004,en,approval authority,认证主管机构,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0003,en_0005,en,technical service,技术服务机构,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0004,en_0006,en,manufacturer,制造商,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0005,en_0008,en,separate technical unit,独立技术单元,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0006,en_0009,en,braking system,制动系统,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0007,en_0010,en,service braking system,行车制动系统,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0008,en_0011,en,parking braking system,驻车制动系统,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0009,en_0012,en,anti-lock braking system,防抱死制动系统,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0010,en_0013,en,steering system,转向系统,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0011,en_0014,en,lighting device,照明装置,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0012,en_0015,en,headlamp,前照灯,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0013,en_0019,en,emission,排放,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0014,en_0020,en,exhaust emission,排气排放,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0015,en_0022,en,test procedure,试验程序,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0016,en_0023,en,test method,试验方法,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0017,en_0026,en,shall not,不得,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0018,en_0030,en,compliance,符合性,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0019,en_0031,en,conformity of production,生产一致性,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0020,en_0036,en,regulation,法规,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0021,ru_0002,ru,автомобиль,汽车,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0022,ru_0003,ru,изготовитель,制造商,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0023,ru_0004,ru,тормозная система,制动系统,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0024,ru_0005,ru,система отопления,供暖系统,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0025,ru_0007,ru,кондиционирование воздуха,空气调节,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0026,ru_0009,ru,испытание,试验,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0027,de_0002,de,Kraftfahrzeug,机动车,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0028,de_0003,de,Hersteller,制造商,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0029,de_0004,de,Genehmigungsbehörde,认证主管机构,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0030,de_0005,de,Bremsanlage,制动系统,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0031,de_0006,de,Sicherheitsglas,安全玻璃,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0032,de_0007,de,Beleuchtungseinrichtung,照明装置,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0033,de_0008,de,Prüfung,试验,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0034,fr_0002,fr,véhicule à moteur,机动车,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0035,fr_0003,fr,constructeur,制造商,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0036,fr_0004,fr,autorité compétente,主管机构,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0037,fr_0005,fr,système de freinage,制动系统,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0038,fr_0006,fr,dispositif d'éclairage,照明装置,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0039,fr_0007,fr,émissions,排放,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0040,fr_0008,fr,essai,试验,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0041,ar_0002,ar,مركبة آلية,机动车,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0042,ar_0003,ar,الشركة المصنعة,制造商,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0043,ar_0004,ar,نظام الفرامل,制动系统,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0044,es_0002,es,vehículo de motor,机动车,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0045,es_0003,es,fabricante,制造商,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0046,es_0004,es,homologación de tipo,型式认证,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0047,es_0005,es,autoridad de homologación,认证主管机构,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0048,es_0006,es,sistema de frenado,制动系统,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0049,es_0007,es,dispositivo de alumbrado,照明装置,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0050,es_0008,es,emisiones,排放,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0051,es_0009,es,ensayo,试验,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0052,es_0011,es,reglamento,法规,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0053,es_0015,es,no deberá,不得,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0054,id_0002,id,kendaraan bermotor,机动车,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0055,id_0003,id,pabrikan,制造商,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0056,id_0004,id,persetujuan tipe,型式认证,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0057,id_0005,id,sistem pengereman,制动系统,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0058,id_0006,id,perangkat penerangan,照明装置,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0059,id_0007,id,emisi,排放,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0060,id_0008,id,pengujian,试验,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0061,id_0010,id,peraturan,法规,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0062,it_0002,it,veicolo a motore,机动车,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0063,it_0003,it,costruttore,制造商,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0064,it_0004,it,omologazione,型式认证,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0065,it_0005,it,autorità di omologazione,认证主管机构,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0066,it_0006,it,sistema di frenatura,制动系统,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0067,it_0007,it,dispositivo di illuminazione,照明装置,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0068,it_0008,it,emissioni,排放,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0069,it_0009,it,prova,试验,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0070,it_0011,it,regolamento,法规,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0071,ms_0002,ms,kenderaan bermotor,机动车,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0072,ms_0003,ms,pengeluar,制造商,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0073,ms_0004,ms,kelulusan jenis,型式认证,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0074,ms_0005,ms,sistem brek,制动系统,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0075,ms_0006,ms,peranti pencahayaan,照明装置,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0076,ms_0007,ms,pelepasan,排放,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0077,ms_0008,ms,ujian,试验,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0078,ms_0010,ms,peraturan,法规,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0079,nl_0002,nl,motorvoertuig,机动车,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0080,nl_0003,nl,fabrikant,制造商,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0081,nl_0004,nl,typegoedkeuring,型式认证,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0082,nl_0005,nl,goedkeuringsinstantie,认证主管机构,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0083,nl_0006,nl,remsysteem,制动系统,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0084,nl_0007,nl,verlichtingsinrichting,照明装置,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0085,nl_0008,nl,emissies,排放,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0086,nl_0009,nl,proef,试验,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0087,nl_0011,nl,reglement,法规,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0088,no_0002,no,motorvogn,机动车,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0089,no_0003,no,produsent,制造商,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0090,no_0004,no,typegodkjenning,型式认证,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0091,no_0005,no,godkjenningsmyndighet,认证主管机构,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0092,no_0006,no,bremsesystem,制动系统,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0093,no_0007,no,belysningsinnretning,照明装置,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0094,no_0008,no,utslipp,排放,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0095,no_0009,no,prøving,试验,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0096,no_0011,no,forskrift,法规,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0097,pt_0002,pt,veículo a motor,机动车,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0098,pt_0003,pt,fabricante,制造商,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0099,pt_0004,pt,homologação,型式认证,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0100,pt_0005,pt,autoridade de homologação,认证主管机构,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0101,pt_0006,pt,sistema de travagem,制动系统,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0102,pt_0007,pt,dispositivo de iluminação,照明装置,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0103,pt_0008,pt,emissões,排放,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0104,pt_0009,pt,ensaio,试验,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0105,pt_0011,pt,regulamento,法规,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0106,sv_0002,sv,motorfordon,机动车,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0107,sv_0003,sv,tillverkare,制造商,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0108,sv_0004,sv,typgodkännande,型式认证,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0109,sv_0005,sv,godkännandemyndighet,认证主管机构,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0110,sv_0006,sv,bromssystem,制动系统,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0111,sv_0007,sv,belysningsanordning,照明装置,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0112,sv_0008,sv,utsläpp,排放,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0113,sv_0009,sv,provning,试验,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0114,sv_0011,sv,föreskrift,法规,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0115,th_0002,th,ยานยนต์,机动车,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0116,th_0003,th,ผู้ผลิต,制造商,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0117,th_0004,th,การรับรองแบบ,型式认证,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0118,th_0005,th,ระบบเบรก,制动系统,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0119,th_0006,th,อุปกรณ์ให้แสงสว่าง,照明装置,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0120,th_0007,th,การปล่อยมลพิษ,排放,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0121,th_0008,th,การทดสอบ,试验,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0122,th_0010,th,กฎระเบียบ,法规,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0123,vi_0002,vi,xe cơ giới,机动车,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0124,vi_0003,vi,nhà sản xuất,制造商,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0125,vi_0004,vi,phê duyệt kiểu loại,型式认证,,,add alias or split long multi-word term,termbase_v0.2_static_scan,candidate
+ALIAS-0126,vi_0005,vi,cơ quan phê duyệt,认证主管机构,,,add alias or split long multi-word term,termbase_v0.2_static_scan,candidate
+ALIAS-0127,vi_0006,vi,hệ thống phanh,制动系统,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0128,vi_0007,vi,thiết bị chiếu sáng,照明装置,,,add alias or split long multi-word term,termbase_v0.2_static_scan,candidate
+ALIAS-0129,vi_0008,vi,khí thải,排放,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0130,vi_0009,vi,thử nghiệm,试验,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0131,vi_0011,vi,quy định,法规,,,check injection / add alias / adjust prompt strategy,termbase_v0.2_static_scan,candidate
+ALIAS-0132,es_0102,es,cabina avanzada,前置/平头驾驶室,cabina adelantada,,add alias or split long multi-word term,termbase_v0.2_static_scan,candidate
+ALIAS-0133,es_0232,es,GB/T,GB/T推荐性国家标准,Estándar Nacional de la República Popular China,,add alias or split long multi-word term,termbase_v0.2_static_scan,candidate
+ALIAS-0134,es_0234,es,GB/T 25985-2010,GB/T 25985-2010,National Standard of the People's Republic of China,,add alias or split long multi-word term,termbase_v0.2_static_scan,candidate
+ALIAS-0135,es_0246,es,GB/T 30677,GB/T 30677,GB/T30677,,add alias or split long multi-word term,termbase_v0.2_static_scan,candidate
+ALIAS-0136,es_0267,es,sistemas y/o componentes del vehículo,车辆系统和/或部件,sistemas o componentes,,add alias or split long multi-word term,termbase_v0.2_static_scan,candidate
+ALIAS-0137,it_0173,it,permesso rosa,粉色通行/停车许可,permessi rosa,,add alias or split long multi-word term,termbase_v0.2_static_scan,candidate
+ALIAS-0138,no_0276,no,skoleskyss,校车/学生交通,school transport,,add alias or split long multi-word term,termbase_v0.2_static_scan,candidate
+ALIAS-0139,th_0141,th,คุณสมบัติ,资格/性能要求,qualification;properties,,add alias or split long multi-word term,termbase_v0.2_static_scan,candidate
+ALIAS-0140,th_0156,th,เบาะนั่ง,座垫/座椅,seat cushion;seat,,add alias or split long multi-word term,termbase_v0.2_static_scan,candidate
+ALIAS-0141,th_0197,th,7/16 นิ้ว,7/16英寸,7/16 inch,,add alias or split long multi-word term,termbase_v0.2_static_scan,candidate
+ALIAS-0142,th_0253,th,ISO/TS 16949,ISO/TS 16949,ISO/TS 16949,,add alias or split long multi-word term,termbase_v0.2_static_scan,candidate
+ALIAS-0143,sv_0079,sv,direktiv 2008/98/EG,2008/98/EC指令,Waste Framework Directive,,add alias or split long multi-word term,termbase_v0.2_static_scan,candidate
+ALIAS-0144,sv_0080,sv,förordning (EU) 2019/1021,欧盟法规2019/1021,POPs Regulation,,add alias or split long multi-word term,termbase_v0.2_static_scan,candidate
+ALIAS-0145,sv_0081,sv,PCDD/F,多氯二苯并二噁英/呋喃,dioxins and furans,,add alias or split long multi-word term,termbase_v0.2_static_scan,candidate
+ALIAS-0146,sv_0199,sv,förordning (EG) nr 1013/2006,欧盟第1013/2006号法规,EU Regulation 1013/2006,,add alias or split long multi-word term,termbase_v0.2_static_scan,candidate
+ALIAS-0147,sv_0229,sv,R 2,溶剂再生/回收,solvent reclamation/regeneration,,add alias or split long multi-word term,termbase_v0.2_static_scan,candidate
+ALIAS-0148,sv_0230,sv,R 3,有机物再循环/回收,recycling/reclamation of organic substances,,add alias or split long multi-word term,termbase_v0.2_static_scan,candidate
+ALIAS-0149,sv_0231,sv,R 4,金属及金属化合物再循环/回收,recycling/reclamation of metals and metal compounds,,add alias or split long multi-word term,termbase_v0.2_static_scan,candidate
+ALIAS-0150,sv_0232,sv,R 5,其他无机材料再循环/回收,recycling/reclamation of other inorganic materials,,add alias or split long multi-word term,termbase_v0.2_static_scan,candidate
+ALIAS-0151,nl_0044,nl,richtlijn 2006/66/EG,2006/66/EC指令,Battery Directive,,add alias or split long multi-word term,termbase_v0.2_static_scan,candidate
+ALIAS-0152,nl_0045,nl,Richtlijn 91/157/EEG,91/157/EEC指令,Directive 91/157/EEC,,add alias or split long multi-word term,termbase_v0.2_static_scan,candidate
+ALIAS-0153,nl_0046,nl,Richtlijn (EU) 2015/1535,欧盟2015/1535号指令,Directive EU 2015/1535,,add alias or split long multi-word term,termbase_v0.2_static_scan,candidate
+ALIAS-0154,nl_0150,nl,financiering,融资/费用承担,financing,,add alias or split long multi-word term,termbase_v0.2_static_scan,candidate
+ALIAS-0155,pt_0038,pt,ONU/UNECE,联合国/欧洲经济委员会,United Nations/ECE,,add alias or split long multi-word term,termbase_v0.2_static_scan,candidate
+ALIAS-0156,pt_0051,pt,código de Marca/Modelo/Versão,品牌/型号/版本代码,MMV code,,add alias or split long multi-word term,termbase_v0.2_static_scan,candidate
+ALIAS-0157,pt_0052,pt,novo projeto,新项目/新车型项目,new project,,add alias or split long multi-word term,termbase_v0.2_static_scan,candidate
+ALIAS-0158,pt_0172,pt,desligar,熄灭/关闭,switch off,,add alias or split long multi-word term,termbase_v0.2_static_scan,candidate
+ALIAS-0159,pt_0193,pt,motoneta,轻便摩托车/踏板摩托车,motor scooter,,add alias or split long multi-word term,termbase_v0.2_static_scan,candidate
+ALIAS-0160,pt_0205,pt,Chassi/Cabine,底盘/驾驶室,chassis/cab,,add alias or split long multi-word term,termbase_v0.2_static_scan,candidate
+ALIAS-0161,pt_0301,pt,arco,弧分/弧,arc,,add alias or split long multi-word term,termbase_v0.2_static_scan,candidate
+ALIAS-0162,pt_0354,pt,pulverização,喷射/喷雾,spraying,,add alias or split long multi-word term,termbase_v0.2_static_scan,candidate
+ALIAS-0163,pt_0421,pt,acionamento,启用/操作,activation,,add alias or split long multi-word term,termbase_v0.2_static_scan,candidate
+ALIAS-0164,vi_0016,vi,QCVN 09:2024/BGTVT,越南国家技术规范QCVN 09:2024/BGTVT,National Technical Regulation on Safety and Environmental Protection for Automobiles,,add alias or split long multi-word term,termbase_v0.2_static_scan,candidate
+ALIAS-0165,vi_0017,vi,QCVN 09:2015/BGTVT,越南国家技术规范QCVN 09:2015/BGTVT,previous version,,add alias or split long multi-word term,termbase_v0.2_static_scan,candidate
+ALIAS-0166,vi_0020,vi,Thông tư,通知/通函,Circular,,add alias or split long multi-word term,termbase_v0.2_static_scan,candidate
+ALIAS-0167,vi_0021,vi,Thông tư số 48/2024/TT-BGTVT,第48/2024/TT-BGTVT号通知,Circular No. 48/2024/TT-BGTVT,,add alias or split long multi-word term,termbase_v0.2_static_scan,candidate
+ALIAS-0168,vi_0056,vi,khoảng cách trục,轴距/轴间距,axle spacing;wheelbase,,add alias or split long multi-word term,termbase_v0.2_static_scan,candidate
+ALIAS-0169,vi_0107,vi,QCVN 34:2024/BGTVT,越南国家技术规范QCVN 34:2024/BGTVT,tire regulation,,add alias or split long multi-word term,termbase_v0.2_static_scan,candidate
+ALIAS-0170,vi_0189,vi,QCVN 109:2024/BGTVT,越南国家技术规范QCVN 109:2024/BGTVT,Level 5 Emissions,,add alias or split long multi-word term,termbase_v0.2_static_scan,candidate
+ALIAS-0171,vi_0214,vi,lít/100 km,升/100公里,liters per 100 km,,add alias or split long multi-word term,termbase_v0.2_static_scan,candidate
+ALIAS-0172,vi_0215,vi,m3/100 km,立方米/100公里,cubic meters per 100 km,,add alias or split long multi-word term,termbase_v0.2_static_scan,candidate
+ALIAS-0173,vi_0216,vi,kg/100 km,千克/100公里,kg per 100 km,,add alias or split long multi-word term,termbase_v0.2_static_scan,candidate
+ALIAS-0174,vi_0217,vi,Wh/km,瓦时/公里,watt-hour per km,,add alias or split long multi-word term,termbase_v0.2_static_scan,candidate
+ALIAS-0175,ar_0020,ar,تصحيح الأوضاع,整改状态/纠正状态,corrective status adjustment,,add alias or split long multi-word term,termbase_v0.2_static_scan,candidate
+ALIAS-0176,ar_0073,ar,إعادة التصدير,退运/重新出口,re-export,,add alias or split long multi-word term,termbase_v0.2_static_scan,candidate
+ALIAS-0177,ar_0145,ar,متصل جلفانياً,电流连接/电气连接,galvanically connected,,add alias or split long multi-word term,termbase_v0.2_static_scan,candidate
+ALIAS-0178,ar_0150,ar,Ω/V,欧姆/伏,ohm per volt,,add alias or split long multi-word term,termbase_v0.2_static_scan,candidate
+ALIAS-0179,ar_0156,ar,الغمر بالماء,浸水/涉水,flooding/water exposure,,add alias or split long multi-word term,termbase_v0.2_static_scan,candidate
+ALIAS-0180,ar_0195,ar,kWh/100km,千瓦时/100公里,kWh per 100 km,,add alias or split long multi-word term,termbase_v0.2_static_scan,candidate
+ALIAS-0181,ar_0216,ar,المقبس,插座/车辆插口,inlet/socket,,add alias or split long multi-word term,termbase_v0.2_static_scan,candidate
+ALIAS-0182,ar_0227,ar,التوافقية,互操作性/兼容性,interoperability/compatibility,,add alias or split long multi-word term,termbase_v0.2_static_scan,candidate
+ALIAS-0183,ar_0243,ar,كم/ساعة,公里/小时,km/h,,add alias or split long multi-word term,termbase_v0.2_static_scan,candidate
+ALIAS-0184,ar_0251,ar,SASO GSO,沙特/海湾标准,SASO GSO,,add alias or split long multi-word term,termbase_v0.2_static_scan,candidate
+ALIAS-0185,ar_0285,ar,الجرارات,牵引车/拖拉机,tractors,,add alias or split long multi-word term,termbase_v0.2_static_scan,candidate
+ALIAS-0186,ms_0066,ms,NGV,天然气汽车/天然气车辆,Natural Gas Vehicle,,add alias or split long multi-word term,termbase_v0.2_static_scan,candidate
+ALIAS-0187,ms_0071,ms,portfolio,资料夹/申请资料包,portfolio,,add alias or split long multi-word term,termbase_v0.2_static_scan,candidate
+ALIAS-0188,ms_0123,ms,pemeriksaan fizikal,实车检查/物理检查,physical inspection,,add alias or split long multi-word term,termbase_v0.2_static_scan,candidate
+ALIAS-0189,ms_0133,ms,penuh,加满/满,full,,add alias or split long multi-word term,termbase_v0.2_static_scan,candidate
+ALIAS-0190,ms_0134,ms,nombor perdagangan,试车牌/贸易牌照,trade plate,,add alias or split long multi-word term,termbase_v0.2_static_scan,candidate
+ALIAS-0191,ms_0135,ms,plat perdagangan,试车牌/贸易牌照,trade plates,,add alias or split long multi-word term,termbase_v0.2_static_scan,candidate
+ALIAS-0192,ms_0138,ms,pembentangan teknikal,技术说明/技术演示,technical presentation,,add alias or split long multi-word term,termbase_v0.2_static_scan,candidate
+ALIAS-0193,ms_0171,ms,pengubahsuaian,改装/变更,modification,,add alias or split long multi-word term,termbase_v0.2_static_scan,candidate
+ALIAS-0194,ms_0176,ms,dikuatkuasakan,已实施/已强制执行,enforced,,add alias or split long multi-word term,termbase_v0.2_static_scan,candidate
+ALIAS-0195,ms_0227,ms,rangka berasingan,非承载式车架/独立车架,separate frame,,add alias or split long multi-word term,termbase_v0.2_static_scan,candidate
+ALIAS-0196,ms_0261,ms,berat,重量/质量,weight,,add alias or split long multi-word term,termbase_v0.2_static_scan,candidate
+ALIAS-0197,ms_0280,ms,Wh/100km,瓦时/100公里,Wh per 100 km,,add alias or split long multi-word term,termbase_v0.2_static_scan,candidate
+ALIAS-0198,ms_0315,ms,cermin,玻璃/后视镜,glass;mirror,,add alias or split long multi-word term,termbase_v0.2_static_scan,candidate
