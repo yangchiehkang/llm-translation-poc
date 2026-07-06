@@ -1,0 +1,88 @@
+# Active language scope for the regulation translation POC.
+version: 2026-07-01
+
+default_target_language: zh
+
+required_pairs:
+  - pair: en-zh
+    source: en
+    target: zh
+    priority: 1
+    role: core
+    min_xcomet_qe: 0.90
+    min_da_score: 90
+    min_samples: 100
+  - pair: zh-en
+    source: zh
+    target: en
+    priority: 1
+    role: mutual_translation
+    min_xcomet_qe: 0.90
+    min_da_score: 90
+    min_samples: 100
+  - pair: es-zh
+    source: es
+    target: zh
+    priority: 2
+    role: key_minor_language
+    min_xcomet_qe: 0.85
+    min_da_score: 85
+    min_samples: 100
+  - pair: ru-zh
+    source: ru
+    target: zh
+    priority: 2
+    role: key_minor_language
+    min_xcomet_qe: 0.85
+    min_da_score: 85
+    min_samples: 100
+  - pair: de-zh
+    source: de
+    target: zh
+    priority: 3
+    role: export_market
+    min_xcomet_qe: 0.80
+    min_da_score: 80
+    min_samples: 100
+  - pair: fr-zh
+    source: fr
+    target: zh
+    priority: 3
+    role: export_market
+    min_xcomet_qe: 0.80
+    min_da_score: 80
+    min_samples: 100
+  - pair: th-zh
+    source: th
+    target: zh
+    priority: 4
+    role: long_tail
+    min_xcomet_qe: 0.70
+    min_da_score: 70
+    min_samples: 100
+  - pair: ar-zh
+    source: ar
+    target: zh
+    priority: 4
+    role: long_tail
+    min_xcomet_qe: 0.70
+    min_da_score: 70
+    min_samples: 100
+
+optional_pairs:
+  - pair: ms-zh
+    source: ms
+    target: zh
+    status: confirm_before_acceptance
+  - pair: id-zh
+    source: id
+    target: zh
+    status: confirm_before_acceptance
+
+supported_input_formats:
+  - pdf
+  - docx
+  - html
+  - txt
+  - md
+  - markdown

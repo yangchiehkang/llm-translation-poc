@@ -1,0 +1,89 @@
+# Evaluation and acceptance configuration.
+version: 2026-07-01
+
+tcr:
+  acceptance_target: 0.95
+  current_experiment_target: 0.90
+  hard_scope: strict
+  relaxed_scope: diagnostic_only
+  count_alias_as_hard_pass: false
+  formula: correct_required_target_terms / matched_required_terms
+
+xcomet_qe:
+  enabled: true
+  metric_name: XCOMET-QE
+  thresholds_from: configs/languages.yaml
+  use_as_only_quality_conclusion: false
+
+comet_da:
+  enabled: true
+  mode: reference_based
+  required_fields:
+    - sample_id
+    - source
+    - hypothesis
+    - reference
+    - source_lang
+    - target_lang
+  output_fields:
+    - sample_id
+    - da_score
+    - score_model
+    - score_version
+
+manual_da:
+  score_scale: 100
+  dimensions:
+    semantic_accuracy: 30
+    legal_rigor: 20
+    term_consistency: 20
+    completeness: 10
+    number_unit_accuracy: 10
+    target_language_fluency: 10
+
+rule_metrics:
+  number_consistency:
+    enabled: true
+    target: confirm_before_acceptance
+  format_retention:
+    enabled: true
+    target: confirm_before_acceptance
+  hallucination_check:
+    enabled: true
+    trigger_review: true
+
+review_triggers:
+  - qe_near_threshold
+  - da_near_threshold
+  - qe_da_conflict
+  - hard_term_failed
+  - legal_modal_word
+  - critical_number_or_unit
+  - regulation_or_standard_number
+  - long_complex_sentence
+  - format_damage
+
+performance:
+  document_speed_target_chars_per_second: 250
+  source_char_count_basis: original_text_entering_translation
+  speed_metrics:
+    - model_api_speed
+    - translation_pipeline_speed
+    - end_to_end_speed
+
+concurrency:
+  target_concurrent_documents: 10
+  queue_policy: fifo_dispatch
+  completion_order_may_differ: true
+  result_display_order: submit_order
+
+report_fields:
+  - language_pair
+  - sample_count
+  - xcomet_qe_average
+  - da_average
+  - term_consistency
+  - number_consistency
+  - format_retention
+  - passed
+  - risk_segments

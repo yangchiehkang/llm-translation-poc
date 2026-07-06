@@ -28,6 +28,7 @@ models/
 *.xlsx
 *.xls
 *.csv
+!termbase/auto_regulation_terms_v1.csv
 
 # Secrets
 .env

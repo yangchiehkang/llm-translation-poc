@@ -1,0 +1,99 @@
+# Default translation pipeline configuration.
+version: 2026-07-01
+
+model:
+  provider: dashscope
+  name: qwen-max
+  api_key_env: DASHSCOPE_API_KEY
+  temperature: 0.2
+  max_retries: 3
+  timeout_seconds: 120
+
+paths:
+  raw_dir: data/raw
+  eval_dir: data/eval
+  aligned_eval_dir: data/eval_aligned
+  mt_output_dir: data/mt/qwen-max-term
+  report_dir: outputs/report
+  termbase: termbase/auto_regulation_terms_v1.csv
+
+termbase:
+  active_status: active
+  hard_required_priority:
+    - high
+  target_language: zh
+  strict_scope_field: tcr_scope
+  strict_scope_value: strict
+  alias_scope: diagnostic_only
+
+prompt_routing:
+  enabled: true
+  default_mode: natural_legal
+  modes:
+    lightweight:
+      use_for: short_simple_text
+      max_chars: 40
+      max_core_high_terms: 0
+    structure:
+      use_for: structured_fields_tables_labels
+      trigger_keywords:
+        - ':'
+        - 'No.'
+        - 'Certificate'
+        - 'Approval'
+        - 'Type'
+        - 'Model'
+        - 'Date'
+        - 'Name'
+        - 'Address'
+    strict_term:
+      use_for: high_tcr_risk_samples
+      min_core_high_terms: 2
+    natural_legal:
+      use_for: normal_regulation_sentences
+    retry_repair:
+      use_for: samples_with_failed_terms
+
+prompt_experiment:
+  groups:
+    - no_term_baseline
+    - term_baseline
+    - graded_prompt
+  graded_modes:
+    - lightweight
+    - structure
+    - strict_term
+    - natural_legal
+    - retry_repair
+  default_comparison_split: prompt_compare_200
+  termbase_version: termbase_v1
+  output_dir_name: experiment_inputs
+
+retry:
+  enabled: true
+  max_attempts: 2
+  repair_mode: retry_repair
+  retry_error_types:
+    - missing
+    - partial
+    - wrong_translation
+    - alias_only
+  no_retry_error_types:
+    - over_match
+    - broad_term
+    - statistic_false_positive
+
+output_fields:
+  - sample_id
+  - source_lang
+  - target_lang
+  - source_text
+  - baseline_translation
+  - new_translation
+  - prompt_version
+  - prompt_mode
+  - matched_terms
+  - required_target_terms
+  - failed_terms
+  - retry_count
+  - final_status
