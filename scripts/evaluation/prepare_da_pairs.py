@@ -9,7 +9,6 @@ from collections import Counter, defaultdict
 import json
 import random
 import re
-import shutil
 import sys
 from pathlib import Path
 from typing import Any
@@ -363,7 +362,6 @@ def make_all_sample(segment: dict[str, Any], group: dict[str, Any]) -> dict[str,
         "section_no": segment.get("section_no"),
         "segment_type": segment.get("segment_type", "unknown"),
         "source_char_count": segment["char_count"],
-        "use_for_qe": True,
     }
 
 
@@ -654,7 +652,6 @@ def clean_all_eval_rows(rows: list[dict[str, Any]]) -> tuple[list[dict[str, Any]
         out = dict(row)
         out["source_text"] = text
         out["source_char_count"] = len(text)
-        out["use_for_qe"] = True
         cleaned_rows.append(out)
 
     return cleaned_rows, removed
@@ -806,7 +803,7 @@ def write_clean_summary(
         "",
         "## 本次清洗目标",
         "",
-        "- 清洗 `all_eval_samples.jsonl`，只保留适合后续翻译和 XCOMET-QE 的 `source_text` 样本。",
+        "- 清洗 `all_eval_samples.jsonl`，只保留适合后续翻译和 TCR 的 `source_text` 样本。",
         "- 严格清洗 `aligned_da_samples.jsonl`，只保留可用于 XCOMET-DA / COMET 有参考评分的严格对应样本。",
         "- 不调用 Qwen-Max，不运行 XCOMET，不执行 Prompt 路由，不执行 TCR。",
         "",
@@ -1012,16 +1009,52 @@ def stratified_sample(rows: list[dict[str, Any]], max_per_language: int, seed: i
     return selected
 
 
-def add_all_eval_split_fields(rows: list[dict[str, Any]], split_name: str, dataset_base_version: str) -> list[dict[str, Any]]:
+SOURCE_ONLY_SPLIT = "source_only_300_by_lang"
+REFERENCE_WITH_REF_SPLIT = "reference_with_ref_300_by_lang"
+MAX_REFERENCE_ROWS_PER_LANGUAGE = 300
+
+SOURCE_ONLY_DROP_FIELDS = {
+    "ref_text",
+    "ref_char_count",
+    "page_ref",
+    "order_ref",
+    "alignment_method",
+    "alignment_confidence",
+    "ref_source",
+    "reference_source",
+    "da_source_priority",
+    "original_sample_id",
+    "ref_type",
+    "is_summary_ref",
+    "ref_is_summary",
+    "is_machine_ref",
+    "machine_ref",
+    "ref_is_machine_translation",
+}
+
+
+def add_source_only_split_fields(rows: list[dict[str, Any]], dataset_base_version: str) -> list[dict[str, Any]]:
+    out: list[dict[str, Any]] = []
+    for row in rows:
+        item = {key: value for key, value in row.items() if key not in SOURCE_ONLY_DROP_FIELDS}
+        item["dataset_base_version"] = dataset_base_version
+        item["split_name"] = SOURCE_ONLY_SPLIT
+        item["split_role"] = "source_only"
+        item["use_for_translation"] = True
+        item["reference_available"] = bool(row.get("ref_text"))
+        item.pop("use_for_da", None)
+        out.append(item)
+    return out
+
+
+def add_reference_split_fields(rows: list[dict[str, Any]], dataset_base_version: str) -> list[dict[str, Any]]:
     out: list[dict[str, Any]] = []
     for row in rows:
         item = dict(row)
         item["dataset_base_version"] = dataset_base_version
-        item["split_name"] = split_name
-        item["split_role"] = "all_eval"
-        item["use_for_translation"] = True
-        item["use_for_qe"] = True
-        item["use_for_da"] = False
+        item["split_name"] = REFERENCE_WITH_REF_SPLIT
+        item["split_role"] = "reference_with_ref"
+        item["use_for_da"] = True
         out.append(item)
     return out
 
@@ -1095,6 +1128,7 @@ def write_split_summary(output_dir: Path, summary: dict[str, Any]) -> None:
         "",
         f"- dataset_base_version: `{summary['dataset_base_version']}`",
         f"- random_seed: {summary['seed']}",
+        f"- max_per_language_pair: {summary['max_per_language_pair']}",
         "",
         "## Input Files",
         "",
@@ -1105,53 +1139,49 @@ def write_split_summary(output_dir: Path, summary: dict[str, Any]) -> None:
         "",
         "## Validation Result",
         "",
-        f"- all_eval legal JSONL: {summary['validation_result']['all_eval']['legal_jsonl']}",
-        f"- aligned_da legal JSONL: {summary['validation_result']['aligned_da']['legal_jsonl']}",
+        f"- reference input legal JSONL: {summary['validation_result']['reference_input']['legal_jsonl']}",
         f"- output JSONL legal: {summary['validation_result']['outputs']['all_legal']}",
         "",
         "## Total Samples",
         "",
-        f"- total_all_eval_samples: {summary['total_all_eval_samples']}",
-        f"- total_aligned_da_samples: {summary['total_aligned_da_samples']}",
+        f"- total_reference_input_samples: {summary['total_reference_input_samples']}",
+        f"- selected_samples: {summary['selected_samples']}",
         "",
-        "## prompt_compare_200",
+        f"## {SOURCE_ONLY_SPLIT}",
         "",
-        f"- total: {summary['splits']['prompt_compare_200']['total']}",
+        f"- total: {summary['splits'][SOURCE_ONLY_SPLIT]['total']}",
     ])
-    for pair, count in summary["splits"]["prompt_compare_200"]["counts_by_language_pair"].items():
+    for pair, count in summary["splits"][SOURCE_ONLY_SPLIT]["counts_by_language_pair"].items():
         lines.append(f"- {pair}: {count}")
-    lines.extend(["", "## prompt_compare_300", "", f"- total: {summary['splits']['prompt_compare_300']['total']}"])
-    for pair, count in summary["splits"]["prompt_compare_300"]["counts_by_language_pair"].items():
+    lines.extend(["", f"## {REFERENCE_WITH_REF_SPLIT}", "", f"- total: {summary['splits'][REFERENCE_WITH_REF_SPLIT]['total']}"])
+    for pair, count in summary["splits"][REFERENCE_WITH_REF_SPLIT]["counts_by_language_pair"].items():
         lines.append(f"- {pair}: {count}")
     lines.extend(["", "## Excluded Samples", ""])
     for source, reasons in summary["excluded_samples"].items():
         reason_text = ", ".join(f"{k}={v}" for k, v in reasons.items()) if reasons else "none"
         lines.append(f"- {source}: {reason_text}")
-    lines.extend(["", "## Language Target Status", "", "### 200 Samples", ""])
-    for pair, item in summary["language_target_status"]["prompt_compare_200"].items():
-        lines.append(f"- {pair}: actual={item['actual']}, expected={item['expected']}, reached={item['reached']}")
-    lines.extend(["", "### 300 Samples", ""])
-    for pair, item in summary["language_target_status"]["prompt_compare_300"].items():
+    lines.extend(["", "## Language Target Status", ""])
+    for pair, item in summary["language_target_status"][SOURCE_ONLY_SPLIT].items():
         lines.append(f"- {pair}: actual={item['actual']}, expected={item['expected']}, reached={item['reached']}")
     lines.extend([
         "",
         "## Acceptance Notes",
         "",
-        "- `prompt_compare_200` 适合作为阶段性 Prompt 对比实验。",
-        "- `prompt_compare_300` 更适合准正式评估。",
-        "- 正式验收建议核心语种 500 条以上，长尾语种至少 200-300 条。",
-        "- DA 样本直接沿用 `data/eval/aligned_da_samples.jsonl`，不再单独生成 split。",
+        f"- `{SOURCE_ONLY_SPLIT}` 只用于翻译和 TCR，不包含 ref_text。",
+        f"- `{REFERENCE_WITH_REF_SPLIT}` 用于 DA/COMET 参考译文查找。",
+        "- 两套 split 必须通过 sample_id、da_reference_id、source_text 保持一一对应。",
+        "- 某语种可信参考译文不足 300 条时，保留全部可用配对样本。",
     ])
     ensure_parent(output_dir / "split_summary.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
 def build_splits(args: argparse.Namespace) -> None:
-    dataset_base_version = "raw_rebuild_v1"
-    all_eval_path = (PROJECT_ROOT / args.all_eval).resolve() if not Path(args.all_eval).is_absolute() else Path(args.all_eval)
+    dataset_base_version = "reference_300_by_lang_v1"
     aligned_da_path = (PROJECT_ROOT / args.aligned_da).resolve() if not Path(args.aligned_da).is_absolute() else Path(args.aligned_da)
     output_dir = (PROJECT_ROOT / args.output_dir).resolve() if not Path(args.output_dir).is_absolute() else Path(args.output_dir)
+    if args.max_per_language < 1:
+        raise ValueError("--max-per-language must be >= 1")
 
-    all_required = {"sample_id", "document_id", "language_pair", "source_lang", "target_lang", "source_text"}
     da_required = {
         "sample_id",
         "document_id",
@@ -1164,70 +1194,65 @@ def build_splits(args: argparse.Namespace) -> None:
         "alignment_confidence",
         "use_for_da",
     }
-    all_rows, all_validation, all_excluded = read_jsonl_for_split(all_eval_path, all_required, {"source_text"})
     da_rows, da_validation, da_input_excluded = read_jsonl_for_split(aligned_da_path, da_required, {"source_text", "ref_text"})
 
-    prompt_200 = add_all_eval_split_fields(stratified_sample(all_rows, 200, args.seed), "prompt_compare_200", dataset_base_version)
-    prompt_300 = add_all_eval_split_fields(stratified_sample(all_rows, 300, args.seed), "prompt_compare_300", dataset_base_version)
+    selected = stratified_sample(da_rows, args.max_per_language, args.seed)
+    source_only = add_source_only_split_fields(selected, dataset_base_version)
+    reference_rows = add_reference_split_fields(selected, dataset_base_version)
 
-    prompt_200_dir = output_dir / "prompt_compare_200"
-    prompt_300_dir = output_dir / "prompt_compare_300"
-    stale_da_strict_dir = output_dir / "da_eval_strict"
-    if stale_da_strict_dir.exists():
-        shutil.rmtree(stale_da_strict_dir)
+    source_only_dir = output_dir / SOURCE_ONLY_SPLIT
+    reference_dir = output_dir / REFERENCE_WITH_REF_SPLIT
     stale_json_summary = output_dir / "split_summary.json"
     if stale_json_summary.exists():
         stale_json_summary.unlink()
-    write_split_jsonl(prompt_200_dir, "all_eval_samples.jsonl", prompt_200, "all_eval_samples")
-    write_split_jsonl(prompt_300_dir, "all_eval_samples.jsonl", prompt_300, "all_eval_samples")
+    write_split_jsonl(source_only_dir, "all_samples_source_only.jsonl", source_only, "samples_source_only")
+    write_split_jsonl(reference_dir, "all_samples_with_reference.jsonl", reference_rows, "samples_with_reference")
 
     output_jsonl_paths = [
-        prompt_200_dir / "all_eval_samples.jsonl",
-        prompt_300_dir / "all_eval_samples.jsonl",
+        source_only_dir / "all_samples_source_only.jsonl",
+        reference_dir / "all_samples_with_reference.jsonl",
     ]
-    output_jsonl_paths.extend(sorted((prompt_200_dir / "by_lang").glob("*.jsonl")))
-    output_jsonl_paths.extend(sorted((prompt_300_dir / "by_lang").glob("*.jsonl")))
+    output_jsonl_paths.extend(sorted((source_only_dir / "by_lang").glob("*.jsonl")))
+    output_jsonl_paths.extend(sorted((reference_dir / "by_lang").glob("*.jsonl")))
 
-    base_counts = count_by_pair(all_rows)
+    base_counts = count_by_pair(da_rows)
     summary = {
         "dataset_base_version": dataset_base_version,
         "seed": args.seed,
+        "max_per_language_pair": args.max_per_language,
         "input_files": {
-            "all_eval": str(all_eval_path),
-            "aligned_da": str(aligned_da_path),
+            "reference_input": str(aligned_da_path),
         },
         "validation_result": {
-            "all_eval": all_validation,
-            "aligned_da": da_validation,
+            "reference_input": da_validation,
             "outputs": validate_written_jsonl(output_jsonl_paths),
         },
-        "total_all_eval_samples": len(all_rows),
-        "total_aligned_da_samples": len(da_rows),
+        "total_reference_input_samples": len(da_rows),
+        "selected_samples": len(selected),
         "splits": {
-            "prompt_compare_200": {
-                "total": len(prompt_200),
-                "max_per_language_pair": 200,
-                "counts_by_language_pair": count_by_pair(prompt_200),
+            SOURCE_ONLY_SPLIT: {
+                "total": len(source_only),
+                "max_per_language_pair": args.max_per_language,
+                "counts_by_language_pair": count_by_pair(source_only),
+                "contains_ref_text": False,
             },
-            "prompt_compare_300": {
-                "total": len(prompt_300),
-                "max_per_language_pair": 300,
-                "counts_by_language_pair": count_by_pair(prompt_300),
+            REFERENCE_WITH_REF_SPLIT: {
+                "total": len(reference_rows),
+                "max_per_language_pair": args.max_per_language,
+                "counts_by_language_pair": count_by_pair(reference_rows),
+                "contains_ref_text": True,
             },
         },
         "excluded_samples": {
-            "all_eval_input_validation": dict(sorted(all_excluded.items())),
-            "aligned_da_input_validation": dict(sorted(da_input_excluded.items())),
+            "reference_input_validation": dict(sorted(da_input_excluded.items())),
         },
         "language_target_status": {
-            "prompt_compare_200": split_reach_status(base_counts, count_by_pair(prompt_200), 200),
-            "prompt_compare_300": split_reach_status(base_counts, count_by_pair(prompt_300), 300),
+            SOURCE_ONLY_SPLIT: split_reach_status(base_counts, count_by_pair(source_only), args.max_per_language),
         },
         "notes": [
-            "200 条适合作为阶段性 Prompt 对比实验。",
-            "300 条更适合准正式评估。",
-            "正式验收建议核心语种 500 条以上，长尾语种至少 200-300 条。",
-            "DA 样本直接沿用 data/eval/aligned_da_samples.jsonl，不再单独生成 split。",
+            f"{SOURCE_ONLY_SPLIT} removes ref_text and is used for translation/TCR.",
+            f"{REFERENCE_WITH_REF_SPLIT} keeps ref_text and is used for DA/COMET scoring.",
+            "Rows are selected from reference-capable samples only.",
         ],
     }
     write_split_summary(output_dir, summary)
@@ -1334,12 +1359,12 @@ def main() -> None:
     ap.add_argument("--mode", choices=["prepare_da_pairs", "from_raw", "clean_eval_files", "build_splits"], default="prepare_da_pairs")
     ap.add_argument("--input", help="Aligned JSONL or rows containing reference text.")
     ap.add_argument("--output", help="DA input JSONL output.")
-    ap.add_argument("--all-eval", default="data/eval/all_eval_samples.jsonl")
     ap.add_argument("--aligned-da", default="data/eval/aligned_da_samples.jsonl")
     ap.add_argument("--raw-dir", default="data/raw")
     ap.add_argument("--eval-dir", default="data/eval")
     ap.add_argument("--output-dir", default="data/eval")
     ap.add_argument("--seed", type=int, default=42)
+    ap.add_argument("--max-per-language", type=int, default=MAX_REFERENCE_ROWS_PER_LANGUAGE)
     ap.add_argument("--source-lang", default="en")
     ap.add_argument("--target-lang", default="zh")
     ap.add_argument("--min-ref-chars", type=int, default=2)

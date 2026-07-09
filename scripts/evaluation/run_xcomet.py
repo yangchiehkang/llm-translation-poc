@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Run local XCOMET-QE or XCOMET-DA/COMET scoring on a prepared JSONL file."""
+"""Run local XCOMET-DA/COMET scoring on a prepared JSONL file."""
 
 from __future__ import annotations
 
@@ -18,8 +18,13 @@ from scripts.common.text_utils import clean_text, utc_now
 
 
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Run local XCOMET-QE or XCOMET-DA/COMET scoring.")
-    parser.add_argument("--mode", choices=["qe", "da"], required=True)
+    parser = argparse.ArgumentParser(description="Run local XCOMET-DA/COMET scoring.")
+    parser.add_argument(
+        "--mode",
+        choices=["da"],
+        default="da",
+        help="Only reference-based DA/COMET scoring is supported.",
+    )
     parser.add_argument("--input", required=True)
     parser.add_argument("--output", required=True)
     parser.add_argument("--model-path", required=True)
@@ -44,9 +49,6 @@ def validate_row(row: dict[str, Any], mode: str) -> str | None:
     for field in ["sample_id", "split", "system_or_group", "translation_stage", "source_text", "hypothesis_translation"]:
         if not clean_text(row.get(field)):
             return f"missing required field: {field}"
-    if mode == "qe":
-        if row.get("ref_text") not in {None, ""}:
-            return "QE input must have ref_text null or empty"
     if mode == "da" and not clean_text(row.get("ref_text")):
         return "DA input requires non-empty ref_text"
     return None

@@ -498,7 +498,7 @@ def write_summary(
             "Did not execute retry_repair.",
             "Did not execute TCR.",
             "Did not execute XCOMET.",
-            "Did not run prompt_compare_300.",
+            "Did not run any other split.",
         ],
         "validation": {
             "success_sample_sets_equal": sample_sets_equal,
@@ -547,7 +547,7 @@ def write_summary(
             "- 未执行 retry_repair。",
             "- 未执行 TCR。",
             "- 未执行 XCOMET。",
-            "- 未运行 prompt_compare_300。",
+            "- 未运行其他 split。",
         ]
     )
     summary_md_path.write_text("\n".join(lines) + "\n", encoding="utf-8")

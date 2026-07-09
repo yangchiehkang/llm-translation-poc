@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# 结果汇总脚本：按 sample_id 或 seg_id 合并 TCR、QE、DA 等指标表。
+# 结果汇总脚本：按 sample_id 或 seg_id 合并 TCR、DA 等指标表。
 # 运行位置：本地；用于生成统一分析表和阶段汇总材料。
 
 from __future__ import annotations
@@ -33,7 +33,7 @@ def index_rows(rows: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
 
 
 def main() -> None:
-    ap = argparse.ArgumentParser(description="Merge TCR/QE/DA metrics by sample_id or seg_id.")
+    ap = argparse.ArgumentParser(description="Merge TCR/DA metrics by sample_id or seg_id.")
     ap.add_argument("--base", required=True, help="Base JSONL/CSV table.")
     ap.add_argument("--metric", action="append", default=[], help="Metric file, optionally path:prefix. Can repeat.")
     ap.add_argument("--output", required=True, help="Output .jsonl or .csv.")

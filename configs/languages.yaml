@@ -9,7 +9,6 @@ required_pairs:
     target: zh
     priority: 1
     role: core
-    min_xcomet_qe: 0.90
     min_da_score: 90
     min_samples: 100
   - pair: zh-en
@@ -17,7 +16,6 @@ required_pairs:
     target: en
     priority: 1
     role: mutual_translation
-    min_xcomet_qe: 0.90
     min_da_score: 90
     min_samples: 100
   - pair: es-zh
@@ -25,7 +23,6 @@ required_pairs:
     target: zh
     priority: 2
     role: key_minor_language
-    min_xcomet_qe: 0.85
     min_da_score: 85
     min_samples: 100
   - pair: ru-zh
@@ -33,7 +30,6 @@ required_pairs:
     target: zh
     priority: 2
     role: key_minor_language
-    min_xcomet_qe: 0.85
     min_da_score: 85
     min_samples: 100
   - pair: de-zh
@@ -41,7 +37,6 @@ required_pairs:
     target: zh
     priority: 3
     role: export_market
-    min_xcomet_qe: 0.80
     min_da_score: 80
     min_samples: 100
   - pair: fr-zh
@@ -49,7 +44,6 @@ required_pairs:
     target: zh
     priority: 3
     role: export_market
-    min_xcomet_qe: 0.80
     min_da_score: 80
     min_samples: 100
   - pair: th-zh
@@ -57,7 +51,6 @@ required_pairs:
     target: zh
     priority: 4
     role: long_tail
-    min_xcomet_qe: 0.70
     min_da_score: 70
     min_samples: 100
   - pair: ar-zh
@@ -65,7 +58,6 @@ required_pairs:
     target: zh
     priority: 4
     role: long_tail
-    min_xcomet_qe: 0.70
     min_da_score: 70
     min_samples: 100
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Run first-pass Qwen-Max translations for prompt_compare experiment inputs.
+# Run first-pass Qwen-Max translations for prompt experiment inputs.
 
 from __future__ import annotations
 
@@ -262,7 +262,7 @@ def write_summary(args: argparse.Namespace, group_results: list[dict[str, Any]],
             "未执行 retry_repair。",
             "未执行 TCR。",
             "未执行 XCOMET。",
-            "未运行 prompt_compare_300。",
+            "未运行其他 split。",
         ],
         "validation": validation,
     }
@@ -301,23 +301,23 @@ def write_summary(args: argparse.Namespace, group_results: list[dict[str, Any]],
             "- 未执行 retry_repair。",
             "- 未执行 TCR。",
             "- 未执行 XCOMET。",
-            "- 未运行 prompt_compare_300。",
+            "- 未运行其他 split。",
         ]
     )
     summary_md_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
 def parse_args() -> argparse.Namespace:
-    ap = argparse.ArgumentParser(description="Run prompt_compare_200 first translations from prompt_text.")
-    ap.add_argument("--input-dir", default="data/eval/splits/prompt_compare_200/experiment_inputs")
+    ap = argparse.ArgumentParser(description="Run first translations from prompt_text experiment inputs.")
+    ap.add_argument("--input-dir", default="outputs/experiment_inputs/source_only_300_by_lang")
     ap.add_argument("--output-dir", required=True)
     ap.add_argument("--groups", nargs="+", default=list(GROUPS), choices=GROUPS)
-    ap.add_argument("--split-name", default="prompt_compare_200")
+    ap.add_argument("--split-name", default="source_only_300_by_lang")
     ap.add_argument("--translation-stage", default="first")
     ap.add_argument("--output-suffix", default="first_translations")
     ap.add_argument("--summary", default="")
     ap.add_argument("--model", default="qwen-max")
-    ap.add_argument("--model-backend", default="qwenmax_npu")
+    ap.add_argument("--model-backend", default="dashscope_qwenmax")
     ap.add_argument("--temperature", type=float, default=0.0)
     ap.add_argument("--max-tokens", type=int, default=2048)
     ap.add_argument("--timeout", type=int, default=120)

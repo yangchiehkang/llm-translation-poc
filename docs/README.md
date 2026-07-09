@@ -7,9 +7,9 @@
 | 文档 | 用途 |
 |---|---|
 | `requirements.md` | 说明标准法规翻译子模块的业务定位、语种范围、核心能力和验收目标。 |
-| `current_experiment_plan.md` | 说明本轮 Prompt 分级策略对比实验的目标、三组设计、样本范围、整体流程和当前产物。 |
-| `closed_loop_pipeline.md` | 说明术语召回、三组翻译、TCR、retry、XCOMET QE/DA 和报告汇总之间的闭环关系。 |
-| `evaluation_and_acceptance.md` | 说明 TCR、XCOMET-QE、XCOMET-DA/COMET、retry 效果和质量风险的统一解释口径。 |
+| `current_experiment_plan.md` | 说明新 300-by-language split 上的 Prompt 分级策略对比实验目标、样本范围、整体流程和当前状态。 |
+| `closed_loop_pipeline.md` | 说明术语召回、三组翻译、TCR、retry、XCOMET-DA/COMET 和报告汇总之间的闭环关系。 |
+| `evaluation_and_acceptance.md` | 说明 TCR、XCOMET-DA/COMET、retry 效果和质量风险的统一解释口径。 |
 
 ## 文档边界
 
@@ -19,18 +19,18 @@
 - 最终实验结果优先放在 `outputs/reports/`，文档只说明如何理解这些结果。
 - 阶段结论必须区分“已经在本仓库产出”和“后续待补充”。
 
-## 当前结果产物
+## 下一轮结果产物
 
-本轮实验的主要报告产物位于：
+新 split 重新跑通后，主要产物应位于：
 
 | 产物 | 用途 |
 |---|---|
-| `data/eval/splits/*/translations/first/` | 第一次翻译结果。 |
-| `data/eval/splits/*/translations/retry/` | retry 重新翻译结果。 |
-| `data/eval/splits/*/translations/final/` | 三组译文的最终版本，已合并首译和 retry 结果。 |
-| `data/eval/splits/*/retry_inputs/` | TCR fail 样本的 retry 输入，作为实验输入保存在 data 下。 |
+| `outputs/translations/source_only_300_by_lang/first/` | 第一次翻译结果。 |
+| `outputs/translations_retry/source_only_300_by_lang/` | retry 重新翻译结果。 |
+| `outputs/evaluation/tcr/source_only_300_by_lang/` | 首译 TCR 和 retry 输入统计。 |
+| `outputs/evaluation/tcr_retry/source_only_300_by_lang/` | retry 后 TCR recheck。 |
 | `outputs/reports/tcr_final_report.md` | TCR 首译、retry 后恢复率、最终 pass rate 和失败术语分析。 |
-| `outputs/reports/xcomet_qe_da_final_report.md` | 三组译文的 XCOMET-QE 与 XCOMET-DA/COMET 评分对比。 |
+| `outputs/reports/xcomet_da_final_report.md` | 三组译文的 XCOMET-DA/COMET 评分对比。 |
 | `outputs/reports/tcr_group_metrics.csv` | TCR 组间指标表，便于后续合并或制图。 |
 | `outputs/reports/tcr_language_metrics.csv` | TCR 分语种指标表，便于后续按语种分析。 |
 | `outputs/reports/xcomet_group_metrics.csv` | XCOMET 组间指标表，便于后续合并或制图。 |

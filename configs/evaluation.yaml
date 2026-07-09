@@ -2,6 +2,7 @@
 version: 2026-07-01
 
 tcr:
+  default_split: source_only_300_by_lang
   acceptance_target: 0.95
   current_experiment_target: 0.90
   hard_scope: strict
@@ -9,15 +10,11 @@ tcr:
   count_alias_as_hard_pass: false
   formula: correct_required_target_terms / matched_required_terms
 
-xcomet_qe:
-  enabled: true
-  metric_name: XCOMET-QE
-  thresholds_from: configs/languages.yaml
-  use_as_only_quality_conclusion: false
-
 comet_da:
   enabled: true
   mode: reference_based
+  translation_split: source_only_300_by_lang
+  reference_split: reference_with_ref_300_by_lang
   required_fields:
     - sample_id
     - source
@@ -53,9 +50,7 @@ rule_metrics:
     trigger_review: true
 
 review_triggers:
-  - qe_near_threshold
   - da_near_threshold
-  - qe_da_conflict
   - hard_term_failed
   - legal_modal_word
   - critical_number_or_unit
@@ -80,7 +75,6 @@ concurrency:
 report_fields:
   - language_pair
   - sample_count
-  - xcomet_qe_average
   - da_average
   - term_consistency
   - number_consistency

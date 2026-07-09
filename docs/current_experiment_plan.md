@@ -1,15 +1,16 @@
-# 标准法规翻译 Prompt 分级策略对比实验说明
+# 新 300-by-language 参考样本实验说明
 
 ## 1. 实验目标
 
-本轮实验要回答的问题是：在相同样本、相同模型、相同术语库和相同评价口径下，分级 Prompt 是否比不分层 Prompt 更适合汽车标准法规翻译。
+下一轮实验要在新整理的数据上重新验证同一套闭环：
 
-重点观察两个方面：
+1. 三组首译：`no_term_baseline`、`term_baseline`、`graded_prompt`。
+2. 首译 TCR：比较硬术语一致性和 retry 需求。
+3. TCR fail 样本 retry：只修复失败术语，不重写整个实验。
+4. retry 后 TCR recheck：验证 recovered / still_fail。
+5. XCOMET-DA / COMET：用配对参考译文评价 first_pass 和 final 译文。
 
-1. TCR：分级 Prompt 是否提升硬术语一致率，并减少需要 retry 的样本。
-2. XCOMET：分级 Prompt 在提升 TCR 的同时，是否保持或损害 QE / DA 自动质量分。
-
-本轮实验不是生产系统验收，也不是全量文档翻译交付；它是围绕 Prompt 策略、术语硬控制和自动评价链路的阶段性验证。
+本轮比较仍然回答同一个核心问题：分层 Prompt 是否在不明显损害有参考质量分的前提下，提升法规硬术语一致性并减少 retry 成本。
 
 ## 2. 实验组设计
 
@@ -19,70 +20,59 @@
 | `term_baseline` | 不分层术语 Prompt baseline | 所有样本使用统一法规翻译 Prompt，并注入同一批 required target terms。 |
 | `graded_prompt` | 分层 Prompt 策略 | 根据样本特征路由到不同 Prompt 模式，例如结构保持、严格术语、普通法规语体等。 |
 
-正式比较时，`term_baseline` 是主要 baseline，`graded_prompt` 是策略组；`no_term_baseline` 作为“没有术语约束”的参照组。
+正式比较时，`term_baseline` 是主要 baseline，`graded_prompt` 是策略组；`no_term_baseline` 只作为无术语约束参照。
 
-## 3. 样本范围
+## 3. 当前样本范围
 
-本轮实验使用从 raw 法规 PDF 和中文参考 PDF 重新构建的评测样本，并区分 QE 和 DA 的样本范围。
+本轮只保留原始法规文件和两套新 split：
 
-| split | 用途 | 样本数 | DA 范围 |
-|---|---|---:|---:|
-| `prompt_compare_200` | 多语种 Prompt 对比主样本 | 1156 | 77 |
-| `da_eval_strict` | 严格对齐 DA 样本 | 531 | 531 |
+| split | 用途 | 主文件 | ref_text |
+|---|---|---|---|
+| `source_only_300_by_lang` | 三组翻译、首译 TCR、retry 输入来源 | `all_samples_source_only.jsonl` | 不包含 |
+| `reference_with_ref_300_by_lang` | DA/COMET 参考译文来源 | `all_samples_with_reference.jsonl` | 包含 |
 
-说明：
+两套 split 的行顺序和样本键保持一一对应，匹配键为 `sample_id`、`da_reference_id`、`source_text`。后续翻译只能使用 `source_only_300_by_lang`，跑分时再用 `reference_with_ref_300_by_lang` 补入 `ref_text`。
 
-- QE 不需要参考译文，因此覆盖 all_eval 范围。
-- DA / COMET 需要可信参考译文，因此只覆盖严格对齐样本。
-- `da_eval_strict` 的 DA 样本主要来自高置信 source/ref 对齐结果，不强行覆盖没有可靠参考译文的语种。
+当前可用样本数：
 
-## 4. 整体实验流程
+| language_pair | rows |
+|---|---:|
+| `ar-zh` | 89 |
+| `de-zh` | 300 |
+| `en-zh` | 300 |
+| `es-zh` | 67 |
+| `fr-zh` | 300 |
+| `ru-zh` | 292 |
+| `th-zh` | 300 |
+| total | 1648 |
 
-实验流程按一个闭环理解，而不是按零散步骤维护：
+说明：目标是每语种最多 300 条；如果某语种可信参考译文不足 300 条，则保留当前可用的全部配对样本，不补无参考样本。
 
-1. 从 raw 法规 PDF 和中文参考 PDF 构建源文样本与可信参考译文样本。
-2. 使用统一术语库进行术语召回，生成 hard required terms 和 required target terms。
-3. 对同一批 source_text 生成三组翻译输入：无术语 baseline、不分层术语 baseline、分层 Prompt。
-4. 使用同一模型和参数完成三组首译。
-5. 对首译结果做 TCR 硬校验，识别 failed terms 和需要 retry 的样本。
-6. 只对 TCR fail 样本执行 retry 修复，并再次做 TCR recheck。
-7. 对首译和 retry 后 final 译文分别做 XCOMET-QE 与 XCOMET-DA / COMET 评分。
-8. 汇总 TCR、retry、QE、DA 和失败术语，形成最终报告。
+## 4. 下一轮流程
 
-## 5. 当前已完成产物
+按闭环顺序执行，但本次适配只准备脚本和文档，不启动真实翻译或评分：
 
-当前重点产物已经按 TCR 和 XCOMET 两类整理：
+1. 用 `source_only_300_by_lang/all_samples_source_only.jsonl` 生成三组 Prompt 实验输入，默认放到 `outputs/experiment_inputs/source_only_300_by_lang/`。
+2. 对三组输入分别跑首译，输出到 `outputs/translations/source_only_300_by_lang/first/`。
+3. 对首译输出执行 TCR，输出到 `outputs/evaluation/tcr/source_only_300_by_lang/`，并生成 `outputs/retry_inputs/source_only_300_by_lang/`。
+4. 对 retry 输入执行重新翻译，输出到 `outputs/translations_retry/source_only_300_by_lang/`。
+5. 用首译 TCR 和 retry 译文做 retry recheck，输出到 `outputs/evaluation/tcr_retry/source_only_300_by_lang/`。
+6. 用 `reference_with_ref_300_by_lang/all_samples_with_reference.jsonl` 为同一批样本补入 `ref_text`，构建 XCOMET-DA / COMET 输入。
+7. 对 first_pass 和 final 两个阶段跑 XCOMET-DA / COMET，并汇总三组结果。
 
-| 类别 | 产物 |
-|---|---|
-| 第一次翻译结果 | `data/eval/splits/*/translations/first/` |
-| retry 重新翻译结果 | `data/eval/splits/*/translations/retry/` |
-| 最终译文 | `data/eval/splits/*/translations/final/` |
-| retry 输入 | `data/eval/splits/*/retry_inputs/` |
-| TCR 报告 | `outputs/reports/tcr_final_report.md` |
-| XCOMET 报告 | `outputs/reports/xcomet_qe_da_final_report.md` |
-| TCR 指标表 | `outputs/reports/tcr_group_metrics.csv` |
-| XCOMET 指标表 | `outputs/reports/xcomet_group_metrics.csv` |
-| TCR 分语种指标表 | `outputs/reports/tcr_language_metrics.csv` |
-| XCOMET 分语种指标表 | `outputs/reports/xcomet_language_metrics.csv` |
+## 5. 关键约束
 
-这些报告覆盖三组译文、两个 split、首译和 retry 后 final 阶段。
+- 三组翻译必须使用同一批 `sample_id` 和同一顺序，避免样本差异影响结论。
+- TCR 只统计 `priority=high` 且 `status=active` 的硬术语。
+- retry 只处理首译 `tcr_status=fail` 的样本。
+- DA/COMET 只能使用有 `ref_text` 且 `use_for_da=true` 的配对样本。
+- 源文 split 不应混入 `ref_text`，避免参考译文泄漏到翻译阶段。
 
-## 6. 当前阶段结论口径
+## 6. 当前阶段状态
 
-从现有结果看，可以形成以下阶段性判断：
+当前阶段是“小适配”：
 
-- 术语约束本身显著提升 TCR：`term_baseline` 明显优于 `no_term_baseline`。
-- 分层 Prompt 相比不分层术语 Prompt 继续带来小幅 TCR 增益，并减少 retry 需求。
-- XCOMET 平均分没有稳定偏向分层 Prompt；无术语 baseline 往往更高，但术语一致性明显不足。
-- retry 能显著提高最终 TCR，但可能带来少量 QE / DA 平均分下降。
-- 因此当前最稳妥的结论是：分层 Prompt 的主要价值在硬术语一致性和 retry 需求控制，而不是自动质量分的显著提升。
-
-## 7. 后续待补充
-
-当前报告已经覆盖 TCR 与 XCOMET-QE/DA 两个核心方面。若继续扩展，建议补充：
-
-- 数字、单位、编号和格式保持率的独立统计。
-- 分 Prompt 模式的更细粒度图表。
-- 对 high-risk failed terms 的人工复核和术语库修订建议。
-- 对 retry 后自然度下降样本的人工抽检。
+- 已将脚本默认 split 指向 `source_only_300_by_lang`。
+- 已将 DA/COMET 参考 split 指向 `reference_with_ref_300_by_lang`。
+- 已更新文档说明新 split、样本数和下一轮流程。
+- 尚未生成新的 Prompt 输入、首译、TCR、retry、XCOMET 或报告。

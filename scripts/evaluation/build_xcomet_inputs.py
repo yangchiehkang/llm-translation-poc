@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build standard XCOMET-QE and XCOMET-DA/COMET input JSONL files."""
+"""Build standard XCOMET-DA/COMET input JSONL files."""
 
 from __future__ import annotations
 
@@ -16,7 +16,13 @@ sys.path.insert(0, str(PROJECT_ROOT))
 from scripts.common.io_utils import ensure_parent, pick_first, read_jsonl, resolve_path, write_jsonl
 from scripts.common.text_utils import clean_text
 
-DEFAULT_SPLITS = ["prompt_compare_200", "da_eval_strict"]
+SOURCE_ONLY_SPLIT = "source_only_300_by_lang"
+REFERENCE_WITH_REF_SPLIT = "reference_with_ref_300_by_lang"
+REFERENCE_SPLIT_BY_TRANSLATION_SPLIT = {
+    SOURCE_ONLY_SPLIT: REFERENCE_WITH_REF_SPLIT,
+}
+
+DEFAULT_SPLITS = [SOURCE_ONLY_SPLIT]
 DEFAULT_GROUPS = ["no_term_baseline", "term_baseline", "graded_prompt"]
 DEFAULT_STAGES = ["first_pass", "final"]
 DA_FIELD_NAMES = [
@@ -54,11 +60,19 @@ CONFIDENCE_LABELS = {
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Build XCOMET QE and DA input JSONL from existing translation outputs."
+        description="Build XCOMET DA/COMET input JSONL from existing translation outputs."
     )
     parser.add_argument("--splits", nargs="+", default=DEFAULT_SPLITS)
     parser.add_argument("--groups", nargs="+", default=DEFAULT_GROUPS)
     parser.add_argument("--stages", nargs="+", default=DEFAULT_STAGES)
+    parser.add_argument(
+        "--reference-split",
+        default="",
+        help=(
+            "Reference split used for ref_text lookup. Defaults to the paired "
+            "reference_with_ref_300_by_lang split when scoring source_only_300_by_lang."
+        ),
+    )
     parser.add_argument("--min-alignment-confidence", type=float, default=0.8)
     parser.add_argument("--output-dir", default="outputs/evaluation/xcomet/inputs")
     parser.add_argument("--dry-run", action="store_true", help="Print counts without writing JSONL files.")
@@ -182,24 +196,39 @@ def index_by_sample(rows: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
     return out
 
 
-def load_eval_indexes(split: str) -> tuple[dict[str, dict[str, Any]], dict[str, dict[str, Any]], dict[str, str]]:
-    all_paths = [resolve_path(f"data/eval/splits/{split}/all_eval_samples.jsonl")]
-    if split == "da_eval_strict":
-        all_paths.append(resolve_path("data/eval/aligned_da_samples.jsonl"))
+def project_rel(path: Path) -> str:
+    try:
+        return str(path.relative_to(PROJECT_ROOT))
+    except ValueError:
+        return str(path)
 
+
+def load_eval_indexes(
+    split: str,
+    *,
+    reference_split: str = "",
+) -> tuple[dict[str, dict[str, Any]], dict[str, dict[str, Any]], dict[str, str]]:
+    all_paths = [
+        resolve_path(f"data/eval/splits/{split}/all_samples_source_only.jsonl"),
+        resolve_path(f"data/eval/splits/{split}/all_samples_with_reference.jsonl"),
+    ]
     all_rows: list[dict[str, Any]] = []
     all_source = ""
     for path in all_paths:
         if path.exists():
             all_rows = read_jsonl(path)
-            all_source = str(path.relative_to(PROJECT_ROOT))
+            all_source = project_rel(path)
             break
     all_index = index_by_sample(all_rows)
 
+    resolved_reference_split = reference_split or REFERENCE_SPLIT_BY_TRANSLATION_SPLIT.get(split, split)
     da_paths = [
-        resolve_path(f"data/eval/splits/{split}/aligned_da_samples.jsonl"),
-        resolve_path("data/eval/aligned_da_samples.jsonl"),
+        resolve_path(f"data/eval/splits/{resolved_reference_split}/all_samples_with_reference.jsonl"),
     ]
+    if resolved_reference_split != split:
+        da_paths.extend([
+            resolve_path(f"data/eval/splits/{split}/all_samples_with_reference.jsonl"),
+        ])
     da_rows: list[dict[str, Any]] = []
     da_source = ""
     for path in da_paths:
@@ -207,11 +236,21 @@ def load_eval_indexes(split: str) -> tuple[dict[str, dict[str, Any]], dict[str, 
             rows = read_jsonl(path)
             if all_index:
                 rows = [row for row in rows if clean_text(row.get("sample_id")) in all_index]
+            da_source = project_rel(path)
+            for row in rows:
+                row.setdefault("_da_source_path", da_source)
             da_rows = rows
-            da_source = str(path.relative_to(PROJECT_ROOT))
             break
 
-    return all_index, index_by_sample(da_rows), {"all_eval": all_source, "aligned_da": da_source}
+    return (
+        all_index,
+        index_by_sample(da_rows),
+        {
+            "source_file": all_source,
+            "reference_file": da_source,
+            "reference_split": resolved_reference_split,
+        },
+    )
 
 
 def copy_da_fields(target: dict[str, Any], source: dict[str, Any]) -> None:
@@ -394,13 +433,14 @@ def build_da_record(
 
     ref_source = clean_text(pick_first(meta, ["ref_source", "reference_source"]))
     if not ref_source:
-        ref_source = "data/eval/aligned_da_samples.jsonl"
+        ref_source = clean_text(meta.get("_da_source_path")) or (
+            f"data/eval/splits/{REFERENCE_WITH_REF_SPLIT}/all_samples_with_reference.jsonl"
+        )
 
     record = dict(common)
     record.update(
         {
             "ref_text": clean_text(meta.get("ref_text")),
-            "use_for_qe": False,
             "use_for_da": True,
             "alignment_confidence": meta.get("alignment_confidence"),
             "alignment_confidence_score": confidence_score(meta.get("alignment_confidence")),
@@ -428,13 +468,13 @@ def main() -> None:
     output_dir = resolve_path(args.output_dir)
     errors: list[str] = []
 
-    qe_outputs: dict[str, list[dict[str, Any]]] = {split: [] for split in args.splits}
     da_outputs: dict[str, list[dict[str, Any]]] = {split: [] for split in args.splits}
     stats: dict[str, Any] = {
         "params": {
             "splits": args.splits,
             "groups": args.groups,
             "stages": stages,
+            "reference_split": args.reference_split,
             "min_alignment_confidence": args.min_alignment_confidence,
             "output_dir": args.output_dir,
             "dry_run": args.dry_run,
@@ -444,12 +484,11 @@ def main() -> None:
     }
 
     for split in args.splits:
-        all_index, da_index, data_sources = load_eval_indexes(split)
+        all_index, da_index, data_sources = load_eval_indexes(split, reference_split=args.reference_split)
         split_stats: dict[str, Any] = {
             "data_sources": data_sources,
-            "all_eval_samples": len(all_index),
-            "aligned_da_samples": len(da_index),
-            "qe_records": 0,
+            "source_samples": len(all_index),
+            "reference_samples": len(da_index),
             "da_records": 0,
             "groups": {},
         }
@@ -461,7 +500,6 @@ def main() -> None:
                 group_stats: dict[str, Any] = {
                     "input_source": input_source,
                     "input_rows": len(rows),
-                    "qe_records": 0,
                     "da_records": 0,
                     "skipped_required": {},
                     "da_filtered": {},
@@ -482,17 +520,6 @@ def main() -> None:
                         required_skips[reason] += 1
                         continue
 
-                    qe_record = dict(common)
-                    qe_record.update(
-                        {
-                            "ref_text": None,
-                            "use_for_qe": True,
-                            "use_for_da": False,
-                        }
-                    )
-                    qe_outputs[split].append(qe_record)
-                    group_stats["qe_records"] += 1
-
                     da_record, da_reason = build_da_record(
                         common,
                         row,
@@ -508,7 +535,6 @@ def main() -> None:
 
                 group_stats["skipped_required"] = dict(sorted(required_skips.items()))
                 group_stats["da_filtered"] = dict(sorted(da_filtered.items()))
-                split_stats["qe_records"] += group_stats["qe_records"]
                 split_stats["da_records"] += group_stats["da_records"]
                 split_stats["groups"][key] = group_stats
 
@@ -519,8 +545,6 @@ def main() -> None:
 
     stats["outputs"] = {
         split: {
-            "qe": rel_output(output_dir / f"qe_{split}.jsonl"),
-            "qe_records": len(qe_outputs[split]),
             "da": rel_output(output_dir / f"da_{split}.jsonl"),
             "da_records": len(da_outputs[split]),
         }
@@ -537,7 +561,6 @@ def main() -> None:
 
     output_dir.mkdir(parents=True, exist_ok=True)
     for split in args.splits:
-        write_jsonl(output_dir / f"qe_{split}.jsonl", qe_outputs[split])
         write_jsonl(output_dir / f"da_{split}.jsonl", da_outputs[split])
 
     summary_path = ensure_parent(output_dir / "build_xcomet_inputs_summary.json")

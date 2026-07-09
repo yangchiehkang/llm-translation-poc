@@ -16,7 +16,7 @@ sys.path.insert(0, str(PROJECT_ROOT))
 from scripts.common.io_utils import read_jsonl, resolve_path
 from scripts.common.text_utils import utc_now
 
-SPLITS = ("prompt_compare_200", "da_eval_strict")
+SPLITS = ("source_only_300_by_lang",)
 GROUPS = ("no_term_baseline", "term_baseline", "graded_prompt")
 OUTPUT_FIELDS = [
     "sample_id",

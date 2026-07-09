@@ -12,6 +12,9 @@ model:
 paths:
   raw_dir: data/raw
   eval_dir: data/eval
+  active_source_split: data/eval/splits/source_only_300_by_lang
+  active_reference_split: data/eval/splits/reference_with_ref_300_by_lang
+  experiment_input_dir: outputs/experiment_inputs/source_only_300_by_lang
   aligned_eval_dir: data/eval_aligned
   mt_output_dir: data/mt/qwen-max-term
   report_dir: outputs/report
@@ -65,7 +68,7 @@ prompt_experiment:
     - strict_term
     - natural_legal
     - retry_repair
-  default_comparison_split: prompt_compare_200
+  default_comparison_split: source_only_300_by_lang
   termbase_version: termbase_v1
   output_dir_name: experiment_inputs
 

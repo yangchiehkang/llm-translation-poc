@@ -9,20 +9,20 @@
 | `common/` | JSONL/CSV 读写、语言映射、术语匹配、Prompt 构造、DashScope 调用等共用逻辑。 | 本地和服务器共用 |
 | `termbase/` | 术语召回、术语命中标注、Prompt 模式预路由。 | 本地 |
 | `translation/` | 首译、retry 翻译、API/本地模型翻译入口。 | API/本地模型翻译在服务器；输入池整理在本地 |
-| `evaluation/` | TCR、DA 输入准备、XCOMET 输入构建、XCOMET-QE/DA 评分和汇总。 | TCR/输入准备/汇总在本地；XCOMET 评分在服务器 |
-| `reporting/` | 合并 TCR、QE、DA、重试状态等指标，生成统一分析表。 | 本地 |
+| `evaluation/` | TCR、DA 输入准备、XCOMET-DA/COMET 输入构建、评分和汇总。 | TCR/输入准备/汇总在本地；XCOMET 评分在服务器 |
+| `reporting/` | 合并 TCR、DA、重试状态等指标，生成统一分析表。 | 本地 |
 
 ## 规范入口
 
 | 脚本 | 功能 | 运行位置 |
 |---|---|---|
 | `termbase/term_recall.py` | 对评测样本做术语召回，生成 `matched_terms`、`required_target_terms` 和 `prompt_mode`。 | 本地 |
-| `translation/run_prompt_compare_first_local_npu.py` | 使用服务器本地 Qwen 类模型跑 prompt_compare/DA 首译。 | 服务器 |
-| `translation/run_prompt_compare_first.py` | 使用 DashScope/Qwen-Max 跑 prompt_compare 首译；DashScope 重试逻辑复用 `common/dashscope_client.py`。 | 服务器 |
+| `translation/run_prompt_compare_first_local_npu.py` | 使用服务器本地 Qwen 类模型跑三组首译。 | 服务器 |
+| `translation/run_prompt_compare_first.py` | 使用 DashScope/Qwen-Max 跑三组首译；DashScope 重试逻辑复用 `common/dashscope_client.py`。 | 服务器 |
 | `translation/retry_translate_local.py` | 使用服务器本地 Transformers 模型跑 TCR retry 翻译。 | 服务器 |
 | `evaluation/tcr_check.py` | 规范 TCR 入口；支持首译 TCR、retry 输入生成和 retry 后 recheck。 | 本地 |
-| `evaluation/build_xcomet_inputs.py` | 从首译/final/retry 结果生成标准 XCOMET-QE 和 XCOMET-DA 输入。 | 本地 |
-| `evaluation/run_xcomet.py` | 规范 XCOMET-QE 和 XCOMET-DA/COMET 评分入口；支持本地 checkpoint、resume、dry-run。 | 服务器 |
+| `evaluation/build_xcomet_inputs.py` | 从首译/final/retry 结果生成标准 XCOMET-DA/COMET 输入。 | 本地 |
+| `evaluation/run_xcomet.py` | 规范 XCOMET-DA/COMET 评分入口；支持本地 checkpoint、resume、dry-run。 | 服务器 |
 | `evaluation/summarize_xcomet.py` | 汇总 XCOMET 评分 JSONL，生成 Markdown/JSON 汇总。 | 本地 |
 | `reporting/merge_metrics.py` | 合并多份指标文件，输出统一 JSONL 或 CSV。 | 本地 |
 
@@ -35,6 +35,17 @@
 | `translation/qwenmax_translate.py` | 保留为通用 Qwen-Max 翻译入口。 | 与 `run_prompt_compare_first.py` 共用 `common/dashscope_client.py`，避免重复维护 DashScope 解析/重试逻辑。 |
 | `translation/build_retry_pool.py` | 保留为通用 retry 样本池构建器。 | `evaluation/tcr_check.py` 的首译模式已能直接生成当前实验的 retry 输入。 |
 
+## 当前 split
+
+| 用途 | split / path |
+|---|---|
+| 翻译和 TCR 源文 | `data/eval/splits/source_only_300_by_lang/all_samples_source_only.jsonl` |
+| DA/COMET 参考译文 | `data/eval/splits/reference_with_ref_300_by_lang/all_samples_with_reference.jsonl` |
+| 三组 Prompt 输入 | `outputs/experiment_inputs/source_only_300_by_lang/` |
+| 首译输出 | `outputs/translations/source_only_300_by_lang/first/` |
+| retry 输入 | `outputs/retry_inputs/source_only_300_by_lang/` |
+| retry 输出 | `outputs/translations_retry/source_only_300_by_lang/` |
+
 ## 推荐流程
 
 1. 本地运行 `termbase/term_recall.py`，准备术语召回和 Prompt 路由字段。
@@ -42,13 +53,38 @@
 3. 本地运行 `evaluation/tcr_check.py --mode first_pass`，执行 TCR 并生成 retry 输入。
 4. 服务器运行 `translation/retry_translate_local.py`，生成 retry 译文。
 5. 本地运行 `evaluation/tcr_check.py --mode retry_recheck`，验证 retry 后 TCR 恢复情况。
-6. 本地运行 `evaluation/build_xcomet_inputs.py`，生成 QE/DA 评分输入。
-7. 服务器运行 `evaluation/run_xcomet.py`，生成 XCOMET-QE 或 XCOMET-DA/COMET 分数。
+6. 本地运行 `evaluation/build_xcomet_inputs.py`，生成 DA/COMET 评分输入。
+7. 服务器运行 `evaluation/run_xcomet.py`，生成 XCOMET-DA/COMET 分数。
 8. 本地运行 `evaluation/summarize_xcomet.py` 和 `reporting/merge_metrics.py`，汇总阶段分析表。
+
+最小命令模板如下；执行前根据服务器模型路径和输出目录确认参数，本次脚本适配没有启动这些命令：
+
+```bash
+python scripts/termbase/term_recall.py \
+  --mode build_prompt_experiment_inputs \
+  --input data/eval/splits/source_only_300_by_lang/all_samples_source_only.jsonl \
+  --output-dir outputs/experiment_inputs/source_only_300_by_lang
+
+python scripts/evaluation/tcr_check.py \
+  --mode first_pass \
+  --split-name source_only_300_by_lang \
+  --translation-dir outputs/translations/source_only_300_by_lang/first \
+  --output-dir outputs/evaluation/tcr/source_only_300_by_lang \
+  --retry-output-dir outputs/retry_inputs/source_only_300_by_lang
+
+python scripts/evaluation/tcr_check.py \
+  --mode retry_recheck \
+  --split-name source_only_300_by_lang
+
+python scripts/evaluation/build_xcomet_inputs.py \
+  --splits source_only_300_by_lang \
+  --reference-split reference_with_ref_300_by_lang \
+  --stages first_pass final
+```
 
 ## 运行边界
 
 - Qwen-Max/DashScope 翻译和本地模型翻译在服务器上运行。
-- XCOMET-QE 和 XCOMET-DA/COMET 评分在服务器上运行。
+- XCOMET-DA/COMET 评分在服务器上运行。
 - 术语召回、TCR、重试池、DA/XCOMET 输入准备和指标合并都在本地运行。
 - 不要把 API Key、服务器模型路径或临时输出写死到脚本里；使用环境变量和命令行参数传入。

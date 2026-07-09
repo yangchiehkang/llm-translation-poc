@@ -21,7 +21,7 @@ from scripts.common.termbase import split_aliases
 from scripts.common.text_utils import utc_now as _utc_now
 
 GROUPS = ["no_term_baseline", "term_baseline", "graded_prompt"]
-SPLITS = ["prompt_compare_200", "da_eval_strict"]
+SPLITS = ["source_only_300_by_lang"]
 INPUT_SUFFIX = "_first_translations.jsonl"
 OUTPUT_SUFFIX = "_tcr.jsonl"
 RETRY_TRANSLATION_SUFFIX = "_retry_translations.jsonl"
@@ -455,7 +455,6 @@ def build_retry_rows(tcr_rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
             "retry_prompt_text": _retry_prompt(row),
             "retry_reason": "tcr_fail",
             "translation_stage": "retry_tcr",
-            "qe_delta_after_retry": "not_run",
             "da_delta_after_retry": "not_run",
         }
         for field in DA_PASSTHROUGH_FIELDS:
@@ -506,7 +505,6 @@ def _summarize_group(group: str, rows: list[dict[str, Any]]) -> dict[str, Any]:
         "retry_fix_rate": "not_run",
         "tcr_before_retry": avg_tcr,
         "tcr_after_retry": "not_run",
-        "qe_delta_after_retry": "not_run",
         "da_delta_after_retry": "not_run",
     }
 
@@ -609,8 +607,8 @@ def write_summary(
     lines.extend([
         "",
         "## Retry Planning",
-        "| group | retry_input | retry_needed_count | retry_rate | retry_success_count | retry_fix_rate | tcr_before_retry | tcr_after_retry | qe_delta_after_retry | da_delta_after_retry |",
-        "|---|---|---:|---:|---|---|---:|---|---|---|",
+        "| group | retry_input | retry_needed_count | retry_rate | retry_success_count | retry_fix_rate | tcr_before_retry | tcr_after_retry | da_delta_after_retry |",
+        "|---|---|---:|---:|---|---|---:|---|---|",
     ])
     for group in GROUPS:
         summary = summaries[group]
@@ -618,7 +616,7 @@ def write_summary(
         lines.append(
             f"| {group} | `{retry_input}` | {summary['retry_needed_count']} | {_fmt_pct(summary['retry_rate'])} | "
             f"{summary['retry_success_count']} | {summary['retry_fix_rate']} | {_fmt_num(summary['tcr_before_retry'])} | "
-            f"{summary['tcr_after_retry']} | {summary['qe_delta_after_retry']} | {summary['da_delta_after_retry']} |"
+            f"{summary['tcr_after_retry']} | {summary['da_delta_after_retry']} |"
         )
 
     lines.extend([
@@ -628,7 +626,7 @@ def write_summary(
         "- tcr_status 只使用 pass / fail / no_terms。",
         "- no_terms 样本的 tcr_sample 为 null；pass/fail 样本为 0 到 100。",
         "- retry_inputs 只包含 tcr_status=fail 的样本。",
-        "- 当前未执行 retry 翻译、QE、DA 或 XCOMET，也未调用 API。",
+        "- 当前未执行 retry 翻译、DA/COMET，也未调用 API。",
     ])
     (output_dir / "tcr_summary.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
 
@@ -638,7 +636,6 @@ def write_summary(
         "output_dir": str(output_dir),
         "retry_output_dir": str(retry_output_dir),
         "retry_translation_executed": False,
-        "qe_executed": False,
         "da_executed": False,
         "xcomet_executed": False,
         "api_called": False,
@@ -831,7 +828,7 @@ def write_retry_summary(
         "- recovered = tcr_status_before_retry == fail 且 tcr_status_after_retry == pass。",
         "- still_fail = tcr_status_before_retry == fail 且 tcr_status_after_retry == fail。",
         "- first-pass 指标读取自 Step 6 TCR JSONL，不手工硬编码。",
-        "- 本步骤未执行 retry 翻译、QE、DA、XCOMET，也未调用外部 API。",
+        "- 本步骤未执行 retry 翻译、DA/COMET，也未调用外部 API。",
         "",
         f"Retry translation dir: `{retry_translation_dir}`",
         f"First-pass TCR dir: `{first_tcr_dir}`",
@@ -894,7 +891,7 @@ def write_retry_summary_all(root_output_dir: Path, summaries_by_split: dict[str,
         "## Scope",
         "- 本汇总仅覆盖 Step 7 retry translation outputs。",
         "- first-pass 指标读取自 Step 6 TCR JSONL。",
-        "- 本步骤未执行 retry 翻译、QE、DA、XCOMET，也未调用外部 API。",
+        "- 本步骤未执行 retry 翻译、DA/COMET，也未调用外部 API。",
     ]
     root_output_dir.mkdir(parents=True, exist_ok=True)
     (root_output_dir / "tcr_retry_summary_all.md").write_text("\n".join(lines) + "\n", encoding="utf-8")

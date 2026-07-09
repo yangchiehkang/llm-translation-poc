@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Summarize XCOMET-QE and XCOMET-DA/COMET score JSONL files."""
+"""Summarize XCOMET-DA/COMET score JSONL files."""
 
 from __future__ import annotations
 
@@ -25,7 +25,6 @@ def parse_args() -> argparse.Namespace:
         "--inputs",
         nargs="*",
         default=[
-            "outputs/evaluation/xcomet/qe/*.jsonl",
             "outputs/evaluation/xcomet/da/*.jsonl",
         ],
         help="Input JSONL files or glob patterns.",
