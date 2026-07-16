@@ -1,0 +1,83 @@
+{
+  "params": {
+    "splits": [
+      "source_only_300_by_lang"
+    ],
+    "groups": [
+      "no_term_baseline",
+      "term_baseline",
+      "graded_prompt"
+    ],
+    "stages": [
+      "first_pass",
+      "final"
+    ],
+    "reference_split": "reference_with_ref_300_by_lang",
+    "min_alignment_confidence": 0.8,
+    "output_dir": "outputs/evaluation/xcomet/inputs",
+    "dry_run": false,
+    "strict": true
+  },
+  "splits": {
+    "source_only_300_by_lang": {
+      "data_sources": {
+        "source_file": "data/eval/splits/source_only_300_by_lang/all_samples_source_only.jsonl",
+        "reference_file": "data/eval/splits/reference_with_ref_300_by_lang/all_samples_with_reference.jsonl",
+        "reference_split": "reference_with_ref_300_by_lang"
+      },
+      "source_samples": 1648,
+      "reference_samples": 1648,
+      "da_records": 4086,
+      "groups": {
+        "first_pass/no_term_baseline": {
+          "input_source": "outputs/translations/source_only_300_by_lang/first/no_term_baseline_first_translations.jsonl",
+          "input_rows": 681,
+          "da_records": 681,
+          "skipped_required": {},
+          "da_filtered": {}
+        },
+        "first_pass/term_baseline": {
+          "input_source": "outputs/translations/source_only_300_by_lang/first/term_baseline_first_translations.jsonl",
+          "input_rows": 681,
+          "da_records": 681,
+          "skipped_required": {},
+          "da_filtered": {}
+        },
+        "first_pass/graded_prompt": {
+          "input_source": "outputs/translations/source_only_300_by_lang/first/graded_prompt_first_translations.jsonl",
+          "input_rows": 681,
+          "da_records": 681,
+          "skipped_required": {},
+          "da_filtered": {}
+        },
+        "final/no_term_baseline": {
+          "input_source": "derived_from_first_pass_plus_retry",
+          "input_rows": 681,
+          "da_records": 681,
+          "skipped_required": {},
+          "da_filtered": {}
+        },
+        "final/term_baseline": {
+          "input_source": "derived_from_first_pass_plus_retry",
+          "input_rows": 681,
+          "da_records": 681,
+          "skipped_required": {},
+          "da_filtered": {}
+        },
+        "final/graded_prompt": {
+          "input_source": "derived_from_first_pass_plus_retry",
+          "input_rows": 681,
+          "da_records": 681,
+          "skipped_required": {},
+          "da_filtered": {}
+        }
+      }
+    }
+  },
+  "outputs": {
+    "source_only_300_by_lang": {
+      "da": "outputs/evaluation/xcomet/inputs/da_source_only_300_by_lang.jsonl",
+      "da_records": 4086
+    }
+  }
+}
