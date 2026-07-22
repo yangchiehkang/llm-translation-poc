@@ -1,0 +1,23 @@
+# systemd --user 单元（无需 root）。安装到 ~/.config/systemd/user/translation-api.service
+# 启用：systemctl --user daemon-reload && systemctl --user enable --now translation-api
+# 开机/登出后仍常驻需：loginctl enable-linger $USER （可能需管理员）
+[Unit]
+Description=GangZhongShen Regulation Translation API (wrapper over existing translation code)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=PROJECT_ROOT
+# 密钥/配置全部走 EnvironmentFile，不从 .bashrc 取
+EnvironmentFile=PROJECT_ROOT/.env
+Environment=PYTHONPATH=PROJECT_ROOT
+ExecStart=/data/SERVICE_USER/translation-api/venv/bin/python -m uvicorn api.main:app --host 0.0.0.0 --port 8188 --workers 1 --log-level info
+Restart=always
+RestartSec=3
+# 日志同时进 journald 与文件（文件路径由 LOG_DIR 决定）
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target

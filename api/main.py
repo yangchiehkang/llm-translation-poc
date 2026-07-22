@@ -1,0 +1,353 @@
+# FastAPI 应用：只做包装，直接 import 现有翻译/术语函数。
+# 统一 {code,msg,data}，HTTP 一律 200；全局异常处理器兜住 FastAPI 默认 422。
+
+from __future__ import annotations
+
+import asyncio
+import base64
+import json
+import logging
+import sys
+import time
+import uuid
+from pathlib import Path
+from typing import Any
+
+# scripts.common 依赖项目根在 sys.path 上（与 scripts/translation/qwenmax_translate.py 同款处理）。
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
+
+from fastapi import FastAPI, Request
+from fastapi.concurrency import run_in_threadpool
+from fastapi.exceptions import RequestValidationError
+from starlette.exceptions import HTTPException as StarletteHTTPException
+
+from api.config import CONFIG
+# 在任何模型调用之前，先按需装上 IPv4-first 修正（消除 dashscope IPv6 SYN 卡顿）。
+if CONFIG.PREFER_IPV4:
+    from api.net import install_ipv4_first
+    install_ipv4_first()
+from api.contract import (
+    ApiError, json_ok, json_result,
+    CODE_OK, CODE_NOT_FOUND, CODE_INVALID_PARAM, CODE_INTERNAL,
+)
+from api.auth import require_bearer
+from api.languages import resolve_language_type, SUPPORTED_LANGUAGE_TYPES
+from api.logging_setup import setup_logging, clip_source
+from api import terms as term_service
+from api import backends
+from api.backends.base import TranslationTruncated
+from scripts.common.io_utils import read_csv
+
+setup_logging()
+logger = logging.getLogger("api.main")
+
+app = FastAPI(title="港中深法规翻译 API 包装层", version="1.0")
+
+
+# ----------------------------------------------------------------------------
+# 全局异常处理器：任何异常都转成 {code,msg,data}，HTTP 200，禁止 {"detail":[...]} 漏出。
+# ----------------------------------------------------------------------------
+@app.exception_handler(ApiError)
+async def _handle_api_error(request: Request, exc: ApiError):
+    return json_result(exc.code, exc.msg, exc.data)
+
+
+@app.exception_handler(RequestValidationError)
+async def _handle_validation_error(request: Request, exc: RequestValidationError):
+    # 兜住 FastAPI 默认 422：把 pydantic 的 errors 压成一句人读的 msg。
+    try:
+        parts = []
+        for e in exc.errors():
+            loc = ".".join(str(x) for x in e.get("loc", []) if x != "body")
+            parts.append(f"{loc}: {e.get('msg')}" if loc else str(e.get("msg")))
+        msg = "参数校验失败：" + "; ".join(parts) if parts else "参数校验失败"
+    except Exception:
+        msg = "参数校验失败"
+    return json_result(CODE_INVALID_PARAM, msg, None)
+
+
+@app.exception_handler(StarletteHTTPException)
+async def _handle_http_exception(request: Request, exc: StarletteHTTPException):
+    code = exc.status_code if exc.status_code in {401, 403, 404, 422, 500} else CODE_INTERNAL
+    return json_result(code, str(exc.detail), None)
+
+
+@app.exception_handler(Exception)
+async def _handle_unexpected(request: Request, exc: Exception):
+    logger.exception("unhandled error path=%s", request.url.path)
+    return json_result(CODE_INTERNAL, f"服务端内部错误: {exc}", None)
+
+
+# ----------------------------------------------------------------------------
+# 请求解析：同一个 law 路由要同时收 JSON 与 multipart。
+# ----------------------------------------------------------------------------
+async def _parse_law_request(request: Request) -> dict[str, Any]:
+    content_type = (request.headers.get("content-type") or "").lower()
+    fields: dict[str, Any] = {
+        "originalText": None,
+        "languageType": None,
+        "terminologyList": None,
+        "translateType": None,
+        "has_terminology_key": False,
+        "file_present": False,
+        "file_source": None,   # multipart | base64
+    }
+
+    if "multipart/form-data" in content_type:
+        form = await request.form()
+        fields["originalText"] = form.get("originalText")
+        fields["languageType"] = form.get("languageType")
+        fields["translateType"] = form.get("translateType")
+        if "terminologyList" in form:
+            fields["has_terminology_key"] = True
+            raw = form.get("terminologyList")
+            fields["terminologyList"] = _coerce_term_list(raw)
+        upload = form.get("originalFile")
+        if upload is not None and hasattr(upload, "filename"):
+            fields["file_present"] = True
+            fields["file_source"] = "multipart"
+        return fields
+
+    # 默认按 JSON 解析
+    raw_body = await request.body()
+    if not raw_body:
+        body: dict[str, Any] = {}
+    else:
+        try:
+            body = json.loads(raw_body)
+        except Exception:
+            raise ApiError(CODE_INVALID_PARAM, "请求体不是合法 JSON")
+    if not isinstance(body, dict):
+        raise ApiError(CODE_INVALID_PARAM, "请求体必须是 JSON 对象")
+
+    fields["originalText"] = body.get("originalText")
+    fields["languageType"] = body.get("languageType")
+    fields["translateType"] = body.get("translateType")
+    if "terminologyList" in body:
+        fields["has_terminology_key"] = True
+        fields["terminologyList"] = _coerce_term_list(body.get("terminologyList"))
+    # base64 文档入口
+    b64 = body.get("originalFileBase64") or body.get("originalFile")
+    if b64:
+        fields["file_present"] = True
+        fields["file_source"] = "base64"
+        fields["_file_b64"] = b64
+    return fields
+
+
+def _coerce_term_list(raw: Any) -> list[dict[str, str]]:
+    if raw is None:
+        return []
+    if isinstance(raw, str):
+        raw = raw.strip()
+        if not raw:
+            return []
+        try:
+            raw = json.loads(raw)
+        except Exception:
+            raise ApiError(CODE_INVALID_PARAM, "terminologyList 不是合法 JSON 数组")
+    if isinstance(raw, dict):
+        raw = [raw]
+    if not isinstance(raw, list):
+        raise ApiError(CODE_INVALID_PARAM, "terminologyList 必须是数组")
+    out: list[dict[str, str]] = []
+    for item in raw:
+        if isinstance(item, dict):
+            out.append(item)
+    return out
+
+
+# ----------------------------------------------------------------------------
+# 接口 4：GET /health（不鉴权）
+# ----------------------------------------------------------------------------
+@app.get("/health")
+async def health():
+    backend = backends.get_backend()
+    info = backend.info()
+    return json_ok({
+        "status": "ok",
+        "backend": CONFIG.BACKEND,
+        "backend_info": info,
+        "law_path": CONFIG.LAW_PATH,
+        "supported_language_types": SUPPORTED_LANGUAGE_TYPES,
+        "max_text_chars": CONFIG.MAX_TEXT_CHARS,
+    })
+
+
+# ----------------------------------------------------------------------------
+# 接口 1：标准法规翻译 POST {LAW_PATH}
+# ----------------------------------------------------------------------------
+@app.post(CONFIG.LAW_PATH)
+async def translate_law(request: Request):
+    request_id = uuid.uuid4().hex[:12]
+    started = time.time()
+    require_bearer(request)
+
+    fields = await _parse_law_request(request)
+    translate_type = fields["translateType"]
+    language_type = fields["languageType"]
+
+    # translateType 是字符串 "1"/"2"
+    if translate_type is None:
+        raise ApiError(CODE_INVALID_PARAM, "缺少 translateType（字符串 '1' 文本翻译 / '2' 文档翻译）")
+    translate_type = str(translate_type)
+    if translate_type not in {"1", "2"}:
+        raise ApiError(CODE_INVALID_PARAM, f"translateType 只支持 '1'（文本）或 '2'（文档），收到 {translate_type!r}")
+
+    # languageType 显式映射，未知取值 422 且列出枚举
+    resolved = resolve_language_type(language_type)
+    if resolved is None:
+        raise ApiError(
+            CODE_INVALID_PARAM,
+            f"不支持的 languageType={language_type!r}，支持的枚举：{SUPPORTED_LANGUAGE_TYPES}",
+        )
+    src_lang, tgt_lang = resolved
+
+    if translate_type == "2":
+        # multipart / base64 两种入口都收下并校验参数，但本期返回 404。
+        if not fields["file_present"]:
+            raise ApiError(CODE_INVALID_PARAM, "translateType='2' 需要上传 originalFile（multipart）或 originalFileBase64（JSON）")
+        _validate_doc_payload(fields)
+        _log_request(request_id, CONFIG.LAW_PATH, translate_type, language_type, 0, 0, started, "doc_not_open")
+        raise ApiError(CODE_NOT_FOUND, "文档翻译暂未开放，当前仅支持文本翻译")
+
+    # ---- translateType == "1"：文本翻译 ----
+    if not fields["has_terminology_key"]:
+        raise ApiError(CODE_INVALID_PARAM, "缺少 terminologyList 字段（允许空数组，但字段必须存在）")
+    original_text = fields["originalText"]
+    if original_text is None or str(original_text).strip() == "":
+        raise ApiError(CODE_INVALID_PARAM, "translateType='1' 时 originalText 不能为空")
+    original_text = str(original_text)
+    if len(original_text) > CONFIG.MAX_TEXT_CHARS:
+        raise ApiError(
+            CODE_INVALID_PARAM,
+            f"originalText 长度 {len(original_text)} 超过上限 {CONFIG.MAX_TEXT_CHARS} 字符（本期不做切分）",
+        )
+
+    request_terms = fields["terminologyList"] or []
+
+    # 术语合并（请求优先 + 本地补充）-> 匹配 -> 翻译 -> 译后校验。翻译放线程池，保证并发不阻塞事件循环。
+    merged = term_service.build_termbase(request_terms, src_lang, tgt_lang, request_id)
+    matched = term_service.match(original_text, merged)
+    try:
+        # 在应用层强制硬超时：实测 dashscope SDK 的 timeout 入参不生效（timeout=1 仍跑满 120s），
+        # 故用 asyncio.wait_for 兜底。超时后本请求立即返回干净的 code:500，事件循环与连接释放，
+        # 后续请求不受影响（底层线程会自行跑完并丢弃结果，不阻塞新请求）。
+        translation = await asyncio.wait_for(
+            run_in_threadpool(backends.translate, original_text, src_lang, tgt_lang, matched),
+            timeout=CONFIG.TIMEOUT,
+        )
+    except asyncio.TimeoutError:
+        logger.error("translation timeout request_id=%s timeout=%ss src_len=%s",
+                     request_id, CONFIG.TIMEOUT, len(original_text))
+        _log_request(request_id, CONFIG.LAW_PATH, translate_type, language_type,
+                     len(original_text), len(matched), started, "timeout",
+                     source_text=original_text)
+        raise ApiError(CODE_INTERNAL, f"翻译超时：超过 {CONFIG.TIMEOUT}s 未返回，请缩短文本或稍后重试")
+    except TranslationTruncated as exc:
+        # 译文被截断：绝不静默返回半截译文，明确报错。
+        logger.error("translation truncated request_id=%s %s", request_id, exc)
+        _log_request(request_id, CONFIG.LAW_PATH, translate_type, language_type,
+                     len(original_text), len(matched), started, "truncated",
+                     source_text=original_text)
+        raise ApiError(CODE_INTERNAL, f"译文超长被截断: {exc}")
+    except Exception as exc:
+        # 区分超时与其它错误：超时给明确中文 msg，并在日志打 status=timeout。
+        low = str(exc).lower()
+        is_timeout = ("timeout" in low) or ("timed out" in low) or ("超时" in str(exc))
+        status = "timeout" if is_timeout else "error"
+        logger.exception("translate %s request_id=%s", status, request_id)
+        _log_request(request_id, CONFIG.LAW_PATH, translate_type, language_type,
+                     len(original_text), len(matched), started, status,
+                     source_text=original_text)
+        if is_timeout:
+            raise ApiError(
+                CODE_INTERNAL,
+                f"翻译超时：后端在 {CONFIG.TIMEOUT}s×{CONFIG.RETRIES} 次尝试内未返回，请缩短文本或稍后重试",
+            )
+        raise ApiError(CODE_INTERNAL, f"翻译失败: {exc}")
+
+    term_service.verify_targets(translation, matched, request_id)
+    _log_request(request_id, CONFIG.LAW_PATH, translate_type, language_type,
+                 len(original_text), len(matched), started, "ok",
+                 source_text=original_text)
+    return json_ok({"translateText": translation})
+
+
+def _validate_doc_payload(fields: dict[str, Any]) -> None:
+    # 文档入口即便本期不翻译，也把参数校验做扎实，方便国创验证上传通道。
+    if fields["file_source"] == "base64":
+        b64 = fields.get("_file_b64")
+        try:
+            base64.b64decode(str(b64), validate=True)
+        except Exception:
+            raise ApiError(CODE_INVALID_PARAM, "originalFileBase64 不是合法 base64")
+
+
+# ----------------------------------------------------------------------------
+# 接口 2：术语库列表 GET {TERMINOLOGY_LIST_PATH}
+# ----------------------------------------------------------------------------
+@app.get(CONFIG.TERMINOLOGY_LIST_PATH)
+async def terminology_list(request: Request, languageType: str | None = None, limit: int | None = None):
+    require_bearer(request)
+    rows = read_csv(CONFIG.TERMBASE_PATH)
+
+    wanted = resolve_language_type(languageType) if languageType else None
+    items: list[dict[str, Any]] = []
+    for row in rows:
+        src = str(row.get("source_lang") or "").strip().lower()
+        tgt = str(row.get("target_lang") or "").strip().lower()
+        if wanted and (src, tgt) != wanted:
+            continue
+        items.append({
+            "terminology": row.get("target_term", ""),                 # 中文
+            "terminologyType": f"{src.upper()}-CN" if src else "",      # 语种类型
+            "terminologyEn": row.get("source_term", ""),               # 外文
+            "terminologyRemark": row.get("note", ""),                  # 说明
+        })
+    if limit and limit > 0:
+        items = items[:limit]
+
+    if CONFIG.TERMINOLOGY_LIST_AS_OBJECT:
+        # 配置开关：切回单对象（文档响应示例是单对象）
+        return json_ok(items[0] if items else None)
+    return json_ok(items)
+
+
+# ----------------------------------------------------------------------------
+# 接口 3：其余接口占位（企标编写 / PPT 生成 / 术语提取）
+# ----------------------------------------------------------------------------
+def _not_implemented():
+    return json_result(CODE_NOT_FOUND, "接口尚未实现", None)
+
+
+@app.api_route("/openApi/standard/write", methods=["GET", "POST"])
+async def standard_write(request: Request):
+    return _not_implemented()
+
+
+@app.api_route("/openApi/ppt/generate", methods=["GET", "POST"])
+async def ppt_generate(request: Request):
+    return _not_implemented()
+
+
+@app.api_route("/openApi/terminology/extract", methods=["GET", "POST"])
+async def terminology_extract(request: Request):
+    return _not_implemented()
+
+
+# ----------------------------------------------------------------------------
+# 结构化请求日志
+# ----------------------------------------------------------------------------
+def _log_request(request_id, interface, translate_type, language_type,
+                 src_len, term_count, started, status, source_text=None):
+    elapsed_ms = int((time.time() - started) * 1000)
+    logger.info(
+        "request_id=%s interface=%s translateType=%s languageType=%s src_len=%s "
+        "matched_terms=%s elapsed_ms=%s status=%s src=%r",
+        request_id, interface, translate_type, language_type, src_len,
+        term_count, elapsed_ms, status,
+        clip_source(source_text) if source_text is not None else "",
+    )

@@ -1,0 +1,7 @@
+# API 包装层独立 venv 依赖。翻译逻辑本身只依赖 scripts.common（纯标准库）+ dashscope。
+fastapi>=0.110,<0.116
+uvicorn[standard]>=0.27,<0.35
+python-dotenv>=1.0
+python-multipart>=0.0.9
+dashscope>=1.14
+httpx>=0.27
