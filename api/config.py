@@ -88,7 +88,7 @@ class Config:
     MAX_TOKENS: int = _env_int("MAX_TOKENS", 4096)
     # 按输入长度动态计算输出上限，夹在 [MAX_TOKENS, MODEL_MAX_OUTPUT_TOKENS] 之间。
     DYNAMIC_MAX_TOKENS: bool = _env_bool("DYNAMIC_MAX_TOKENS", True)
-    MODEL_MAX_OUTPUT_TOKENS: int = _env_int("MODEL_MAX_OUTPUT_TOKENS", 8192)  # qwen-max 输出硬上限
+    MODEL_MAX_OUTPUT_TOKENS: int = _env_int("MODEL_MAX_OUTPUT_TOKENS", 8192)  # 双后端共用的输出上限；当前后端 40018 上下文 32768
     OUTPUT_TOKENS_RATIO: float = _env_float("OUTPUT_TOKENS_RATIO", 1.2)  # 输出token/输入字符 保守系数
     TIMEOUT: int = _env_int("TIMEOUT", 120)
     RETRIES: int = _env_int("RETRIES", 3)

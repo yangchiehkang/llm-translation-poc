@@ -94,6 +94,22 @@ class DashScopeBackend(TranslationBackend):
             )
         return translation
 
+    def complete(self, messages: list[dict[str, str]], *, max_tokens: int, temperature: float) -> str:
+        # 单次 qwen-max 调用，供语种识别等非翻译用途复用。复用现有 call_dashscope_generation，不重写。
+        _preflight_key()
+        text, _retries = call_dashscope_generation(
+            messages,
+            model=CONFIG.MODEL_NAME,
+            temperature=temperature,
+            max_tokens=max_tokens,
+            timeout=CONFIG.TIMEOUT,
+            max_attempts=CONFIG.RETRIES,
+            sleep_seconds=lambda attempt: min(10, 1.5 * attempt),
+            retry_log_prefix="[RETRY]",
+            failure_message="Qwen-Max classify call failed after retries",
+        )
+        return text
+
     def info(self) -> dict[str, Any]:
         key = os.getenv("DASHSCOPE_API_KEY", "")
         return {

@@ -23,3 +23,8 @@ def get_backend():
 def translate(text: str, src_lang: str, tgt_lang: str, terms: list[dict[str, Any]]) -> str:
     # 统一入口。上层只调这个，不关心底层是云 API 还是本地 NPU。
     return get_backend().translate(text, src_lang, tgt_lang, terms)
+
+
+def classify(text: str, labels: list[str]) -> str:
+    # 语种识别等非翻译用途的统一入口：始终走当前 BACKEND，不依赖 LOCAL_NPU_* 是否配置。
+    return get_backend().classify(text, labels)

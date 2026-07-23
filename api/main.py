@@ -38,6 +38,7 @@ from api.logging_setup import setup_logging, clip_source
 from api import terms as term_service
 from api import backends
 from api.backends.base import TranslationTruncated
+from api.langdetect import detect_language, LanguageDetectionError
 from scripts.common.io_utils import read_csv
 
 setup_logging()
@@ -159,6 +160,32 @@ def _coerce_term_list(raw: Any) -> list[dict[str, str]]:
     return out
 
 
+def _detect_terms_translate(
+    original_text: str,
+    resolved: tuple[str, str] | None,
+    request_terms: list[dict[str, str]],
+    request_id: str,
+) -> tuple[str, str, str, list[dict[str, Any]], str | None]:
+    # 线程池里串起：语种识别（若 languageType 未显式传入）-> 术语合并/匹配 -> 后端翻译。
+    # 三者放同一函数，是为了让识别耗时与翻译耗时共享外层单个 asyncio.wait_for(TIMEOUT) 预算。
+    if resolved is not None:
+        src_lang, tgt_lang = resolved
+        detected_type: str | None = None
+    else:
+        detected_type = detect_language(original_text, request_id)  # 失败抛 LanguageDetectionError
+        src_lang, tgt_lang = resolve_language_type(detected_type)  # 识别结果必在枚举内
+    merged = term_service.build_termbase(request_terms, src_lang, tgt_lang, request_id)
+    matched = term_service.match(original_text, merged)
+    try:
+        translation = backends.translate(original_text, src_lang, tgt_lang, matched)
+    except Exception as exc:
+        # 术语已在此算完；把真实匹配数带到异常上，让上层错误日志不至于记成 0。
+        # （识别失败发生在匹配之前、无此属性 -> 上层取默认 0，正好是"未匹配"的真实值。）
+        exc.matched_count = len(matched)  # type: ignore[attr-defined]
+        raise
+    return translation, src_lang, tgt_lang, matched, detected_type
+
+
 # ----------------------------------------------------------------------------
 # 接口 4：GET /health（不鉴权）
 # ----------------------------------------------------------------------------
@@ -196,17 +223,18 @@ async def translate_law(request: Request):
     if translate_type not in {"1", "2"}:
         raise ApiError(CODE_INVALID_PARAM, f"translateType 只支持 '1'（文本）或 '2'（文档），收到 {translate_type!r}")
 
-    # languageType 显式映射，未知取值 422 且列出枚举
-    resolved = resolve_language_type(language_type)
-    if resolved is None:
+    # languageType 现在选填：显式传入即校验映射，未知取值 422 且列出枚举；
+    # 缺省（None/空）留到文本路径里做识别，此处不报错。
+    resolved = resolve_language_type(language_type) if language_type else None
+    if language_type and resolved is None:
         raise ApiError(
             CODE_INVALID_PARAM,
             f"不支持的 languageType={language_type!r}，支持的枚举：{SUPPORTED_LANGUAGE_TYPES}",
         )
-    src_lang, tgt_lang = resolved
 
     if translate_type == "2":
         # multipart / base64 两种入口都收下并校验参数，但本期返回 404。
+        # 文档路径无正文可识别；languageType 缺省与否都不影响本期未开放响应。
         if not fields["file_present"]:
             raise ApiError(CODE_INVALID_PARAM, "translateType='2' 需要上传 originalFile（multipart）或 originalFileBase64（JSON）")
         _validate_doc_payload(fields)
@@ -214,43 +242,49 @@ async def translate_law(request: Request):
         raise ApiError(CODE_NOT_FOUND, "文档翻译暂未开放，当前仅支持文本翻译")
 
     # ---- translateType == "1"：文本翻译 ----
-    if not fields["has_terminology_key"]:
-        raise ApiError(CODE_INVALID_PARAM, "缺少 terminologyList 字段（允许空数组，但字段必须存在）")
     original_text = fields["originalText"]
     if original_text is None or str(original_text).strip() == "":
         raise ApiError(CODE_INVALID_PARAM, "translateType='1' 时 originalText 不能为空")
     original_text = str(original_text)
+    # 顺序：先做长度上限校验，再做语种识别——不给超长文本白跑一趟识别。
     if len(original_text) > CONFIG.MAX_TEXT_CHARS:
         raise ApiError(
             CODE_INVALID_PARAM,
             f"originalText 长度 {len(original_text)} 超过上限 {CONFIG.MAX_TEXT_CHARS} 字符（本期不做切分）",
         )
 
+    # terminologyList 选填，缺省空数组（字段可不传）。
     request_terms = fields["terminologyList"] or []
 
-    # 术语合并（请求优先 + 本地补充）-> 匹配 -> 翻译 -> 译后校验。翻译放线程池，保证并发不阻塞事件循环。
-    merged = term_service.build_termbase(request_terms, src_lang, tgt_lang, request_id)
-    matched = term_service.match(original_text, merged)
+    # 识别（若需）-> 术语合并 -> 匹配 -> 翻译 全部放同一线程池调用，由单个 asyncio.wait_for(TIMEOUT)
+    # 兜底：识别耗时计入同一预算、不单独计时。实测 dashscope SDK 的 timeout 入参不生效，本层硬超时才是真兜底；
+    # 超时后本请求立即返回干净 code:500，事件循环与连接释放，底层线程自行跑完并丢弃结果，不阻塞新请求。
     try:
-        # 在应用层强制硬超时：实测 dashscope SDK 的 timeout 入参不生效（timeout=1 仍跑满 120s），
-        # 故用 asyncio.wait_for 兜底。超时后本请求立即返回干净的 code:500，事件循环与连接释放，
-        # 后续请求不受影响（底层线程会自行跑完并丢弃结果，不阻塞新请求）。
-        translation = await asyncio.wait_for(
-            run_in_threadpool(backends.translate, original_text, src_lang, tgt_lang, matched),
+        translation, src_lang, tgt_lang, matched, detected_type = await asyncio.wait_for(
+            run_in_threadpool(
+                _detect_terms_translate, original_text, resolved, request_terms, request_id,
+            ),
             timeout=CONFIG.TIMEOUT,
         )
     except asyncio.TimeoutError:
         logger.error("translation timeout request_id=%s timeout=%ss src_len=%s",
                      request_id, CONFIG.TIMEOUT, len(original_text))
         _log_request(request_id, CONFIG.LAW_PATH, translate_type, language_type,
-                     len(original_text), len(matched), started, "timeout",
+                     len(original_text), 0, started, "timeout",
                      source_text=original_text)
         raise ApiError(CODE_INTERNAL, f"翻译超时：超过 {CONFIG.TIMEOUT}s 未返回，请缩短文本或稍后重试")
+    except LanguageDetectionError as exc:
+        # 识别失败：绝不静默 fallback 到 EN-CN（会让本地术语库按错误 source_lang 静默丢术语）。
+        logger.warning("language detection failed request_id=%s %s", request_id, exc)
+        _log_request(request_id, CONFIG.LAW_PATH, translate_type, language_type,
+                     len(original_text), 0, started, "lang_undetected",
+                     source_text=original_text)
+        raise ApiError(CODE_INVALID_PARAM, str(exc))
     except TranslationTruncated as exc:
         # 译文被截断：绝不静默返回半截译文，明确报错。
         logger.error("translation truncated request_id=%s %s", request_id, exc)
         _log_request(request_id, CONFIG.LAW_PATH, translate_type, language_type,
-                     len(original_text), len(matched), started, "truncated",
+                     len(original_text), getattr(exc, "matched_count", 0), started, "truncated",
                      source_text=original_text)
         raise ApiError(CODE_INTERNAL, f"译文超长被截断: {exc}")
     except Exception as exc:
@@ -260,7 +294,7 @@ async def translate_law(request: Request):
         status = "timeout" if is_timeout else "error"
         logger.exception("translate %s request_id=%s", status, request_id)
         _log_request(request_id, CONFIG.LAW_PATH, translate_type, language_type,
-                     len(original_text), len(matched), started, status,
+                     len(original_text), getattr(exc, "matched_count", 0), started, status,
                      source_text=original_text)
         if is_timeout:
             raise ApiError(
@@ -270,10 +304,12 @@ async def translate_law(request: Request):
         raise ApiError(CODE_INTERNAL, f"翻译失败: {exc}")
 
     term_service.verify_targets(translation, matched, request_id)
-    _log_request(request_id, CONFIG.LAW_PATH, translate_type, language_type,
+    # detectedLanguageType：显式传入原样回填；识别得出则回显识别结果（枚举串）。
+    echo_type = language_type if resolved is not None else detected_type
+    _log_request(request_id, CONFIG.LAW_PATH, translate_type, echo_type,
                  len(original_text), len(matched), started, "ok",
                  source_text=original_text)
-    return json_ok({"translateText": translation})
+    return json_ok({"translateText": translation, "detectedLanguageType": echo_type})
 
 
 def _validate_doc_payload(fields: dict[str, Any]) -> None:

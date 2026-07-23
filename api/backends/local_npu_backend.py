@@ -12,15 +12,43 @@ from api.backends.base import (
 )
 
 
+def _require_config() -> None:
+    if not CONFIG.LOCAL_NPU_BASE_URL or not CONFIG.LOCAL_NPU_MODEL:
+        raise RuntimeError(
+            "local_npu 后端未配置：请设置 LOCAL_NPU_BASE_URL 和 LOCAL_NPU_MODEL "
+            "（指向本期已在跑的本地 OpenAI 兼容推理服务）"
+        )
+
+
+def chat_completion(
+    messages: list[dict[str, str]], *, max_tokens: int, temperature: float
+) -> tuple[str, str | None]:
+    # 单次 OpenAI 兼容 chat 调用。翻译与语种识别共用这一条 httpx 路径，不另写一套。
+    # 返回 (content, finish_reason)；是否按 finish_reason 处理截断由调用方决定。
+    _require_config()
+    import httpx
+
+    payload = {
+        "model": CONFIG.LOCAL_NPU_MODEL,
+        "messages": messages,
+        "temperature": temperature,
+        "max_tokens": max_tokens,
+    }
+    headers = {"Authorization": f"Bearer {CONFIG.LOCAL_NPU_API_KEY}"}
+    url = CONFIG.LOCAL_NPU_BASE_URL.rstrip("/") + "/chat/completions"
+    with httpx.Client(timeout=CONFIG.TIMEOUT) as client:
+        resp = client.post(url, json=payload, headers=headers)
+        resp.raise_for_status()
+        data = resp.json()
+    choice = data["choices"][0]
+    content = choice.get("message", {}).get("content") or ""
+    return content, choice.get("finish_reason")
+
+
 class LocalNpuBackend(TranslationBackend):
     name = "local_npu"
 
     def translate(self, text: str, src_lang: str, tgt_lang: str, terms: list[dict[str, Any]]) -> str:
-        if not CONFIG.LOCAL_NPU_BASE_URL or not CONFIG.LOCAL_NPU_MODEL:
-            raise RuntimeError(
-                "local_npu 后端未配置：请设置 LOCAL_NPU_BASE_URL 和 LOCAL_NPU_MODEL "
-                "（指向本期已在跑的本地 OpenAI 兼容推理服务）"
-            )
         messages = build_translation_messages(text, src_lang, tgt_lang, terms)
         if CONFIG.DYNAMIC_MAX_TOKENS:
             max_tokens = dynamic_max_tokens(
@@ -28,27 +56,19 @@ class LocalNpuBackend(TranslationBackend):
             )
         else:
             max_tokens = CONFIG.MAX_TOKENS
-        # 用 openai 兼容 HTTP 调用，避免在本层引入任何模型加载/显存逻辑。
-        import httpx
-
-        payload = {
-            "model": CONFIG.LOCAL_NPU_MODEL,
-            "messages": messages,
-            "temperature": CONFIG.TEMPERATURE,
-            "max_tokens": max_tokens,
-        }
-        headers = {"Authorization": f"Bearer {CONFIG.LOCAL_NPU_API_KEY}"}
-        url = CONFIG.LOCAL_NPU_BASE_URL.rstrip("/") + "/chat/completions"
-        with httpx.Client(timeout=CONFIG.TIMEOUT) as client:
-            resp = client.post(url, json=payload, headers=headers)
-            resp.raise_for_status()
-            data = resp.json()
-        choice = data["choices"][0]
-        if choice.get("finish_reason") == "length":
+        content, finish_reason = chat_completion(
+            messages, max_tokens=max_tokens, temperature=CONFIG.TEMPERATURE,
+        )
+        # 检查截断：finish_reason == 'length' 说明触顶被截，绝不返回半截译文。
+        if finish_reason == "length":
             raise TranslationTruncated(
                 f"译文超长被截断（finish_reason=length, max_tokens={max_tokens}）：请缩短输入文本"
             )
-        return choice["message"]["content"].strip()
+        return content.strip()
+
+    def complete(self, messages: list[dict[str, str]], *, max_tokens: int, temperature: float) -> str:
+        content, _finish = chat_completion(messages, max_tokens=max_tokens, temperature=temperature)
+        return content
 
     def info(self) -> dict[str, Any]:
         return {

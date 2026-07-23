@@ -35,5 +35,25 @@ class TranslationBackend:
     def translate(self, text: str, src_lang: str, tgt_lang: str, terms: list[dict[str, Any]]) -> str:
         raise NotImplementedError
 
+    def complete(self, messages: list[dict[str, str]], *, max_tokens: int, temperature: float) -> str:
+        # 单次原语生成，供翻译以外的用途（如语种识别）复用当前后端，不直连某个具体实现。
+        # 各后端各自实现；返回模型原始文本，不做截断判定。
+        raise NotImplementedError
+
+    def classify(self, text: str, labels: list[str]) -> str:
+        # 后端无关的受约束分类：只在 labels 里选一个，返回模型原始输出（调用方负责解析/校验）。
+        # 这样语种识别在 dashscope / local_npu 下都能用当前后端完成，不依赖 LOCAL_NPU_* 是否配置。
+        label_str = "、".join(labels)
+        system = (
+            f"你是一个分类器。从下列候选标签中选出最匹配输入文本的一个，"
+            f"只输出该标签本身（原样、不加任何其他字符）：{label_str}。"
+            "不要输出解释、标点或空格。"
+        )
+        messages = [
+            {"role": "system", "content": system},
+            {"role": "user", "content": text},
+        ]
+        return self.complete(messages, max_tokens=8, temperature=0.0)
+
     def info(self) -> dict[str, Any]:
         return {"backend": self.name}

@@ -118,7 +118,34 @@ LOCAL_NPU_MODEL=<本地已在跑的模型名>
 # 重启
 systemctl --user restart translation-api
 ```
-> 本期不做模型选型、显存规划、卡号分配。local_npu 仅作同签名后端占位，需本地已有 OpenAI 兼容推理服务。
+> 本期不做模型选型、显存规划、卡号分配。local_npu 指向服务器上**已在跑**的本地 OpenAI 兼容推理服务。
+
+**当前生产配置（`.env` 不进 git，此处为唯一状态记录点）：**
+
+| 变量 | 当前值 |
+|---|---|
+| `BACKEND` | `local_npu` |
+| `LOCAL_NPU_BASE_URL` | `http://<VLLM_ENDPOINT_ALT>/v1` |
+| `LOCAL_NPU_MODEL` | `Qwen3.6-35B-A3B` |
+| `TEMPERATURE` | `0` |
+
+> 40018 是服务器本地 vLLM（Qwen3.6-35B-A3B，root 拥有、绑 `<INTERNAL_HOST>`、共享服务、卡 2/3 TP 对）；`TEMPERATURE=0` 取确定性（同输入逐字一致）。该 vLLM 若被停/重绑，接口会 `code:500`，此时按下方回滚。
+
+### 回滚到 dashscope（已实测可用，2026-07-23）
+
+```bash
+# .env 里
+BACKEND=dashscope
+# 重启
+systemctl --user restart translation-api
+# 确认
+curl -s http://127.0.0.1:8188/health   # 期望 backend=dashscope、backend_info.api_key_valid=true
+```
+
+- 回滚后翻译由 **qwen-max** 执行；**语种识别也自动改由当前后端（qwen-max）完成**——识别走 `backends.classify()` 抽象层，不依赖 `LOCAL_NPU_*` 是否配置。
+- 实测：`BACKEND=dashscope` 下不带 `languageType` 的英文请求约 **2.1s** 返回 `code:0`（识别 + 翻译共两次云调用），**无 IPv6 SYN 惩罚**（`PREFER_IPV4` 生效）。
+- 前提：`.env` 里 `DASHSCOPE_API_KEY` 为**真实密钥**（`/health` 的 `api_key_valid:true`）；占位符会 `api_key_valid:false` 并 `code:500` 快速失败。
+- 回滚回 local_npu：`BACKEND` 改回 `local_npu` 再重启，`/health` 复验 `backend=local_npu`、`model=Qwen3.6-35B-A3B`。
 
 ---
 

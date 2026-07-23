@@ -62,7 +62,7 @@ def main():
     a_terms = [
         {"originalTerminology": "type approval", "translateTerminology": "整车型式批准"},
         {"originalTerminology": "approval authority", "translateTerminology": "型式批准主管部门"},
-        {"originalTerminology": "technical service", "translateTerminology": "技术检测机构"},
+        {"originalTerminology": "technical service", "translateTerminology": "技术服务机构"},
     ]
     a_payload = {
         "translateType": "1", "languageType": "EN-CN",
