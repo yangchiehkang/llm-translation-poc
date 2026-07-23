@@ -33,6 +33,54 @@ SECTION_PATTERNS = [
     re.compile(r"^\s*((?:المادة|مادة)\s*\d+[A-Za-z0-9.-]*)"),
 ]
 
+# ---- 作用域（附件/附录/部分）前缀：让 "4.1" 变成 "X8::4.1"，避免正文与附件同号塌成一个 key ----
+# 源文(en 等)与参考(zh)各自解析，但归一到同一套跨语言 canonical 记号，才能两侧对上。
+SCOPE_EN_RE = re.compile(r"^\s*(Annex|Appendix|Part|Schedule|Supplement)\s+([IVXLCDM]+|\d{1,3})\b", re.IGNORECASE)
+SCOPE_ZH_RE = re.compile(r"^\s*(附\s*录|附\s*件|部\s*分|补充件)\s*([一二三四五六七八九十百千零\d]+)")
+# canonical kind：Annex/附录/附件 -> X（同一作用域族）；Part/部分 -> T；Schedule/Supplement/补充件 -> S
+_SCOPE_KIND = {
+    "annex": "X", "appendix": "X", "附录": "X", "附件": "X",
+    "part": "T", "部分": "T", "schedule": "S", "supplement": "S", "补充件": "S",
+}
+_CN_DIGIT = {"零": 0, "一": 1, "二": 2, "三": 3, "四": 4, "五": 5, "六": 6, "七": 7, "八": 8, "九": 9}
+_ROMAN = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000}
+
+
+def _numeral_to_int(s: str) -> int | None:
+    s = (s or "").strip()
+    if s.isdigit():
+        return int(s)
+    up = s.upper()
+    if up and all(c in _ROMAN for c in up):
+        vals = [_ROMAN[c] for c in up]
+        return sum(-v if i + 1 < len(vals) and v < vals[i + 1] else v for i, v in enumerate(vals))
+    if s and all(c in _CN_DIGIT or c in "十百千" for c in s):
+        if s in _CN_DIGIT:
+            return _CN_DIGIT[s]
+        if "十" in s and "百" not in s and "千" not in s:
+            a, _, b = s.partition("十")
+            return (_CN_DIGIT.get(a, 1) if a else 1) * 10 + (_CN_DIGIT.get(b, 0) if b else 0)
+    return None
+
+
+def detect_scope(line: str, lang: str) -> str | None:
+    # 命中作用域标题行返回 canonical 记号（如 "X8"），否则 None。zh 用附录/附件模式，其它语言用 Annex 模式。
+    m = SCOPE_ZH_RE.match(line or "") if str(lang).lower().startswith("zh") else SCOPE_EN_RE.match(line or "")
+    if not m:
+        return None
+    kind = _SCOPE_KIND.get(m.group(1).replace(" ", "").lower(), _SCOPE_KIND.get(m.group(1).replace(" ", ""), "X"))
+    n = _numeral_to_int(m.group(2))
+    return f"{kind}{n}" if n is not None else None
+
+
+def scoped_key(segment: dict[str, Any]) -> str:
+    # 对齐用 key = 作用域::段号（无段号返回空串，调用方自行排除）。
+    sec = str(segment.get("section_no") or "").strip()
+    if not sec:
+        return ""
+    scope = str(segment.get("scope") or "").strip()
+    return f"{scope}::{sec}" if scope else sec
+
 
 def clean_text(text: str) -> str:
     text = (text or "").replace("\u00a0", " ")
@@ -211,6 +259,7 @@ def parse_pdf_segments(
 
     current_lines: list[str] = []
     current_page: int | None = None
+    current_scope: str = ""  # 当前作用域（附件/附录/部分）canonical 记号，如 "X8"；正文为空串
 
     def flush() -> None:
         nonlocal current_lines, current_page, order, filtered
@@ -233,6 +282,7 @@ def parse_pdf_segments(
                 "lang": lang,
                 "page": current_page,
                 "order": order,
+                "scope": current_scope,
                 "section_no": chunk_section,
                 "segment_type": chunk_type,
                 "text": chunk,
@@ -253,6 +303,9 @@ def parse_pdf_segments(
             notes.append(f"{pdf_path.name}: page {page_no} produced no usable text")
             continue
         for line in cleaned_lines:
+            scope_here = detect_scope(line, lang)
+            if scope_here:
+                current_scope = scope_here
             section_no = extract_section_no(line)
             line_type = segment_type_for(line, section_no)
             prev = current_lines[-1] if current_lines else ""
@@ -407,6 +460,7 @@ def aligned_sample(
     group: dict[str, Any],
     method: str,
     confidence: str,
+    use_for_da: bool = True,
 ) -> dict[str, Any]:
     return {
         "sample_id": sample_id_for(source["document_id"], source["language_pair"], int(source["order"])),
@@ -426,7 +480,7 @@ def aligned_sample(
         "ref_char_count": ref["char_count"],
         "alignment_method": method,
         "alignment_confidence": confidence,
-        "use_for_da": True,
+        "use_for_da": use_for_da,
     }
 
 
@@ -440,32 +494,40 @@ def align_segments(
     used_source: set[int] = set()
     used_ref: set[int] = set()
 
-    refs_by_section: dict[str, list[tuple[int, dict[str, Any]]]] = defaultdict(list)
+    # 作用域化 key（"X8::5.4.1"）建索引：正文与附件同号不再塌成一个 key。
+    refs_by_key: dict[str, list[tuple[int, dict[str, Any]]]] = defaultdict(list)
     for ridx, ref in enumerate(reference_segments):
-        if ref.get("section_no"):
-            refs_by_section[str(ref["section_no"])].append((ridx, ref))
-    source_section_counts = Counter(str(source["section_no"]) for source in source_segments if source.get("section_no"))
-    ref_section_counts = Counter(str(ref["section_no"]) for ref in reference_segments if ref.get("section_no"))
+        k = scoped_key(ref)
+        if k:
+            refs_by_key[k].append((ridx, ref))
+    source_key_counts = Counter(k for k in (scoped_key(s) for s in source_segments) if k)
+    ref_key_counts = Counter(k for k in (scoped_key(r) for r in reference_segments) if k)
     source_count = len(source_segments)
     ref_count = len(reference_segments)
     count_ratio = source_count / ref_count if ref_count else 0.0
 
     if 0.75 <= count_ratio <= 1.35:
         for sidx, source in enumerate(source_segments):
-            section_no = source.get("section_no")
-            if not section_no:
+            k = scoped_key(source)
+            if not k:
                 continue
-            if not section_ok_for_exact(section_no, source_section_counts[str(section_no)], ref_section_counts[str(section_no)]):
+            # 护栏反过来：作用域化后 key 在任一侧仍 >1 次 -> 不做 exact，标记待复核。
+            # 绝不再用 order 就近去猜（那正是 812/193 错位的执行者）。
+            if source_key_counts.get(k, 0) != 1 or ref_key_counts.get(k, 0) != 1:
+                cand = [(ridx, ref) for ridx, ref in refs_by_key.get(k, []) if ridx not in used_ref]
+                if cand:
+                    ridx, ref = cand[0]
+                    aligned.append(aligned_sample(source, ref, group, "scoped_ambiguous", "needs_review", use_for_da=False))
+                    used_source.add(sidx)
+                    used_ref.add(ridx)
                 continue
-            candidates = [(ridx, ref) for ridx, ref in refs_by_section.get(str(section_no), []) if ridx not in used_ref]
+            candidates = [(ridx, ref) for ridx, ref in refs_by_key.get(k, []) if ridx not in used_ref]
             if not candidates:
                 continue
-            ridx, ref = min(candidates, key=lambda item: abs(int(item[1]["order"]) - int(source["order"])))
-            if relative_order_gap(source, ref, source_count=len(source_segments), ref_count=len(reference_segments)) > 0.12:
-                continue
+            ridx, ref = candidates[0]  # 唯一 1:1，直接取，不做 order 猜
             if not alignment_sane(source, ref, min_chars):
                 continue
-            aligned.append(aligned_sample(source, ref, group, "exact_section", "high"))
+            aligned.append(aligned_sample(source, ref, group, "exact_section_scoped", "high"))
             used_source.add(sidx)
             used_ref.add(ridx)
 
