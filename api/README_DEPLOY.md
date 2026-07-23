@@ -128,8 +128,10 @@ systemctl --user restart translation-api
 | `LOCAL_NPU_BASE_URL` | `http://<VLLM_ENDPOINT_ALT>/v1` |
 | `LOCAL_NPU_MODEL` | `Qwen3.6-35B-A3B` |
 | `TEMPERATURE` | `0` |
+| `MAX_TEXT_CHARS` | `6000` |
 
 > 40018 是服务器本地 vLLM（Qwen3.6-35B-A3B，root 拥有、绑 `<INTERNAL_HOST>`、共享服务、卡 2/3 TP 对）；`TEMPERATURE=0` 取确定性（同输入逐字一致）。该 vLLM 若被停/重绑，接口会 `code:500`，此时按下方回滚。
+> `MAX_TEXT_CHARS=6000`（由 8000 下调）：延迟方差实测中 8000 字符 p95≈95s、距 120s 硬超时余量偏薄，共享服务负载高峰可能击穿；6000 字符实测 p95≈53s，约 2× 余量。实测 6000 字符单次约 30s。
 
 ### 回滚到 dashscope（已实测可用，2026-07-23）
 
