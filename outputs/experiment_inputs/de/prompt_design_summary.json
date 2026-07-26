@@ -1,0 +1,65 @@
+{
+  "split_name": "source_only_300_by_lang",
+  "total_samples": 300,
+  "termbase_version": "termbase_v1",
+  "termbase_path": "termbase/auto_regulation_terms_v1.csv",
+  "experiment_groups": [
+    "no_term_baseline",
+    "term_baseline",
+    "graded_prompt"
+  ],
+  "group_sample_counts": {
+    "no_term_baseline": 300,
+    "term_baseline": 300,
+    "graded_prompt": 300
+  },
+  "group_prompt_strategy": {
+    "no_term_baseline": "no_term_general",
+    "term_baseline": "term_general",
+    "graded_prompt": "graded"
+  },
+  "no_term_baseline_no_term_injection": true,
+  "term_baseline_injects_terms_without_routing": true,
+  "graded_prompt_uses_routing": true,
+  "graded_prompt_mode_distribution": {
+    "lightweight": 8,
+    "natural_legal": 84,
+    "strict_term": 30,
+    "structure": 178
+  },
+  "language_counts": {
+    "de": 300
+  },
+  "matched_high_count_distribution_by_lang": {
+    "de": {
+      "0": 195,
+      "1": 49,
+      "2": 31,
+      "3": 12,
+      "4": 8,
+      "5": 2,
+      "7": 1,
+      "8": 2
+    }
+  },
+  "required_target_terms_nonempty_samples": 105,
+  "fairness": {
+    "same_source_text": true,
+    "same_sample_ids": true,
+    "same_termbase": true,
+    "same_required_target_terms_field": true,
+    "future_model_parameter_note": "后续真实翻译应使用同一模型和同一采样参数。"
+  },
+  "retry_repair_template_defined": true,
+  "retry_samples_generated": false,
+  "translation_executed": false,
+  "tcr_executed": false,
+  "xcomet_executed": false,
+  "generated_files": {
+    "no_term_baseline": "/data/yht/llm-translation-poc-dev-yangjiekang/outputs/experiment_inputs/de/no_term_baseline.jsonl",
+    "term_baseline": "/data/yht/llm-translation-poc-dev-yangjiekang/outputs/experiment_inputs/de/term_baseline.jsonl",
+    "graded_prompt": "/data/yht/llm-translation-poc-dev-yangjiekang/outputs/experiment_inputs/de/graded_prompt.jsonl",
+    "summary_md": "/data/yht/llm-translation-poc-dev-yangjiekang/outputs/experiment_inputs/de/prompt_design_summary.md",
+    "summary_json": "/data/yht/llm-translation-poc-dev-yangjiekang/outputs/experiment_inputs/de/prompt_design_summary.json"
+  }
+}

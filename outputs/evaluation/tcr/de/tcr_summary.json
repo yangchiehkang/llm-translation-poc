@@ -1,0 +1,227 @@
+{
+  "split_name": "de",
+  "groups": {
+    "no_term_baseline": {
+      "experiment_group": "no_term_baseline",
+      "total_samples": 300,
+      "samples_with_hard_terms": 234,
+      "no_terms_count": 66,
+      "pass_count": 22,
+      "fail_count": 212,
+      "pass_rate_on_hard_terms": 9.4017,
+      "avg_tcr_on_hard_terms": 17.7523,
+      "failed_term_total": 355,
+      "top_failed_terms": [
+        {
+          "term": "Betriebserlaubnis -> 运行许可",
+          "count": 115
+        },
+        {
+          "term": "Allgemeine Betriebserlaubnis -> 一般运行许可",
+          "count": 38
+        },
+        {
+          "term": "Betriebserlaubnis für Einzelfahrzeuge -> 单车运行许可",
+          "count": 32
+        },
+        {
+          "term": "Abfall -> 废弃物",
+          "count": 22
+        },
+        {
+          "term": "Prüfung -> 试验",
+          "count": 19
+        },
+        {
+          "term": "Nachweis -> 证明文件",
+          "count": 13
+        },
+        {
+          "term": "Abfallvermeidung -> 废弃物预防",
+          "count": 8
+        },
+        {
+          "term": "Vermeidung -> 预防",
+          "count": 7
+        },
+        {
+          "term": "Entsorgungsträger -> 废弃物处理主体",
+          "count": 7
+        },
+        {
+          "term": "Verwertung -> 利用",
+          "count": 4
+        }
+      ],
+      "error_type_distribution": {
+        "alias_only": 5,
+        "missing": 269,
+        "partial": 81
+      },
+      "sample_error_type_distribution": {
+        "alias_only": 3,
+        "missing": 142,
+        "mixed": 26,
+        "none": 88,
+        "partial": 41
+      },
+      "retry_needed_count": 212,
+      "retry_rate": 70.6667,
+      "retry_success_count": "not_run",
+      "retry_fix_rate": "not_run",
+      "tcr_before_retry": 17.7523,
+      "tcr_after_retry": "not_run",
+      "da_delta_after_retry": "not_run"
+    },
+    "term_baseline": {
+      "experiment_group": "term_baseline",
+      "total_samples": 300,
+      "samples_with_hard_terms": 234,
+      "no_terms_count": 66,
+      "pass_count": 89,
+      "fail_count": 145,
+      "pass_rate_on_hard_terms": 38.0342,
+      "avg_tcr_on_hard_terms": 42.4624,
+      "failed_term_total": 249,
+      "top_failed_terms": [
+        {
+          "term": "Betriebserlaubnis -> 运行许可",
+          "count": 114
+        },
+        {
+          "term": "Allgemeine Betriebserlaubnis -> 一般运行许可",
+          "count": 37
+        },
+        {
+          "term": "Betriebserlaubnis für Einzelfahrzeuge -> 单车运行许可",
+          "count": 31
+        },
+        {
+          "term": "Prüfung -> 试验",
+          "count": 15
+        },
+        {
+          "term": "Nachweis -> 证明文件",
+          "count": 8
+        },
+        {
+          "term": "Abfall -> 废弃物",
+          "count": 8
+        },
+        {
+          "term": "Abfallvermeidung -> 废弃物预防",
+          "count": 4
+        },
+        {
+          "term": "Vermeidung -> 预防",
+          "count": 3
+        },
+        {
+          "term": "Bereifung -> 轮胎配置",
+          "count": 3
+        },
+        {
+          "term": "Vermüllung -> 乱扔垃圾",
+          "count": 2
+        }
+      ],
+      "error_type_distribution": {
+        "alias_only": 2,
+        "missing": 210,
+        "partial": 37
+      },
+      "sample_error_type_distribution": {
+        "alias_only": 1,
+        "missing": 114,
+        "mixed": 13,
+        "none": 155,
+        "partial": 17
+      },
+      "retry_needed_count": 145,
+      "retry_rate": 48.3333,
+      "retry_success_count": "not_run",
+      "retry_fix_rate": "not_run",
+      "tcr_before_retry": 42.4624,
+      "tcr_after_retry": "not_run",
+      "da_delta_after_retry": "not_run"
+    },
+    "graded_prompt": {
+      "experiment_group": "graded_prompt",
+      "total_samples": 300,
+      "samples_with_hard_terms": 234,
+      "no_terms_count": 66,
+      "pass_count": 90,
+      "fail_count": 144,
+      "pass_rate_on_hard_terms": 38.4615,
+      "avg_tcr_on_hard_terms": 43.025,
+      "failed_term_total": 247,
+      "top_failed_terms": [
+        {
+          "term": "Betriebserlaubnis -> 运行许可",
+          "count": 114
+        },
+        {
+          "term": "Allgemeine Betriebserlaubnis -> 一般运行许可",
+          "count": 37
+        },
+        {
+          "term": "Betriebserlaubnis für Einzelfahrzeuge -> 单车运行许可",
+          "count": 31
+        },
+        {
+          "term": "Prüfung -> 试验",
+          "count": 15
+        },
+        {
+          "term": "Nachweis -> 证明文件",
+          "count": 8
+        },
+        {
+          "term": "Abfall -> 废弃物",
+          "count": 7
+        },
+        {
+          "term": "Abfallvermeidung -> 废弃物预防",
+          "count": 3
+        },
+        {
+          "term": "Bereifung -> 轮胎配置",
+          "count": 3
+        },
+        {
+          "term": "Entsorgungsträger -> 废弃物处理主体",
+          "count": 2
+        },
+        {
+          "term": "Kreislaufwirtschaftsgesetz -> 循环经济法",
+          "count": 2
+        }
+      ],
+      "error_type_distribution": {
+        "alias_only": 6,
+        "missing": 200,
+        "partial": 41
+      },
+      "sample_error_type_distribution": {
+        "alias_only": 5,
+        "missing": 108,
+        "mixed": 12,
+        "none": 156,
+        "partial": 19
+      },
+      "retry_needed_count": 144,
+      "retry_rate": 48.0,
+      "retry_success_count": "not_run",
+      "retry_fix_rate": "not_run",
+      "tcr_before_retry": 43.025,
+      "tcr_after_retry": "not_run",
+      "da_delta_after_retry": "not_run"
+    }
+  },
+  "output_dir": "/data/yht/llm-translation-poc-dev-yangjiekang/outputs/evaluation/tcr/de",
+  "retry_output_dir": "/data/yht/llm-translation-poc-dev-yangjiekang/outputs/retry_inputs/de",
+  "retry_translation_executed": false,
+  "da_executed": false,
+  "xcomet_executed": false,
+  "api_called": false
+}

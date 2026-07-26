@@ -1,0 +1,191 @@
+{
+  "split_name": "source_only_300_by_lang",
+  "groups": {
+    "no_term_baseline": {
+      "experiment_group": "no_term_baseline",
+      "total_samples": 67,
+      "samples_with_hard_terms": 37,
+      "no_terms_count": 30,
+      "pass_count": 4,
+      "fail_count": 33,
+      "pass_rate_on_hard_terms": 10.8108,
+      "avg_tcr_on_hard_terms": 25.2703,
+      "failed_term_total": 57,
+      "top_failed_terms": [
+        {
+          "term": "elementos de seguridad -> 安全配置",
+          "count": 12
+        },
+        {
+          "term": "elementos de seguridad optativos -> 选装安全配置",
+          "count": 6
+        },
+        {
+          "term": "rótulo de elementos de seguridad optativos -> 选装安全配置标签",
+          "count": 3
+        },
+        {
+          "term": "accionamiento -> 作动",
+          "count": 2
+        },
+        {
+          "term": "protección contra la utilización no autorizada -> 防止未经授权使用的保护",
+          "count": 2
+        },
+        {
+          "term": "dispositivo de protección -> 保护装置",
+          "count": 2
+        },
+        {
+          "term": "Reglamento No 13-H -> 第13-H号法规",
+          "count": 2
+        },
+        {
+          "term": "equipamiento certificado por el fabricante -> 制造商认证装备",
+          "count": 1
+        },
+        {
+          "term": "equipamiento original -> 原厂装备",
+          "count": 1
+        },
+        {
+          "term": "bloqueado -> 锁止",
+          "count": 1
+        }
+      ],
+      "error_type_distribution": {
+        "missing": 12,
+        "partial": 45
+      },
+      "sample_error_type_distribution": {
+        "missing": 6,
+        "mixed": 4,
+        "none": 34,
+        "partial": 23
+      },
+      "retry_needed_count": 33,
+      "retry_rate": 49.2537,
+      "retry_success_count": "not_run",
+      "retry_fix_rate": "not_run",
+      "tcr_before_retry": 25.2703,
+      "tcr_after_retry": "not_run",
+      "da_delta_after_retry": "not_run"
+    },
+    "term_baseline": {
+      "experiment_group": "term_baseline",
+      "total_samples": 67,
+      "samples_with_hard_terms": 37,
+      "no_terms_count": 30,
+      "pass_count": 29,
+      "fail_count": 8,
+      "pass_rate_on_hard_terms": 78.3784,
+      "avg_tcr_on_hard_terms": 88.1982,
+      "failed_term_total": 9,
+      "top_failed_terms": [
+        {
+          "term": "utilización no autorizada -> 未经授权使用",
+          "count": 3
+        },
+        {
+          "term": "equipamiento certificado por el fabricante -> 制造商认证装备",
+          "count": 1
+        },
+        {
+          "term": "neutralizarse -> 失效",
+          "count": 1
+        },
+        {
+          "term": "dispositivo contra la utilización no autorizada -> 防未经授权使用装置",
+          "count": 1
+        },
+        {
+          "term": "componentes del vehículo -> 车辆部件",
+          "count": 1
+        },
+        {
+          "term": "elementos de seguridad -> 安全配置",
+          "count": 1
+        },
+        {
+          "term": "punto ciego -> 盲区",
+          "count": 1
+        }
+      ],
+      "error_type_distribution": {
+        "missing": 3,
+        "partial": 6
+      },
+      "sample_error_type_distribution": {
+        "missing": 3,
+        "none": 59,
+        "partial": 5
+      },
+      "retry_needed_count": 8,
+      "retry_rate": 11.9403,
+      "retry_success_count": "not_run",
+      "retry_fix_rate": "not_run",
+      "tcr_before_retry": 88.1982,
+      "tcr_after_retry": "not_run",
+      "da_delta_after_retry": "not_run"
+    },
+    "graded_prompt": {
+      "experiment_group": "graded_prompt",
+      "total_samples": 67,
+      "samples_with_hard_terms": 37,
+      "no_terms_count": 30,
+      "pass_count": 30,
+      "fail_count": 7,
+      "pass_rate_on_hard_terms": 81.0811,
+      "avg_tcr_on_hard_terms": 90.4505,
+      "failed_term_total": 8,
+      "top_failed_terms": [
+        {
+          "term": "utilización no autorizada -> 未经授权使用",
+          "count": 2
+        },
+        {
+          "term": "elementos de seguridad -> 安全配置",
+          "count": 2
+        },
+        {
+          "term": "equipamiento certificado por el fabricante -> 制造商认证装备",
+          "count": 1
+        },
+        {
+          "term": "dispositivo contra la utilización no autorizada -> 防未经授权使用装置",
+          "count": 1
+        },
+        {
+          "term": "punto ciego -> 盲区",
+          "count": 1
+        },
+        {
+          "term": "elementos de seguridad optativos -> 选装安全配置",
+          "count": 1
+        }
+      ],
+      "error_type_distribution": {
+        "missing": 2,
+        "partial": 6
+      },
+      "sample_error_type_distribution": {
+        "missing": 2,
+        "none": 60,
+        "partial": 5
+      },
+      "retry_needed_count": 7,
+      "retry_rate": 10.4478,
+      "retry_success_count": "not_run",
+      "retry_fix_rate": "not_run",
+      "tcr_before_retry": 90.4505,
+      "tcr_after_retry": "not_run",
+      "da_delta_after_retry": "not_run"
+    }
+  },
+  "output_dir": "/data/yht/llm-translation-poc-dev-yangjiekang/outputs/evaluation/tcr/source_only_300_by_lang",
+  "retry_output_dir": "/data/yht/llm-translation-poc-dev-yangjiekang/outputs/retry_inputs/source_only_300_by_lang",
+  "retry_translation_executed": false,
+  "da_executed": false,
+  "xcomet_executed": false,
+  "api_called": false
+}

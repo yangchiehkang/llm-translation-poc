@@ -1,0 +1,223 @@
+{
+  "split_name": "source_only_300_by_lang",
+  "groups": {
+    "no_term_baseline": {
+      "experiment_group": "no_term_baseline",
+      "total_samples": 300,
+      "samples_with_hard_terms": 260,
+      "no_terms_count": 40,
+      "pass_count": 39,
+      "fail_count": 221,
+      "pass_rate_on_hard_terms": 15.0,
+      "avg_tcr_on_hard_terms": 38.4801,
+      "failed_term_total": 504,
+      "top_failed_terms": [
+        {
+          "term": "déchet -> 废弃物",
+          "count": 52
+        },
+        {
+          "term": "responsabilité élargie du producteur -> 生产者责任延伸",
+          "count": 43
+        },
+        {
+          "term": "prévention et gestion des déchets -> 废弃物预防和管理",
+          "count": 36
+        },
+        {
+          "term": "gestion des déchets -> 废弃物管理",
+          "count": 36
+        },
+        {
+          "term": "producteur -> 生产者",
+          "count": 31
+        },
+        {
+          "term": "économie sociale et solidaire -> 社会和团结经济",
+          "count": 21
+        },
+        {
+          "term": "opérations de contrôle -> 检验操作",
+          "count": 18
+        },
+        {
+          "term": "recyclage -> 回收利用",
+          "count": 18
+        },
+        {
+          "term": "contribution -> 缴款",
+          "count": 16
+        },
+        {
+          "term": "chronotachygraphe -> 行驶记录仪",
+          "count": 15
+        }
+      ],
+      "error_type_distribution": {
+        "missing": 257,
+        "partial": 247
+      },
+      "sample_error_type_distribution": {
+        "missing": 72,
+        "mixed": 90,
+        "none": 79,
+        "partial": 59
+      },
+      "retry_needed_count": 221,
+      "retry_rate": 73.6667,
+      "retry_success_count": "not_run",
+      "retry_fix_rate": "not_run",
+      "tcr_before_retry": 38.4801,
+      "tcr_after_retry": "not_run",
+      "da_delta_after_retry": "not_run"
+    },
+    "term_baseline": {
+      "experiment_group": "term_baseline",
+      "total_samples": 300,
+      "samples_with_hard_terms": 260,
+      "no_terms_count": 40,
+      "pass_count": 145,
+      "fail_count": 115,
+      "pass_rate_on_hard_terms": 55.7692,
+      "avg_tcr_on_hard_terms": 76.9929,
+      "failed_term_total": 171,
+      "top_failed_terms": [
+        {
+          "term": "prévention et gestion des déchets -> 废弃物预防和管理",
+          "count": 25
+        },
+        {
+          "term": "responsabilité élargie du producteur -> 生产者责任延伸",
+          "count": 24
+        },
+        {
+          "term": "gestion des déchets -> 废弃物管理",
+          "count": 22
+        },
+        {
+          "term": "économie sociale et solidaire -> 社会和团结经济",
+          "count": 18
+        },
+        {
+          "term": "déchet -> 废弃物",
+          "count": 12
+        },
+        {
+          "term": "opérations de contrôle -> 检验操作",
+          "count": 11
+        },
+        {
+          "term": "recyclage -> 回收利用",
+          "count": 8
+        },
+        {
+          "term": "distance parcourue -> 行驶距离",
+          "count": 4
+        },
+        {
+          "term": "chronotachygraphe -> 行驶记录仪",
+          "count": 3
+        },
+        {
+          "term": "émissions de gaz à effet de serre -> 温室气体排放",
+          "count": 3
+        }
+      ],
+      "error_type_distribution": {
+        "missing": 88,
+        "partial": 83
+      },
+      "sample_error_type_distribution": {
+        "missing": 53,
+        "mixed": 14,
+        "none": 185,
+        "partial": 48
+      },
+      "retry_needed_count": 115,
+      "retry_rate": 38.3333,
+      "retry_success_count": "not_run",
+      "retry_fix_rate": "not_run",
+      "tcr_before_retry": 76.9929,
+      "tcr_after_retry": "not_run",
+      "da_delta_after_retry": "not_run"
+    },
+    "graded_prompt": {
+      "experiment_group": "graded_prompt",
+      "total_samples": 300,
+      "samples_with_hard_terms": 260,
+      "no_terms_count": 40,
+      "pass_count": 157,
+      "fail_count": 103,
+      "pass_rate_on_hard_terms": 60.3846,
+      "avg_tcr_on_hard_terms": 79.4237,
+      "failed_term_total": 149,
+      "top_failed_terms": [
+        {
+          "term": "prévention et gestion des déchets -> 废弃物预防和管理",
+          "count": 24
+        },
+        {
+          "term": "responsabilité élargie du producteur -> 生产者责任延伸",
+          "count": 20
+        },
+        {
+          "term": "gestion des déchets -> 废弃物管理",
+          "count": 19
+        },
+        {
+          "term": "économie sociale et solidaire -> 社会和团结经济",
+          "count": 18
+        },
+        {
+          "term": "opérations de contrôle -> 检验操作",
+          "count": 11
+        },
+        {
+          "term": "déchet -> 废弃物",
+          "count": 7
+        },
+        {
+          "term": "recyclage -> 回收利用",
+          "count": 5
+        },
+        {
+          "term": "chronotachygraphe -> 行驶记录仪",
+          "count": 4
+        },
+        {
+          "term": "émissions de gaz à effet de serre -> 温室气体排放",
+          "count": 3
+        },
+        {
+          "term": "gaz à effet de serre -> 温室气体",
+          "count": 3
+        }
+      ],
+      "error_type_distribution": {
+        "alias_only": 1,
+        "missing": 81,
+        "partial": 67
+      },
+      "sample_error_type_distribution": {
+        "alias_only": 1,
+        "missing": 49,
+        "mixed": 9,
+        "none": 197,
+        "partial": 44
+      },
+      "retry_needed_count": 103,
+      "retry_rate": 34.3333,
+      "retry_success_count": "not_run",
+      "retry_fix_rate": "not_run",
+      "tcr_before_retry": 79.4237,
+      "tcr_after_retry": "not_run",
+      "da_delta_after_retry": "not_run"
+    }
+  },
+  "output_dir": "/data/yht/llm-translation-poc-dev-yangjiekang/outputs/evaluation/tcr/source_only_300_by_lang",
+  "retry_output_dir": "/data/yht/llm-translation-poc-dev-yangjiekang/outputs/retry_inputs/source_only_300_by_lang",
+  "retry_translation_executed": false,
+  "da_executed": false,
+  "xcomet_executed": false,
+  "api_called": false
+}

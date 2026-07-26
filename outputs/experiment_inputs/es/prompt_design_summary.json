@@ -1,0 +1,64 @@
+{
+  "split_name": "source_only_300_by_lang",
+  "total_samples": 67,
+  "termbase_version": "termbase_v1",
+  "termbase_path": "termbase/auto_regulation_terms_v1.csv",
+  "experiment_groups": [
+    "no_term_baseline",
+    "term_baseline",
+    "graded_prompt"
+  ],
+  "group_sample_counts": {
+    "no_term_baseline": 67,
+    "term_baseline": 67,
+    "graded_prompt": 67
+  },
+  "group_prompt_strategy": {
+    "no_term_baseline": "no_term_general",
+    "term_baseline": "term_general",
+    "graded_prompt": "graded"
+  },
+  "no_term_baseline_no_term_injection": true,
+  "term_baseline_injects_terms_without_routing": true,
+  "graded_prompt_uses_routing": true,
+  "graded_prompt_mode_distribution": {
+    "lightweight": 4,
+    "natural_legal": 9,
+    "strict_term": 9,
+    "structure": 45
+  },
+  "language_counts": {
+    "es": 67
+  },
+  "matched_high_count_distribution_by_lang": {
+    "es": {
+      "0": 30,
+      "1": 12,
+      "10": 1,
+      "2": 7,
+      "3": 9,
+      "4": 5,
+      "5": 3
+    }
+  },
+  "required_target_terms_nonempty_samples": 37,
+  "fairness": {
+    "same_source_text": true,
+    "same_sample_ids": true,
+    "same_termbase": true,
+    "same_required_target_terms_field": true,
+    "future_model_parameter_note": "后续真实翻译应使用同一模型和同一采样参数。"
+  },
+  "retry_repair_template_defined": true,
+  "retry_samples_generated": false,
+  "translation_executed": false,
+  "tcr_executed": false,
+  "xcomet_executed": false,
+  "generated_files": {
+    "no_term_baseline": "/data/yht/llm-translation-poc-dev-yangjiekang/outputs/experiment_inputs/es/no_term_baseline.jsonl",
+    "term_baseline": "/data/yht/llm-translation-poc-dev-yangjiekang/outputs/experiment_inputs/es/term_baseline.jsonl",
+    "graded_prompt": "/data/yht/llm-translation-poc-dev-yangjiekang/outputs/experiment_inputs/es/graded_prompt.jsonl",
+    "summary_md": "/data/yht/llm-translation-poc-dev-yangjiekang/outputs/experiment_inputs/es/prompt_design_summary.md",
+    "summary_json": "/data/yht/llm-translation-poc-dev-yangjiekang/outputs/experiment_inputs/es/prompt_design_summary.json"
+  }
+}

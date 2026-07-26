@@ -1,0 +1,89 @@
+{
+  "split_name": "fr",
+  "translation_stage": "first",
+  "model_name": "/data/llm_models/Qwen2.5-14B-Instruct",
+  "model_path": "/data/llm_models/Qwen2.5-14B-Instruct",
+  "model_backend": "local_npu",
+  "device": "npu:0",
+  "temperature": 0.0,
+  "max_new_tokens": 2048,
+  "batch_size": 1,
+  "input_files": {
+    "no_term_baseline": "/data/yht/llm-translation-poc-dev-yangjiekang/outputs/experiment_inputs/fr/no_term_baseline.jsonl",
+    "term_baseline": "/data/yht/llm-translation-poc-dev-yangjiekang/outputs/experiment_inputs/fr/term_baseline.jsonl",
+    "graded_prompt": "/data/yht/llm-translation-poc-dev-yangjiekang/outputs/experiment_inputs/fr/graded_prompt.jsonl"
+  },
+  "output_files": {
+    "no_term_baseline": "/data/yht/llm-translation-poc-dev-yangjiekang/outputs/translations/fr/first/no_term_baseline_first_translations.jsonl",
+    "term_baseline": "/data/yht/llm-translation-poc-dev-yangjiekang/outputs/translations/fr/first/term_baseline_first_translations.jsonl",
+    "graded_prompt": "/data/yht/llm-translation-poc-dev-yangjiekang/outputs/translations/fr/first/graded_prompt_first_translations.jsonl"
+  },
+  "expected_count_by_group": {
+    "no_term_baseline": 300,
+    "term_baseline": 300,
+    "graded_prompt": 300
+  },
+  "success_count_by_group": {
+    "no_term_baseline": 300,
+    "term_baseline": 300,
+    "graded_prompt": 300
+  },
+  "failed_count_by_group": {
+    "no_term_baseline": 0,
+    "term_baseline": 0,
+    "graded_prompt": 0
+  },
+  "skipped_count_by_group": {
+    "no_term_baseline": 0,
+    "term_baseline": 0,
+    "graded_prompt": 0
+  },
+  "avg_latency_ms_by_group": {
+    "no_term_baseline": 4011.23,
+    "term_baseline": 4607.36,
+    "graded_prompt": 4792.64
+  },
+  "started_at": "2026-07-13T05:52:39Z",
+  "finished_at": "2026-07-13T07:00:06Z",
+  "notes": [
+    "Used local transformers + torch_npu + NPU execution.",
+    "Did not call DashScope or any external API.",
+    "Did not use DASHSCOPE_API_KEY.",
+    "Did not execute retry_repair.",
+    "Did not execute TCR.",
+    "Did not execute XCOMET.",
+    "Did not run any other split."
+  ],
+  "validation": {
+    "success_sample_sets_equal": true,
+    "da_fields_preserved_by_group": {
+      "no_term_baseline": {
+        "ref_text": false,
+        "page_ref": false,
+        "order_ref": false,
+        "alignment_method": false,
+        "alignment_confidence": false,
+        "use_for_da": false,
+        "da_sample_role": false
+      },
+      "term_baseline": {
+        "ref_text": false,
+        "page_ref": false,
+        "order_ref": false,
+        "alignment_method": false,
+        "alignment_confidence": false,
+        "use_for_da": false,
+        "da_sample_role": false
+      },
+      "graded_prompt": {
+        "ref_text": false,
+        "page_ref": false,
+        "order_ref": false,
+        "alignment_method": false,
+        "alignment_confidence": false,
+        "use_for_da": false,
+        "da_sample_role": false
+      }
+    }
+  }
+}
