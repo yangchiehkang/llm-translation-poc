@@ -67,6 +67,12 @@ _SCOPE_TOC_TAIL_RE = re.compile(r"\s\d{2,4}$")
 _SCOPE_TITLE_SEP_RE = re.compile(r"^[-–—]")
 SCOPE_MAX_HEADING_CHARS = 80
 
+# 段落长度上限：抽取时的分段上限、all_eval 清洗与 DA 前置过滤的 too_long 判据
+# 必须是同一个值。三处曾各自写死（抽取 1200 / 清洗 1200 / DA 过滤 1200），
+# 抬高抽取上限时另外两处没跟着调，产出的 1200~3000 字符合法长条款被静默判 too_long
+# 全部丢弃 —— 这是「同一语义阈值散落多处」造成的第七次现场，故收敛为单一常量。
+MAX_SEGMENT_CHARS = 3000
+
 # 严格章节对齐的方法名。exact_section 是加作用域前缀之前的历史语料写法，
 # exact_section_scoped 是加了作用域之后的写法，两者都是 1:1 精确条款号对齐。
 EXACT_ALIGNMENT_METHODS = frozenset({"exact_section", "exact_section_scoped"})
@@ -234,7 +240,12 @@ def sentence_end(text: str) -> bool:
     return bool(re.search(r"[。.!?！？;；:：؟؛]$", text.strip()))
 
 
-def split_long_text(text: str, max_chars: int) -> list[str]:
+def split_long_text(text: str, max_chars: int, on_overflow=None) -> list[str]:
+    """按句边界切分超长段；只有单句本身就超过 max_chars 时才会从句中硬切。
+
+    句中硬切是「用字符数阈值当结构边界」的最后一处，正常语料里不应发生。
+    on_overflow 在发生句中硬切时被调用（带上文本片段），供调用方记录告警。
+    """
     text = clean_text(text)
     if len(text) <= max_chars:
         return [text]
@@ -250,6 +261,8 @@ def split_long_text(text: str, max_chars: int) -> list[str]:
             if current:
                 chunks.append(current)
                 current = ""
+            if on_overflow is not None:
+                on_overflow(len(piece), piece[:90])
             for start in range(0, len(piece), max_chars):
                 chunks.append(clean_text(piece[start : start + max_chars]))
             continue
@@ -333,6 +346,9 @@ def parse_pdf_segments(
     current_lines: list[str] = []
     current_page: int | None = None
     current_scope: str = ""  # 当前作用域（附件/附录/部分）canonical 记号，如 "X8"；正文为空串
+    # max_chars 是最后一处「字符数阈值当结构边界」。正常语料里它不应触发；
+    # 触发即记录告警（含 segment 标识），说明遇到了未知的文档结构。
+    overflow_notes: list[str] = []
 
     def flush() -> None:
         nonlocal current_lines, current_page, order, filtered
@@ -342,7 +358,13 @@ def parse_pdf_segments(
             return
         section_no = extract_section_no(text)
         seg_type = segment_type_for(text, section_no)
-        for chunk in split_long_text(text, max_chars=max_chars):
+        def _overflow(n: int, head: str) -> None:
+            overflow_notes.append(
+                f"{pdf_path.name}: page {current_page} 单句长度 {n} > max_chars={max_chars}，"
+                f"发生句中硬切（本不该发生）：“{head}…”"
+            )
+
+        for chunk in split_long_text(text, max_chars=max_chars, on_overflow=_overflow):
             chunk_section = extract_section_no(chunk) or section_no
             chunk_type = segment_type_for(chunk, chunk_section)
             if not keep_segment(chunk, chunk_type, chunk_section, min_chars=min_chars):
@@ -401,9 +423,19 @@ def parse_pdf_segments(
                     and sentence_end(prev)
                 ):
                     starts_new = True
-                elif sentence_end(prev) and len(current_text) >= 80:
-                    starts_new = True
                 elif len(current_text) + len(line) + 1 > max_chars:
+                    # 条款边界只由「遇到新条款号」或「超 max_chars」决定。
+                    # 原来这里之前还有一条 `sentence_end(prev) and len(current_text) >= 80`：
+                    # 用一个与条款边界无关的字符数阈值当边界，把同一条款的后续句子切成
+                    # 无条款号的孤儿段（EN 侧触发 501 次，切出的段拿到条款号的 0 个，
+                    # 必然无法 exact_section_scoped 对齐）。且同一阈值跨语言复用，
+                    # 英文字符密度约为中文 1/3，EN 侧触发频率是 ZH 侧的 2.3~2.5 倍，
+                    # 于是英文被切碎、中文保持完整 —— 这正是「源文缺末尾段落、参考完整」
+                    # 那一类缺陷的成因。已取消。
+                    overflow_notes.append(
+                        f"{pdf_path.name}: page {page_no} 段落达到 max_chars={max_chars} 被迫另起"
+                        f"（前段 {len(current_text)} 字符，起始 “{current_text[:60]}…”）"
+                    )
                     starts_new = True
             if starts_new:
                 flush()
@@ -414,6 +446,9 @@ def parse_pdf_segments(
 
     if not segments:
         notes.append(f"{pdf_path.name}: no segments extracted")
+    if overflow_notes:
+        notes.append(f"[MAX_CHARS 告警] {pdf_path.name}: 触发 {len(overflow_notes)} 次")
+        notes.extend(overflow_notes)
     return segments, filtered, notes
 
 
@@ -788,7 +823,7 @@ def clean_all_eval_rows(rows: list[dict[str, Any]]) -> tuple[list[dict[str, Any]
         if is_bad_eval_text(text):
             removed["noise_or_directory"] += 1
             continue
-        if len(text) > 1200:
+        if len(text) > MAX_SEGMENT_CHARS:
             removed["too_long"] += 1
             continue
         if len(text) < 30 and not is_meaningful_short_row(row, text):
@@ -848,7 +883,7 @@ def da_prefilter_reason(row: dict[str, Any]) -> str | None:
         return "source_too_short"
     if len(ref) < 15:
         return "ref_too_short"
-    if len(source) > 1200 or len(ref) > 1200:
+    if len(source) > MAX_SEGMENT_CHARS or len(ref) > MAX_SEGMENT_CHARS:
         return "too_long"
     if is_bad_eval_text(source):
         return "source_noise_or_directory"
@@ -1535,7 +1570,7 @@ def main() -> None:
     ap.add_argument("--target-lang", default="zh")
     ap.add_argument("--min-ref-chars", type=int, default=2)
     ap.add_argument("--min-source-chars", type=int, default=30)
-    ap.add_argument("--max-segment-chars", type=int, default=1200)
+    ap.add_argument("--max-segment-chars", type=int, default=MAX_SEGMENT_CHARS)
     args = ap.parse_args()
 
     if args.mode == "from_raw":

@@ -42,15 +42,24 @@ _WM = ["Applus IDIADA", "I.R.I.S. application", "Download from the",
 _BRK = ["(cid:", "�"]
 _BARE = re.compile(r"^\d+(?:\.\d+)*\.?$")
 _SUB = re.compile(r"(?:(?<=\s)|(?<=（)|(?<=\()|(?<=、))\d(?:\s+\d){1,}")
-_SENT_EN = re.compile(r"[.!?](?:\s|$)")
-_SENT_ZH = re.compile(r"[。！？；]")
+# 两侧必须对称：中文侧不把 ； 算句末，英文侧也不算 ;；并排除条款号的点（"5.4.1." 不是句末）
+_SENT_EN = re.compile(r"(?<!\d)[.!?](?=\s+[A-Z\"“(]|\s*$)")
+_SENT_ZH = re.compile(r"[。！？]")
 
 RATIO_CUT = 0.75
+# 健康配对的参考/源文字符比中位（R100+R17 实测 0.293）。G2 用它推算参考的期望长度。
+HEALTHY_RATIO = 0.29
+G2_MIN_SOURCE = 1200      # 只在长源文上判，短句的比值波动大
+G2_COVERAGE = 0.75        # 参考不足期望长度的 75% -> 参考没有随源文扩展
 RATIO_MEDIAN_NOTE = "全集中位约 0.31"
 
 
-def rules_for(row: dict) -> list[tuple[str, str]]:
-    """返回 [(规则, 可核验理由)]；理由只陈述文本事实，不含分数。"""
+def rules_for(row: dict, ref_followed_by_orphan: bool | None = None) -> list[tuple[str, str]]:
+    """返回 [(规则, 可核验理由)]；理由只陈述文本事实，不含分数。
+
+    ref_followed_by_orphan 由调用方从参考 PDF 的分段结果算出：参考段之后紧跟一个
+    无条款号的孤儿段，说明该条款在参考侧被拆开、本条参考只拿到了第一段。
+    """
     src, ref = row["source_text"], row["ref_text"]
     ns, nr = row["source_char_count"], row["ref_char_count"]
     out: list[tuple[str, str]] = []
@@ -105,6 +114,18 @@ def rules_for(row: dict) -> list[tuple[str, str]]:
     if ds >= 2 and src_complete and not any(r.startswith("R2") for r, _ in out):
         out.append(("B", f"参考 {len(_SENT_ZH.findall(ref))} 句 vs 源文 {len(_SENT_EN.findall(src))} 句，"
                          f"多 {ds} 句；源文自身以句末标点收尾且完整 → 参考覆盖了源文之外的后续条款"))
+
+    # G 粒度不对等：源文与参考的分段粒度不对等，参考侧仅覆盖源文的一部分。
+    # 两个各自独立、都可核验的事实，命中其一即成立。
+    if ref_followed_by_orphan:
+        out.append(("G1", f"参考侧该条款被拆开：参考段之后紧跟一个无条款号的孤儿段，"
+                          f"本条参考（{nr} 字）只拿到了第一段 → "
+                          f"源文与参考分段粒度不对等，参考侧仅覆盖源文的一部分"))
+    expected = HEALTHY_RATIO * ns
+    if ns > G2_MIN_SOURCE and nr < expected * G2_COVERAGE:
+        out.append(("G2", f"源文 {ns} 字，按健康配对比值 {HEALTHY_RATIO} 推算参考应约 {expected:.0f} 字，"
+                          f"实际仅 {nr} 字（{nr/expected:.0%}）；参考长度未随源文扩展 → "
+                          f"源文与参考分段粒度不对等，参考侧仅覆盖源文的一部分"))
     return out
 
 
@@ -113,6 +134,7 @@ def main() -> None:
     ap.add_argument("--corpus", required=True)
     ap.add_argument("--scores", default="", help="可选：sample_id -> score 的 JSONL，用于报均值")
     ap.add_argument("--out-dir", required=True)
+    ap.add_argument("--raw-dir", default="", help="参考 PDF 所在目录；给了才能判 G1。")
     args = ap.parse_args()
 
     rows = [json.loads(x) for x in Path(args.corpus).read_text(encoding="utf-8").splitlines() if x.strip()]
@@ -123,7 +145,31 @@ def main() -> None:
                 r = json.loads(x)
                 sc[r["sample_id"]] = r.get("score", r.get("score_qwen36_40004"))
 
-    excluded = {r["sample_id"]: (r, h) for r in rows for h in [rules_for(r)] if h}
+    # G1 需要参考侧的分段上下文：参考段之后是否紧跟无条款号的孤儿段。
+    orphan_after: dict[str, bool] = {}
+    if args.raw_dir:
+        import sys as _sys
+        _sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+        from scripts.evaluation.prepare_da_pairs import parse_pdf_segments, MAX_SEGMENT_CHARS
+        zh_idx: dict[str, tuple[list, dict]] = {}
+        for doc in sorted({r["document_id"] for r in rows}):
+            pdf = Path(args.raw_dir) / f"{doc}_zh.pdf"
+            if not pdf.exists():
+                continue
+            segs = parse_pdf_segments(pdf, doc, "en-zh", "zh", min_chars=2,
+                                      max_chars=MAX_SEGMENT_CHARS)[0]
+            zh_idx[doc] = (segs, {s["text"]: i for i, s in enumerate(segs)})
+        for r in rows:
+            pair = zh_idx.get(r["document_id"])
+            if not pair:
+                continue
+            segs, idx = pair
+            i = idx.get(r["ref_text"])
+            if i is not None and i + 1 < len(segs):
+                orphan_after[r["sample_id"]] = not segs[i + 1].get("section_no")
+
+    excluded = {r["sample_id"]: (r, h) for r in rows
+                for h in [rules_for(r, orphan_after.get(r["sample_id"]))] if h}
     tbl = {s for s, (_, h) in excluded.items() if any(x == "R4" for x, _ in h)}
     keep = [r for r in rows if r["sample_id"] not in excluded]
 
