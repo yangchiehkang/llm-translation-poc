@@ -33,17 +33,39 @@ SECTION_PATTERNS = [
     re.compile(r"^\s*((?:المادة|مادة)\s*\d+[A-Za-z0-9.-]*)"),
 ]
 
-# ---- 作用域（附件/附录/部分）前缀：让 "4.1" 变成 "X8::4.1"，避免正文与附件同号塌成一个 key ----
+# ---- 作用域（附录）前缀：让 "4.1" 变成 "X8::4.1"，避免正文与附件同号塌成一个 key ----
 # 源文(en 等)与参考(zh)各自解析，但归一到同一套跨语言 canonical 记号，才能两侧对上。
-SCOPE_EN_RE = re.compile(r"^\s*(Annex|Appendix|Part|Schedule|Supplement)\s+([IVXLCDM]+|\d{1,3})\b", re.IGNORECASE)
-SCOPE_ZH_RE = re.compile(r"^\s*(附\s*录|附\s*件|部\s*分|补充件)\s*([一二三四五六七八九十百千零\d]+)")
-# canonical kind：Annex/附录/附件 -> X（同一作用域族）；Part/部分 -> T；Schedule/Supplement/补充件 -> S
-_SCOPE_KIND = {
-    "annex": "X", "appendix": "X", "附录": "X", "附件": "X",
-    "part": "T", "部分": "T", "schedule": "S", "supplement": "S", "补充件": "S",
-}
+#
+# 只认顶层附录 Annex / 附录，且只在「章节标题行」上更新作用域。刻意排除的：
+# - Appendix / 附件：在这批法规里是附录的下一级（"Annex 8 - Appendix 1"），
+#   单独成行时几乎都是正文引用（"Appendix 1 shall be conducted, ..."）。
+# - Part / 部分 / Supplement / 补充件：en 封面的 "Supplement 1 to the 01 series of
+#   amendments"、正文的 "Part I of this regulation does not cover;" 会误触发，
+#   而 zh 侧没有对应写法 —— 是中英不对称的来源之一。
+# 带字母的子附录（Annex 9A / 附录9A）保留字母，两侧都归一到 X9A，粒度对齐。
+SCOPE_EN_RE = re.compile(r"^\s*(Annex|ANNEX)\s+(\d{1,3}|[IVXLCDM]+)([A-Z])?(?![A-Za-z0-9])")
+SCOPE_ZH_RE = re.compile(r"^\s*(附\s*录)\s*([一二三四五六七八九十百千零\d]+)\s*([A-Z])?")
+_SCOPE_KIND = {"annex": "X", "附录": "X"}
 _CN_DIGIT = {"零": 0, "一": 1, "二": 2, "三": 3, "四": 4, "五": 5, "六": 6, "七": 7, "八": 8, "九": 9}
 _ROMAN = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000}
+
+# 附录序号上限：超过即判为误检（如 zh 封面 "附录99 – 第100号法规"）。
+SCOPE_MAX_INDEX = 30
+# 指向「别的法规/文件」的引用句，不是本文件的章节标题。
+_SCOPE_XREF_RE = re.compile(
+    r"第\s*\d+\s*号\s*法规|Regulation\s+No|this\s+Regulation|Consolidated\s+Resolution|R\.E\.3",
+    re.IGNORECASE,
+)
+# 标题行不带句读；出现句读说明这是正文（含被 PDF 断行的引用句）。
+_SCOPE_PUNCT_RE = re.compile(r"[.。,，;；:：!?！？)）]")
+# 目录行特征：标题后跟页码（"附录9J - 过流保护 100"）。
+_SCOPE_TOC_TAIL_RE = re.compile(r"\s\d{2,4}$")
+_SCOPE_TITLE_SEP_RE = re.compile(r"^[-–—]")
+SCOPE_MAX_HEADING_CHARS = 80
+
+# 严格章节对齐的方法名。exact_section 是加作用域前缀之前的历史语料写法，
+# exact_section_scoped 是加了作用域之后的写法，两者都是 1:1 精确条款号对齐。
+EXACT_ALIGNMENT_METHODS = frozenset({"exact_section", "exact_section_scoped"})
 
 
 def _numeral_to_int(s: str) -> int | None:
@@ -63,14 +85,61 @@ def _numeral_to_int(s: str) -> int | None:
     return None
 
 
-def detect_scope(line: str, lang: str) -> str | None:
-    # 命中作用域标题行返回 canonical 记号（如 "X8"），否则 None。zh 用附录/附件模式，其它语言用 Annex 模式。
-    m = SCOPE_ZH_RE.match(line or "") if str(lang).lower().startswith("zh") else SCOPE_EN_RE.match(line or "")
+def _looks_like_title_line(line: str) -> bool:
+    # 标题行：短、无句末标点、不以条款号开头、有实际语言内容。
+    line = clean_text(line or "")
+    if not line or len(line) > 60:
+        return False
+    if extract_section_no(line):
+        return False
+    if re.search(r"[。.!?！？;；:：]$", line):
+        return False
+    return bool(CJK_RE.search(line) or LATIN_RE.search(line))
+
+
+def _scope_heading_kind(line: str, match: re.Match[str]) -> str | None:
+    """判断命中作用域模式的行是否真的是章节标题行。
+
+    返回 "titled"（"Annex 8 - 标题"）/ "bare"（光杆 "Annex 8"，含 "Annex 8 Figure 1"
+    这类松散尾巴）/ None（正文引用、目录行、跨文件引用 —— 不得更新作用域）。
+    """
+    if _SCOPE_XREF_RE.search(line):
+        return None
+    if len(line) > SCOPE_MAX_HEADING_CHARS:
+        return None
+    rest = line[match.end():].strip()
+    if _SCOPE_PUNCT_RE.search(rest):
+        return None
+    if _SCOPE_TOC_TAIL_RE.search(rest):
+        return None
+    return "titled" if _SCOPE_TITLE_SEP_RE.match(rest) else "bare"
+
+
+def detect_scope(line: str, lang: str, line_idx: int | None = None, next_line: str | None = None) -> str | None:
+    """命中作用域标题行返回 canonical 记号（如 "X8" / "X9A"），否则 None。
+
+    作用域只允许由真正的章节标题行更新，不能被正文里对附录的引用触发
+    （"...as specified in Annex 8..."、"附录9D第3.2.1.条中规定的挤压力，可用..."），
+    也不能被目录行触发（目录会把整篇正文提前染成最后一条目录项的作用域）。
+
+    带标题的形式（"Annex 8 - Determination of ..."）自身即可确认；光杆形式
+    （"Annex 8"）与正文换行产生的引用行无法从行内容区分，额外要求它出现在页首
+    （en PDF 的页眉/附录起始页）或下一行是标题行（zh 由 docx 转换而来，附录标题在页中间）。
+    """
+    line = line or ""
+    m = SCOPE_ZH_RE.match(line) if str(lang).lower().startswith("zh") else SCOPE_EN_RE.match(line)
     if not m:
         return None
-    kind = _SCOPE_KIND.get(m.group(1).replace(" ", "").lower(), _SCOPE_KIND.get(m.group(1).replace(" ", ""), "X"))
     n = _numeral_to_int(m.group(2))
-    return f"{kind}{n}" if n is not None else None
+    if n is None or n < 1 or n > SCOPE_MAX_INDEX:
+        return None
+    kind = _scope_heading_kind(line, m)
+    if kind is None:
+        return None
+    if kind == "bare" and not ((line_idx is not None and line_idx <= 1) or _looks_like_title_line(next_line or "")):
+        return None
+    prefix = _SCOPE_KIND.get(m.group(1).replace(" ", "").lower(), "X")
+    return f"{prefix}{n}{m.group(3) or ''}"
 
 
 def scoped_key(segment: dict[str, Any]) -> str:
@@ -302,8 +371,9 @@ def parse_pdf_segments(
         if not cleaned_lines:
             notes.append(f"{pdf_path.name}: page {page_no} produced no usable text")
             continue
-        for line in cleaned_lines:
-            scope_here = detect_scope(line, lang)
+        for line_idx, line in enumerate(cleaned_lines):
+            next_line = cleaned_lines[line_idx + 1] if line_idx + 1 < len(cleaned_lines) else ""
+            scope_here = detect_scope(line, lang, line_idx=line_idx, next_line=next_line)
             if scope_here:
                 current_scope = scope_here
             section_no = extract_section_no(line)
@@ -475,6 +545,9 @@ def aligned_sample(
         "order_source": source["order"],
         "order_ref": ref["order"],
         "section_no": source.get("section_no") or ref.get("section_no"),
+        # 作用域随行落盘：下游去重/自审必须和对齐用同一把 key，否则正文 2.1.1.2
+        # 与 Annex 15 的 2.1.1.2 又会在去重阶段被当成重复条款互相挤掉。
+        "scope": source.get("scope") or ref.get("scope") or "",
         "segment_type": source.get("segment_type", "unknown"),
         "source_char_count": source["char_count"],
         "ref_char_count": ref["char_count"],
@@ -741,7 +814,7 @@ def da_prefilter_reason(row: dict[str, Any]) -> str | None:
     required = {"sample_id", "document_id", "language_pair", "source_lang", "target_lang"}
     if any(not row.get(field) for field in required):
         return "missing_required_fields"
-    if row.get("alignment_method") != "exact_section":
+    if row.get("alignment_method") not in EXACT_ALIGNMENT_METHODS:
         return "non_exact_section"
     if row.get("alignment_confidence") != "high":
         return "non_high_confidence"
@@ -790,9 +863,14 @@ def score_da_candidate(row: dict[str, Any]) -> float:
     return score
 
 
+def da_dedup_key(row: dict[str, Any]) -> tuple[str, str, str]:
+    # 同一文档内唯一标识一条条款：document + 作用域 + 段号（老语料无 scope，退化为原行为）。
+    return (str(row.get("document_id") or ""), str(row.get("scope") or ""), str(row.get("section_no") or ""))
+
+
 def clean_da_rows(rows: list[dict[str, Any]]) -> tuple[list[dict[str, Any]], Counter[str]]:
     removed: Counter[str] = Counter()
-    candidates_by_key: dict[tuple[str, str], list[dict[str, Any]]] = defaultdict(list)
+    candidates_by_key: dict[tuple[str, str, str], list[dict[str, Any]]] = defaultdict(list)
 
     for row in rows:
         reason = da_prefilter_reason(row)
@@ -805,8 +883,7 @@ def clean_da_rows(rows: list[dict[str, Any]]) -> tuple[list[dict[str, Any]], Cou
         out["source_char_count"] = len(out["source_text"])
         out["ref_char_count"] = len(out["ref_text"])
         out["use_for_da"] = True
-        key = (str(out["document_id"]), str(out["section_no"]))
-        candidates_by_key[key].append(out)
+        candidates_by_key[da_dedup_key(out)].append(out)
 
     cleaned_rows: list[dict[str, Any]] = []
     for key, candidates in candidates_by_key.items():
@@ -825,8 +902,8 @@ def audit_da_rows(rows: list[dict[str, Any]]) -> dict[str, Any]:
         reason = da_prefilter_reason(row)
         if reason:
             failures[reason] += 1
-        key = (str(row.get("document_id")), str(row.get("section_no")))
-        if key[1] and sum(1 for x in rows if str(x.get("document_id")) == key[0] and str(x.get("section_no")) == key[1]) > 1:
+        key = da_dedup_key(row)
+        if key[2] and sum(1 for x in rows if da_dedup_key(x) == key) > 1:
             failures["duplicate_document_section"] += 1
     by_lang: dict[str, list[dict[str, str]]] = defaultdict(list)
     for row in rows:
@@ -893,7 +970,7 @@ def write_clean_summary(
         "",
         "## DA 样本保留规则",
         "",
-        "- 只保留 `alignment_method = exact_section`。",
+        "- 只保留 `alignment_method = exact_section` 或 `exact_section_scoped`（两者都是 1:1 精确条款号对齐）。",
         "- 只保留 `alignment_confidence = high`。",
         "- 只保留 `section_no` 非空且 source/ref 均以同一条款号开头的样本。",
         "- 删除目录项、页眉页脚、文件名重复、乱码、过短噪声、长度比例异常和明显错配样本。",
@@ -912,7 +989,7 @@ def write_clean_summary(
         "",
         "## DA 自审结论",
         "",
-        f"- 所有 DA 样本均为 exact_section + high: {'是' if all(row.get('alignment_method') == 'exact_section' and row.get('alignment_confidence') == 'high' for row in da_rows) else '否'}",
+        f"- 所有 DA 样本均为 exact_section(_scoped) + high: {'是' if all(row.get('alignment_method') in EXACT_ALIGNMENT_METHODS and row.get('alignment_confidence') == 'high' for row in da_rows) else '否'}",
         f"- 所有 DA 样本均通过条款号一致检查: {'是' if audit['passed'] else '否'}",
         "- 已排除 order_based 样本: 是",
         "- 已排除 medium / low 样本: 是",
@@ -1329,6 +1406,16 @@ def build_from_raw(args: argparse.Namespace) -> None:
     if not groups:
         raise RuntimeError(f"No source/reference PDF groups found under {raw_dir}")
 
+    # 隔离重建：只处理指定语向/文档，其余语向的既有语料一行都不碰。
+    if args.only_language_pair:
+        wanted = {x.strip() for x in args.only_language_pair.split(",") if x.strip()}
+        groups = [g for g in groups if g["language_pair"] in wanted]
+    if args.only_doc_id:
+        wanted_docs = {x.strip() for x in args.only_doc_id.split(",") if x.strip()}
+        groups = [g for g in groups if g["document_id"] in wanted_docs]
+    if not groups:
+        raise RuntimeError("No PDF groups left after --only-language-pair / --only-doc-id filtering")
+
     all_samples: list[dict[str, Any]] = []
     aligned_samples: list[dict[str, Any]] = []
     source_segments_all: list[dict[str, Any]] = []
@@ -1423,6 +1510,8 @@ def main() -> None:
     ap.add_argument("--output", help="DA input JSONL output.")
     ap.add_argument("--aligned-da", default="data/eval/aligned_da_samples.jsonl")
     ap.add_argument("--raw-dir", default="data/raw")
+    ap.add_argument("--only-language-pair", default="", help="逗号分隔，仅 from_raw：只重建这些语向（如 en-zh）。")
+    ap.add_argument("--only-doc-id", default="", help="逗号分隔，仅 from_raw：只重建这些 document_id。")
     ap.add_argument("--eval-dir", default="data/eval")
     ap.add_argument("--output-dir", default="data/eval")
     ap.add_argument("--seed", type=int, default=42)
