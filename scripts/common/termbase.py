@@ -66,37 +66,62 @@ def load_termbase(
     return rows
 
 
-def _contains_term(text: str, term: str, case_sensitive: bool = False) -> bool:
+def _term_spans(text: str, term: str, case_sensitive: bool = False) -> list[tuple[int, int]]:
+    # 返回 term 在 text 中的全部匹配区间，供最长优先的区间占用抑制使用。
     if not text or not term:
-        return False
+        return []
     flags = 0 if case_sensitive else re.IGNORECASE
     escaped = re.escape(term)
     if term[0].isalnum() and term[-1].isalnum():
         pattern = rf"(?<![A-Za-z0-9]){escaped}(?![A-Za-z0-9])"
     else:
         pattern = escaped
-    return re.search(pattern, text, flags=flags) is not None
+    return [(m.start(), m.end()) for m in re.finditer(pattern, text, flags=flags)]
+
+
+def _contains_term(text: str, term: str, case_sensitive: bool = False) -> bool:
+    return bool(_term_spans(text, term, case_sensitive=case_sensitive))
 
 
 def match_terms(text: str, terms: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """按「实际占住的文本区间」做最长优先抑制，返回该文本适用的术语。
+
+    占用做在 span 上而不是 term 上：术语可以经 alias 命中，而 alias 长度与
+    source_term 长度无关（REESS 只有 5 字符，其 alias "Rechargeable Electrical
+    Energy Storage System" 有 44 字符）。若按 source_term 长度排序，长 alias
+    占住的区间不会被任何"更短"的术语先占，长短两条术语会双双进 required。
+
+    同一区间上 source_term 直接命中优先于 alias 命中：文本写 dummy 时只保留
+    dummy 本身，不再让 manikin 靠 alias 把同一段文本再要求一次。
+    """
+    # 1) 收集全部候选：(区间长度, 是否 alias, start, end, 术语序号, 命中文本, 命中来源)
+    candidates: list[tuple[int, int, int, int, int, str, str]] = []
+    for idx, term in enumerate(terms):
+        case_sensitive = _truthy(term.get("case_sensitive"))
+        source_term = str(term.get("source_term") or "")
+        for start, end in _term_spans(text, source_term, case_sensitive=case_sensitive):
+            candidates.append((end - start, 0, start, end, idx, source_term, "source_term"))
+        for alias in term.get("aliases") or []:
+            for start, end in _term_spans(text, alias, case_sensitive=case_sensitive):
+                candidates.append((end - start, 1, start, end, idx, alias, "alias"))
+    # 2) 区间长度降序 -> source_term 优先于 alias -> 出现位置，保证结果确定
+    candidates.sort(key=lambda c: (-c[0], c[1], c[2]))
+
+    occupied: list[tuple[int, int]] = []
+    chosen: dict[int, tuple[str, str]] = {}
+    for _len, _is_alias, start, end, idx, matched_text, matched_by in candidates:
+        if any(o_start <= start and end <= o_end for o_start, o_end in occupied):
+            continue
+        occupied.append((start, end))
+        chosen.setdefault(idx, (matched_text, matched_by))
+
     matched = []
     seen = set()
-    for term in terms:
+    # 输出顺序保持 source_term 长度降序，与修复前一致，避免下游依赖顺序时出现漂移。
+    for idx in sorted(chosen, key=lambda i: len(str(terms[i].get("source_term") or "")), reverse=True):
+        term = terms[idx]
         source_term = term.get("source_term", "")
-        case_sensitive = _truthy(term.get("case_sensitive"))
-        matched_text = ""
-        matched_by = ""
-        if _contains_term(text, source_term, case_sensitive=case_sensitive):
-            matched_text = source_term
-            matched_by = "source_term"
-        else:
-            for alias in term.get("aliases") or []:
-                if _contains_term(text, alias, case_sensitive=case_sensitive):
-                    matched_text = alias
-                    matched_by = "alias"
-                    break
-        if not matched_text:
-            continue
+        matched_text, matched_by = chosen[idx]
         key = term.get("term_id") or (term.get("source_lang"), source_term, term.get("target_term"))
         if key in seen:
             continue
