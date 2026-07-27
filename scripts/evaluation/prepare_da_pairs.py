@@ -24,7 +24,11 @@ LATIN_RE = re.compile(r"[A-Za-zÀ-ÖØ-öø-ÿ]")
 SECTION_PATTERNS = [
     re.compile(r"^\s*((?:\d{1,3})(?:\.\d{1,3}){1,6})(?:[.)])?(?=\s|$)"),
     re.compile(r"^\s*(\d{1,3})[.)](?=\s|$)"),
-    re.compile(r"^\s*((?:[A-Z])(?:\.\d{1,3}){0,4})(?:[.)])?(?=\s|$)"),
+    # {1,4} 而非 {0,4}：零次重复会让「单个大写字母 + 空白」就命中，把 "A battery
+    # whose primary use is…"、公式变量行 "R = U / I"、PDF 字间距 artifact "E nergy"
+    # 全判成条款号并强行开新段。英语上开火 72 次，德语上 3071/5537。附录条款号
+    # "A.1.2" 仍照常命中。
+    re.compile(r"^\s*((?:[A-Z])(?:\.\d{1,3}){1,4})(?:[.)])?(?=\s|$)"),
     re.compile(r"^\s*((?:Article|Art\.|ARTICLE)\s+\d+[A-Za-z0-9.-]*)\b", re.IGNORECASE),
     re.compile(r"^\s*((?:Artículo|Articulo|ARTÍCULO)\s+\d+[A-Za-z0-9.-]*)\b", re.IGNORECASE),
     re.compile(r"^\s*((?:Статья|СТАТЬЯ)\s+\d+[A-Za-zА-Яа-я0-9.-]*)\b"),
@@ -384,7 +388,18 @@ def parse_pdf_segments(
             if current_lines:
                 if section_no:
                     starts_new = True
-                elif line_type in {"title", "table", "note"} and segment_type_for(current_text, extract_section_no(current_text)) != line_type:
+                elif (
+                    line_type in {"title", "table", "note"}
+                    and segment_type_for(current_text, extract_section_no(current_text)) != line_type
+                    # 续行保护：本行不含条款号、且上一行没有句末标点，说明这是被 PDF
+                    # 换行切开的同一句，必须并回去。segment_type_for 会把含
+                    # "regulation"/"annex" 等词且无句末标点的短行判成 title，
+                    # 于是 "12.1. As from the official date of entry into force of the
+                    # 03 series of amendments," 的续行 "no Contracting Party applying
+                    # this Regulation shall refuse..." 被当成标题另起一段，
+                    # 条款正文只剩前半句。
+                    and sentence_end(prev)
+                ):
                     starts_new = True
                 elif sentence_end(prev) and len(current_text) >= 80:
                     starts_new = True
