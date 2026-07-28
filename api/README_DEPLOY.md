@@ -132,6 +132,17 @@ systemctl --user restart translation-api
 
 > 40004 是服务器本地 vLLM（Qwen3.6-35B-A3B，root 拥有、绑 `<INTERNAL_HOST>`、共享服务、TP=2）；`TEMPERATURE=0` 取确定性（同输入逐字一致）。该 vLLM 若被停/重绑，接口会 `code:500`，此时按下方回滚。
 
+#### ⚠️ 评测 / 生产 差异清单（底线条款）
+
+**最终验收时，产出那个数的配置必须就是上线的配置。**
+差异清单见 `docs/eval_vs_prod_divergence.md`，**验收前必须清零**。
+清零之前，任何对外数字都要附一句"该数出自评测配置，与生产存在 N 项差异"。
+
+当前 3 项：术语库版本（生产 `f00ba0de` vs 评测 `3b8221df`）、
+`match_terms` span 抑制修复、`target_alias` 支持。
+自检每 10 分钟断言生产术语库 md5 不变——它防的是"被无意改动"，
+不解决"该上而未上"，后者靠那张清单。
+
 #### ⚠️ 2026-07-28 事故记录：40018 消失，生产静默中断 5 天
 
 `LOCAL_NPU_BASE_URL` 原为 `http://<VLLM_ENDPOINT_ALT>/v1`。**40018 这个 root 拥有的共享 vLLM 被其属主下线**
