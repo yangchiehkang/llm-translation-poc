@@ -57,3 +57,15 @@ class TranslationBackend:
 
     def info(self) -> dict[str, Any]:
         return {"backend": self.name}
+
+    def reachable(self, timeout: float = 2.0) -> tuple[bool, str]:
+        """后端此刻是否真的能连上。返回 (可达, 说明)。
+
+        为什么需要它：`info()` 只回答"配置填没填"（`configured`），不回答"能不能用"。
+        2026-07-28 后端端口 40018 被属主下线，info() 仍是 configured=true、/health 仍是
+        200，生产静默中断 5 天无人察觉。见 README_DEPLOY §五事故记录。
+
+        约定：**只探测，绝不抛异常**——失败返回 (False, 原因)。调用方（/health）
+        必须保持返回 200，契约行为不因探测失败而变。
+        """
+        return (True, "backend does not implement a reachability probe")

@@ -65,6 +65,9 @@ def main() -> None:
     ap.add_argument("--out-dir", required=True)
     ap.add_argument("--write-results", action="store_true",
                     help="就地重写 full_results.jsonl 的子集标记字段")
+    ap.add_argument("--batch-label", required=True,
+                    help="译文批次标签，必填。任何一张 DA 表都必须带它——"
+                         "0.8434 与 0.8409 差的不是口径而是译文批次，混过一次就够了。")
     args = ap.parse_args()
 
     rows = [json.loads(x) for x in Path(args.results).read_text(encoding="utf-8").splitlines() if x.strip()]
@@ -112,7 +115,9 @@ def main() -> None:
             "\n".join(json.dumps(r, ensure_ascii=False) for r in rows) + "\n", encoding="utf-8")
 
     sens = {
-        "note": "v1 与 v2 两个主数永远并排出现；只报其一即为违规。",
+        "batch_label": args.batch_label,
+        "note": "v1 与 v2 两个主数永远并排出现；只报其一即为违规。"
+                " 本表所有 DA 均出自 batch_label 标注的同一批译文。",
         "disclosure": ("R3/R5/β 促级发生在语料封版之后。决策时已知其效应为 +0.0130"
                        f"（{tiers[3]['mean']:.4f} -> {tiers[5]['mean']:.4f}）。"
                        "促级依据是判据可从原始 PDF 直接核验，与分数无关。"),
@@ -131,6 +136,7 @@ def main() -> None:
     (out_dir / "sensitivity.json").write_text(
         json.dumps(sens, ensure_ascii=False, indent=2), encoding="utf-8")
 
+    print(f"译文批次：{args.batch_label}")
     print(f"{'口径':36s} {'n':>5s} {'均值':>9s} {'剔除率':>8s}")
     for t in tiers:
         print(f"{t['label']:36s} {t['n']:5d} {t['mean']:9.4f} {t['exclusion_rate']:8.2%}")

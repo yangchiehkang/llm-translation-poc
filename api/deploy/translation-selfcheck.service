@@ -1,0 +1,18 @@
+[Unit]
+# 生产自检：定时打一发真实翻译。见 api/deploy/selfcheck.py 顶部注释。
+# 为什么不是 cron：服务器上 yinzs 无 crontab 权限（"You are not allowed to use this program"），
+# 而 systemd --user + linger 已经在用（translation-api.service），复用同一套机制。
+Description=Translation API self-check (real translation probe)
+After=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=PROJECT_ROOT
+Environment=PYTHONPATH=PROJECT_ROOT
+Environment=SELFCHECK_LOG_DIR=/data/SERVICE_USER/translation-api/logs
+# 长文本探针的时段（本地小时），每天两次、错开
+Environment=SELFCHECK_LONG_HOURS=3,15
+ExecStart=/data/SERVICE_USER/translation-api/venv/bin/python \
+    PROJECT_ROOT/api/deploy/selfcheck.py
+# 自检失败不应让 systemd 反复重启——失败详情已写进 selfcheck_FAILURES.log
+SuccessExitStatus=0 1

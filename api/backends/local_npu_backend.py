@@ -77,3 +77,22 @@ class LocalNpuBackend(TranslationBackend):
             "base_url": CONFIG.LOCAL_NPU_BASE_URL or None,
             "configured": bool(CONFIG.LOCAL_NPU_BASE_URL and CONFIG.LOCAL_NPU_MODEL),
         }
+
+    def reachable(self, timeout: float = 2.0) -> tuple[bool, str]:
+        """GET {base_url}/models —— 极轻，不产生推理，不占卡。只探测，绝不抛异常。"""
+        if not CONFIG.LOCAL_NPU_BASE_URL or not CONFIG.LOCAL_NPU_MODEL:
+            return (False, "LOCAL_NPU_BASE_URL / LOCAL_NPU_MODEL 未配置")
+        url = CONFIG.LOCAL_NPU_BASE_URL.rstrip("/") + "/models"
+        try:
+            import httpx
+            with httpx.Client(timeout=timeout) as client:
+                resp = client.get(url)
+            if resp.status_code != 200:
+                return (False, f"{url} 返回 HTTP {resp.status_code}")
+            served = {m.get("id") for m in (resp.json().get("data") or [])}
+            if CONFIG.LOCAL_NPU_MODEL not in served:
+                # 端口活着但换了模型——这比连不上更隐蔽，必须报出来。
+                return (False, f"端点在线但不提供 {CONFIG.LOCAL_NPU_MODEL}；实际提供 {sorted(served)}")
+            return (True, "ok")
+        except Exception as exc:                                   # noqa: BLE001
+            return (False, f"{type(exc).__name__}: {exc}")

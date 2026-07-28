@@ -1,7 +1,11 @@
 #!/usr/bin/env python3
-"""填入真实 DASHSCOPE_API_KEY 后的回归验收（真实调用 qwen-max）：
+"""回归验收（真实调用当前后端，不 mock）：
+
+后端与模型名从 .env 实时读取并打印——不要在文案里写死模型名。
+2026-07-28 之前这里写死"qwen-max"，而后端 07-23 就切成 local_npu/Qwen3.6-35B-A3B 了，
+输出因此误导人。
   A. 验收第4项：3 条术语的文本翻译，确认术语按指定译法出现在译文里
-  B. 从 outputs/translations/ 取 3 条已有 qwen-max 样本，通过接口重跑，与原结果对比
+  B. 从 outputs/translations/ 取 3 条历史样本（原结果由 qwen-max 产出），通过接口重跑对比
   C. 长文本截断保护：构造接近上限的长文本，确认要么完整返回、要么明确报截断错误
 所有输出为真实返回，不推测。
 """
@@ -14,6 +18,19 @@ from difflib import SequenceMatcher
 BASE = "http://127.0.0.1:8188"
 PROJECT = "PROJECT_ROOT"
 REF = f"{PROJECT}/outputs/translations/source_only_300_by_lang/first/no_term_baseline_first_translations.jsonl"
+
+
+def backend_label():
+    """从 .env 实时读当前后端与模型名——绝不在文案里写死。"""
+    env = {}
+    for line in open(f"{PROJECT}/.env", encoding="utf-8"):
+        if "=" in line and not line.strip().startswith("#"):
+            k, v = line.split("=", 1)
+            env[k.strip()] = v.strip().strip("'\"")
+    b = env.get("BACKEND", "?")
+    m = env.get("LOCAL_NPU_MODEL" if b == "local_npu" else "MODEL_NAME", "?")
+    u = env.get("LOCAL_NPU_BASE_URL", "") if b == "local_npu" else ""
+    return f"{b}/{m}" + (f" @ {u}" if u else "")
 
 
 def token():
@@ -80,7 +97,7 @@ def main():
 
     print()
     print("=" * 70)
-    print("B. 回归：3 条已有 qwen-max 样本(DE-CN)重跑，与 outputs/ 原结果对比")
+    print(f"B. 回归：3 条历史 DE-CN 样本重跑（原结果 qwen-max）-> 当前后端 {backend_label()}")
     print("=" * 70)
     for i, r in enumerate(load_ref(3), 1):
         payload = {"translateType": "1", "languageType": "DE-CN",
@@ -93,7 +110,7 @@ def main():
         print("  原文     :", r["source_text"][:100])
         print("  原结果   :", old[:100])
         print("  接口重跑 :", new[:100])
-        print(f"  字面相似度: {sim:.2f}  (同模型 qwen-max；原结果为 no_term_baseline 模板+temp>0，接口用分级路由，故非逐字相同属正常)")
+        print(f"  字面相似度: {sim:.2f}  (原结果为 qwen-max + no_term_baseline 模板 + temp>0；\n                     当前为 {backend_label()} + 分级路由 + temp=0，**跨模型跨模板**，非逐字相同属正常，\n                     此相似度只作冒烟参考，不可当作质量指标)")
 
     print()
     print("=" * 70)

@@ -21,6 +21,7 @@ if str(PROJECT_ROOT) not in sys.path:
 from fastapi import FastAPI, Request
 from fastapi.concurrency import run_in_threadpool
 from fastapi.exceptions import RequestValidationError
+from fastapi.responses import JSONResponse
 from starlette.exceptions import HTTPException as StarletteHTTPException
 
 from api.config import CONFIG
@@ -40,6 +41,7 @@ from api import backends
 from api.backends.base import TranslationTruncated
 from api.langdetect import detect_language, LanguageDetectionError
 from scripts.common.io_utils import read_csv
+from scripts.common.text_utils import utc_now
 
 setup_logging()
 logger = logging.getLogger("api.main")
@@ -191,16 +193,51 @@ def _detect_terms_translate(
 # ----------------------------------------------------------------------------
 @app.get("/health")
 async def health():
+    """契约端点。**永远 HTTP 200、永远 code:0**，探测失败也不例外。
+
+    国创的集成测试可能把非 200 当失败，一次后端抖动就会让他们的用例红掉——
+    那是拿契约行为换可观测性。所以这里只**增加**两个字段，不改状态码、不改 code。
+    需要"不通就红"的语义，用 /health/deep（内部监控专用，不写进对外文档）。
+    """
     backend = backends.get_backend()
     info = backend.info()
+    ok, detail = await run_in_threadpool(backend.reachable, 2.0)
     return json_ok({
         "status": "ok",
         "backend": CONFIG.BACKEND,
         "backend_info": info,
+        # configured 只说明配置填没填；backend_reachable 才说明此刻能不能用。
+        # 2026-07-28 后端消失 5 天而 /health 一直 200，就是因为只有前者。
+        "backend_reachable": ok,
+        "backend_check_detail": detail,
+        "backend_checked_at": utc_now(),
         "law_path": CONFIG.LAW_PATH,
         "supported_language_types": SUPPORTED_LANGUAGE_TYPES,
         "max_text_chars": CONFIG.MAX_TEXT_CHARS,
     })
+
+
+@app.get("/health/deep")
+async def health_deep():
+    """深检：后端不通就返回 **HTTP 503**。内部监控专用，不写进给国创的接口文档。
+
+    与 /health 的分工：/health 守契约（永远 200），/health/deep 守真相（不通就红）。
+    """
+    backend = backends.get_backend()
+    ok, detail = await run_in_threadpool(backend.reachable, 2.0)
+    payload = {
+        "status": "ok" if ok else "backend_unreachable",
+        "backend": CONFIG.BACKEND,
+        "backend_info": backend.info(),
+        "backend_reachable": ok,
+        "backend_check_detail": detail,
+        "backend_checked_at": utc_now(),
+    }
+    if ok:
+        return json_ok(payload)
+    return JSONResponse(status_code=503,
+                        content={"code": CODE_INTERNAL, "msg": f"后端不可达：{detail}",
+                                 "data": payload})
 
 
 # ----------------------------------------------------------------------------

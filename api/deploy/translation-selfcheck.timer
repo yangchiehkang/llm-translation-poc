@@ -1,0 +1,13 @@
+[Unit]
+Description=Run translation API self-check every 10 minutes
+
+[Timer]
+OnBootSec=2min
+OnUnitActiveSec=10min
+# 错开整点：10 分钟一次，但不要所有实例都卡在 :00 :10 :20
+RandomizedDelaySec=60
+AccuracySec=30s
+Persistent=true
+
+[Install]
+WantedBy=timers.target
