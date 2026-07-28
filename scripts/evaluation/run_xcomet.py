@@ -147,7 +147,39 @@ def to_model_item(row: dict[str, Any], mode: str) -> dict[str, str]:
     return item
 
 
-def predict_scores(model, items: list[dict[str, str]], batch_size: int, device_kind: str, device_index: int | None) -> list[float]:
+def extract_error_spans(pred, n: int) -> list[list[dict[str, Any]]]:
+    """XCOMET 的 error span 从 pred.metadata.error_spans 取。
+
+    此前只取 .scores，span 被直接丢掉——T6（major span 分析）因此无数可用，
+    只能重跑打分。span 是 XCOMET 自带的产物，落盘不增加任何计算成本。
+    模型不产 span（如纯 COMET）时返回等长的空列表，不报错。
+    """
+    meta = getattr(pred, "metadata", None)
+    spans = getattr(meta, "error_spans", None) if meta is not None else None
+    if spans is None and isinstance(pred, dict):
+        spans = (pred.get("metadata") or {}).get("error_spans")
+    if not spans:
+        return [[] for _ in range(n)]
+    out: list[list[dict[str, Any]]] = []
+    for row in spans:
+        cur: list[dict[str, Any]] = []
+        for s in row or []:
+            d = s if isinstance(s, dict) else getattr(s, "__dict__", {})
+            cur.append({
+                "text": d.get("text", ""),
+                "severity": d.get("severity", ""),
+                "confidence": d.get("confidence"),
+                "start": d.get("start"),
+                "end": d.get("end"),
+            })
+        out.append(cur)
+    while len(out) < n:
+        out.append([])
+    return out[:n]
+
+
+def predict_scores(model, items: list[dict[str, str]], batch_size: int, device_kind: str,
+                   device_index: int | None) -> tuple[list[float], list[list[dict[str, Any]]]]:
     if device_kind == "cpu":
         pred = model.predict(
             items,
@@ -173,7 +205,7 @@ def predict_scores(model, items: list[dict[str, str]], batch_size: int, device_k
         scores = pred.get("scores")
     if scores is None:
         raise RuntimeError("COMET prediction object did not expose a scores field")
-    return [float(score) for score in scores]
+    return [float(score) for score in scores], extract_error_spans(pred, len(scores))
 
 
 def failure_result(
@@ -215,6 +247,7 @@ def success_result(
     batch_size: int,
     device: str,
     latency_ms: int,
+    error_spans: list[dict[str, Any]] | None = None,
 ) -> dict[str, Any]:
     return {
         "sample_id": row.get("sample_id"),
@@ -225,6 +258,9 @@ def success_result(
         "hypothesis_translation": row.get("hypothesis_translation"),
         "ref_text": row.get("ref_text"),
         "score": score,
+        # XCOMET 自带的 error span（severity/text/位置）。T6 依赖它；
+        # 此前被丢弃，导致 major span 分析无数可用。
+        "error_spans": error_spans or [],
         "model_path": model_path,
         "mode": mode,
         "batch_size": batch_size,
@@ -249,7 +285,7 @@ def score_batch(
 ) -> list[dict[str, Any]]:
     start = time.perf_counter()
     try:
-        scores = predict_scores(
+        scores, spans = predict_scores(
             model,
             [to_model_item(row, mode) for row in rows],
             batch_size,
@@ -269,8 +305,9 @@ def score_batch(
                 batch_size=batch_size,
                 device=device,
                 latency_ms=per_row_latency,
+                error_spans=span,
             )
-            for row, score in zip(rows, scores)
+            for row, score, span in zip(rows, scores, spans)
         ]
     except Exception as exc:
         if len(rows) > 1:
