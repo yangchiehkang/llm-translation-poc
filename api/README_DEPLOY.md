@@ -125,12 +125,33 @@ systemctl --user restart translation-api
 | 变量 | 当前值 |
 |---|---|
 | `BACKEND` | `local_npu` |
-| `LOCAL_NPU_BASE_URL` | `http://<VLLM_ENDPOINT_ALT>/v1` |
+| `LOCAL_NPU_BASE_URL` | `http://<VLLM_ENDPOINT>/v1` ← **2026-07-28 由 40018 改** |
 | `LOCAL_NPU_MODEL` | `Qwen3.6-35B-A3B` |
 | `TEMPERATURE` | `0` |
 | `MAX_TEXT_CHARS` | `6000` |
 
-> 40018 是服务器本地 vLLM（Qwen3.6-35B-A3B，root 拥有、绑 `<INTERNAL_HOST>`、共享服务、卡 2/3 TP 对）；`TEMPERATURE=0` 取确定性（同输入逐字一致）。该 vLLM 若被停/重绑，接口会 `code:500`，此时按下方回滚。
+> 40004 是服务器本地 vLLM（Qwen3.6-35B-A3B，root 拥有、绑 `<INTERNAL_HOST>`、共享服务、TP=2）；`TEMPERATURE=0` 取确定性（同输入逐字一致）。该 vLLM 若被停/重绑，接口会 `code:500`，此时按下方回滚。
+
+#### ⚠️ 2026-07-28 事故记录：40018 消失，生产静默中断 5 天
+
+`LOCAL_NPU_BASE_URL` 原为 `http://<VLLM_ENDPOINT_ALT>/v1`。**40018 这个 root 拥有的共享 vLLM 被其属主下线**
+（无进程、无监听），我方 `.env` 仍指向它，于是所有翻译返回
+`code:500 翻译失败: [Errno 111] Connection refused`。
+
+- 最后一次成功翻译：**2026-07-23 14:02:49**；此后到 07-28 12:43 日志里**零请求**——
+  故障是潜伏的，没被任何人踩到，也**没有任何机制报警**。
+- 服务本身一直 `active`（4 天），`GET /health` 一直返回 **200** ——
+  因为它只查 `configured`（配置有没有填），**不探后端是否可达**。健康检查是绿的，服务却是死的。
+- 修复：`.env` 单行改 40018 → 40004（同一模型 `Qwen3.6-35B-A3B`，root 于 07-27 12:20 左右起的），
+  重启 `systemd --user translation-api`。**未触碰任何他人的 vLLM**。
+- 备份：`.env.bak.20260728`（改前副本，与 `.env` 仅第 19 行不同）。
+
+**教训（写进排障 checklist B）**：后端端口是别人的服务，说没就没。
+`/health` 返回 200 **不代表能翻译**，验收必须打一次真实翻译。
+
+> 诊断时另一个坑：从本地 Mac 探 `<INTERNAL_HOST>` 永远不通——那是服务器**内网**地址，
+> 不可路由。**内网 IP 探不通 ≠ 主机挂了。** 正确入口是 `ssh <NPU_HOST>`
+> （`220.154.1.75:3222`），先用它确认主机存活再下结论。
 > `MAX_TEXT_CHARS=6000`（由 8000 下调）：延迟方差实测中 8000 字符 p95≈95s、距 120s 硬超时余量偏薄，共享服务负载高峰可能击穿；6000 字符实测 p95≈53s，约 2× 余量。实测 6000 字符单次约 30s。
 
 ### 回滚到 dashscope（已实测可用，2026-07-23）
@@ -191,6 +212,19 @@ curl -s http://127.0.0.1:8188/health   # 期望 backend=dashscope、backend_info
 1. `tail -f /data/SERVICE_USER/translation-api/logs/api.log` 找对应 `request_id` 的堆栈。
 2. `BACKEND=dashscope`：确认 `DASHSCOPE_API_KEY` 已由 EnvironmentFile 注入（`systemctl --user show translation-api -p EnvironmentFiles`），并确认机器能出公网到 `dashscope.aliyuncs.com`。
 3. `BACKEND=local_npu`：确认 `LOCAL_NPU_BASE_URL` 可达、模型名正确。
+   **`[Errno 111] Connection refused` = 后端端口没了**，不是我们的服务的问题。
+   后端是 root 拥有的共享 vLLM，**说没就没**（2026-07-28 的 40018 就是这样消失的，见 §五事故记录）。
+   处置：
+   ```bash
+   # 1. 看现在还有哪些 vLLM 活着、各自什么模型
+   ss -ltnp | grep <INTERNAL_HOST>
+   ps -eo pid,user,etime,cmd | grep "vllm serve" | grep -v grep
+   # 2. 找一个 served-model-name 与 LOCAL_NPU_MODEL 一致的端口，实测它能生成
+   curl -sS -m 10 http://<INTERNAL_HOST>:<PORT>/v1/models
+   # 3. 备份 .env 后改 LOCAL_NPU_BASE_URL，重启，**必须打一次真实翻译**验收
+   ```
+   ⚠️ **`GET /health` 返回 200 不代表能翻译** —— 它只查配置有没有填，不探后端。
+   验收一律以真实翻译 `code:0` 为准。
 4. 超时/限流：调大 `.env` 的 `TIMEOUT` 或减小并发；日志里 `[RETRY]` 表示已重试。
 5. **单次翻译异常慢（~63s 固定，与文本长度无关）**：几乎必然是 IPv6→dashscope 不通、Python 在 IPv6 SYN 上卡满 `tcp_syn_retries` 才回退 IPv4。确认 `.env` 里 `PREFER_IPV4=true`（默认已开，`api/net.py` 把 getaddrinfo 的 IPv4 排前）。验证：`getent ahostsv6 dashscope.aliyuncs.com` 若有 AAAA 但 `curl -6 --max-time 5 https://dashscope.aliyuncs.com` 超时，即坐实。修好后单次应为 1~3s（短文本）。
 
