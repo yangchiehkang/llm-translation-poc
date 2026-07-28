@@ -34,9 +34,12 @@ T5_LEDGER = "outputs/analysis/t5_termbase_vs_ref_20260728/t5_ledger.jsonl"
 
 # ---- 已知噪声类：先剥离，再报覆盖率（D2-a 的教训）----
 NOISE = {
+    # span 取自**译文**，模型会把水印一起翻成中文，所以中英两侧的写法都要收。
+    # 只收英文侧会漏掉「下载。仅供参考」「应用程序下载。仅供参考」这类纯中文残片。
     "watermark": re.compile(
         r"Applus|IDIADA|I\s*\.\s*R\s*\.\s*I\s*\.\s*S|\bIRIS\b|Download\s+from|"
-        r"powered\s+by|reference\s+purposes\s+only|ECE/TRANS/WP\.29", re.I),
+        r"powered\s+by|reference\s+purposes\s+only|ECE/TRANS/WP\.29|"
+        r"仅供参考|应用程序下载|由\s*Applus|IDIADA\s*支持", re.I),
     "roman_numeral": re.compile(r"^\s*\(?[IVXLC]{1,6}\)?[.、)]?\s*$"),
     "pdf_broken": re.compile(r"\(cid:|�"),
     "digit_run": re.compile(r"^\s*\d(?:\s+\d){1,}\s*$"),
