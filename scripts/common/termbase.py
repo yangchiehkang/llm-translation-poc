@@ -61,6 +61,10 @@ def load_termbase(
         out["priority"] = (row.get("priority") or "").strip().lower()
         out["status"] = status
         out["aliases"] = split_aliases(row.get("alias") or row.get("aliases"))
+        # target_alias 是**目标端**别名：参考语料中与 target_term 并存的合法译法
+        # （如 shall 的「需」占 6.1%、shall not 的「不应」占 36.4%）。
+        # 与 alias（源端写法变体，供 match_terms 匹配英文）语义不同，必须分列。
+        out["target_aliases"] = split_aliases(row.get("target_alias") or row.get("target_aliases"))
         rows.append(out)
     rows.sort(key=lambda r: len(r["source_term"]), reverse=True)
     return rows
@@ -140,6 +144,7 @@ def match_terms(text: str, terms: list[dict[str, Any]]) -> list[dict[str, Any]]:
             "tcr_scope": term.get("tcr_scope", ""),
             "is_core_high": term.get("is_core_high", ""),
             "aliases": term.get("aliases", []),
+            "target_aliases": term.get("target_aliases", []),
             "matched_text": matched_text,
             "matched_by": matched_by,
         })
@@ -200,9 +205,19 @@ def count_core_high(matched_terms: list[dict[str, Any]]) -> int:
 
 
 def target_present(translation: str, term: dict[str, Any], allow_alias: bool = False) -> bool:
+    """译文是否使用了该术语的规定译法。
+
+    target_aliases（目标端别名）无条件计入命中：它们是参考语料中与 target_term 并存的
+    合法译法，依据是甲方交付文本的实际用法，不是"放宽标准"。
+    aliases（源端别名）只在 allow_alias=True 时计入，且仅作诊断——源端别名是英文写法
+    变体，出现在中文译文里通常意味着漏译而非命中。
+    """
     target = str(term.get("target_term") or "").strip()
     if target and target in translation:
         return True
+    for alias in term.get("target_aliases") or []:
+        if alias and alias in translation:
+            return True
     if allow_alias:
         for alias in term.get("aliases") or []:
             if alias and alias in translation:
