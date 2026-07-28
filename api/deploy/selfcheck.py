@@ -104,6 +104,35 @@ def record_failure(kind: str, detail: dict) -> None:
         f.write(json.dumps(block, ensure_ascii=False, indent=2) + "\n")
 
 
+# 生产术语库的期望 md5 —— 钉的是**生产当前实际在用的那一版**，不是评测版。
+#
+# 生产与评测共用同一个文件路径（.env 的 TERMBASE_PATH），改它会立刻改变生产译文，
+# 而术语库改动必须作为独立部署批次走，不能被评测顺手改掉。本断言就是防这个。
+#
+# ⚠️ 生产这一版 (f00ba0de) **早于** T4 评测用的那一版 (3b8221df)：
+#    T4 的 7 条改动（cell/high voltage/approval authority/compliance/manikin/
+#    shall/shall not）从未上过生产。这是有意的——评测归评测，部署归部署。
+#    但由此可知：**对外的 TCR 96.43% 是评测术语库的数，不是生产当前行为的数。**
+#
+# 换版时**同时**更新这里和 README_DEPLOY §五，否则自检会一直报。
+EXPECTED_TERMBASE_MD5 = os.environ.get(
+    "SELFCHECK_TERMBASE_MD5", "f00ba0de15476b22fbe8b73ad88fe64d")
+
+
+def probe_termbase() -> dict:
+    """生产术语库有没有被改动。与 reasoning_tokens==0 同类：外部状态漂移的哨兵。"""
+    import hashlib
+    rel = read_env("TERMBASE_PATH") or "termbase/auto_regulation_terms_v1.csv"
+    path = (PROJECT / rel) if not rel.startswith("/") else Path(rel)
+    if not path.exists():
+        return {"ok": False, "why": f"术语库文件不存在: {path}"}
+    md5 = hashlib.md5(path.read_bytes()).hexdigest()
+    ok = (md5 == EXPECTED_TERMBASE_MD5)
+    return {"ok": ok, "path": str(path), "md5": md5,
+            "expected": EXPECTED_TERMBASE_MD5,
+            "why": "ok" if ok else "生产术语库 md5 与预期不符——被改过，或换版后忘了更新预期值"}
+
+
 def probe_backend_usage(token: str) -> dict:
     """直调后端取 usage —— API 不返回 token 数，thinking 是否被打开只能这样看。"""
     base_url = read_env("LOCAL_NPU_BASE_URL")
@@ -170,6 +199,15 @@ def main() -> int:
                    "延迟与译文都会变，需重新评估交付承诺与历史对照数",
             "result": usage})
 
+    tb = probe_termbase()
+    rec["termbase"] = tb
+    if not tb.get("ok"):
+        failed.append("termbase_changed")
+        record_failure("termbase_changed", {
+            "why": "生产术语库文件被改动。生产与评测共用同一个 CSV，"
+                   "术语库改动必须作为独立部署批次处理，不能被评测顺手改掉。",
+            "result": tb})
+
     st, health, _ = http(f"{BASE}/health", timeout=10)
     hd = health.get("data", {}) if isinstance(health, dict) else {}
     rec["backend_reachable"] = hd.get("backend_reachable")
@@ -201,7 +239,8 @@ def main() -> int:
     u = rec.get("backend_usage") or {}
     print(f"[{rec['ts']}] {tag} short={short['elapsed_s']}s code={short['code']} "
           f"reachable={rec['backend_reachable']} "
-          f"tok/s={u.get('tok_per_s')} reasoning_tokens={u.get('reasoning_tokens')}"
+          f"tok/s={u.get('tok_per_s')} reasoning_tokens={u.get('reasoning_tokens')} "
+          f"termbase={'ok' if tb.get('ok') else 'CHANGED'}"
           + (f"  long={rec['long']['elapsed_s']}s" if "long" in rec else "")
           + (f"  FAILED={failed}" if failed else ""))
     return 1 if failed else 0
