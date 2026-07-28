@@ -71,6 +71,18 @@ def main() -> None:
     args = ap.parse_args()
 
     rows = [json.loads(x) for x in Path(args.scores).read_text(encoding="utf-8").splitlines() if x.strip()]
+    # error_spans 有两种落盘形态：
+    #   list  —— 修好后的 run_xcomet.py 直接写 JSON 数组
+    #   str   —— 打分机上早先的脚本把 Python 对象 repr 成字符串塞进字段
+    # 两种都要吃，否则 t4_scores.jsonl 这份现成的 span 用不上。
+    import ast
+    for r in rows:
+        es = r.get("error_spans")
+        if isinstance(es, str):
+            try:
+                r["error_spans"] = ast.literal_eval(es) if es.strip() else []
+            except (ValueError, SyntaxError):
+                r["error_spans"] = []
     with_spans = [r for r in rows if r.get("error_spans")]
     if not with_spans:
         sys.exit(
@@ -170,15 +182,24 @@ def main() -> None:
         t5 = [json.loads(x) for x in Path(T5_LEDGER).read_text(encoding="utf-8").splitlines() if x.strip()]
         conf = {e["source_term"]: e for e in t5 if e["class"] in ("相悖", "空格差异")}
         # 一个 major span 若其样本源文含某相悖术语，且 span 文本含该术语的现译法，则判为落在该术语上
+        # span 多是 1-5 字的碎片：「可充电」是 REESS 目标译法「可充电储能系统」的片段，
+        # 「外壳混合」把目标译法「外壳」包在里面。只判 target in span 会两头都漏。
+        # 故用**双向包含**，并要求 >=2 字（单字如「外」「腔」噪声太大）。
+        # 这与 T5 里踩过的片段坑是同一类，不能在这里再踩一次。
         hit_by_term: dict[str, int] = defaultdict(int)
         n_on_conf = 0
         for s in clean:
             r = corpus.get(s["sample_id"])
             if not r:
                 continue
+            txt = s["text"]
+            if len(txt) < 2:
+                continue
             for st, e in conf.items():
                 tgt = e["target_term"]
-                if tgt and tgt in s["text"] and st.lower() in r["source_text"].lower():
+                if not tgt or st.lower() not in r["source_text"].lower():
+                    continue
+                if tgt in txt or (len(txt) >= 2 and txt in tgt):
                     hit_by_term[st] += 1
                     n_on_conf += 1
                     break
