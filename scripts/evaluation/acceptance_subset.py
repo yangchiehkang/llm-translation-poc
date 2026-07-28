@@ -37,9 +37,44 @@ _CONT = re.compile(r"^(?:or|and|but|nor|of|to|in|on|at|by|for|with|from|as|than|
 _DANG = re.compile(r"\b(?:and|or|but|nor|of|to|in|on|at|by|for|with|from|as|than|that|which|"
                    r"where|when|if|the|a|an|is|are|was|were|be|been|shall|may|not|its|their|"
                    r"this|these)\s*$", re.I)
-_WM = ["Applus IDIADA", "I.R.I.S. application", "Download from the",
-       "shall not be held responsible", "ECE/TRANS/WP.29"]
+# R3 水印判据按"部件"匹配，不按完整字串——PDF 断行会把水印切开落进不同 segment，
+# 只匹配 "Applus IDIADA" 这样的完整串会漏掉碎片。分两级：
+#   _WM_STRONG  单独出现即成立：品牌名与 I.R.I.S. 的点分写法（含空格变体），法规正文不会出现
+#   _WM_WEAK    需 >=2 个同现才成立：单独看是普通英文（"powered by an electric motor"
+#               在电动车法规里完全合法），单个命中不足以定性
+# 明确**不**匹配 I. / I / .I. 这类 1-2 字母碎片：689 条上审计过，这类模式命中的是
+# "Part I:"、"Annex 9I"（DA 0.84/0.93/1.00）等合法正文，是误伤。断行若把水印削到只剩
+# 单字母，本判据放弃该条——宁可漏，不可误。
+_WM_STRONG = [
+    re.compile(r"Applus", re.I),
+    re.compile(r"IDIADA", re.I),
+    re.compile(r"I\s*\.\s*R\s*\.\s*I\s*\.\s*S", re.I),   # I.R.I.S. 及其断行加空格变体
+    re.compile(r"\bIRIS\b"),                              # ZH 侧出现的 "* IRIS注"
+    re.compile(r"[Ff]or reference purposes only"),        # 水印固定尾句，正文不会出现
+    re.compile(r"ECE/TRANS/WP\.29"),
+    re.compile(r"shall not be held responsible", re.I),
+]
+_WM_WEAK = [
+    re.compile(r"Download\s+from\b", re.I),
+    re.compile(r"powered\s+by\b", re.I),
+    re.compile(r"由\s*Applus"),
+    re.compile(r"IDIADA\s*支持"),
+    re.compile(r"应用程序\s*下载"),
+    re.compile(r"仅供参考"),
+]
 _BRK = ["(cid:", "�"]
+
+
+def _watermark_hit(text: str) -> str:
+    """返回可核验的命中理由；无命中返回 ""。"""
+    for rx in _WM_STRONG:
+        m = rx.search(text)
+        if m:
+            return f"水印部件 “{m.group()}”"
+    weak = [m.group() for rx in _WM_WEAK for m in [rx.search(text)] if m]
+    if len(weak) >= 2:
+        return "水印样板短语同现 " + "、".join(f"“{w}”" for w in weak)
+    return ""
 _BARE = re.compile(r"^\d+(?:\.\d+)*\.?$")
 _SUB = re.compile(r"(?:(?<=\s)|(?<=（)|(?<=\()|(?<=、))\d(?:\s+\d){1,}")
 # 两侧必须对称：中文侧不把 ； 算句末，英文侧也不算 ;；并排除条款号的点（"5.4.1." 不是句末）
@@ -97,11 +132,10 @@ def rules_for(row: dict, ref_followed_by_orphan: bool | None = None) -> list[tup
         out.append(("R2b", f"参考 {nr} 字 / 源文 {ns} 字，比值 {ratio:.2f} > {RATIO_CUT}"
                            f"（{RATIO_MEDIAN_NOTE}）；中文更紧凑，比值反超说明源文只覆盖条款的一部分"))
 
-    for w in _WM:
-        if w.lower() in src.lower():
-            out.append(("R3", f"源文含页眉/水印字串 “{w}”")); break
-        if w.lower() in ref.lower():
-            out.append(("R3", f"参考含页眉/水印字串 “{w}”")); break
+    for side, text in (("源文", src), ("参考", ref)):
+        why = _watermark_hit(text)
+        if why:
+            out.append(("R3", f"{side}含页眉/{why}")); break
     for b in _BRK:
         if b in src or b in ref:
             out.append(("R3", f"含 PDF 抽取失败标记 “{b}”")); break
