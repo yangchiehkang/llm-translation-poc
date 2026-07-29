@@ -77,7 +77,11 @@ def _term_spans(text: str, term: str, case_sensitive: bool = False) -> list[tupl
     flags = 0 if case_sensitive else re.IGNORECASE
     escaped = re.escape(term)
     if term[0].isalnum() and term[-1].isalnum():
-        pattern = rf"(?<![A-Za-z0-9]){escaped}(?![A-Za-z0-9])"
+        # \w 而非 [A-Za-z0-9]（2026-07-29，Z1-ru）：词边界只排除拉丁字母数字，
+        # 西里尔字母不算"字母数字边界"，短别名（如 GOST 气候版本缩写 "ХЛ"）会在
+        # 完全无关的俄语单词内部被当成命中（"охлаждающей"(冷却) 中间的 "хл"）。
+        # Python 的 \w 默认按 Unicode 匹配，覆盖西里尔/阿拉伯/泰文/中日韩，是通用修法。
+        pattern = rf"(?<!\w){escaped}(?!\w)"
     else:
         pattern = escaped
     return [(m.start(), m.end()) for m in re.finditer(pattern, text, flags=flags)]
