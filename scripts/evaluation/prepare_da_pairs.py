@@ -540,6 +540,18 @@ def parse_pdf_segments(
             if scope_here:
                 current_scope = scope_here
             section_no = extract_section_no(line)
+            # § 顶层条款号强制重置作用域（2026-07-29，Z2-de/StVZO）：德语法规里
+            # "§ N" 是正文顶层条款标记，按定义不可能同时位于某个附录（Anlage/Annex）
+            # 作用域内。StVZO 参考译文侧一处目录/附录清单页把 scope 误判成 "X14"
+            # 后，detect_scope() 找不到下一次真正的作用域标题行来纠正它——这正是
+            # detect_scope() 文档字符串自己描述的已知风险（"目录会把整篇正文提前
+            # 染成最后一条目录项的作用域"），只是这次没被现有的目录行判据挡住。
+            # 源文侧巧合没触发（可能是版式/翻页差异），于是两侧作用域不对称、
+            # 48 个源文条款号在参考侧一个都配不上。§ 一出现就清空作用域，不依赖
+            # 猜"目录已经结束"，直接用"§ 的存在本身就证明现在在正文顶层"这条
+            # 结构性事实修复，不影响其它任何条款号类型的作用域判定。
+            if section_no and section_no.startswith("§"):
+                current_scope = ""
             line_type = segment_type_for(line, section_no)
             prev = current_lines[-1] if current_lines else ""
             current_text = clean_text(" ".join(current_lines))
