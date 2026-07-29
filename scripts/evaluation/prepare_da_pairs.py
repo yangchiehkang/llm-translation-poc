@@ -35,6 +35,14 @@ SECTION_PATTERNS = [
     # 门槛外（0.712 < 0.75），零对齐。
     re.compile(r"^\s*((?:[A-ZА-Я])(?:\.\d{1,3}){1,4})(?:[.)])?(?=\s|$)"),
     re.compile(r"^\s*((?:Article|Art\.|ARTICLE)\s+\d+[A-Za-z0-9.-]*)\b", re.IGNORECASE),
+    # 法国法典条款号自带字母前缀（"Article L541-9"、"Article L541-9-3-1"），不满足
+    # 上一条「Article 后紧跟数字」的要求（2026-07-29，Z2-fr，FR_environment_code_L541
+    # 诊断：34 条源文段一条都没抓到条款号）。中文译文侧对应写法是"第L541-9条"，
+    # 与 SECTION_PATTERNS[6]（中文"第...章节条款"，只认中文数字/阿拉伯数字）不匹配，
+    # 需要单独一条模式；两侧字母数字部分靠 canonical_section_key 里的 "L\d[\d-]*"
+    # 提取来对齐，不依赖这里的原始字符串相同。
+    re.compile(r"^\s*(Article\s+L\.?\s*\d+(?:-\d+)*)\b", re.IGNORECASE),
+    re.compile(r"^\s*(第\s*L\.?\s*\d+(?:-\d+)*\s*条)"),
     re.compile(r"^\s*((?:Artículo|Articulo|ARTÍCULO)\s+\d+[A-Za-z0-9.-]*)\b", re.IGNORECASE),
     re.compile(r"^\s*((?:Статья|СТАТЬЯ)\s+\d+[A-Za-zА-Яа-я0-9.-]*)\b"),
     re.compile(r"^\s*(第\s*[一二三四五六七八九十百千万\d]+\s*[章节条款])"),
@@ -178,6 +186,9 @@ _ART_WORD_RE = re.compile(
 )
 _CN_UNIT_RE = re.compile(r"^第\s*([一二三四五六七八九十百千万\d]+)\s*([章节条款])")
 _CN_UNIT_KIND = {"章": "chap", "节": "sec", "条": "art", "款": "para"}
+# 法国法典字母前缀条款号（"Article L541-9" / "第L541-9条"）：两侧壳不同
+# （Article.../第...条），核心编码相同，提取编码部分统一映射。
+_L_CODE_RE = re.compile(r"^(?:Article\s+|第\s*)L\.?\s*(\d+(?:-\d+)*)\s*(?:条)?$", re.IGNORECASE)
 
 # 西里尔/拉丁形近字母：GOST 俄语原文附录标题"Приложение А/Б"用西里尔字母，
 # 中文译文排版惯例用拉丁字母（"A.1"），两者视觉全同、编码不同。数字条款号里的
@@ -194,6 +205,9 @@ def canonical_section_key(section_no: str | None) -> tuple[str, str] | None:
     # 恒等变换——对 en/ru 现有的纯数字条款号（无字母前缀）不产生任何影响。
     if re.fullmatch(r"(?:[A-Z]\.)?\d{1,3}(?:\.\d{1,3}){0,6}", s_lat):
         return ("num", s_lat)
+    m = _L_CODE_RE.match(s)
+    if m:
+        return ("art", f"L{m.group(1)}")
     m = _CN_UNIT_RE.match(s)
     if m:
         n = _numeral_to_int(m.group(1))
@@ -686,7 +700,19 @@ def align_segments(
     ref_count = len(reference_segments)
     count_ratio = source_count / ref_count if ref_count else 0.0
 
-    if 0.75 <= count_ratio <= 1.35:
+    # 计数比门槛失守时的例外（2026-07-29，Z2-fr）：fr L541 文档 67 源文段/98 参考段，
+    # 比值 0.684 未过 0.75~1.35 门槛，但 48 个带 key 的源文段里 47 个在参考侧能找到
+    # 同一 key（覆盖率 97.9%）——比值失衡是参考侧分段粒度更细造成的，不是结构性
+    # 错配。key 覆盖率是比计数比更精确的信号（逐条验证过 key 是否存在，不是靠总数
+    # 猜比例），故在覆盖率极高时也放行 exact 匹配。阈值保守（覆盖率>=90% 且绝对匹配
+    # 数>=10，避免小样本巧合命中），且不改变计数比门槛本身、不改变下方 order_based
+    # 的独立门槛——只是新增一条"更精确信号压过粗糙信号"的例外，不是放宽普适阈值。
+    keyed_source_keys = [k for k in (scoped_key(s) for s in source_segments) if k]
+    key_coverage = (sum(1 for k in keyed_source_keys if k in refs_by_key) / len(keyed_source_keys)
+                    if keyed_source_keys else 0.0)
+    high_key_coverage = len(keyed_source_keys) >= 10 and key_coverage >= 0.90
+
+    if (0.75 <= count_ratio <= 1.35) or high_key_coverage:
         for sidx, source in enumerate(source_segments):
             k = scoped_key(source)
             if not k:
@@ -1626,6 +1652,10 @@ CANONICAL_CASES = [
     ("第二章", "第2条", False, "章级容器与条级条款不同类型，即使数字部分相同也不能对等"),
     ("А.1", "A.1", True, "ru GOST：西里尔附录字母 А(U+0410) 与拉丁 A(U+0041) 形近，须同key"),
     ("А.1.1", "A.1.2", False, "西里尔前缀转写正确的前提下，数字不同仍不能对等"),
+    ("Article L541-9", "第L541-9条", True, "fr 环境法典字母条款号：Article L.../第...条 是同一编码"),
+    ("Article L541-9-3-1", "第L541-9-3-1条", True, "多级连字符编码也要对等"),
+    ("Article L541-9", "第L541-10条", False, "编码不同不能对等"),
+    ("Article L541-9", "第L541-9-1条", False, "同前缀不同级别（-9 vs -9-1）不能对等"),
 ]
 
 
