@@ -48,6 +48,19 @@ SECTION_PATTERNS = [
     re.compile(r"^\s*(第\s*[一二三四五六七八九十百千万\d]+\s*[章节条款])"),
     re.compile(r"^\s*((?:ข้อ|มาตรา)\s*\d+[A-Za-z0-9.-]*)"),
     re.compile(r"^\s*((?:المادة|مادة)\s*\d+[A-Za-z0-9.-]*)"),
+    # 德语 § N 条款号（2026-07-29，Z2-de）：StVZO 源文完全没有能识别 § 的模式，
+    # § 内部的枚举项被误判成条款号，全文档编号从 1 反复重来。中文译文侧**直接
+    # 保留 § 符号原样**（"§ 22 车辆部件的型式认证"），不像法语译成"第N条"，
+    # 两侧字面一致，不需要额外的跨语言映射——canonical_section_key 的
+    # _ART_WORD_RE 已经认识 "§" 前缀（P1 时为此预留），这里只需让 extract_section_no
+    # 先把 "§ N"/"§ Na"（如 "§ 21a"）本身抓出来。
+    #
+    # 否定前瞻排除"引用"：正文里大量出现"gemäß § 19 Absatz 6..."这类对其它条款的
+    # 行内引用，恰好也在句首匹配（PDF 换行把引用切到了行首），若不排除会把引用误判
+    # 成"§ 19 第二次开头"，与目录页的标题重复一起把 scoped_key 冲成大量歧义。
+    # 真标题是"§ N + 标题词"，引用是"§ N + Absatz/Satz/in Verbindung mit"，两者
+    # 用词能明确区分（与 Annex 引用抑制同一处理思路）。
+    re.compile(r"^\s*(§\s*\d+[a-z]?)\b(?!\s*(?:Absatz|Abs\.|Satz|in\s+Verbindung))"),
 ]
 
 # ---- 作用域（附录）前缀：让 "4.1" 变成 "X8::4.1"，避免正文与附件同号塌成一个 key ----
@@ -265,6 +278,12 @@ def is_noise_line(line: str) -> bool:
         return True
     if re.fullmatch(r"(?:page|página|seite|страница|หน้า)\s+\d{1,4}(?:\s*/\s*\d{1,4})?", line, re.IGNORECASE):
         return True
+    # 中文"第N页共M页"页码行（2026-07-29，Z2-de：StVZO 中文译文每页都有，页码逐页
+    # 变化，不满足 repeated_page_lines() 的"整行完全相同才算重复"要求，需要单独
+    # 用正则识别。此前未过滤时它没有混进正文——是作为独立行被当成普通内容行合并
+    # 进当前段，产出的段落文本里就显得"混入了"。
+    if re.fullmatch(r"第\s*\d{1,4}\s*页\s*共\s*\d{1,4}\s*页", line):
+        return True
     if re.search(r"[.·…]{4,}\s*\d{1,4}$", line):
         return True
     if re.search(r"[.·…]{10,}", line):
@@ -420,6 +439,13 @@ def parse_pdf_segments(
     # max_chars 是最后一处「字符数阈值当结构边界」。正常语料里它不应触发；
     # 触发即记录告警（含 segment 标识），说明遇到了未知的文档结构。
     overflow_notes: list[str] = []
+    # 当前打开的段落是否属于德语 "§ N" 条款体（2026-07-29，Z2-de）。StVZO 里 § 内部
+    # 常见枚举子项独占一行（"2. Gleitschutzeinrichtungen (...)"），这类行会被
+    # SECTION_PATTERNS[1]（纯数字 "N."）命中，若当普通条款号处理会把整个 § 拆成
+    # 一堆 1/2/3 反复重来的假条款，编号在文档里大量碰撞、彻底冲垮 scoped_key。
+    # 规则：进了一个 "§ N" 段之后，纯数字枚举行视为该 § 内部的子项延续，不开新段；
+    # 遇到下一个 "§ N" 才真正结束当前条款。只处理 § 这一种嵌套，不动其它语言的既有行为。
+    in_de_paragraph: bool = False
 
     def flush() -> None:
         nonlocal current_lines, current_page, order, filtered
@@ -479,8 +505,14 @@ def parse_pdf_segments(
             current_text = clean_text(" ".join(current_lines))
             starts_new = False
             if current_lines:
-                if section_no:
+                if section_no and section_no.startswith("§"):
                     starts_new = True
+                    in_de_paragraph = True
+                elif section_no and in_de_paragraph and re.fullmatch(r"\d{1,3}(?:\.\d{1,3}){0,6}", section_no):
+                    pass  # § 内部的纯数字枚举子项，并入当前条款，不开新段
+                elif section_no:
+                    starts_new = True
+                    in_de_paragraph = False
                 elif (
                     line_type in {"title", "table", "note"}
                     and segment_type_for(current_text, extract_section_no(current_text)) != line_type
@@ -678,6 +710,36 @@ def aligned_sample(
     }
 
 
+def _title_ref_indices(segments: list[dict[str, Any]]) -> set[int]:
+    """标出"同 key 多次出现时，明显短于最长 occurrence 的那些"——目录页标题、
+    正文里对本条款的行内引用，不是条款正文本身（2026-07-29，Z2-de：StVZO 目录页
+    把每个 § 的标题单独列一遍；EN R100 也有同型问题——"3.2. Component based test"
+    （25 字符标题）与"3.2. Test procedure ..."（1709 字符正文）共享同一条款号）。
+    判据：同 key 存在长度 >= max(100, 0.3×组内最长) 的"正文候选"时，明显更短的
+    那些视为标题/引用，从关键字匹配里剔除（不参与 key 计数与配对，不是删除段落）。
+    若组内没有一条够长（全部一样短），交给下游 scoped_ambiguous 兜底，不强行选。
+    ⚠️ 首版按"更短 = 引用"直接判定时，drop 了 en/ru 一些 scoped_ambiguous/order_based
+    条目——核查后确认这些条目本来就 use_for_da=False（不进 689/133 主数），且没有
+    任何 exact_section_scoped 被影响（逐条核对 689 条 armA 全部仍在），fr 还净增
+    1 条 exact，才定为安全，保留至今。
+    """
+    by_key: dict[str, list[int]] = defaultdict(list)
+    for idx, seg in enumerate(segments):
+        k = scoped_key(seg)
+        if k:
+            by_key[k].append(idx)
+    drop: set[int] = set()
+    for idxs in by_key.values():
+        if len(idxs) < 2:
+            continue
+        maxlen = max(segments[i]["char_count"] for i in idxs)
+        threshold = max(100, 0.3 * maxlen)
+        long_idxs = [i for i in idxs if segments[i]["char_count"] >= threshold]
+        if long_idxs and len(long_idxs) < len(idxs):
+            drop.update(i for i in idxs if i not in long_idxs)
+    return drop
+
+
 def align_segments(
     source_segments: list[dict[str, Any]],
     reference_segments: list[dict[str, Any]],
@@ -688,14 +750,26 @@ def align_segments(
     used_source: set[int] = set()
     used_ref: set[int] = set()
 
+    source_title_ref = _title_ref_indices(source_segments)
+    ref_title_ref = _title_ref_indices(reference_segments)
+
     # 作用域化 key（"X8::5.4.1"）建索引：正文与附件同号不再塌成一个 key。
+    # 标题引用（source_title_ref/ref_title_ref）不参与建索引与计数。
     refs_by_key: dict[str, list[tuple[int, dict[str, Any]]]] = defaultdict(list)
     for ridx, ref in enumerate(reference_segments):
+        if ridx in ref_title_ref:
+            continue
         k = scoped_key(ref)
         if k:
             refs_by_key[k].append((ridx, ref))
-    source_key_counts = Counter(k for k in (scoped_key(s) for s in source_segments) if k)
-    ref_key_counts = Counter(k for k in (scoped_key(r) for r in reference_segments) if k)
+    source_key_counts = Counter(
+        k for sidx, k in ((i, scoped_key(s)) for i, s in enumerate(source_segments))
+        if k and sidx not in source_title_ref
+    )
+    ref_key_counts = Counter(
+        k for ridx, k in ((i, scoped_key(r)) for i, r in enumerate(reference_segments))
+        if k and ridx not in ref_title_ref
+    )
     source_count = len(source_segments)
     ref_count = len(reference_segments)
     count_ratio = source_count / ref_count if ref_count else 0.0
@@ -707,13 +781,16 @@ def align_segments(
     # 猜比例），故在覆盖率极高时也放行 exact 匹配。阈值保守（覆盖率>=90% 且绝对匹配
     # 数>=10，避免小样本巧合命中），且不改变计数比门槛本身、不改变下方 order_based
     # 的独立门槛——只是新增一条"更精确信号压过粗糙信号"的例外，不是放宽普适阈值。
-    keyed_source_keys = [k for k in (scoped_key(s) for s in source_segments) if k]
+    keyed_source_keys = [scoped_key(s) for i, s in enumerate(source_segments)
+                         if i not in source_title_ref and scoped_key(s)]
     key_coverage = (sum(1 for k in keyed_source_keys if k in refs_by_key) / len(keyed_source_keys)
                     if keyed_source_keys else 0.0)
     high_key_coverage = len(keyed_source_keys) >= 10 and key_coverage >= 0.90
 
     if (0.75 <= count_ratio <= 1.35) or high_key_coverage:
         for sidx, source in enumerate(source_segments):
+            if sidx in source_title_ref:
+                continue  # 标题引用本身不是条款正文，不参与配对
             k = scoped_key(source)
             if not k:
                 continue
