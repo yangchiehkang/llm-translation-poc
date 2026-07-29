@@ -245,6 +245,12 @@ def canonical_section_key(section_no: str | None) -> tuple[str, str] | None:
     # 纯数字体系（可含前导字母如 "A.1.2"，西里尔形近字母已转写）：跨语言字面相同，
     # 恒等变换——对 en/ru 现有的纯数字条款号（无字母前缀）不产生任何影响。
     if re.fullmatch(r"(?:[A-Z]\.)?\d{1,3}(?:\.\d{1,3}){0,6}", s_lat):
+        # 逐字符把非 ASCII 的 Unicode 十进制数字（如泰文 ๑๒๓、阿拉伯-印度数字
+        # ١٢٣）转写成拉丁数字（2026-07-30，Z-th）：Python 的 \d 是 Unicode
+        # 感知的，泰语"๑"能匹配上面这条纯数字判据，但字面上"๑"≠"1"，不转写
+        # 就永远对不上中文译文侧的阿拉伯数字条款号。只转数字字符，点号/前缀
+        # 字母原样保留，对 en/ru 现有纯 ASCII 数字条款号是恒等变换。
+        s_lat = "".join(str(unicodedata.digit(c)) if c.isdigit() and not c.isascii() else c for c in s_lat)
         return ("num", s_lat)
     m = _AR_SUBCLAUSE_RE.match(s)
     if m:
@@ -263,7 +269,16 @@ def canonical_section_key(section_no: str | None) -> tuple[str, str] | None:
         return (kind, str(n)) if n is not None else ("raw", s)
     m = _ART_WORD_RE.match(s)
     if m:
-        return ("art", m.group(1))
+        # 数字部分统一转写成阿拉伯数字字符串（2026-07-30，Z-th）：泰语条款号
+        # "ข้อ ๑" 用泰文数字（Unicode Nd 类别，Python \d/int() 原生支持解析），
+        # 中文译文写"第1条"用阿拉伯数字——原来这里直接拿正则捕获组的原始字符串
+        # 当 key，"๑" 和 "1" 永远对不上，泰语全部条款号因此配不上参考侧。
+        # 只在捕获组是纯数字（任意文字系统）时转写；带字母后缀的编号（如
+        # 德语"22a"、法语"L541-9"）_numeral_to_int 返回 None，原样返回，
+        # 不影响已有行为。
+        raw = m.group(1)
+        n = _numeral_to_int(raw)
+        return ("art", str(n) if n is not None else raw)
     return ("raw", s)
 
 
