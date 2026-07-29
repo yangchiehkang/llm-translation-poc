@@ -66,6 +66,11 @@ SECTION_PATTERNS = [
     re.compile(r"^\s*(第\s*[一二三四五六七八九十百千万\d]+\s*[章节条款])"),
     re.compile(r"^\s*((?:ข้อ|มาตรา)\s*\d+[A-Za-z0-9.-]*)"),
     re.compile(r"^\s*((?:المادة|مادة)\s*\d+[A-Za-z0-9.-]*)"),
+    # 阿拉伯语数字条款号"子款/章节"惯例（如 "١/٧" = 第7节第1款，2026-07-29，Z3-ar）：
+    # SASO 电动车法规源文条款号用阿拉伯-印度数字，顺序与中文译文的"7.1"（章节.子款）
+    # 相反——子款在前、章节在后，两侧数字文本也不同（阿拉伯-印度数字 vs 阿拉伯数字）。
+    # 这条只识别原始形态，顺序颠倒和数字转写统一放到 canonical_section_key 里处理。
+    re.compile(r"^\s*([٠-٩]+/[٠-٩]+)"),
     # 德语 § N 条款号（2026-07-29，Z2-de）：StVZO 源文完全没有能识别 § 的模式，
     # § 内部的枚举项被误判成条款号，全文档编号从 1 反复重来。中文译文侧**直接
     # 保留 § 符号原样**（"§ 22 车辆部件的型式认证"），不像法语译成"第N条"，
@@ -221,6 +226,11 @@ _CN_UNIT_KIND = {"章": "chap", "节": "sec", "条": "art", "款": "para"}
 # （Article.../第...条），核心编码相同，提取编码部分统一映射。
 _L_CODE_RE = re.compile(r"^(?:Article\s+|第\s*)L\.?\s*(\d+(?:-\d+)*)\s*(?:条)?$", re.IGNORECASE)
 
+# 阿拉伯语"子款/章节"条款号（2026-07-29，Z3-ar）：SASO 电动车法规源文用
+# 阿拉伯-印度数字写"子款/章节"（如"١/٧"=第7节第1款），中文译文写"章节.子款"
+# （"7.1"）——顺序相反、数字文本也不同，需要单独识别+颠倒+转写。
+_AR_SUBCLAUSE_RE = re.compile(r"^([٠-٩]+)/([٠-٩]+)$")
+
 # 西里尔/拉丁形近字母：GOST 俄语原文附录标题"Приложение А/Б"用西里尔字母，
 # 中文译文排版惯例用拉丁字母（"A.1"），两者视觉全同、编码不同。数字条款号里的
 # 前缀字母先转写成拉丁形，"А.1"（西里尔）与"A.1"（拉丁）才能规范化成同一个 key。
@@ -236,6 +246,13 @@ def canonical_section_key(section_no: str | None) -> tuple[str, str] | None:
     # 恒等变换——对 en/ru 现有的纯数字条款号（无字母前缀）不产生任何影响。
     if re.fullmatch(r"(?:[A-Z]\.)?\d{1,3}(?:\.\d{1,3}){0,6}", s_lat):
         return ("num", s_lat)
+    m = _AR_SUBCLAUSE_RE.match(s)
+    if m:
+        # 阿拉伯语"子款/章节"顺序与中文"章节.子款"相反，且数字是阿拉伯-印度数字，
+        # 两侧都转成阿拉伯数字、颠倒顺序后才能对上同一个 canonical key。
+        sub = "".join(str(unicodedata.digit(c)) for c in m.group(1))
+        chap = "".join(str(unicodedata.digit(c)) for c in m.group(2))
+        return ("num", f"{chap}.{sub}")
     m = _L_CODE_RE.match(s)
     if m:
         return ("art", f"L{m.group(1)}")
@@ -418,6 +435,43 @@ def keep_segment(text: str, segment_type: str, section_no: str | None, min_chars
     return False
 
 
+# 阿拉伯语字符范围（含展示形式区），用于判定一行文字是否以阿拉伯语为主。
+_ARABIC_CHAR_RE = re.compile(r"[؀-ۿﭐ-﷿ﹰ-﻿]")
+
+
+def _extract_rtl_aware_page_text(page: Any) -> str:
+    """按行聚类后，阿拉伯语（RTL）行按 x 坐标降序重排词序，拉丁/中文等 LTR 行
+    保持升序（2026-07-29，Z3-ar）。
+
+    pdfplumber 的 `extract_text()` 只按几何位置从左到右拼词，不做 RTL 逻辑
+    换位——对阿拉伯语 PDF，这会把每一行的词序整体拼反（行内单个词的字形
+    仍正常，问题在词与词的排列顺序）。验证过：条款号（如"1/7"）在原文里
+    实际上是每行最先读到的部分（阿拉伯语从右向左读，行首在页面右侧，
+    即 x 坐标最大处），被 `extract_text()` 放到了提取文本行尾，导致
+    `extract_section_no()` 用"行首匹配"的判据永远抓不到它。
+    """
+    words = page.extract_words(use_text_flow=False)
+    if not words:
+        return ""
+    lines: list[list[dict[str, Any]]] = []
+    for w in sorted(words, key=lambda w: (w["top"], w["x0"])):
+        for line in lines:
+            if abs(line[0]["top"] - w["top"]) <= 3:
+                line.append(w)
+                break
+        else:
+            lines.append([w])
+    lines.sort(key=lambda line: line[0]["top"])
+    out_lines = []
+    for line in lines:
+        ar_chars = sum(len(_ARABIC_CHAR_RE.findall(w["text"])) for w in line)
+        total_chars = sum(len(w["text"]) for w in line) or 1
+        is_rtl_line = (ar_chars / total_chars) > 0.4
+        ordered = sorted(line, key=lambda w: -w["x0"] if is_rtl_line else w["x0"])
+        out_lines.append(" ".join(w["text"] for w in ordered))
+    return "\n".join(out_lines)
+
+
 def extract_pages_with_pdfplumber(pdf_path: Path) -> list[dict[str, Any]]:
     try:
         import pdfplumber
@@ -430,6 +484,13 @@ def extract_pages_with_pdfplumber(pdf_path: Path) -> list[dict[str, Any]]:
             text = page.extract_text(x_tolerance=1, y_tolerance=3) or ""
             if not text.strip():
                 text = page.extract_text(layout=True) or ""
+            # 只在页面以阿拉伯语为主时才切到 RTL 感知的自定义抽取路径，其它
+            # 语言的页面完全不受影响、走原来的 extract_text() 逻辑（窄范围
+            # 生效，避免对 en/ru/fr/de/es/th 产生任何漂移）。
+            if text and (len(_ARABIC_CHAR_RE.findall(text)) / max(len(text), 1)) > 0.15:
+                rtl_text = _extract_rtl_aware_page_text(page)
+                if rtl_text.strip():
+                    text = rtl_text
             pages.append({"page": idx, "text": text})
     return pages
 
