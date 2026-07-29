@@ -28,7 +28,12 @@ SECTION_PATTERNS = [
     # whose primary use is…"、公式变量行 "R = U / I"、PDF 字间距 artifact "E nergy"
     # 全判成条款号并强行开新段。英语上开火 72 次，德语上 3071/5537。附录条款号
     # "A.1.2" 仍照常命中。
-    re.compile(r"^\s*((?:[A-Z])(?:\.\d{1,3}){1,4})(?:[.)])?(?=\s|$)"),
+    # [A-ZА-Я] 而非 [A-Z]（2026-07-29，Z1-ru 诊断）：GOST 30593 俄语原文的附录标题
+    # 是"Приложение А"/"Приложение Б"——西里尔字母"А"(U+0410) 和拉丁"A"(U+0041)
+    # 视觉全同但编码不同，只认 [A-Z] 会让整个附录 A（约30个条款号）在源文侧全部
+    # 识别不到，而中文译文侧用拉丁 A 排版，两侧就此不对称，把该文档的计数比拖到
+    # 门槛外（0.712 < 0.75），零对齐。
+    re.compile(r"^\s*((?:[A-ZА-Я])(?:\.\d{1,3}){1,4})(?:[.)])?(?=\s|$)"),
     re.compile(r"^\s*((?:Article|Art\.|ARTICLE)\s+\d+[A-Za-z0-9.-]*)\b", re.IGNORECASE),
     re.compile(r"^\s*((?:Artículo|Articulo|ARTÍCULO)\s+\d+[A-Za-z0-9.-]*)\b", re.IGNORECASE),
     re.compile(r"^\s*((?:Статья|СТАТЬЯ)\s+\d+[A-Za-zА-Яа-я0-9.-]*)\b"),
@@ -152,13 +157,65 @@ def detect_scope(line: str, lang: str, line_idx: int | None = None, next_line: s
     return f"{prefix}{n}{m.group(3) or ''}"
 
 
+# ---- 条款号跨语言归一化 ----
+# 背景（2026-07-29，P1）：fr "Article 1" 与 zh "第 1 条" 是两个不相等的字符串，
+# scoped_key 原来直接拿 section_no 原始字符串做 key，永远对不上——即使条款结构
+# 本身是干净的 1:1（人工核对过 fr tachograph 文档）。en/ru 的数字条款号两侧字面
+# 恰好相同（"12.1" 在源文和译文里都是这串数字），是巧合，不是设计，不能指望法语
+# "Article N"、德语 "§ N" 也有这个巧合。
+#
+# 归一化把 extract_section_no() 的原始字符串映射成 (kind, num) 规范化元组：
+#   ("num", "12.1")  纯数字条款号，含中英俄泰文档常见形式；恒等变换，不影响 en/ru
+#   ("art", "1")      "顶层条款"一级：Article N / Artículo N / Статья N / § N /
+#                     第N条 / ข้อ N / مادة N —— 不同语言里功能对等的最小可引用单元
+#   ("chap", "N") / ("sec", "N")  第N章 / 第N节，比 art 高一级的容器，不与 art 混淆
+#   ("para", "N")     第N款，比 art 低一级的子款
+#   ("raw", s)        未识别的兜底，保留原字符串，不与任何规范类型碰撞
+_ART_WORD_RE = re.compile(
+    r"^(?:Article|Art\.|ARTICLE|Artículo|Articulo|ARTÍCULO|Статья|СТАТЬЯ|"
+    r"ข้อ|มาตรา|المادة|مادة|§)\s*(\d+[A-Za-z0-9.-]*)",
+    re.IGNORECASE,
+)
+_CN_UNIT_RE = re.compile(r"^第\s*([一二三四五六七八九十百千万\d]+)\s*([章节条款])")
+_CN_UNIT_KIND = {"章": "chap", "节": "sec", "条": "art", "款": "para"}
+
+# 西里尔/拉丁形近字母：GOST 俄语原文附录标题"Приложение А/Б"用西里尔字母，
+# 中文译文排版惯例用拉丁字母（"A.1"），两者视觉全同、编码不同。数字条款号里的
+# 前缀字母先转写成拉丁形，"А.1"（西里尔）与"A.1"（拉丁）才能规范化成同一个 key。
+_CYR_TO_LAT_LOOKALIKE = str.maketrans("АВЕКМНОРСТУХ", "ABEKMHOPCTYX")
+
+
+def canonical_section_key(section_no: str | None) -> tuple[str, str] | None:
+    s = (section_no or "").strip()
+    if not s:
+        return None
+    s_lat = s.translate(_CYR_TO_LAT_LOOKALIKE)
+    # 纯数字体系（可含前导字母如 "A.1.2"，西里尔形近字母已转写）：跨语言字面相同，
+    # 恒等变换——对 en/ru 现有的纯数字条款号（无字母前缀）不产生任何影响。
+    if re.fullmatch(r"(?:[A-Z]\.)?\d{1,3}(?:\.\d{1,3}){0,6}", s_lat):
+        return ("num", s_lat)
+    m = _CN_UNIT_RE.match(s)
+    if m:
+        n = _numeral_to_int(m.group(1))
+        kind = _CN_UNIT_KIND[m.group(2)]
+        return (kind, str(n)) if n is not None else ("raw", s)
+    m = _ART_WORD_RE.match(s)
+    if m:
+        return ("art", m.group(1))
+    return ("raw", s)
+
+
 def scoped_key(segment: dict[str, Any]) -> str:
-    # 对齐用 key = 作用域::段号（无段号返回空串，调用方自行排除）。
+    # 对齐用 key = 作用域::规范化条款号（无段号返回空串，调用方自行排除）。
     sec = str(segment.get("section_no") or "").strip()
     if not sec:
         return ""
+    canon = canonical_section_key(sec)
+    if canon is None:
+        return ""
+    key = f"{canon[0]}:{canon[1]}"
     scope = str(segment.get("scope") or "").strip()
-    return f"{scope}::{sec}" if scope else sec
+    return f"{scope}::{key}" if scope else key
 
 
 def clean_text(text: str) -> str:
@@ -1553,9 +1610,42 @@ def prepare_existing_da_pairs(args: argparse.Namespace) -> None:
     print(json.dumps({"input": args.input, "output": args.output, "rows": len(out), "skipped": skipped}, ensure_ascii=False, indent=2))
 
 
+# ---- canonical_section_key 单测（P1，2026-07-29）----
+CANONICAL_CASES = [
+    ("Article 1", "第1条", True, "fr/zh 顶层条款对等——P1 要解决的核心问题"),
+    ("Article 1", "第 1 条", True, "zh 侧带空格，不应影响归一化"),
+    ("Article 1", "第一条", True, "zh 侧中文数字，不是阿拉伯数字，同样要对等"),
+    ("Article 1", "Article 2", False, "同类型不同号，不能对等"),
+    ("Article 1", "第2条", False, "跨语言不同号，不能对等"),
+    ("§ 22", "第22条", True, "de 预留：德语 § 与中文条是同一级条款"),
+    ("Artículo 2°", "第 2 条", True, "es：带序数符号 ° 的条款号"),
+    ("Статья 5", "第5条", True, "ru 文字型条款号（GOST 罕见，仍需支持）"),
+    ("12.1", "12.1", True, "en/ru 纯数字体系——必须是恒等变换"),
+    ("3.2", "3.1", False, "纯数字体系里不同号不能对等"),
+    ("第二章", "第三章", False, "章级容器，不同号不能对等"),
+    ("第二章", "第2条", False, "章级容器与条级条款不同类型，即使数字部分相同也不能对等"),
+    ("А.1", "A.1", True, "ru GOST：西里尔附录字母 А(U+0410) 与拉丁 A(U+0041) 形近，须同key"),
+    ("А.1.1", "A.1.2", False, "西里尔前缀转写正确的前提下，数字不同仍不能对等"),
+]
+
+
+def _selftest_canonical() -> int:
+    bad = 0
+    print("=== canonical_section_key 正反用例 ===")
+    for a, b, want_equal, why in CANONICAL_CASES:
+        ka, kb = canonical_section_key(a), canonical_section_key(b)
+        got_equal = ka == kb
+        ok = got_equal == want_equal
+        bad += not ok
+        print(f"  {'OK ' if ok else 'FAIL'} {a!r} vs {b!r} -> {ka} / {kb}  "
+              f"(期望{'相等' if want_equal else '不等'}, 实得{'相等' if got_equal else '不等'})  {why}")
+    print(f"\n{'全部通过' if not bad else f'{bad} 个用例不通过'}")
+    return bad
+
+
 def main() -> None:
     ap = argparse.ArgumentParser(description="Prepare source/hypothesis/reference triples for server-side XCOMET-DA/COMET scoring.")
-    ap.add_argument("--mode", choices=["prepare_da_pairs", "from_raw", "clean_eval_files", "build_splits"], default="prepare_da_pairs")
+    ap.add_argument("--mode", choices=["prepare_da_pairs", "from_raw", "clean_eval_files", "build_splits", "selftest_canonical"], default="prepare_da_pairs")
     ap.add_argument("--input", help="Aligned JSONL or rows containing reference text.")
     ap.add_argument("--output", help="DA input JSONL output.")
     ap.add_argument("--aligned-da", default="data/eval/aligned_da_samples.jsonl")
@@ -1579,6 +1669,8 @@ def main() -> None:
         clean_eval_files(args)
     elif args.mode == "build_splits":
         build_splits(args)
+    elif args.mode == "selftest_canonical":
+        raise SystemExit(1 if _selftest_canonical() else 0)
     else:
         prepare_existing_da_pairs(args)
 
