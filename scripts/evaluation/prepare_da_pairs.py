@@ -454,9 +454,40 @@ def keep_segment(text: str, segment_type: str, section_no: str | None, min_chars
 _ARABIC_CHAR_RE = re.compile(r"[؀-ۿﭐ-﷿ﹰ-﻿]")
 
 
+def _is_arabic_word(text: str) -> bool:
+    ar = len(_ARABIC_CHAR_RE.findall(text))
+    return ar / max(len(text), 1) > 0.3
+
+
+def _reorder_line_bidi(words: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """对一行词（已按 x0 升序=几何从左到右排好）做简化版双向（bidi）重排。
+
+    2026-07-30，Z3-ar 复核：第一版实现是把整行按 x0 降序整体倒转——这会把
+    行内嵌入的拉丁词组（"(High Voltage)"）也一起倒转成"Voltage) (High"，
+    虽然词内部拼写不受影响，但嵌入的多词 LTR 片段之间的相对顺序被打反了。
+    正确做法（简化版 Unicode 双向算法）：先按几何序把行切成"阿拉伯语连续块"
+    和"非阿拉伯语（拉丁/数字/标点）连续块"，整体反转"块的顺序"（RTL 行的
+    块本身从右向左排布），但**块内部**只有阿拉伯语块需要再反转词序（阿拉伯语
+    词本身也是从右向左读），非阿拉伯语块保持原有的从左到右词序不变——嵌入的
+    "High Voltage"这类拉丁词组因此维持正确的内部读序。
+    """
+    runs: list[tuple[bool, list[dict[str, Any]]]] = []
+    for w in words:
+        is_ar = _is_arabic_word(w["text"])
+        if runs and runs[-1][0] == is_ar:
+            runs[-1][1].append(w)
+        else:
+            runs.append((is_ar, [w]))
+    runs.reverse()
+    ordered: list[dict[str, Any]] = []
+    for is_ar, run_words in runs:
+        ordered.extend(reversed(run_words) if is_ar else run_words)
+    return ordered
+
+
 def _extract_rtl_aware_page_text(page: Any) -> str:
-    """按行聚类后，阿拉伯语（RTL）行按 x 坐标降序重排词序，拉丁/中文等 LTR 行
-    保持升序（2026-07-29，Z3-ar）。
+    """按行聚类后，阿拉伯语（RTL）行做双向重排，拉丁/中文等 LTR 行保持升序
+    不变（2026-07-29，Z3-ar；2026-07-30 改为 run 级双向重排，见 `_reorder_line_bidi`）。
 
     pdfplumber 的 `extract_text()` 只按几何位置从左到右拼词，不做 RTL 逻辑
     换位——对阿拉伯语 PDF，这会把每一行的词序整体拼反（行内单个词的字形
@@ -479,10 +510,11 @@ def _extract_rtl_aware_page_text(page: Any) -> str:
     lines.sort(key=lambda line: line[0]["top"])
     out_lines = []
     for line in lines:
+        line.sort(key=lambda w: w["x0"])
         ar_chars = sum(len(_ARABIC_CHAR_RE.findall(w["text"])) for w in line)
         total_chars = sum(len(w["text"]) for w in line) or 1
         is_rtl_line = (ar_chars / total_chars) > 0.4
-        ordered = sorted(line, key=lambda w: -w["x0"] if is_rtl_line else w["x0"])
+        ordered = _reorder_line_bidi(line) if is_rtl_line else line
         out_lines.append(" ".join(w["text"] for w in ordered))
     return "\n".join(out_lines)
 
