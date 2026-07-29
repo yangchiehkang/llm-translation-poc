@@ -962,7 +962,13 @@ def has_directory_features(text: str) -> bool:
     # 可维修性指数），不是"目录"专属词，在正文任何位置都可能合法出现；"contents"/
     # "sommaire"/"目录" 等词没有这个歧义，予以保留。en 689/ru 125 逐条验证过零命中，
     # 移除前后行为不变。
-    if re.search(r"(contents|table of contents|inhalt|sommaire|目录|สารบัญ|содержание|الفهرس)", lower):
+    # "inhalt" 收窄成 "inhaltsverzeichnis"（2026-07-29，Z2-de）：德语"Einhaltung"
+    # （合规/遵守，法规正文极常见词）字面包含"inhalt"子串，会被误判成目录。
+    # 真正要抓的噪声是页脚戳"Nichtamtliches Inhaltsverzeichnis"（非官方目录，
+    # gesetze-im-internet.de 出品的 PDF 每页都有）——用更具体的复合词
+    # "inhaltsverzeichnis" 替代裸词，既不误伤"Einhaltung"，也不影响原本要抓的
+    # 页脚噪声（"Inhaltsverzeichnis" 本身就是德语里没有歧义的"目录"专属词）。
+    if re.search(r"(contents|table of contents|inhaltsverzeichnis|sommaire|目录|สารบัญ|содержание|الفهرس)", lower):
         return True
     if re.search(r"^(?:annex|appendix|chapter|section|part|附录|附件|第.+[章节]|приложение|ภาคผนวก)\b.*\s\d{1,4}$", text, re.IGNORECASE):
         return True
@@ -1101,8 +1107,6 @@ def da_prefilter_reason(row: dict[str, Any]) -> str | None:
         return "non_high_confidence"
     if row.get("use_for_da") is not True:
         return "use_for_da_not_true"
-    if row.get("language_pair") == "th-zh":
-        return "manual_uncertain_language_alignment"
     section_no = str(row.get("section_no") or "").strip()
     if not section_no:
         return "missing_section_no"
