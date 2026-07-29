@@ -945,7 +945,12 @@ def has_directory_features(text: str) -> bool:
     lower = text.lower()
     if re.search(r"[.·…]{4,}\s*\d{1,4}\s*$", text):
         return True
-    if re.search(r"(contents|table of contents|inhalt|indice|índice|sommaire|目录|สารบัญ|содержание|الفهرس)", lower):
+    # "indice"/"índice" 从关键词表移除（2026-07-29，P 门禁统一，fr 首次让 da_prefilter_reason
+    # 真正跑起来时发现）：法语/西语里 "indice" 是普通法律术语（"indice de réparabilité"=
+    # 可维修性指数），不是"目录"专属词，在正文任何位置都可能合法出现；"contents"/
+    # "sommaire"/"目录" 等词没有这个歧义，予以保留。en 689/ru 125 逐条验证过零命中，
+    # 移除前后行为不变。
+    if re.search(r"(contents|table of contents|inhalt|sommaire|目录|สารบัญ|содержание|الفهرس)", lower):
         return True
     if re.search(r"^(?:annex|appendix|chapter|section|part|附录|附件|第.+[章节]|приложение|ภาคผนวก)\b.*\s\d{1,4}$", text, re.IGNORECASE):
         return True
@@ -1048,6 +1053,20 @@ def section_prefix_matches(text: str, section_no: str) -> bool:
     return bool(re.match(rf"^{section}(?:[\s.)）:：、-]|$)", text))
 
 
+def section_matches_canonical(text: str, section_no: str) -> bool:
+    """条款号比对统一走 canonical_section_key（2026-07-29，P 门禁统一）：
+    section_prefix_matches 要求文本字面以 section_no 的原始写法开头——source
+    的 section_no 是源文自己的写法（如 "Article L541-9"），中文参考译文的写法
+    不同（"第L541-9条"），字面比对在条款号跨语言写法不同的语向上必然失败，
+    这正是 fr 62 条对齐结果全部被拦、de Circular_Economy 3 条中招的根因。
+    align_segments 早就用 canonical_section_key 做语义比对了，这里跟上，
+    不再各管一套字面/语义两种判据。"""
+    extracted = extract_section_no(text)
+    if not extracted:
+        return False
+    return canonical_section_key(section_no) == canonical_section_key(extracted)
+
+
 def has_strict_terminal_punctuation(text: str) -> bool:
     text = clean_text(text)
     return bool(re.search(r"[。.!?！？;；）)]$", text))
@@ -1091,7 +1110,7 @@ def da_prefilter_reason(row: dict[str, Any]) -> str | None:
         return "ref_noise_or_directory"
     if not section_prefix_matches(source, section_no):
         return "source_section_mismatch"
-    if not section_prefix_matches(ref, section_no):
+    if not section_matches_canonical(ref, section_no):
         return "ref_section_mismatch"
     ratio = len(ref) / max(len(source), 1)
     if ratio < 0.10 or ratio > 1.50:
