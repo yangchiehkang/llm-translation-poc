@@ -70,7 +70,13 @@ def _restore(text: str) -> str:
 
 
 # 英文句末：强终止符 + 后面是空白+大写/引号/括号，或到文末
-_EN_END = re.compile(r"[.!?](?=\s+[\"“'(\[A-Z]|\s*$)")
+# [A-ZА-ЯЁ]（2026-07-29，ru 拆句）：西里尔大写字母，本项目第五次同型 Latin-only
+# 字符集 bug（前四次：SECTION_PATTERNS 缺西里尔附录字母、good_char_ratio 缺阿拉伯
+# 展示形字符、match_terms 词边界只认拉丁字符、acceptance_subset._SENT_EN 缺西里尔
+# 大写判断）。只认 [A-Z] 会让俄语句号后接西里尔大写字母的正常句子边界一个都识别
+# 不到——split_auto 对纯俄语文本会落到这个分支（既非 CJK 也非拉丁计数占多数），
+# 不修就会让拆句对俄语整体失效（不切或切错，不是切不准）。
+_EN_END = re.compile(r"[.!?](?=\s+[\"“'(\[A-ZА-ЯЁ]|\s*$)")
 # 中文句末：只用强终止符；后随的引号/括号一并吃进上一句
 _ZH_END = re.compile(r"[。！？](?:[”』」）)\]】]|\s)*")
 
