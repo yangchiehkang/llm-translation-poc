@@ -10,6 +10,7 @@ import json
 import random
 import re
 import sys
+import unicodedata
 from pathlib import Path
 from typing import Any
 
@@ -21,6 +22,23 @@ from scripts.common.io_utils import ensure_parent, read_jsonl, write_jsonl, pick
 
 CJK_RE = re.compile(r"[\u3400-\u4dbf\u4e00-\u9fff]")
 LATIN_RE = re.compile(r"[A-Za-zÀ-ÖØ-öø-ÿ]")
+
+
+def _build_arabic_presentation_form_map():
+    # Precomputed once at import time: NFKC-decompose ONLY the two Arabic
+    # presentation-form blocks (U+FB50-FDFF, U+FE70-FEFF), never the full string.
+    # See clean_text() for why a whole-string NFKC call is unsafe.
+    mapping = {}
+    for start, end in ((0xFB50, 0xFDFF), (0xFE70, 0xFEFF)):
+        for cp in range(start, end + 1):
+            ch = chr(cp)
+            normalized = unicodedata.normalize("NFKC", ch)
+            if normalized != ch:
+                mapping[cp] = normalized
+    return mapping
+
+
+_ARABIC_PRESENTATION_FORM_MAP = _build_arabic_presentation_form_map()
 SECTION_PATTERNS = [
     re.compile(r"^\s*((?:\d{1,3})(?:\.\d{1,3}){1,6})(?:[.)])?(?=\s|$)"),
     re.compile(r"^\s*(\d{1,3})[.)](?=\s|$)"),
@@ -247,6 +265,30 @@ def scoped_key(segment: dict[str, Any]) -> str:
 
 def clean_text(text: str) -> str:
     text = (text or "").replace("\u00a0", " ")
+    # Arabic presentation-form -> basic-block mapping (Z3-ar): SASO electric-vehicle
+    # regulation's Arabic font uses Presentation Forms-A/B (U+FB50-FDFF/U+FE70-FEFF),
+    # not the basic Arabic block (U+0600-06FF) that good_char_ratio() checks.
+    # Presentation-form letters were all judged "bad chars", so 99.5% of the
+    # 46-page document's lines got discarded as noise.
+    #
+    # Scoped to ONLY those two presentation-form blocks, not a blanket
+    # unicodedata.normalize("NFKC", text) on the whole string: NFKC has a
+    # well-known side effect on spacing diacritics used elsewhere as ordinary
+    # punctuation -- this corpus writes English "manufacturer's" with U+00B4
+    # (ACUTE ACCENT) as the apostrophe, and NFKC decomposes that into a space
+    # plus a combining accent, silently rewriting 541/689 of the committed EN
+    # samples (caught by the drift check; never shipped). A whole-string NFKC
+    # call is not safe to run unconditionally across all languages.
+    text = text.translate(_ARABIC_PRESENTATION_FORM_MAP)
+    # Tatweel (U+0640): a pure Arabic typographic elongation mark with no meaning,
+    # used only for visual justification padding.
+    text = text.replace("\u0640", "")
+    # Strip (cid:N) glyph-mapping-failure placeholders (Z3-ar): pdfplumber emits
+    # these when a font's ToUnicode CMap is missing an entry for some glyph (only
+    # 5.9% of this document's characters, but touching 55.6% of lines). Dropping
+    # the whole line used to discard the other, perfectly readable characters on
+    # it too; stripping just the placeholder keeps the rest of the line intact.
+    text = re.sub(r"\(cid:\d+\)", "", text)
     text = re.sub(r"[\x00-\x08\x0b\x0c\x0e-\x1f]", " ", text)
     text = re.sub(r"[_＿]{3,}", " ", text)
     text = re.sub(r"\s+", " ", text).strip()
@@ -271,8 +313,6 @@ def good_char_ratio(text: str) -> float:
 def is_noise_line(line: str) -> bool:
     line = clean_text(line)
     if not line:
-        return True
-    if "(cid:" in line:
         return True
     if re.fullmatch(r"[-–—]?\s*\d{1,4}\s*[-–—]?", line):
         return True
