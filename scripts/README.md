@@ -2,6 +2,10 @@
 
 脚本目录按功能分类，不再按本地/服务器分类。运行位置写在本说明和各脚本开头注释里。
 
+**影响数据产出的依赖版本已钉死在 `scripts/requirements.txt`**（pdfplumber / pdfminer.six /
+unbabel-comet）。运行 `evaluation/prepare_da_pairs.py --mode from_raw` 前先按该文件
+安装本地依赖——版本不锁，抽取结果不保证可复现（2026-07-29 Z0 P0 踩过一次）。
+
 ## 目录结构
 
 | 目录 | 功能 | 运行位置 |
@@ -20,6 +24,7 @@
 | `translation/run_prompt_compare_first_local_npu.py` | 使用服务器本地 Qwen 类模型跑三组首译。 | 服务器 |
 | `translation/run_prompt_compare_first.py` | 使用 DashScope/Qwen-Max 跑三组首译；DashScope 重试逻辑复用 `common/dashscope_client.py`。 | 服务器 |
 | `translation/retry_translate_local.py` | 使用服务器本地 Transformers 模型跑 TCR retry 翻译。 | 服务器 |
+| `evaluation/prepare_da_pairs.py` | 从 `data/raw` PDF 抽取分段、跨语言对齐（`--mode from_raw`）；也支持整理已有对齐结果为 DA 输入。 | 本地 |
 | `evaluation/tcr_check.py` | 规范 TCR 入口；支持首译 TCR、retry 输入生成和 retry 后 recheck。 | 本地 |
 | `evaluation/build_xcomet_inputs.py` | 从首译/final/retry 结果生成标准 XCOMET-DA/COMET 输入。 | 本地 |
 | `evaluation/run_xcomet.py` | 规范 XCOMET-DA/COMET 评分入口；支持本地 checkpoint、resume、dry-run。 | 服务器 |

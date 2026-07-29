@@ -1,0 +1,23 @@
+# 影响数据产出的库，精确钉死版本。
+#
+# 背景（2026-07-29，Z0 P0）：本地 .venv 此前从未装过 pdfplumber，临时 pip install
+# 抓到的最新版跑 --mode from_raw 复现不出已发布的 en 689 / ru 103（同型失败第五次，
+# 见 docs/eval_vs_prod_divergence.md「依赖版本漂移」）。排查过服务器三个 conda 环境
+# （ascend/clip/gac_qwen_zh）里一致的 pdfplumber==0.11.9，装上重跑仍然复现不出——
+# 说明版本不是唯一变量，但既然排查不出真正成因，就把"当前实际在用"的版本钉死，
+# 不再让它继续裸奔。
+#
+# 结论：en 689 / ru 103 以已落盘文件为准，不再要求可从头重新抽取复现
+# （689 是封版交付物；103 从来只是回归检查值，非交付数，已作废）。
+# 此后任何抽取器改动的漂移检查，都对照本文件锁定版本产出的基线快照
+# （outputs/analysis/z0_minor_lang_20260729/baseline_snapshot_v1/），不再对照
+# 历史数字。
+
+# ---- 本地：scripts/evaluation/prepare_da_pairs.py --mode from_raw ----
+pdfplumber==0.11.10
+pdfminer.six==20260107
+requests==2.34.2
+
+# ---- 服务器（ascend conda env）：XCOMET-DA/COMET 打分 ----
+# scripts/evaluation/run_xcomet.py 依赖，随生产环境走，此处只作记录，不在本地安装。
+unbabel-comet==2.2.7
