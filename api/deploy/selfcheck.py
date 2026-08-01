@@ -14,6 +14,10 @@
 1. **每次（10 分钟一发）**：短文本真实翻译，只管可用性；顺带把耗时记进时序。
    同时直调后端取 usage，断言 `reasoning_tokens == 0` —— 40004 带着
    `--reasoning-parser qwen3`，属主哪天打开 `enable_thinking` 我们要立刻知道。
+   **并断言模型身份**（2026-07-30 补）：后端 `/v1/models` 里必须有 `.env` 的
+   `LOCAL_NPU_MODEL`，且 `/health` 回显的 backend/model 与 `.env` 一致。
+   可达 ≠ 还是同一个模型：`--served-model-name` 是属主的启动参数，端口活着、
+   翻译照返，模型却可能已经换人——那种情况下对外的 DA/TCR 全部失效。
 2. **每天两次（错开时段，默认 03:x 与 15:x）**：一发 6000 字符真实翻译，
    记耗时与 completion_tokens。MAX_TEXT_CHARS=6000 的余量估计
    （p95≈53s、并发 1.49 倍 → 79s，对 120s 留 41s）全部建立在 **40018** 的实测上，
@@ -47,7 +51,26 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 PROJECT = Path(__file__).resolve().parents[2]
-BASE = os.environ.get("SELFCHECK_BASE", "http://127.0.0.1:8188")
+
+
+def read_env(key: str) -> str:
+    # .env 不存在时返回空串而不是抛异常：本文件在本地（无 .env）也要能被导入/静态检查。
+    env_path = PROJECT / ".env"
+    if not env_path.exists():
+        return ""
+    for line in env_path.read_text(encoding="utf-8").splitlines():
+        if line.startswith(key + "="):
+            return line.split("=", 1)[1].strip().strip("'\"")
+    return ""
+
+
+# 自检打向本机 API 的地址：端口**从 .env 的 PORT 读**，不留写死的默认值。
+# 写死过 8188：220 切 4188 之后，自检会安静地打向一个没人监听的端口，
+# 于是"自检失败"被当成"服务挂了"，或者更糟——自检打到了另一个服务上。
+# 同一类坑见 MAX_TEXT_CHARS 默认 8000 与 regression.py 的 BASE。
+# 端口缺失不在导入期抛错（会连带打断 lint/测试），留到 main() 里报。
+_PORT = os.environ.get("SELFCHECK_PORT") or read_env("PORT")
+BASE = os.environ.get("SELFCHECK_BASE") or (f"http://127.0.0.1:{_PORT}" if _PORT else "")
 LOG_DIR = Path(os.environ.get("SELFCHECK_LOG_DIR", "/data/SERVICE_USER/translation-api/logs"))
 SERIES = LOG_DIR / "selfcheck.jsonl"
 FAILURES = LOG_DIR / "selfcheck_FAILURES.log"
@@ -58,16 +81,27 @@ SHORT_TEXT = ("The manufacturer shall demonstrate that the rechargeable electric
 # 长文本探针的时段（本地小时）。每天两次、错开，避开整点高峰。
 LONG_HOURS = {int(h) for h in os.environ.get("SELFCHECK_LONG_HOURS", "3,15").split(",")}
 
+# thinking 复燃的 **content 级**哨兵。
+#
+# 为什么必须有这一条：原来只有 `reasoning_tokens > 0` 一个探测器，那依赖后端带
+# `--reasoning-parser`（220 的 40004 带，所以思考内容被解析进 reasoning 字段、
+# 计入 reasoning_tokens）。**125 的 9018 不带 reasoning-parser**，属主若打开
+# enable_thinking，reasoning_tokens 恒为 null、旧哨兵永远不响，而 `<think>…</think>`
+# 会**直接漏进 content**，也就是漏进交付给国创的译文里。
+# 所以 125 上这一条是唯一的 thinking 探测器，220 上它与 reasoning_tokens 互为冗余。
+THINK_MARKERS = ("<think>", "</think>", "<thinking>", "</thinking>")
+
+
+def scan_think(text: str) -> list[str]:
+    """返回译文里出现的 thinking 标记；空列表表示干净。"""
+    if not text:
+        return []
+    low = text.lower()
+    return [m for m in THINK_MARKERS if m in low]
+
 
 def now() -> str:
     return datetime.now(timezone.utc).isoformat(timespec="seconds")
-
-
-def read_env(key: str) -> str:
-    for line in (PROJECT / ".env").read_text(encoding="utf-8").splitlines():
-        if line.startswith(key + "="):
-            return line.split("=", 1)[1].strip().strip("'\"")
-    return ""
 
 
 def http(url: str, payload: dict | None = None, headers: dict | None = None,
@@ -133,6 +167,38 @@ def probe_termbase() -> dict:
             "why": "ok" if ok else "生产术语库 md5 与预期不符——被改过，或换版后忘了更新预期值"}
 
 
+def probe_manifest() -> dict:
+    """部署清单校验：这台机上跑的代码，是不是与记录在案的那一份逐字节相同。
+
+    与术语库 md5 断言同类，但覆盖面是**全部生产 Python**。两台机并存后，
+    "以为两边一样、其实不一样"的分叉面翻倍（已发生四起，见 make_manifest.py），
+    人肉比对必然漏，所以做成断言。清单由 api/deploy/make_manifest.py 生成，
+    必须与代码同一个 commit。
+    """
+    import hashlib
+    manifest = PROJECT / "api" / "deploy" / "DEPLOY_SHA256SUMS"
+    if not manifest.exists():
+        return {"ok": False, "why": f"部署清单不存在: {manifest}——本次部署没有留下可校验的凭据"}
+    bad, missing, n = [], [], 0
+    for line in manifest.read_text(encoding="utf-8").splitlines():
+        line = line.strip()
+        if not line:
+            continue
+        expected, _, rel = line.partition("  ")
+        p = PROJECT / rel
+        n += 1
+        if not p.exists():
+            missing.append(rel)
+            continue
+        if hashlib.sha256(p.read_bytes()).hexdigest() != expected:
+            bad.append(rel)
+    ok = not bad and not missing
+    return {"ok": ok, "checked": n, "mismatch": bad, "missing": missing,
+            "why": "ok" if ok else
+                   f"部署代码与清单不符——改动过、部署漏了、或两台机已分叉"
+                   f"（不符 {len(bad)} 个、缺失 {len(missing)} 个）"}
+
+
 def probe_backend_usage(token: str) -> dict:
     """直调后端取 usage —— API 不返回 token 数，thinking 是否被打开只能这样看。"""
     base_url = read_env("LOCAL_NPU_BASE_URL")
@@ -152,11 +218,57 @@ def probe_backend_usage(token: str) -> dict:
     ctd = u.get("completion_tokens_details") or {}
     rt = ctd.get("reasoning_tokens")
     ct = u.get("completion_tokens") or 0
+    content = resp["choices"][0]["message"].get("content") or ""
     return {"ok": True, "elapsed_s": round(el, 3), "completion_tokens": ct,
             "reasoning_tokens": rt, "tok_per_s": round(ct / el, 1) if el > 0 else None,
-            # 断言项：属主若打开 enable_thinking，这里立刻变 True
+            # 断言项：属主若打开 enable_thinking，带 reasoning-parser 的后端这里变 True。
+            # 不带 parser 的后端（125 的 9018）此项恒 False —— 靠下面的 think_markers 兜底。
             "thinking_on": bool(rt),
+            "think_markers": scan_think(content),
             "reasoning_field": resp["choices"][0]["message"].get("reasoning")}
+
+
+def probe_backend_model() -> dict:
+    """断言后端**真的还在服务我们指定的那个模型**。
+
+    2026-07-28 的 40018 事故里，可达性与模型身份是两件事：端口消失是最粗的
+    一种变化，更隐蔽的是端口还在、模型被属主换成另一个（vLLM `serve` 的
+    `--served-model-name` 是启动参数，属主重启即可改）。那种情况下
+    `backend_reachable` 仍为 true、翻译仍会返回内容，但产出已经不是我们
+    验收过的模型——对外数字全部失效而无人知晓。
+
+    两条独立断言（任一不成立即失败）：
+      1. 后端 `/v1/models` 的 id 列表里有 `.env` 的 `LOCAL_NPU_MODEL`
+      2. `/health` 回显的 `backend_info.model` 与 `.env` 一致，且
+         `backend` 仍是 `local_npu`（不是悄悄回退到 dashscope 云端）
+    """
+    expected = read_env("LOCAL_NPU_MODEL")
+    base_url = read_env("LOCAL_NPU_BASE_URL")
+    expected_backend = read_env("BACKEND")
+    if not expected or not base_url:
+        return {"ok": False, "why": "LOCAL_NPU_MODEL / LOCAL_NPU_BASE_URL 未配置"}
+    out: dict = {"expected_model": expected, "expected_backend": expected_backend}
+    try:
+        st, resp, _ = http(base_url.rstrip("/") + "/models", None,
+                           {"Content-Type": "application/json"}, timeout=30)
+    except Exception as exc:                                        # noqa: BLE001
+        return {**out, "ok": False, "why": f"/v1/models 探测失败 {type(exc).__name__}: {exc}"}
+    served = [m.get("id") for m in (resp.get("data") or [])] if isinstance(resp, dict) else []
+    out["served_models"] = served
+    if st != 200 or expected not in served:
+        return {**out, "ok": False,
+                "why": f"后端 /v1/models 里没有 {expected}（HTTP {st}，实际服务 {served}）"
+                       f"——模型被属主换过，或端口指向了另一个服务"}
+    _, health, _ = http(f"{BASE}/health", timeout=10)
+    hd = (health.get("data") or {}) if isinstance(health, dict) else {}
+    bi = hd.get("backend_info") or {}
+    out["health_backend"] = hd.get("backend")
+    out["health_model"] = bi.get("model")
+    if hd.get("backend") != expected_backend or bi.get("model") != expected:
+        return {**out, "ok": False,
+                "why": f"/health 回显 backend={hd.get('backend')} model={bi.get('model')}，"
+                       f"与 .env 的 {expected_backend}/{expected} 不一致"}
+    return {**out, "ok": True, "why": "ok"}
 
 
 def translate(token: str, text: str, timeout: float) -> tuple[bool, dict]:
@@ -170,10 +282,16 @@ def translate(token: str, text: str, timeout: float) -> tuple[bool, dict]:
     return ok, {"http": st, "elapsed_s": round(el, 3), "code": resp.get("code")
                 if isinstance(resp, dict) else None,
                 "msg": resp.get("msg") if isinstance(resp, dict) else str(resp)[:300],
-                "in_chars": len(text), "out_chars": len(out), "out_head": out[:60]}
+                "in_chars": len(text), "out_chars": len(out), "out_head": out[:60],
+                # content 级 thinking 哨兵：在**完整**译文上扫，不是只扫 out_head
+                "think_markers": scan_think(out)}
 
 
 def main() -> int:
+    if not BASE:
+        print("PORT 未在 .env 中设置，且未给 SELFCHECK_BASE/SELFCHECK_PORT"
+              "——拒绝猜测端口（曾写死 8188，220 切 4188 后会静默打空）")
+        return 1
     LOG_DIR.mkdir(parents=True, exist_ok=True)
     token = read_env("API_TOKENS").split(",")[0]
     rec: dict = {"ts": now(), "host": socket.gethostname()}
@@ -186,8 +304,26 @@ def main() -> int:
         failed.append("short_translate")
         record_failure("short_translate", {"request_text": SHORT_TEXT, "result": short})
 
+    # content 级 thinking 哨兵：译文里出现 <think>/</think> 即刻报。
+    # 这是 125（后端无 reasoning-parser）唯一的 thinking 探测器；在 220 上与
+    # reasoning_tokens 互为冗余。命中意味着思考内容正在漏进交付给国创的译文。
+    think_hit = list(short.get("think_markers") or [])
+    if think_hit:
+        failed.append("think_leaked_into_content")
+        record_failure("think_leaked_into_content", {
+            "why": "译文 content 里出现 thinking 标记 —— 后端 enable_thinking 被打开，"
+                   "且后端未带 reasoning-parser，思考内容未被剥离，正在直接进入对外译文。",
+            "markers": think_hit, "result": short})
+
     usage = probe_backend_usage(token)
     rec["backend_usage"] = usage
+    if usage.get("think_markers"):
+        if "think_leaked_into_content" not in failed:
+            failed.append("think_leaked_into_content")
+        record_failure("think_leaked_into_content", {
+            "why": "直调后端的 content 里出现 thinking 标记（API 层译文可能已被清洗，"
+                   "但后端行为已变，交付承诺与历史对照数需重新评估）。",
+            "markers": usage.get("think_markers"), "result": usage})
     if not usage.get("ok"):
         failed.append("backend_usage_probe")
         record_failure("backend_usage_probe", {"result": usage})
@@ -198,6 +334,25 @@ def main() -> int:
             "why": "reasoning_tokens > 0 —— 后端 enable_thinking 被打开，"
                    "延迟与译文都会变，需重新评估交付承诺与历史对照数",
             "result": usage})
+
+    bm = probe_backend_model()
+    rec["backend_model"] = bm
+    if not bm.get("ok"):
+        failed.append("backend_model_mismatch")
+        record_failure("backend_model_mismatch", {
+            "why": "后端模型身份断言不成立。40004 是 root 拥有的共享服务（40018 就是"
+                   "这么消失的），端口活着不等于还在服务我们验收过的那个模型；"
+                   "模型一换，对外的 DA/TCR 数字全部失效。",
+            "result": bm})
+
+    mf = probe_manifest()
+    rec["manifest"] = mf
+    if not mf.get("ok"):
+        failed.append("manifest_mismatch")
+        record_failure("manifest_mismatch", {
+            "why": "部署代码与 DEPLOY_SHA256SUMS 不符。两台机并存后，代码分叉"
+                   "不会有任何外部症状——直到对外数字对不上才被发现。",
+            "result": mf})
 
     tb = probe_termbase()
     rec["termbase"] = tb
@@ -240,6 +395,7 @@ def main() -> int:
     print(f"[{rec['ts']}] {tag} short={short['elapsed_s']}s code={short['code']} "
           f"reachable={rec['backend_reachable']} "
           f"tok/s={u.get('tok_per_s')} reasoning_tokens={u.get('reasoning_tokens')} "
+          f"model={bm.get('health_model') or '?'}{'' if bm.get('ok') else ' MISMATCH'} "
           f"termbase={'ok' if tb.get('ok') else 'CHANGED'}"
           + (f"  long={rec['long']['elapsed_s']}s" if "long" in rec else "")
           + (f"  FAILED={failed}" if failed else ""))

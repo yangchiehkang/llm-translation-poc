@@ -10,26 +10,43 @@
 所有输出为真实返回，不推测。
 """
 import json
+import os
 import sys
 import time
 import urllib.request
 from difflib import SequenceMatcher
 
-BASE = "http://127.0.0.1:8188"
-PROJECT = "PROJECT_ROOT"
-REF = f"{PROJECT}/outputs/translations/source_only_300_by_lang/first/no_term_baseline_first_translations.jsonl"
+# 路径走环境变量：两台机（220 与 125）共用同一份脚本，不复制成两份——
+# 脚本分叉会重演"服务器冻结副本静默分叉"那类问题（台账见 docs/eval_vs_prod_divergence.md）。
+PROJECT = os.environ.get("REGRESSION_PROJECT", "PROJECT_ROOT")
+REF = os.environ.get(
+    "REGRESSION_REF",
+    f"{PROJECT}/outputs/translations/source_only_300_by_lang/first/no_term_baseline_first_translations.jsonl")
+
+
+def read_env(key, default=""):
+    # .env 不存在时返回默认值而不是抛异常：本文件在本地（无 .env）也要能被导入/静态检查。
+    if not os.path.exists(f"{PROJECT}/.env"):
+        return default
+    for line in open(f"{PROJECT}/.env", encoding="utf-8"):
+        if line.startswith(key + "="):
+            return line.split("=", 1)[1].strip().strip("'\"")
+    return default
+
+
+# 端口**从 .env 的 PORT 读**，不留写死的默认值。
+# 写死过 8188：两台机端口不同后，脚本会安静地打到一个不存在/不属于本机的端口，
+# 测出来的"通过"毫无意义。同理见 MAX_TEXT_CHARS 默认 8000 那个坑。
+# 端口缺失不在导入期抛错（会连带打断 lint/测试），留到 main() 里报。
+BASE = os.environ.get("REGRESSION_BASE") or (
+    f"http://127.0.0.1:{read_env('PORT')}" if read_env("PORT") else "")
 
 
 def backend_label():
     """从 .env 实时读当前后端与模型名——绝不在文案里写死。"""
-    env = {}
-    for line in open(f"{PROJECT}/.env", encoding="utf-8"):
-        if "=" in line and not line.strip().startswith("#"):
-            k, v = line.split("=", 1)
-            env[k.strip()] = v.strip().strip("'\"")
-    b = env.get("BACKEND", "?")
-    m = env.get("LOCAL_NPU_MODEL" if b == "local_npu" else "MODEL_NAME", "?")
-    u = env.get("LOCAL_NPU_BASE_URL", "") if b == "local_npu" else ""
+    b = read_env("BACKEND", "?")
+    m = read_env("LOCAL_NPU_MODEL" if b == "local_npu" else "MODEL_NAME", "?")
+    u = read_env("LOCAL_NPU_BASE_URL") if b == "local_npu" else ""
     return f"{b}/{m}" + (f" @ {u}" if u else "")
 
 
@@ -53,6 +70,35 @@ def call(payload, tok, timeout=120):
     return body, int((time.time() - t0) * 1000)
 
 
+def varied_de(n):
+    """用参照语料里**互不相同**的真实德语句子拼到恰好 n 字符。
+
+    刻意不用"同一句重复 N 遍"：那会触发模型病态生成（实测 6000 字 >150s），
+    把长文本用例测成压力测试，且对共享后端不友好。
+    """
+    parts, seen = [], set()
+    for line in open(REF, encoding="utf-8"):
+        line = line.strip()
+        if not line:
+            continue
+        try:
+            r = json.loads(line)
+        except Exception:
+            continue
+        if r.get("source_lang") != "de":
+            continue
+        s = (r.get("source_text") or "").strip()
+        if s and s not in seen:
+            seen.add(s)
+            parts.append(s)
+    if not parts:
+        raise SystemExit(f"参照语料里没有德语样本: {REF}")
+    text = " ".join(parts)
+    while len(text) < n:
+        text += " " + " ".join(parts)
+    return text[:n]
+
+
 def load_ref(n=3):
     rows = []
     for line in open(REF, encoding="utf-8"):
@@ -71,6 +117,9 @@ def load_ref(n=3):
 
 
 def main():
+    if not BASE:
+        raise SystemExit(f"PORT 未在 {PROJECT}/.env 中设置，且未给 REGRESSION_BASE"
+                         "——拒绝猜测端口（曾写死 8188）")
     tok = token()
 
     print("=" * 70)
@@ -116,10 +165,14 @@ def main():
     print("=" * 70)
     print("C. 长文本截断保护：接近上限的长文本，确认完整返回 或 明确报截断")
     print("=" * 70)
-    base_sent = ("Die Genehmigungsbehörde stellt sicher, dass der technische Dienst die Prüfungen "
-                 "gemäß den Anforderungen dieser Verordnung durchführt und die Konformität der Produktion bewertet. ")
-    long_text = (base_sent * 60)[:7500]  # 约 7500 字符，接近 8000 上限
-    print(f"输入字符数: {len(long_text)}")
+    # 上限读 .env 的 MAX_TEXT_CHARS（现行 6000）。原先写死 7500 是 8000 上限时代的话，
+    # 现在会直接撞 422 超限，把"截断保护"这项测成"参数校验"。取上限的 95%。
+    # （这一行为 2026-07-30 已在 220 现役副本上热修，但从未回灌仓库——分叉台账第 4 起。）
+    max_chars = int(read_env("MAX_TEXT_CHARS", "6000"))
+    # 填充语料用**互不相同**的真实德语句子，不用同一句重复：重复段落会触发模型病态
+    # 生成（实测 6000 字 >150s），那样测出来的是病态耗时，不是截断保护。
+    long_text = varied_de(int(max_chars * 0.95))
+    print(f"输入字符数: {len(long_text)}（MAX_TEXT_CHARS={max_chars}，取 95%）")
     body, ms = call({"translateType": "1", "languageType": "DE-CN",
                      "originalText": long_text, "terminologyList": []}, tok, timeout=180)
     print(f"code={body['code']} msg={body['msg']} elapsed_ms={ms}")

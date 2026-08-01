@@ -12,7 +12,10 @@ WorkingDirectory=PROJECT_ROOT
 # 密钥/配置全部走 EnvironmentFile，不从 .bashrc 取
 EnvironmentFile=PROJECT_ROOT/.env
 Environment=PYTHONPATH=PROJECT_ROOT
-ExecStart=/data/SERVICE_USER/translation-api/venv/bin/python -m uvicorn api.main:app --host 0.0.0.0 --port 8188 --workers 1 --log-level info
+# 经 run.sh 启动，端口由 .env 的 PORT 决定 —— 不在这里写死。
+# 曾经这里写 `--port 8188` 而 .env 也有 PORT：两个真相源，ExecStart 静默胜出，
+# 改 .env 不生效。两台机端口不同之后这必然咬人，故收敛为单一来源。
+ExecStart=/bin/bash PROJECT_ROOT/api/deploy/run.sh
 Restart=always
 RestartSec=3
 # 日志同时进 journald 与文件（文件路径由 LOG_DIR 决定）

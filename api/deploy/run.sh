@@ -20,7 +20,10 @@ fi
 
 export PYTHONPATH="$PROJECT_ROOT:${PYTHONPATH:-}"
 HOST="${HOST:-0.0.0.0}"
-PORT="${PORT:-8188}"
+# 端口没有默认值：.env 是唯一权威来源。
+# 写死过 `${PORT:-8188}`——两台机端口不同之后，任何一次 .env 漏配都会安静地
+# 起在 8188 上：服务看起来是活的，但绑的不是对外转发的那个端口。宁可起不来。
+PORT="${PORT:?PORT 未设置——请在 .env 中显式配置，本脚本不猜端口}"
 
 exec "$VENV/bin/python" -m uvicorn api.main:app \
   --host "$HOST" --port "$PORT" \

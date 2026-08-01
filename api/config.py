@@ -100,7 +100,10 @@ class Config:
 
     # ---- 服务监听 ----
     HOST: str = _env("HOST", "0.0.0.0")
-    PORT: int = _env_int("PORT", 8188)
+    # 端口的真正消费者是 api/deploy/run.sh（systemd ExecStart 调它），本字段目前
+    # 无人读取，仅作配置回显。**不设写死默认值**：曾默认 8188，而 220 已切 4188、
+    # 125 用 4188，任何写死值都会让读代码的人得出错误结论。0 表示未配置。
+    PORT: int = _env_int("PORT", 0)
 
     # ---- 日志 ----
     LOG_DIR: str = _env("LOG_DIR", str(PROJECT_ROOT / "logs"))

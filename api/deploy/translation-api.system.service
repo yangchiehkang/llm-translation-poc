@@ -13,7 +13,8 @@ Group=yinzs
 WorkingDirectory=PROJECT_ROOT
 EnvironmentFile=PROJECT_ROOT/.env
 Environment=PYTHONPATH=PROJECT_ROOT
-ExecStart=/data/SERVICE_USER/translation-api/venv/bin/python -m uvicorn api.main:app --host 0.0.0.0 --port 8188 --workers 1 --log-level info
+# 端口由 .env 的 PORT 决定，不在这里写死（理由同 user 版单元）。
+ExecStart=/bin/bash PROJECT_ROOT/api/deploy/run.sh
 Restart=always
 RestartSec=3
 
