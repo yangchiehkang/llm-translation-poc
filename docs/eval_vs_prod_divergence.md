@@ -198,6 +198,10 @@ Z1(ru) 首次跑出 TCR 74.07%（否决）。逐条排查发现 `scripts/common/
 
 - 热修行为回灌仓库版 `api/examples/regression.py`，并把 `BASE`/`PROJECT`/`REF`
   改成环境变量可配，两台机**共用同一份脚本**，不再各存一份。
+- **口径变化（回灌时一并改，需知悉）**：C 段填充语料由"同一句重复 60 遍"改为
+  参照语料里**互不相同**的真实德语句子。原因：重复段落会触发模型病态生成
+  （实测 6000 字 >150s），那样测出来的是**病态耗时**而非截断保护，且对共享后端
+  形同饱和压测。因此 C 段回灌前后**耗时数不可直接对比**——新口径的数才是有效的。
 - 新增 `api/deploy/make_manifest.py` 生成 `api/deploy/DEPLOY_SHA256SUMS`，
   覆盖 `api/` 与 `scripts/common/` 下全部生产 Python；自检每轮校验，不符即
   `manifest_mismatch` 落进 `failed`。**这是第一个能自动发现代码分叉的哨兵**——
