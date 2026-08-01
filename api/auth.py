@@ -18,6 +18,10 @@ def require_bearer(request: Request) -> str:
     if not header.lower().startswith(prefix):
         raise ApiError(CODE_UNAUTHORIZED, "缺少或格式错误的 Authorization Bearer token")
     token = header[len(prefix):].strip()
+    if not token:
+        # "Bearer " 后面空着属于格式错误，归第一类 msg——接口文档把两类提示的触发条件
+        # 写死了（缺头/漏前缀 vs token 值不对），空 token 报"无效的 API token"会误导自查。
+        raise ApiError(CODE_UNAUTHORIZED, "缺少或格式错误的 Authorization Bearer token")
     if token not in CONFIG.API_TOKENS:
         raise ApiError(CODE_UNAUTHORIZED, "无效的 API token")
     return token

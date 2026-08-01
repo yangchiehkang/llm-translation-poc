@@ -34,7 +34,7 @@ from api.contract import (
     CODE_OK, CODE_NOT_FOUND, CODE_INVALID_PARAM, CODE_INTERNAL,
 )
 from api.auth import require_bearer
-from api.languages import resolve_language_type, SUPPORTED_LANGUAGE_TYPES
+from api.languages import resolve_language_type, canonical_language_type, SUPPORTED_LANGUAGE_TYPES
 from api.logging_setup import setup_logging, clip_source
 from api import terms as term_service
 from api import backends
@@ -113,6 +113,14 @@ async def _parse_law_request(request: Request) -> dict[str, Any]:
             fields["file_source"] = "multipart"
         return fields
 
+    if "application/x-www-form-urlencoded" in content_type:
+        # 表单编码不受支持（文档要求 Content-Type: application/json）。按 JSON 解析必然
+        # 失败并报"请求体不是合法 JSON"，那句话指不到真正的原因；这里直接点破。
+        raise ApiError(
+            CODE_INVALID_PARAM,
+            "不支持 application/x-www-form-urlencoded；请用 Content-Type: application/json 提交 JSON 请求体",
+        )
+
     # 默认按 JSON 解析
     raw_body = await request.body()
     if not raw_body:
@@ -185,7 +193,38 @@ def _detect_terms_translate(
         # （识别失败发生在匹配之前、无此属性 -> 上层取默认 0，正好是"未匹配"的真实值。）
         exc.matched_count = len(matched)  # type: ignore[attr-defined]
         raise
-    return translation, src_lang, tgt_lang, matched, detected_type
+    # usage 必须在**同一线程**里取（thread-local），所以在这里读、随返回值带出去。
+    return translation, src_lang, tgt_lang, matched, detected_type, backends.last_usage()
+
+
+# ----------------------------------------------------------------------------
+# 对外健康检查的内网地址脱敏
+# ----------------------------------------------------------------------------
+_INTERNAL_MASK = "<内部地址>"
+
+
+def _mask_internal(text: str | None, raw_url: str) -> str | None:
+    # 把 detail 里出现的后端地址（完整 URL 与 host:port 两种形态）替换成占位符。
+    # reachable() 失败时会把 URL 拼进 detail（"…/models 返回 HTTP 503"），
+    # 那正是调用方最可能读到这个字段的时刻，只打 base_url 等于没打。
+    if not text or not raw_url:
+        return text
+    out = text.replace(raw_url, _INTERNAL_MASK)
+    host = raw_url.split("//", 1)[-1].split("/", 1)[0]
+    return out.replace(host, _INTERNAL_MASK) if host else out
+
+
+def _public_backend_view(info: dict[str, Any], detail: str | None) -> tuple[dict[str, Any], str | None]:
+    """/health 是免鉴权的对外端点，后端地址属内网拓扑，不随健康检查外泄。
+
+    接口文档里这个字段本身就是打码的（"base_url":"<内部地址>"），此处让实际响应与
+    文档示例逐字对齐。需要真实地址排障时用 /health/deep（内部监控专用、不在对外文档里）。
+    """
+    masked = dict(info)
+    raw_url = str(info.get("base_url") or "")
+    if raw_url:
+        masked["base_url"] = _INTERNAL_MASK
+    return masked, _mask_internal(detail, raw_url)
 
 
 # ----------------------------------------------------------------------------
@@ -200,8 +239,8 @@ async def health():
     需要"不通就红"的语义，用 /health/deep（内部监控专用，不写进对外文档）。
     """
     backend = backends.get_backend()
-    info = backend.info()
     ok, detail = await run_in_threadpool(backend.reachable, 2.0)
+    info, detail = _public_backend_view(backend.info(), detail)
     return json_ok({
         "status": "ok",
         "backend": CONFIG.BACKEND,
@@ -222,6 +261,8 @@ async def health_deep():
     """深检：后端不通就返回 **HTTP 503**。内部监控专用，不写进给国创的接口文档。
 
     与 /health 的分工：/health 守契约（永远 200），/health/deep 守真相（不通就红）。
+    地址**不脱敏**：这个端点不对外、不在文档里，排障就是要看见后端到底指着哪个地址
+    （07-28 那次静默中断就是靠它定位的）。对外脱敏在 /health，别把这里也一起打码。
     """
     backend = backends.get_backend()
     ok, detail = await run_in_threadpool(backend.reachable, 2.0)
@@ -297,7 +338,7 @@ async def translate_law(request: Request):
     # 兜底：识别耗时计入同一预算、不单独计时。实测 dashscope SDK 的 timeout 入参不生效，本层硬超时才是真兜底；
     # 超时后本请求立即返回干净 code:500，事件循环与连接释放，底层线程自行跑完并丢弃结果，不阻塞新请求。
     try:
-        translation, src_lang, tgt_lang, matched, detected_type = await asyncio.wait_for(
+        translation, src_lang, tgt_lang, matched, detected_type, usage = await asyncio.wait_for(
             run_in_threadpool(
                 _detect_terms_translate, original_text, resolved, request_terms, request_id,
             ),
@@ -341,11 +382,12 @@ async def translate_law(request: Request):
         raise ApiError(CODE_INTERNAL, f"翻译失败: {exc}")
 
     term_service.verify_targets(translation, matched, request_id)
-    # detectedLanguageType：显式传入原样回填；识别得出则回显识别结果（枚举串）。
-    echo_type = language_type if resolved is not None else detected_type
+    # detectedLanguageType：显式传入回显其枚举原形（" en-cn " -> "EN-CN"，不原样退回
+    # 调用方的大小写/空格）；未传则回显识别结果。两条路径都保证落在对外公布的枚举里。
+    echo_type = canonical_language_type(language_type) if resolved is not None else detected_type
     _log_request(request_id, CONFIG.LAW_PATH, translate_type, echo_type,
                  len(original_text), len(matched), started, "ok",
-                 source_text=original_text)
+                 source_text=original_text, usage=usage)
     return json_ok({"translateText": translation, "detectedLanguageType": echo_type})
 
 
@@ -396,18 +438,23 @@ def _not_implemented():
     return json_result(CODE_NOT_FOUND, "接口尚未实现", None)
 
 
+# 占位接口同样鉴权：对外文档写的是"/health 免鉴权，其余业务接口均需携带"。
+# 带上 token 后仍返 code:404「接口尚未实现」，与文档的占位状态表一致。
 @app.api_route("/openApi/standard/write", methods=["GET", "POST"])
 async def standard_write(request: Request):
+    require_bearer(request)
     return _not_implemented()
 
 
 @app.api_route("/openApi/ppt/generate", methods=["GET", "POST"])
 async def ppt_generate(request: Request):
+    require_bearer(request)
     return _not_implemented()
 
 
 @app.api_route("/openApi/terminology/extract", methods=["GET", "POST"])
 async def terminology_extract(request: Request):
+    require_bearer(request)
     return _not_implemented()
 
 
@@ -415,12 +462,16 @@ async def terminology_extract(request: Request):
 # 结构化请求日志
 # ----------------------------------------------------------------------------
 def _log_request(request_id, interface, translate_type, language_type,
-                 src_len, term_count, started, status, source_text=None):
+                 src_len, term_count, started, status, source_text=None, usage=None):
     elapsed_ms = int((time.time() - started) * 1000)
+    # prompt/completion_tokens 只进日志，不进响应体（对外契约无 token 字段）。
+    # 延迟表与容量规划要它：字符数与 token 数不是线性关系，各语种膨胀率也不同，
+    # 只看字符数推不出 max_tokens 余量。
+    u = usage or {}
     logger.info(
         "request_id=%s interface=%s translateType=%s languageType=%s src_len=%s "
-        "matched_terms=%s elapsed_ms=%s status=%s src=%r",
+        "matched_terms=%s prompt_tokens=%s completion_tokens=%s elapsed_ms=%s status=%s src=%r",
         request_id, interface, translate_type, language_type, src_len,
-        term_count, elapsed_ms, status,
+        term_count, u.get("prompt_tokens"), u.get("completion_tokens"), elapsed_ms, status,
         clip_source(source_text) if source_text is not None else "",
     )

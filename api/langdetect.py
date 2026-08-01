@@ -29,7 +29,16 @@ def _in_cyrillic(o: int) -> bool:
 
 
 def _in_arabic(o: int) -> bool:
-    return 0x0600 <= o <= 0x06FF or 0x0750 <= o <= 0x077F or 0x08A0 <= o <= 0x08FF
+    # 必须含**呈现形式 A/B**：PDF 抽出来的阿拉伯文往往是呈现形式码位（U+FE70–FEFF /
+    # U+FB50–FDFF），一个基本区字符都没有。漏掉这两段，阿拉伯文会整段跌到第二级
+    # "拉丁四选一"分类器被迫瞎选，静默误判成 FR/DE/EN；本地术语库随之按错误
+    # source_lang 过滤、304 条阿语术语全丢——正是本模块开头声明要避免的那种静默 fallback。
+    return (0x0600 <= o <= 0x06FF        # Arabic
+            or 0x0750 <= o <= 0x077F     # Arabic Supplement
+            or 0x0870 <= o <= 0x089F     # Arabic Extended-B
+            or 0x08A0 <= o <= 0x08FF     # Arabic Extended-A
+            or 0xFB50 <= o <= 0xFDFF     # Arabic Presentation Forms-A
+            or 0xFE70 <= o <= 0xFEFF)    # Arabic Presentation Forms-B
 
 
 def _in_thai(o: int) -> bool:

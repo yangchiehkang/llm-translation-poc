@@ -4,6 +4,7 @@
 
 from __future__ import annotations
 
+import threading
 from typing import Any
 
 from api.config import CONFIG
@@ -18,6 +19,18 @@ def _require_config() -> None:
             "local_npu 后端未配置：请设置 LOCAL_NPU_BASE_URL 和 LOCAL_NPU_MODEL "
             "（指向本期已在跑的本地 OpenAI 兼容推理服务）"
         )
+
+
+# 本次调用的 usage（prompt/completion tokens）。接口响应体按合同不含 token 数，
+# 但延迟表与容量规划都要它（2026-07-30 重测 40004 延迟时补）：用 thread-local
+# 旁路带出，不改后端签名、不改响应契约。与 dashscope 后端捕获 finish_reason
+# 用的是同一套手法。
+_LAST = threading.local()
+
+
+def last_usage() -> dict[str, Any]:
+    """取本线程上一次 chat_completion 的 usage；没有则空 dict。"""
+    return getattr(_LAST, "usage", None) or {}
 
 
 def chat_completion(
@@ -42,6 +55,7 @@ def chat_completion(
         data = resp.json()
     choice = data["choices"][0]
     content = choice.get("message", {}).get("content") or ""
+    _LAST.usage = data.get("usage") or {}
     return content, choice.get("finish_reason")
 
 

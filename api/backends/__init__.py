@@ -25,6 +25,18 @@ def translate(text: str, src_lang: str, tgt_lang: str, terms: list[dict[str, Any
     return get_backend().translate(text, src_lang, tgt_lang, terms)
 
 
+def last_usage() -> dict[str, Any]:
+    """当前线程上一次后端调用的 token usage；后端不提供则空 dict。
+
+    只用于日志与容量规划（延迟表要 completion_tokens），**不进响应体**——
+    对外契约里没有 token 字段，不能因为内部需要就悄悄改契约。
+    """
+    if CONFIG.BACKEND == "local_npu":
+        from api.backends.local_npu_backend import last_usage as _lu
+        return _lu()
+    return {}
+
+
 def classify(text: str, labels: list[str]) -> str:
     # 语种识别等非翻译用途的统一入口：始终走当前 BACKEND，不依赖 LOCAL_NPU_* 是否配置。
     return get_backend().classify(text, labels)
