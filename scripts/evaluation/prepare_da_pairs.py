@@ -9,6 +9,7 @@ from collections import Counter, defaultdict
 import json
 import random
 import re
+import string
 import sys
 import unicodedata
 from pathlib import Path
@@ -74,11 +75,12 @@ SECTION_PATTERNS = [
                 r"(?!(?:所述|所指|所列|所称|规定的|适用于|和第|至第|第[一二三四五六七八九十百千万\d]+项))"),
     re.compile(r"^\s*((?:ข้อ|มาตรา)\s*\d+[A-Za-z0-9.-]*)"),
     re.compile(r"^\s*((?:المادة|مادة)\s*\d+[A-Za-z0-9.-]*)"),
-    # 阿拉伯语数字条款号"子款/章节"惯例（如 "١/٧" = 第7节第1款，2026-07-29，Z3-ar）：
-    # SASO 电动车法规源文条款号用阿拉伯-印度数字，顺序与中文译文的"7.1"（章节.子款）
-    # 相反——子款在前、章节在后，两侧数字文本也不同（阿拉伯-印度数字 vs 阿拉伯数字）。
-    # 这条只识别原始形态，顺序颠倒和数字转写统一放到 canonical_section_key 里处理。
-    re.compile(r"^\s*([٠-٩]+/[٠-٩]+)"),
+    # 阿拉伯语数字条款号"章节/子款"惯例（如 "٤/١" = 4.1，"١/١/١/٢" = 1.1.1.2，
+    # 2026-07-29 Z3-ar；2026-07-30 换 PyMuPDF 后扩到任意级数，见 canonical_section_key
+    # 旁的说明——顺序与中文一致，不颠倒；原来只认恰好两级，三级以上（如
+    # "١/١/١"）匹配不上、截断成两级，同 key 被不同深度的子款碰撞污染）。
+    # 数字转写统一放到 canonical_section_key 里处理。
+    re.compile(r"^\s*([٠-٩]+(?:/[٠-٩]+)+)"),
     # 德语 § N 条款号（2026-07-29，Z2-de）：StVZO 源文完全没有能识别 § 的模式，
     # § 内部的枚举项被误判成条款号，全文档编号从 1 反复重来。中文译文侧**直接
     # 保留 § 符号原样**（"§ 22 车辆部件的型式认证"），不像法语译成"第N条"，
@@ -106,7 +108,55 @@ SECTION_PATTERNS = [
 # 带字母的子附录（Annex 9A / 附录9A）保留字母，两侧都归一到 X9A，粒度对齐。
 SCOPE_EN_RE = re.compile(r"^\s*(Annex|ANNEX)\s+(\d{1,3}|[IVXLCDM]+)([A-Z])?(?![A-Za-z0-9])")
 SCOPE_ZH_RE = re.compile(r"^\s*(附\s*录)\s*([一二三四五六七八九十百千零\d]+)\s*([A-Z])?")
+# 2026-07-31（A 步）：作用域标题词原来**只有英文 "Annex" 和中文 "附录"**。
+# 后果在德语上被抓个正着：StVZO 德语源文有 33 个 "Anlage I…XXXIII"，中文译文侧
+# 有对应的 "附录一…"，但 detect_scope() 只认 zh 侧——702 个源文段的 scope **全是
+# 空串**，参考侧却分出 X2/X4/X7/X8/X9 五个作用域。附件里的层级编号（"3.4.2.8"、
+# "5.5"、"12.1.2"）于是在源文侧被当成正文顶层条款号，与正文条款号同池碰撞，
+# 把 key_coverage 稀释到 0.90 门槛边缘（实测 0.9175，只差 0.0175 就整份文档报废）。
+#
+# 这是本项目"把英文写法当成全语种通用规律"的又一次同型 bug，和 _ART_WORD_RE
+# 早已按语言列全 Article/Artículo/Статья/ข้อ/مادة/§ 是同一件事，只是作用域这一层
+# 当初漏了。修法与 _ART_WORD_RE 保持一致：按语言列全标题词，canonical 前缀统一
+# 为 "X"，使 de "Anlage VIII" 与 zh "附录八" 归一到同一个作用域记号。
+#
+# ⚠️ en 与 zh 的两条正则**原样保留、一个字符都不动**（上面 SCOPE_EN_RE /
+# SCOPE_ZH_RE）。二者历史上结构本就不同（en 要求 `\s+` 分隔且带
+# `(?![A-Za-z0-9])` 后瞻，zh 用 `\s*` 且无后瞻），任何"顺手统一"都会改动
+# 已封版的 en 689 与既有 zh 行为——实测把 en 放宽成 `\s*` 并补一个 "Appendix"
+# 词，R100 文档立刻丢 62 条、多出 X12/X14/X18 三个新作用域，漂移检查直接不过。
+# 因此这里只**新增**缺失语言，不重写已有语言。
+_SCOPE_WORDS_EXTRA = {
+    "de": r"Anlage|ANLAGE|Anhang|ANHANG",
+    "fr": r"Annexe|ANNEXE",
+    "es": r"Anexo|ANEXO",
+    "ru": r"Приложение|ПРИЛОЖЕНИЕ",
+    "th": r"ภาคผนวก",
+    "ar": r"ملحق|الملحق",
+}
+# 序号写法：拉丁/西里尔文档用阿拉伯数字或罗马数字，泰文用泰文数字（๐-๙）。
+# 统一交给 _numeral_to_int() 解析。结构与 SCOPE_EN_RE 完全一致。
+_SCOPE_NUM = r"\d{1,3}|[IVXLCDM]+|[๐-๙]+"
+_SCOPE_RE_BY_LANG: dict[str, re.Pattern[str]] = {
+    lang: re.compile(rf"^\s*({words})\s+({_SCOPE_NUM})([A-Z])?(?![A-Za-z0-9])")
+    for lang, words in _SCOPE_WORDS_EXTRA.items()
+}
 _SCOPE_KIND = {"annex": "X", "附录": "X"}
+
+
+def _scope_pattern_for(lang: str) -> re.Pattern[str]:
+    """按语言取作用域标题正则。
+
+    zh → SCOPE_ZH_RE，en 及未知语言 → SCOPE_EN_RE（均为历史原样），
+    其余语言用 _SCOPE_RE_BY_LANG 里新增的对应模式。
+    """
+    key = str(lang or "").lower()
+    if key.startswith("zh"):
+        return SCOPE_ZH_RE
+    for candidate in (key, key.split("-")[0], key[:2]):
+        if candidate in _SCOPE_RE_BY_LANG:
+            return _SCOPE_RE_BY_LANG[candidate]
+    return SCOPE_EN_RE
 _CN_DIGIT = {"零": 0, "一": 1, "二": 2, "三": 3, "四": 4, "五": 5, "六": 6, "七": 7, "八": 8, "九": 9}
 _ROMAN = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000}
 
@@ -123,6 +173,9 @@ _SCOPE_PUNCT_RE = re.compile(r"[.。,，;；:：!?！？)）]")
 _SCOPE_TOC_TAIL_RE = re.compile(r"\s\d{2,4}$")
 _SCOPE_TITLE_SEP_RE = re.compile(r"^[-–—]")
 SCOPE_MAX_HEADING_CHARS = 80
+# 作用域标题序列允许的最大"回跳率"（见 _scope_headings_reliable）。真正的附录标题
+# 基本递增出现；超过这个比例的回跳说明命中的多半是正文交叉引用，整份文档弃用作用域。
+SCOPE_MAX_DESCENT_RATIO = 0.25
 
 # 段落长度上限：抽取时的分段上限、all_eval 清洗与 DA 前置过滤的 too_long 判据
 # 必须是同一个值。三处曾各自写死（抽取 1200 / 清洗 1200 / DA 过滤 1200），
@@ -135,8 +188,15 @@ MAX_SEGMENT_CHARS = 3000
 EXACT_ALIGNMENT_METHODS = frozenset({"exact_section", "exact_section_scoped"})
 
 
+_THAI_DIGITS = str.maketrans("๐๑๒๓๔๕๖๗๘๙", "0123456789")
+
+
 def _numeral_to_int(s: str) -> int | None:
     s = (s or "").strip()
+    # 泰文数字（๐-๙）先转写成阿拉伯数字：DLT 泰语法规的 "ภาคผนวก ๒" 用泰文数字写
+    # 附录序号，中文译文写 "附录2"。canonical_section_key 早已做过同一处转写
+    # （2026-07-29，第六次同型 Latin-only 数字 bug），作用域这一层当时漏了。
+    s = s.translate(_THAI_DIGITS)
     if s.isdigit():
         return int(s)
     up = s.upper()
@@ -194,7 +254,7 @@ def detect_scope(line: str, lang: str, line_idx: int | None = None, next_line: s
     （en PDF 的页眉/附录起始页）或下一行是标题行（zh 由 docx 转换而来，附录标题在页中间）。
     """
     line = line or ""
-    m = SCOPE_ZH_RE.match(line) if str(lang).lower().startswith("zh") else SCOPE_EN_RE.match(line)
+    m = _scope_pattern_for(lang).match(line)
     if not m:
         return None
     n = _numeral_to_int(m.group(2))
@@ -205,7 +265,9 @@ def detect_scope(line: str, lang: str, line_idx: int | None = None, next_line: s
         return None
     if kind == "bare" and not ((line_idx is not None and line_idx <= 1) or _looks_like_title_line(next_line or "")):
         return None
-    prefix = _SCOPE_KIND.get(m.group(1).replace(" ", "").lower(), "X")
+    # 所有语言的附录标题词都归一到同一个前缀 "X"，否则 de "Anlage VIII" 与
+    # zh "附录八" 会得到两个不同的作用域记号，跨语言 scoped_key 依然对不上。
+    prefix = "X"
     return f"{prefix}{n}{m.group(3) or ''}"
 
 
@@ -234,10 +296,18 @@ _CN_UNIT_KIND = {"章": "chap", "节": "sec", "条": "art", "款": "para"}
 # （Article.../第...条），核心编码相同，提取编码部分统一映射。
 _L_CODE_RE = re.compile(r"^(?:Article\s+|第\s*)L\.?\s*(\d+(?:-\d+)*)\s*(?:条)?$", re.IGNORECASE)
 
-# 阿拉伯语"子款/章节"条款号（2026-07-29，Z3-ar）：SASO 电动车法规源文用
-# 阿拉伯-印度数字写"子款/章节"（如"١/٧"=第7节第1款），中文译文写"章节.子款"
-# （"7.1"）——顺序相反、数字文本也不同，需要单独识别+颠倒+转写。
-_AR_SUBCLAUSE_RE = re.compile(r"^([٠-٩]+)/([٠-٩]+)$")
+# 阿拉伯语"章节/子款"条款号（2026-07-29，Z3-ar；2026-07-30 换 PyMuPDF 后修正）：
+# SASO 电动车法规源文用阿拉伯-印度数字、"/"分隔写章节号（如"٤/١"=第4章第1节，
+# "١/١/١/٢"=1.1.1.2 四级嵌套），中文译文写"章节.子款"（"4.1"/"1.1.1.2"）。
+# 数字文本不同（阿拉伯-印度数字 vs 阿拉伯数字）需要转写，但**读取顺序与中文
+# 完全一致，不需要颠倒**——早期版本以为需要颠倒（在 pdfplumber 抽取路径下
+# "١/٧"看似要倒过来才对上"7.1"），那其实是在补偿 pdfplumber 词内字符反转
+# 那个 bug（数字本身也被拆字倒着拼），不是真的阿拉伯语数字顺序习惯。换用
+# PyMuPDF 抽取后逐条核对 4.1~8.3 共 16 处，源文字面序直接等于中文序，颠倒
+# 反而会错位。原正则只认恰好两级（"N/M"），三级以上（如"١/١/١"）匹配不上、
+# 落到 raw 分支，同 canonical key 被不同层级的子款污染碰撞——现在允许任意
+# 级数。
+_AR_SUBCLAUSE_RE = re.compile(r"^([٠-٩]+(?:/[٠-٩]+)+)$")
 
 # 西里尔/拉丁形近字母：GOST 俄语原文附录标题"Приложение А/Б"用西里尔字母，
 # 中文译文排版惯例用拉丁字母（"A.1"），两者视觉全同、编码不同。数字条款号里的
@@ -262,11 +332,13 @@ def canonical_section_key(section_no: str | None) -> tuple[str, str] | None:
         return ("num", s_lat)
     m = _AR_SUBCLAUSE_RE.match(s)
     if m:
-        # 阿拉伯语"子款/章节"顺序与中文"章节.子款"相反，且数字是阿拉伯-印度数字，
-        # 两侧都转成阿拉伯数字、颠倒顺序后才能对上同一个 canonical key。
-        sub = "".join(str(unicodedata.digit(c)) for c in m.group(1))
-        chap = "".join(str(unicodedata.digit(c)) for c in m.group(2))
-        return ("num", f"{chap}.{sub}")
+        # 任意级数的"N/M/.../K"，逐级转写成阿拉伯数字后按原有顺序用"."拼接
+        # （不颠倒，见上面 _AR_SUBCLAUSE_RE 的说明）。
+        levels = [
+            "".join(str(unicodedata.digit(c)) for c in part)
+            for part in m.group(1).split("/")
+        ]
+        return ("num", ".".join(levels))
     m = _L_CODE_RE.match(s)
     if m:
         return ("art", f"L{m.group(1)}")
@@ -290,8 +362,10 @@ def canonical_section_key(section_no: str | None) -> tuple[str, str] | None:
     return ("raw", s)
 
 
-def scoped_key(segment: dict[str, Any]) -> str:
+def scoped_key(segment: dict[str, Any], use_scope: bool = True) -> str:
     # 对齐用 key = 作用域::规范化条款号（无段号返回空串，调用方自行排除）。
+    # use_scope=False 时退回不带作用域的裸 key，供 _scope_helps_alignment() 做
+    # 「加不加作用域哪个对得更齐」的两侧对照，见该函数说明。
     sec = str(segment.get("section_no") or "").strip()
     if not sec:
         return ""
@@ -299,8 +373,57 @@ def scoped_key(segment: dict[str, Any]) -> str:
     if canon is None:
         return ""
     key = f"{canon[0]}:{canon[1]}"
+    if not use_scope:
+        return key
     scope = str(segment.get("scope") or "").strip()
     return f"{scope}::{key}" if scope else key
+
+
+def _unique_pairable_keys(source_segments: list[dict[str, Any]], reference_segments: list[dict[str, Any]],
+                          source_title_ref: set[int], ref_title_ref: set[int], use_scope: bool) -> int:
+    """两侧都只出现一次的 key 有多少个 —— 即这种 key 表示能产出多少条 exact 配对。
+
+    刻意**不**用"覆盖率"当判据：裸 key 的覆盖率往往更高，但那是因为正文与附录
+    同号条款塌成了同一个 key（覆盖率虚高、实际全是碰撞），P1 引入作用域正是为了
+    拆开这种碰撞。实测拿覆盖率当判据会让 en 从 918 掉到 526。
+    真正要最大化的是「两侧各自唯一、因而能安全 1:1 配对」的 key 数量。
+    """
+    src = Counter(k for i, s in enumerate(source_segments)
+                  if i not in source_title_ref and (k := scoped_key(s, use_scope)))
+    ref = Counter(k for i, r in enumerate(reference_segments)
+                  if i not in ref_title_ref and (k := scoped_key(r, use_scope)))
+    return sum(1 for k, c in src.items() if c == 1 and ref.get(k, 0) == 1)
+
+
+def _scope_helps_alignment(source_segments: list[dict[str, Any]], reference_segments: list[dict[str, Any]],
+                           source_title_ref: set[int], ref_title_ref: set[int]) -> bool:
+    """这份文档对上「带作用域的 key」比「裸 key」对得更齐吗？
+
+    2026-07-31（A 步）：作用域标题词补齐到 de/fr/es/ru/th/ar 之后出现一个新问题——
+    作用域是否有用**是逐文档的性质，不是逐语言的性质**：
+
+    | 文档 | 裸 key 覆盖率 | 带作用域覆盖率 |
+    |---|---|---|
+    | th DLT_BE2560 | 低（正文与附录条款号同号碰撞） | 高 —— 作用域是必需的 |
+    | de StVZO      | 0.9175                        | 0.8650 —— 作用域是有害的 |
+
+    de StVZO 有害的原因已查明：德语法条正文行内引用附录的频率极高
+    （137 次模式命中里只有 42 次是真标题），两侧的附录标题识别率又严重不对称
+    （de 42 条 / zh 11 条），于是两侧被染上**互不对应**的作用域，同一个条款号
+    在源文侧成了 "X4::num:3.2.1"、在参考侧成了 "X9::num:3.2.1"，本来能对上的
+    反而对不上。
+
+    与其给德语单开例外、或者去调 0.90 那个阈值（那是看到结果之后改判据），
+    不如让**数据自己选**：两种 key 表示各算一次「两侧都唯一、可安全 1:1 配对的
+    key 数」，取多的那个。这条规则对七个语向的每一份文档都一样地跑，不含任何
+    语言/文档专属分支，且它优化的正是作用域这个机制本身要服务的目标（可配对的
+    唯一 key 数），不是分数。平手时保留作用域（既有行为优先）。
+    """
+    with_scope = _unique_pairable_keys(source_segments, reference_segments,
+                                       source_title_ref, ref_title_ref, use_scope=True)
+    without = _unique_pairable_keys(source_segments, reference_segments,
+                                    source_title_ref, ref_title_ref, use_scope=False)
+    return with_scope >= without
 
 
 def clean_text(text: str) -> str:
@@ -533,24 +656,58 @@ def extract_pages_with_pdfplumber(pdf_path: Path) -> list[dict[str, Any]]:
     except Exception as exc:  # pragma: no cover - dependency error message matters most.
         raise RuntimeError("pdfplumber is required for --mode from_raw") from exc
 
+    # 阿拉伯语页面改用 PyMuPDF（2026-07-30，M5 续②：换库测试决定性通过）。
+    # pdfplumber 的 extract_words() 把词内部字符也按几何序拼接，词间用 bidi
+    # 重排修不了这一层——同一份 PDF 用 PyMuPDF 的 get_text() 直接给出正确
+    # 逻辑序的文本（验证："تقوم"这个词直接正确出现，不再是 pdfplumber 版本
+    # 里的反字 "موقت"）。判据：抽 3 条同源片段直译对比参考，pdfplumber 版本
+    # 译文与参考完全答非所问（如"伊斯兰教法禁止饮酒"），PyMuPDF 版本 3/3
+    # 语义清晰对应参考——即使模型仍标"不可读"（因为字体子集映射表本身有
+    # 少量字形替换噪声，是更浅一层、局部的问题，不是词序/字符序问题），
+    # 直译内容已经对得上，证明理解链路已经打通。只在阿拉伯语为主的页面
+    # 生效，不改动其它语言的抽取路径。
+    try:
+        import fitz  # PyMuPDF
+        fitz_doc = fitz.open(str(pdf_path))
+    except Exception:
+        fitz_doc = None
+
     pages: list[dict[str, Any]] = []
     with pdfplumber.open(str(pdf_path)) as pdf:
         for idx, page in enumerate(pdf.pages, 1):
             text = page.extract_text(x_tolerance=1, y_tolerance=3) or ""
             if not text.strip():
                 text = page.extract_text(layout=True) or ""
-            # 只在页面以阿拉伯语为主时才切到 RTL 感知的自定义抽取路径，其它
-            # 语言的页面完全不受影响、走原来的 extract_text() 逻辑（窄范围
-            # 生效，避免对 en/ru/fr/de/es/th 产生任何漂移）。
+            # 只在页面以阿拉伯语为主时才切换抽取路径，其它语言的页面完全不受
+            # 影响、走原来的 extract_text() 逻辑（窄范围生效，避免对
+            # en/ru/fr/de/es/th 产生任何漂移）。
             if text and (len(_ARABIC_CHAR_RE.findall(text)) / max(len(text), 1)) > 0.15:
-                rtl_text = _extract_rtl_aware_page_text(page)
-                if rtl_text.strip():
-                    text = rtl_text
+                if fitz_doc is not None and idx - 1 < len(fitz_doc):
+                    fitz_text = fitz_doc[idx - 1].get_text()
+                    if fitz_text.strip():
+                        text = fitz_text
+                else:
+                    rtl_text = _extract_rtl_aware_page_text(page)
+                    if rtl_text.strip():
+                        text = rtl_text
             pages.append({"page": idx, "text": text})
+    if fitz_doc is not None:
+        fitz_doc.close()
     return pages
 
 
 def extract_pages(pdf_path: Path) -> list[dict[str, Any]]:
+    # OCR 语料的逻辑顺序文本 sidecar（2026-07-31，B/C 步）。
+    # tesseract 的 pdf 输出把字形按视觉位置摆放，RTL 文本读回来整行是倒的；
+    # 它的 .txt 输出则是逻辑顺序。scripts/analysis/a2_ocr_pdf.py 在 OCR 时把
+    # 逐页 .txt 落成 `<pdf>.pages.json`，这里优先采用，避免在下游用启发式去猜
+    # "这份 PDF 是不是 OCR 产物、要不要整行倒置"。
+    # sidecar 必须与 PDF 同名同目录，因此只有真正的 OCR 产物才会命中，
+    # 不影响任何原始 PDF 的既有抽取路径。
+    sidecar = Path(str(pdf_path) + ".pages.json")
+    if sidecar.exists():
+        rows = json.loads(sidecar.read_text(encoding="utf-8"))
+        return [{"page": int(r["page"]), "text": r.get("text") or ""} for r in rows]
     try:
         return extract_pages_with_pdfplumber(pdf_path)
     except Exception:
@@ -562,16 +719,113 @@ def extract_pages(pdf_path: Path) -> list[dict[str, Any]]:
         return [{"page": idx, "text": page.extract_text() or ""} for idx, page in enumerate(reader.pages, 1)]
 
 
-def repeated_page_lines(pages: list[dict[str, Any]]) -> set[str]:
+_DIGIT_RUN_RE = re.compile(r"\d+")
+
+
+def _mask_digits(line: str) -> str:
+    """把行内所有数字串换成占位符，用于识别"同一模板、逐页换数字"的页眉页脚。"""
+    return _DIGIT_RUN_RE.sub("#", line)
+
+
+def repeated_page_lines(pages: list[dict[str, Any]]) -> dict[str, set[str]]:
+    """识别逐页重复的页眉/页脚行。
+
+    2026-07-31（A 步）：原实现只认「整行逐字节完全相同」，漏掉两大类真实噪声——
+
+    1. **逐页换数字的页脚模板**。StVZO 德语源文每页正文里都夹着 `- Seite 46 von 357 -`，
+       357 页就是 357 个互不相同的字符串，每个只出现一次，永远够不到重复阈值。
+       实测这行被当成正文行合并进段落，**357 次注入、污染 702 个源文段里的 313 个**
+       （§ 44 的源文就长这样：`…der elektrischen Anschlüsse - Seite 46 von 357 - und
+       der Bremsanschlüsse…`，直接插在句子中间）。同类还有智利 BCN 的
+       `documento generado el 09-Nov-2021 página 1 de 3` 与其中文版
+       `…生成文件第 1页，共 3 页`，以及 `https://…/BJNR021210012.html 1/44` 这种
+       带页码的 URL 页脚（Circular_Economy 44 页各一次）。
+       → 追加一套**数字掩码**计数：把数字串换成 `#` 之后再统计重复。
+
+    2. **同一条水印在少数页上换了折行位置**。StVZO 的
+       `Ein Service des Bundesministeriums … ‒ www.gesetze-im-internet.de` 在 351 页上
+       被抽成两行（两行都进了重复集、正常过滤掉），却在另外 6 页上被抽成完整的一行，
+       这个"合并形"只出现 6 次，够不到阈值 119，于是漏网。
+       → 追加**包含判据**：某行的绝大部分（≥60% 字符）由一条已确认的重复行构成时，
+       同样按噪声处理。
+
+    两条都是与语言无关的版式规律，七语向同一套规则，不为任何语向单开。
+    返回 {"exact": 精确重复行, "masked": 数字掩码后的重复模板}。
+    """
     counts: Counter[str] = Counter()
+    masked_counts: Counter[str] = Counter()
     for page in pages:
         lines = [clean_text(x) for x in (page.get("text") or "").splitlines()]
         lines = [x for x in lines if x and not is_noise_line(x)]
         for line in lines[:3] + lines[-3:]:
             if 6 <= len(line) <= 180:
                 counts[line] += 1
+                masked_counts[_mask_digits(line)] += 1
     threshold = max(3, len(pages) // 3)
-    return {line for line, count in counts.items() if count >= threshold}
+    exact = {line for line, count in counts.items() if count >= threshold}
+    # 掩码模板必须真的含数字，否则它只是 exact 的重复表述，白白放大误伤面。
+    masked = {line for line, count in masked_counts.items()
+              if count >= threshold and "#" in line}
+    return {"exact": exact, "masked": masked}
+
+
+def is_repeated_page_line(line: str, repeated: dict[str, set[str]]) -> bool:
+    """行是否属于逐页重复的页眉/页脚（精确 / 数字掩码 / 包含 三种判据）。"""
+    if not line:
+        return False
+    exact = repeated.get("exact") or set()
+    if line in exact:
+        return True
+    if _mask_digits(line) in (repeated.get("masked") or set()):
+        return True
+    for candidate in exact:
+        if len(candidate) >= 0.6 * len(line) and candidate in line:
+            return True
+    return False
+
+
+def _scope_headings_reliable(pages: list[dict[str, Any]], lang: str,
+                             repeated: dict[str, set[str]]) -> bool:
+    """这份文档里 detect_scope 命中的行，看起来是真的章节标题，还是正文交叉引用？
+
+    2026-07-31（A 步）：给 de/fr/es/ru/th/ar 补上作用域标题词之后，德语立刻暴露出
+    一个 en/zh 上没有的问题——**德语法条正文极其频繁地行内引用附录**（"nach
+    Anlage VIII"、"Anlage 2 Nummer 3"），而 `_scope_heading_kind()` 的护栏只挡
+    "行内带句读"这一种。实测 StVZO 德语源文 137 次模式命中里有 42 次被判为标题，
+    产出的作用域序列是 `X8, X9, X13, X14, X19, X29, X2, X3, X4, …, X1, X2, X1, X2`
+    ——**反复回跳**，这不是任何一份文档的附录编号顺序，是交叉引用的signature。
+    后果：正文段被染上错误作用域，scoped_key 两侧不对称，StVZO 的
+    key_coverage 从 0.9175 掉到 0.8650，整份文档被 0.90 门槛判死（110 → 15 条）。
+
+    与其给德语单开一条正则例外，不如按**语言无关的结构事实**判：真正的附录标题
+    在文档里是**基本递增**出现的（附录一、附录二、…），交叉引用则乱序回跳。
+    因此逐文档统计命中序列的"回跳率"，回跳过多就判定这份文档的作用域标题不可信，
+    整份文档不启用作用域（退回到本次修复之前的行为，即全文一个空作用域）——
+    宁可不分作用域，也不要用错误的作用域去污染 key。
+
+    七语向、每一份文档都过同一条判据，不为任何语言开例外。
+    """
+    seq: list[int] = []
+    for page in pages:
+        cleaned = []
+        for raw in (page.get("text") or "").splitlines():
+            line = clean_text(raw)
+            if not line or is_noise_line(line) or is_repeated_page_line(line, repeated):
+                continue
+            cleaned.append(line)
+        for idx, line in enumerate(cleaned):
+            nxt = cleaned[idx + 1] if idx + 1 < len(cleaned) else ""
+            scope = detect_scope(line, lang, line_idx=idx, next_line=nxt)
+            if not scope:
+                continue
+            n = _numeral_to_int(re.sub(r"^X", "", scope).rstrip(string.ascii_uppercase))
+            if n is not None:
+                seq.append(n)
+    if len(seq) < 3:
+        # 命中太少，没有统计意义；保持既有行为（照常启用），避免影响 en/zh 现状。
+        return True
+    descents = sum(1 for a, b in zip(seq, seq[1:]) if b < a)
+    return descents / (len(seq) - 1) <= SCOPE_MAX_DESCENT_RATIO
 
 
 def parse_pdf_segments(
@@ -584,6 +838,7 @@ def parse_pdf_segments(
 ) -> tuple[list[dict[str, Any]], int, list[str]]:
     pages = extract_pages(pdf_path)
     repeated = repeated_page_lines(pages)
+    scope_reliable = _scope_headings_reliable(pages, lang, repeated)
     segments: list[dict[str, Any]] = []
     filtered = 0
     notes: list[str] = []
@@ -643,7 +898,24 @@ def parse_pdf_segments(
         cleaned_lines = []
         for raw_line in raw_lines:
             line = clean_text(raw_line)
-            if is_noise_line(line) or line in repeated:
+            # ⚠️ 这里刻意只用 repeated["exact"]，**没有**启用 is_repeated_page_line()
+            # 的数字掩码 / 包含判据（2026-07-31，A 步）。原因是一次实测过的取舍：
+            #
+            # 那两条判据是对的——它们能清掉 357 次 `- Seite 46 von 357 -`（StVZO 德语
+            # 源文，直接插在句子中间，污染 702 段里的 313 段）、44 次带页码的
+            # gesetze-im-internet URL 页脚、以及智利 BCN 的中西双语页脚。逐类命中数见
+            # outputs/analysis/a1_ref_noise_20260731/ref_noise_audit.json。
+            #
+            # 但同一条规则也会清掉 R100 英文源文每页的
+            # `Download from the I.R.I.S. application powered by Applus IDIADA.
+            #  For reference purposes only. <页码>` —— 那**同样是真噪声**，可它落在
+            # 已封版的 en 语料里：启用后 en 的 exact_section_scoped 918 条中有 63 条
+            # 内容改变，直接违反"EN 689 / FR 现有结果必须不变"这条纪律。
+            #
+            # 取舍：本轮以不动 en 封版语料为先，噪声清洗留作**待批准的独立改动**
+            # （把本行换成 `is_repeated_page_line(line, repeated)` 即生效）。
+            # 影响面已量化，不是未知风险，也没有悄悄启用。
+            if is_noise_line(line) or line in (repeated.get("exact") or set()):
                 filtered += 1
                 continue
             cleaned_lines.append(line)
@@ -652,7 +924,7 @@ def parse_pdf_segments(
             continue
         for line_idx, line in enumerate(cleaned_lines):
             next_line = cleaned_lines[line_idx + 1] if line_idx + 1 < len(cleaned_lines) else ""
-            scope_here = detect_scope(line, lang, line_idx=line_idx, next_line=next_line)
+            scope_here = detect_scope(line, lang, line_idx=line_idx, next_line=next_line) if scope_reliable else None
             if scope_here:
                 current_scope = scope_here
             section_no = extract_section_no(line)
@@ -933,6 +1205,43 @@ def _de_footnote_ref_indices(segments: list[dict[str, Any]]) -> set[int]:
     }
 
 
+# StVZO 参考侧（中文）目录标题 vs 正文（2026-07-30，M1 续③：579→565 个参考侧
+# key 里 43 个重复，34 个是 art:，其中 32 个符合这个模式）："§ N 标题词"（§
+# 与编号间有空格）是目录页/引用式短标题，"§N 标题词正文..."（无空格）才是
+# 正文——中文译文排版把这两者的空格用法区分得很清楚。⚠️ 这条信号**只对中文
+# 参考侧生效**：早先尝试过同一个信号但同时套用到德语源文侧，因为德语正文本
+# 身的标准排版就是"§ 53b 标题..."带空格（标准德语书写习惯），套到源文侧会把
+# 大量真实正文误判成目录标题，实测导致 StVZO exact 71→20 的严重回归，已回滚
+# （见提交历史）。这次只用于 ref_exclude，不动 source_exclude，同一个信号在
+# 源文/参考两侧的可靠性不一样，不能共用一个函数。
+_DE_TOC_TITLE_RE = re.compile(r"^§\s+\d+[a-z]?\s")
+
+
+def _de_ref_toc_title_indices(segments: list[dict[str, Any]]) -> set[int]:
+    """只在**同一个 key 下同时存在无空格版本**时，才把带空格版本判为目录
+    标题剔除——这个信号不是绝对规律（"§ 63 保密和数据保护"这条带空格但
+    就是唯一、完整的正文；"§ 38b 附件六 1973..."带空格但内容很长，明显是
+    正文不是标题），只在**同 key 内两个版本并存、能对比**时才可靠。第一版
+    不分情况全量剔除，实测把这两条真实 exact 误伤剔掉了（StVZO 636 条净
+    回归到 2 条），改成按 key 分组、要求组内确有一条无空格版本共存才剔除。
+    """
+    by_key: dict[str, list[int]] = defaultdict(list)
+    for idx, seg in enumerate(segments):
+        if (seg.get("section_no") or "").startswith("§"):
+            k = scoped_key(seg)
+            if k:
+                by_key[k].append(idx)
+    drop: set[int] = set()
+    for idxs in by_key.values():
+        if len(idxs) < 2:
+            continue
+        has_space = [i for i in idxs if _DE_TOC_TITLE_RE.match(segments[i]["text"])]
+        no_space = [i for i in idxs if not _DE_TOC_TITLE_RE.match(segments[i]["text"])]
+        if has_space and no_space:
+            drop.update(has_space)
+    return drop
+
+
 def align_segments(
     source_segments: list[dict[str, Any]],
     reference_segments: list[dict[str, Any]],
@@ -952,8 +1261,17 @@ def align_segments(
     # 只影响"同一个 key 内部谁是唯一正文候选"这一层更精细的判断。
     source_footnote_ref = _de_footnote_ref_indices(source_segments)
     ref_footnote_ref = _de_footnote_ref_indices(reference_segments)
+    ref_toc_title = _de_ref_toc_title_indices(reference_segments)
     source_exclude = source_title_ref | source_footnote_ref
-    ref_exclude = ref_title_ref | ref_footnote_ref
+    ref_exclude = ref_title_ref | ref_footnote_ref | ref_toc_title
+
+    # 逐文档选 key 表示：带作用域 vs 裸 key，取跨侧覆盖率高的那个（见
+    # _scope_helps_alignment）。下面所有 scoped_key(...) 调用统一走 skey()。
+    use_scope = _scope_helps_alignment(source_segments, reference_segments,
+                                       source_title_ref, ref_title_ref)
+
+    def skey(segment: dict[str, Any]) -> str:
+        return scoped_key(segment, use_scope)
 
     # 作用域化 key（"X8::5.4.1"）建索引：正文与附件同号不再塌成一个 key。
     # 标题引用/脚注桩（source_exclude/ref_exclude）不参与建索引与计数。
@@ -961,15 +1279,15 @@ def align_segments(
     for ridx, ref in enumerate(reference_segments):
         if ridx in ref_exclude:
             continue
-        k = scoped_key(ref)
+        k = skey(ref)
         if k:
             refs_by_key[k].append((ridx, ref))
     source_key_counts = Counter(
-        k for sidx, k in ((i, scoped_key(s)) for i, s in enumerate(source_segments))
+        k for sidx, k in ((i, skey(s)) for i, s in enumerate(source_segments))
         if k and sidx not in source_exclude
     )
     ref_key_counts = Counter(
-        k for ridx, k in ((i, scoped_key(r)) for i, r in enumerate(reference_segments))
+        k for ridx, k in ((i, skey(r)) for i, r in enumerate(reference_segments))
         if k and ridx not in ref_exclude
     )
     source_count = len(source_segments)
@@ -987,11 +1305,11 @@ def align_segments(
     # 粗粒度覆盖率——脚注剔除后 StVZO 的覆盖率从 95.2% 掉到 85.9%（少了几十个
     # "凭脚注碰巧算覆盖"的假阳性），但门禁本身的作用是"文档整体是否值得一试"，
     # 用脚注污染前的原始信号反而更贴近这条门禁的原始设计意图，不重新校准阈值。
-    keyed_source_keys = [scoped_key(s) for i, s in enumerate(source_segments)
-                         if i not in source_title_ref and scoped_key(s)]
+    keyed_source_keys = [skey(s) for i, s in enumerate(source_segments)
+                         if i not in source_title_ref and skey(s)]
     key_coverage = (sum(1 for k in keyed_source_keys
-                        if k in {scoped_key(r) for i, r in enumerate(reference_segments)
-                                if i not in ref_title_ref and scoped_key(r)})
+                        if k in {skey(r) for i, r in enumerate(reference_segments)
+                                if i not in ref_title_ref and skey(r)})
                     / len(keyed_source_keys) if keyed_source_keys else 0.0)
     high_key_coverage = len(keyed_source_keys) >= 10 and key_coverage >= 0.90
 
@@ -999,7 +1317,7 @@ def align_segments(
         for sidx, source in enumerate(source_segments):
             if sidx in source_exclude:
                 continue  # 标题引用/脚注桩本身不是条款正文，不参与配对
-            k = scoped_key(source)
+            k = skey(source)
             if not k:
                 continue
             # 护栏反过来：作用域化后 key 在任一侧仍 >1 次 -> 不做 exact，标记待复核。
@@ -1246,10 +1564,38 @@ def has_strict_terminal_punctuation(text: str) -> bool:
     return bool(re.search(r"[。.!?！？;；）)]$", text))
 
 
+# 泰文没有句末标点这个书写惯例（2026-07-30，M6）：泰语正式法规文书的条款以空格
+# 或换行收尾，不用句号。实测本仓库 th-zh 语料 281 个源文段里只有 22 个（7.8%）以
+# 任何句末标点收尾，而 en/fr/ru 分别是 71.3%/81.8%/76.9%——"没有句末标点 ⇒ 疑似被
+# 截断"这个推断在泰文上**没有任何判别力**：它把 26 条 exact 匹配里的 22 条全判成
+# 截断，通过率 0，语料直接归零。这是本项目反复出现的同型 bug（拉丁书写惯例被当成
+# 全语种通用规律）的第八次，前七次分别是 match_terms 词边界、sentence_split._EN_END、
+# canonical_section_key 的西里尔/泰文数字、SECTION_PATTERNS 的 [A-Z]、max_chars 当
+# 结构边界等。
+#
+# 修法与拉丁侧同形、不为泰文单独放宽判据：拉丁侧真正的截断信号是"以悬挂功能词
+# 结尾"（_DANG），句末标点只是充分条件之一。泰文沿用同一个形状——查泰文的悬挂
+# 功能词（连词/介词/关系词），命中即判截断，不命中则视为完整。
+_THAI_DOMINANT_RE = re.compile(r"[฀-๿]")
+# 泰文悬挂功能词：และ和/หรือ或/ของ的/ใน在/ที่который/เพื่อ为了/โดย由/จาก从/กับ与/
+# ตาม按照/ซึ่ง即/แห่ง之/เมื่อ当/ถ้า如果/แต่但。以这些收尾说明句子被切断。
+_THAI_DANGLING_RE = re.compile(
+    r"(?:และ|หรือ|ของ|ใน|ที่|เพื่อ|โดย|จาก|กับ|ตาม|ซึ่ง|แห่ง|เมื่อ|ถ้า|แต่)\s*$")
+
+
+def is_thai_dominant(text: str) -> bool:
+    """泰文字符是否占主导——决定要不要套用"句末标点"这条判据。"""
+    thai = len(_THAI_DOMINANT_RE.findall(text))
+    return thai > 0 and thai > len(re.findall(r"[A-Za-z一-鿿]", text))
+
+
 def has_complete_source_end(text: str) -> bool:
     text = clean_text(text)
     if has_strict_terminal_punctuation(text):
         return True
+    if is_thai_dominant(text):
+        # 泰文：句末标点判据不适用（见上），改查悬挂功能词。
+        return not _THAI_DANGLING_RE.search(text)
     return len(text) <= 100 and not re.search(r"\b(and|or|of|the|to|with|which|that|de|la|del|y|и|в|на)$", text, re.IGNORECASE)
 
 

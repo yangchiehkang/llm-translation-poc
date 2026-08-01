@@ -133,10 +133,156 @@ def split_zh(text: str, semicolon_is_boundary: bool = False,
     return [s for s in out if s]
 
 
+# ---------------------------------------------------------------------------
+# 泰文两层嵌套编号项（2026-07-30，M6：th 唯一的阻塞项）
+# ---------------------------------------------------------------------------
+# 这份语料的真实结构是**两层嵌套编号**，不是句子：
+#     ข้อ 4 …ดังนี้ (๑) …  (๒) … (๔) (ก) … (ข) … (ค) …
+# 第一层是数字项，泰文数字 "(๑)" 与阿拉伯数字 "(1)" **两种写法都出现**（同一份
+# 文件里混用）；第二层是泰文字母子项 "(ก)(ข)(ค)"，中文译文侧对应写 "(a)(b)(c)"
+# 或 "（1）"（全角）。
+#
+# 关键决定：**按编号标签配对，不按切分后的计数配对**。
+# 之前 th 只有 4/21 条能进句级，就是因为要求三侧独立切分后句数恰好相等——
+# 泰文侧一个编号项里可能写成一句，中文译文侧拆成两三句，计数天然不等。
+# 标签是跨语言不变量（数字就是数字，ก→a 是固定对照表），按标签对齐既天然
+# 允许 m:n，也不会像纯位置对齐那样一处错位就整条报废。
+_TH_DIGITS = "๐๑๒๓๔๕๖๗๘๙"
+_TH_DIGIT_TRANS = {ord(c): str(i) for i, c in enumerate(_TH_DIGITS)}
+# 泰文字母子项序号 ก ข ค ง จ ฉ ช ซ → a b c d e f g h（泰语字母表顺序，
+# 与中文译文侧的 (a)(b)(c) 一一对应；译文也可能用 (1)(2)(3)，那属于第一层写法，
+# 由调用方按标签集合决定用哪一层，见 align_labeled_units）。
+_TH_LETTER_SEQ = "กขคงจฉชซ"
+_TH_LETTER_MAP = {c: chr(ord("a") + i) for i, c in enumerate(_TH_LETTER_SEQ)}
+
+# 编号标记：(๑) / (1) / （1） / (ก) / (a) / 1.1) / 1° （法语序数列表）
+# `N°`（2026-07-30）：法语法条用 "1° … 2° … 3°" 做列表项，中文译文侧写成
+# "（1）…（2）" 或各自独立成句——源文侧不认这个标记，整串就是一句，与译文
+# 句数天然不等，5 段 fr 样本因此拆不开（用户点名的那一项）。度数符号只在
+# 紧跟数字、且后面不是温度/角度单位（C/F/°/字母）时才算列表标记。
+_MARKER_RE = re.compile(
+    r"[(（]\s*([0-9๐-๙]{1,3}(?:\.[0-9๐-๙]{1,3})*|[ก-ฮ]|[a-zA-Z])\s*[)）]"
+    r"|(?:^|\s)([0-9๐-๙]{1,3}(?:\.[0-9๐-๙]{1,3})+)\)"
+    r"|(?:^|(?<=[:;.،；：])\s{0,3})([0-9]{1,3})°(?=\s)")
+
+
+def normalize_label(raw: str) -> str:
+    """编号标签归一化成跨语言可比的形式：泰文数字→阿拉伯数字，泰文字母→拉丁字母。"""
+    s = raw.strip().translate(_TH_DIGIT_TRANS)
+    if len(s) == 1 and s in _TH_LETTER_MAP:
+        return _TH_LETTER_MAP[s]
+    return s.lower()
+
+
+def split_labeled_units(text: str) -> list[tuple[str, str]]:
+    """按编号标记切成 [(归一化标签, 文本)]；标记之前的引导句标签为 "_head"。
+
+    不判断层级归属（第一层/第二层由标签本身区分：数字 vs 字母），也不递归——
+    两层嵌套在同一个平铺序列里各自带自己的标签，配对时按标签查即可。
+    """
+    t = (text or "").strip()
+    if not t:
+        return []
+    marks: list[tuple[int, int, str]] = []
+    for m in _MARKER_RE.finditer(t):
+        raw = m.group(1) or m.group(2) or m.group(3)
+        if raw is None:
+            continue
+        marks.append((m.start(), m.end(), normalize_label(raw)))
+    if not marks:
+        return [("_head", t)]
+    out: list[tuple[str, str]] = []
+    head = t[: marks[0][0]].strip()
+    if head:
+        out.append(("_head", head))
+    for i, (s, e, lab) in enumerate(marks):
+        end = marks[i + 1][0] if i + 1 < len(marks) else len(t)
+        body = t[s:end].strip()
+        if body:
+            out.append((lab, body))
+    return out
+
+
+def align_labeled_units(src: str, ref: str, hyp: str) -> list[tuple[str, str, str, str]]:
+    """三侧按编号标签配对，返回 [(标签, src块, ref块, hyp块)]。
+
+    只保留**三侧都有同一标签**的单元；标签重复出现的（两层嵌套里字母子项在不同
+    数字项下会重名，如 (๔)(ก) 与 (๕)(ก)）按出现顺序逐个配对，个数不等时只取
+    公共前缀个数，不硬凑。三侧都缺的标签自然不出现，缺一侧的标签被丢掉并可由
+    调用方统计——这就是"允许 m:n、不要求句数严格相等"的落地方式。
+    """
+    def group(text: str) -> dict[str, list[str]]:
+        g: dict[str, list[str]] = {}
+        for lab, body in split_labeled_units(text):
+            g.setdefault(lab, []).append(body)
+        return g
+
+    gs, gr, gh = group(src), group(ref), group(hyp)
+    out: list[tuple[str, str, str, str]] = []
+    for lab in gs:
+        if lab not in gr or lab not in gh:
+            continue
+        n = min(len(gs[lab]), len(gr[lab]), len(gh[lab]))
+        for i in range(n):
+            out.append((lab, gs[lab][i], gr[lab][i], gh[lab][i]))
+    return out
+
+
+_THAI_RE = re.compile(r"[฀-๿]")
+# 泰文行政条款的天然单位是"(N)"编号项，不是语言学意义上的句子（2026-07-30，M3）。
+# 先试过 pythainlp 的 crfcut（CRF 断句模型）：21 条源文能切出 119 句，量级
+# 证明"通用切分器锁死在 21 句"确实是工具选错了，不是样本不够；但逐条核对
+# 发现 crfcut 会在名词短语中间断句（如"...ที่นั่ง "后断开，后半句"จุดยึด..."
+# 仍是同一个名词短语的一部分——泰语政府公告的正式文体不在 crfcut 训练分布
+# 内），三侧对齐后出现明显语义错位（如某条被强行配上完全不相关的另一条
+# 内容），不能直接用。改用编号项切分："(1)"/"(๑)"这类圆括号编号，中文参考
+# 译文用的是同一套编号约定（"(1)"/"（1）"），21 条源文里 16 条三侧编号项
+# 数完全一致，其余小幅偏差（1~2项）留给 m:n 对齐处理——比 crfcut 更贴合
+# 这份语料的真实结构，也印证了 z4 README 里"天然单位是编号项不是句子"的猜测。
+_NUM_ITEM_RE = re.compile(r"(?=[(（][0-9๐-๙]+[)）])")
+
+
+def split_th(text: str, use_pythainlp: bool = True, min_pythainlp_chars: int = 200,
+             **_kw) -> list[str]:
+    """切泰文：**先按编号项切，再对没有编号的长块用 pythainlp 断句**。
+
+    两层的分工是有判据的（2026-07-30，M6）：
+      - 编号项切分是主力。这份语料的天然单位就是编号项，标签跨语言可比，
+        配对可靠（见 align_labeled_units）。
+      - pythainlp（crfcut）只用在**没有任何编号标记的长块**上。单独用它切全文
+        跑过：21 条源文能切出 119 句，量级上证明"锁死在 21 句"是工具选错而非
+        样本不足；但逐条核对发现它会在名词短语中间断开（如 "…ที่นั่ง" 后断，
+        后半 "จุดยึด…" 仍属同一名词短语——泰语政府公告的正式文体不在 crfcut
+        的训练分布内），三侧对齐后出现语义错位。所以它的作用域被限制成
+        "编号项已经切完之后，剩下的长块再细分"，错位风险由 min 长度门槛兜住。
+    """
+    t = (text or "").strip()
+    if not t:
+        return []
+    units = [body for _lab, body in split_labeled_units(t)]
+    if not use_pythainlp:
+        return units
+    out: list[str] = []
+    for u in units:
+        if len(u) < min_pythainlp_chars:
+            out.append(u)
+            continue
+        try:
+            from pythainlp.tokenize import sent_tokenize
+            parts = [p.strip() for p in sent_tokenize(u, engine="crfcut") if p.strip()]
+        except Exception:
+            parts = [u]                      # 装不上/报错就退回不细分，不静默切错
+        out.extend(parts if parts else [u])
+    return out
+
+
 def split_auto(text: str, **kw) -> list[str]:
     """按文本主要语种选切分器。"""
+    thai = len(_THAI_RE.findall(text))
     cjk = len(re.findall(r"[一-鿿]", text))
     lat = len(re.findall(r"[A-Za-z]", text))
+    if thai > cjk and thai > lat:
+        return split_th(text, **kw)
     return split_zh(text, **kw) if cjk > lat else split_en(text, **kw)
 
 

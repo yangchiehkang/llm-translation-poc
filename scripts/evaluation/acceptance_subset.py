@@ -81,6 +81,27 @@ _SUB = re.compile(r"(?:(?<=\s)|(?<=（)|(?<=\()|(?<=、))\d(?:\s+\d){1,}")
 _SENT_EN = re.compile(r"(?<!\d)[.!?](?=\s+[A-Z\"“(]|\s*$)")
 _SENT_ZH = re.compile(r"[。！？]")
 
+# 泰文没有句末标点这个书写惯例（2026-07-30，M6）：与 prepare_da_pairs.py 的
+# has_complete_source_end 同一处修复的第二层。R2/R2a 判"源文是否完整收尾"用的
+# _TERM 是拉丁/中文句末标点，泰文源文永远不匹配 —— 实测 20 条通过 prefilter 的
+# 泰文样本被 R2a 全部误判成"源文被截断"，语料再次归零。
+# 判据形状与拉丁侧一致（悬挂功能词），不为泰文单独放宽。
+_THAI_RE = re.compile(r"[฀-๿]")
+_THAI_DANG = re.compile(r"(?:และ|หรือ|ของ|ใน|ที่|เพื่อ|โดย|จาก|กับ|ตาม|ซึ่ง|แห่ง|เมื่อ|ถ้า|แต่)\s*$")
+
+
+def _thai_dominant(text: str) -> bool:
+    thai = len(_THAI_RE.findall(text))
+    return thai > 0 and thai > len(re.findall(r"[A-Za-z一-鿿]", text))
+
+
+def _src_terminated(src: str) -> bool:
+    """源文是否"正常收尾"——按源文书写体系判，不按拉丁惯例一刀切。"""
+    if _thai_dominant(src):
+        return not _THAI_DANG.search(src)
+    return bool(_TERM.search(src))
+
+
 RATIO_CUT = 0.75
 # 健康配对的参考/源文字符比中位（R100+R17 实测 0.293）。G2 用它推算参考的期望长度。
 HEALTHY_RATIO = 0.29
@@ -111,12 +132,12 @@ def rules_for(row: dict, ref_followed_by_orphan: bool | None = None) -> list[tup
 
     body = _SEC.sub("", src).strip()
     first = body.split()[0] if body.split() else ""
-    src_complete = bool(_TERM.search(src)) and not _DANG.search(src)
+    src_complete = _src_terminated(src) and not _DANG.search(src)
     if _CONT.match(body) and first[:1].islower():
         out.append(("R2", f"去掉条款号后正文以小写功能词 “{first}” 开头，是上一条款的续行"))
-    elif not _TERM.search(src) and _DANG.search(src):
+    elif not _src_terminated(src) and (_DANG.search(src) or _THAI_DANG.search(src)):
         out.append(("R2", f"源文无句末标点，以功能词 “{src.strip().split()[-1]}” 结尾，句子被切断"))
-    elif not _TERM.search(src) and _TERM.search(ref):
+    elif not _src_terminated(src) and _TERM.search(ref):
         if _COLON_END.search(src):
             # 冒号收尾：源文在此正常结束，列表项是独立 segment；参考把整个列表写在一段内。
             # 这是粒度不可比（与 B 同族），不是"源文被截断"。
