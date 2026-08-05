@@ -1,0 +1,66 @@
+{
+  "corpus": "data/eval/rebuild_en_final_20260727/aligned_da_samples.jsonl",
+  "scope": "R100_03_series + R17_10_series（不是全部英语；R016 见文档级排除）",
+  "translator": "Qwen3.6-35B-A3B @ <VLLM_ENDPOINT> (vLLM, TP=2, temp=0)",
+  "scorer": "XCOMET-XXL DA, unbabel-comet 2.2.7, bf16, batch_size=4, npu:7, 单次 689 行",
+  "strict_full": {
+    "n": 689,
+    "mean": 0.832677,
+    "median": 0.870325,
+    "p10": 0.625,
+    "min": 0.035889,
+    "max": 1.00125
+  },
+  "headline_subset": {
+    "label": "v2 中档+粒度不对等 G+R3/R5/β（现行对外主数）",
+    "n": 627,
+    "mean": 0.856429,
+    "excluded": 62,
+    "exclusion_rate": 0.09,
+    "rules": [
+      "R2",
+      "R2a",
+      "R2b",
+      "G1",
+      "G2",
+      "R3",
+      "R5",
+      "β"
+    ]
+  },
+  "full_subset": {
+    "label": "完整子集（仅作敏感性参考，不作主数）",
+    "n": 613,
+    "mean": 0.86129,
+    "excluded": 76
+  },
+  "tcr_term_level_strict": 0.9643,
+  "tcr_sample_level": 0.878899,
+  "document_level_exclusion": {
+    "R016_08_series": "源文段 940 / 参考段 1871，分段粒度比 1:2，计数比 0.50 同时低于 exact(0.75) 与 order_based(0.8) 两道下限，对齐 0 条，全文档未纳入"
+  },
+  "tcr_note": "术语级 1076/1147；样本级 479/545。此前发布的 88.79%/75.09% 系用**未修复的** match_terms（服务器副本按部署冻结未同步 S3a/S3a-2 的 span 抑制）算出，已作废。 术语级 96.43% 系加入 target_alias（目标端别名，依据参考语料实际用法）后的口径，见 scripts/common/termbase.py target_present。本轮 W1 + 促级不触碰术语库、match_terms 与译文，TCR 未重测。",
+  "headline_subset_v1_sealed": {
+    "label": "v1 中档+G（2026-07-27 封版口径，保留并报，永远与 v2 并列出现）",
+    "n": 650,
+    "mean": 0.843421,
+    "excluded": 39,
+    "exclusion_rate": 0.0566,
+    "rules": [
+      "R2",
+      "R2a",
+      "R2b",
+      "G1",
+      "G2"
+    ]
+  },
+  "headline_rule_change_20260728": {
+    "what": "R3（PDF 页眉/水印）、R5（下标塌陷）、β（脚注混入正文）三类从『记录但不剔』促级为主数剔除规则",
+    "criterion": "判据能否直接从原始文档核验、与任何分数无关。R3/R5/β 过线；9 条低比值残余不过线（阈值由全集比值分布统计推出，证据等级不同），维持不动。",
+    "effect_known_at_decision_time": "+0.0130（0.8434 -> 0.8564），23 条，被剔行均值 0.4902",
+    "timing": "发生在 2026-07-27 语料封版**之后**。决策时效应已知并已披露。",
+    "note": "上一轮报出的 630/0.8559 是『仅促 R3』的中间数；划线标准同时让 R5/β 过线，按标准执行为 627/0.8564。两个数都保留在 sensitivity.json。",
+    "defined_in": "scripts/evaluation/subset_report.py（HEADLINE_V1 / HEADLINE_V2）"
+  },
+  "sensitivity": "见 sensitivity.json（7 档，v1 与 v2 并排）"
+}

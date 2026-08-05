@@ -1,0 +1,12 @@
+{
+  "input": "outputs/eval/fr_zh_z2_20260729/fr_y3_final.jsonl",
+  "output": "outputs/eval/fr_zh_z2_20260729/fr_y3_final_tcr.jsonl",
+  "scope": "hard",
+  "allow_alias": false,
+  "rows": 117,
+  "rows_with_required_terms": 83,
+  "failed_rows": 5,
+  "required_terms": 188,
+  "correct_terms": 183,
+  "batch_tcr": 0.973404
+}

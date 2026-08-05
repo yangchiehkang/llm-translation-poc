@@ -10,7 +10,8 @@ __pycache__/
 venv/
 env/
 
-# Data and outputs
+# 语料、评测产物、日志 —— 一律不入库。
+# 对外可引用的汇总表另存 results/（只含聚合数字，不含逐条原文/参考译文）。
 data/
 outputs/
 logs/
@@ -24,11 +25,14 @@ models/
 *.pt
 *.pth
 
-# Generated reports
+# 表格类产物（含甲方术语库 CSV 本体）
 *.xlsx
 *.xls
 *.csv
-!termbase/auto_regulation_terms_v1.csv
+
+# 甲方交付文档：v2.2 docx 内联生产 token，v2.0 为甲方接口文档，永不入库
+docs/deliverables/
+*.docx
 
 # Secrets
 .env

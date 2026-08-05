@@ -1,0 +1,12 @@
+{
+  "input": "outputs/eval/de_zh_z2_20260729/de_hyp_final32.jsonl",
+  "output": "outputs/eval/de_zh_z2_20260729/de_tcr_final32.jsonl",
+  "scope": "hard",
+  "allow_alias": false,
+  "rows": 32,
+  "rows_with_required_terms": 11,
+  "failed_rows": 5,
+  "required_terms": 17,
+  "correct_terms": 11,
+  "batch_tcr": 0.647059
+}

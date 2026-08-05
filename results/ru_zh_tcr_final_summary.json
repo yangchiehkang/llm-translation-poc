@@ -1,0 +1,12 @@
+{
+  "input": "outputs/eval/ru_zh_z1_20260729/retranslate_v2/z1_hyp_final.jsonl",
+  "output": "outputs/eval/ru_zh_z1_20260729/retranslate_v2/z1_tcr_final.jsonl",
+  "scope": "hard",
+  "allow_alias": false,
+  "rows": 125,
+  "rows_with_required_terms": 37,
+  "failed_rows": 1,
+  "required_terms": 42,
+  "correct_terms": 41,
+  "batch_tcr": 0.97619
+}

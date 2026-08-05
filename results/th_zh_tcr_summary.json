@@ -1,0 +1,12 @@
+{
+  "input": "outputs/eval/th_zh_z4_20260730/th_hyp_srclang.jsonl",
+  "output": "outputs/eval/th_zh_z4_20260730/th_tcr.jsonl",
+  "scope": "hard",
+  "allow_alias": false,
+  "rows": 21,
+  "rows_with_required_terms": 7,
+  "failed_rows": 2,
+  "required_terms": 15,
+  "correct_terms": 12,
+  "batch_tcr": 0.8
+}
