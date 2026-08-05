@@ -1,116 +1,250 @@
-# LLM Translation POC
+# Terminology-Constrained Translation for Standards & Regulations
 
-本仓库是面向广汽汽车标准法规场景的多语种翻译实验仓库，用于验证法规文本翻译、术语约束、术语一致性检查、XCOMET-DA/COMET 有参考评分，以及后续速度并发实验所需的关键能力。
+Compliance review of automotive standards and regulations requires translations in which
+*specified terminology is exactly right*. Aggregate machine-translation scores cannot certify
+that property. This repository treats terminology as a process-level hard gate and measures the
+two things separately.
 
-当前仓库定位是 POC / 实验验证，不是最终生产系统。旧周报、历史版本结论和归档材料不在仓库内继续维护；如需追溯历史内容，以 GitHub 历史提交为准。
+---
 
-## 当前目标
+## Motivation
 
-- 多语种汽车标准法规文本翻译。
-- 基于术语库的术语召回、Prompt 注入和译后 TCR 校验。
-- 三组 Prompt 策略对比：无术语 baseline、不分层术语 baseline、分层 Prompt。
-- TCR 闭环：失败拦截、定向 retry、重试后复核和失败术语分析。
-- XCOMET 评价：DA/COMET 覆盖可信配对参考译文样本。
-- 报告汇总：以 TCR 与 XCOMET 两类最终报告解释当前实验结论。
+A compliance reviewer does not need a translation that is *generally good*. They need one where
+`REESS`, `high voltage bus`, and `type approval authority` are rendered in the exact terms the
+regulation defines — because a downstream audit turns on those words and not on fluency.
 
-## 目录结构
+Neural MT quality metrics are aggregate and reference-based. A translation can score well while
+silently substituting a synonym for a controlled term, and can score poorly while being
+terminologically perfect. Optimising the score therefore does not optimise the property the
+client actually buys.
 
-```text
-.
-├── configs/        # 模型、语言和评分配置
-├── data/           # 原始文档、评测样本和实验输入
-├── docs/           # 当前阶段高层说明文档
-├── outputs/        # 翻译、评估和最终报告产物
-├── scripts/        # 预处理、翻译、术语、评估和工具脚本
-└── termbase/       # 当前汽车标准法规术语库和说明
+The pipeline here separates the two: a **term-consistency gate** (injection → check →
+retry-repair → re-check) enforces the hard requirement, and **XCOMET-DA** measures general
+quality independently. Both are reported. Where they disagree, the disagreement is the finding.
+
+---
+
+## Results
+
+### English (UN R100-03 + R17-10)
+
+Two reporting granularities are in use and both are given, because they answer different
+questions. Sentence level is the acceptance basis agreed with the client; segment level is the
+earlier frozen basis, retained for comparability.
+
+| Metric | Value | n | Threshold |
+| --- | --- | --- | --- |
+| XCOMET-DA — sentence level, ≤199 chars | **0.9157** | 665 | 0.90 ✅ |
+| XCOMET-DA — sentence level, full | 0.9009 | 911 | — |
+| XCOMET-DA — segment level, strict full set | 0.8327 | 689 | — |
+| XCOMET-DA — segment level, acceptance subset | 0.8564 | 627 | — |
+| Term consistency (TCR) — term level | **97.56%** (1119/1147) | — | 95% ✅ |
+| Term consistency (TCR) — sample level | 95.05% (518/545) | — | — |
+
+The ≤199-character band covers 73.0% of all sentences. The acceptance subset removes 9.00% of
+segments; every exclusion carries a fact-based, verifiable reason (source truncation, PDF
+extraction noise, subscript collapse, reference over-coverage) recorded per row — not "low
+score". Rules were defined before they were applied.
+
+**Corpus scope.** English here means two regulations, not "all English". A third
+(R016-08) is excluded at document level: 940 source segments against 1871 reference segments,
+a count ratio of 0.50, below the alignment gate.
+
+### Terminology gate, isolated
+
+| Configuration | Term level | Sample level |
+| --- | --- | --- |
+| Before target-side aliases | 93.81% (1076/1147) | 87.89% (479/545) |
+| Single-pass baseline | 96.51% (1107/1147) | 92.84% (506/545) |
+| With reranking | 97.56% (1119/1147) | 95.05% (518/545) |
+
+### Cross-language
+
+Seven language pairs, each a different body of law with its own Chinese reference document —
+not translations of one shared source.
+
+| Pair | Alignment method | Aligned units | DA | TCR | Status |
+| --- | --- | --- | --- | --- | --- |
+| en–zh | scoped exact section match | 689 | 0.9157 (sent.) | 97.56% | ✅ delivered |
+| ru–zh | exact + clause-number normalisation | 116 (135 sent.) | 0.8525 | 97.62% | ✅ meets 0.85 |
+| fr–zh | exact + code-style clause IDs (`Article L541-9`) | 117 sent. | 0.7819 | 97.34% | ❌ DA short by 0.0181 |
+| de–zh | `§ N` clause detection + enumeration merge | 32 (49 sent.) | 0.8399 | 64.7% | ❌ TCR short, n ≪ 100 |
+| th–zh | Thai numeral transliteration + order-based | 21 | 0.4199 (seg.) | 80% (15 inst.) | ❌ far short |
+| ar–zh | geometric extraction + bidi reordering | 0 | — | — | ❌ clause-ID location fails |
+| es–zh | exact | 3 | — | — | ❌ source material insufficient |
+
+The ru/fr/de/th DA figures, their length bands and their provenance are in
+`results/cross_language_summary.json`; en is in `results/en_zh_689_summary.json`.
+
+The binding constraint is almost never translation quality — it is **extraction and alignment**.
+Source-side character recovery ranges from 91.6% (ru) to 2.8% (de) to 0% (ar). A pair with no
+aligned units has no translation problem to measure yet.
+
+### The number that does not ship
+
+Every figure above comes from the *evaluation* configuration, which differs from production in
+four respects. The fourth is load-bearing and is not a backlog item:
+
+> The reranking stage cannot run in production. At 6000 characters × 4 candidates it exceeds the
+> 120-second contractual latency ceiling. Falling back to the single-pass arm costs −0.0145
+> sentence-level DA and drops the 100–199 character band below 0.90.
+
+The single-pass arm that *does* ship has ample headroom — measured end-to-end over 40 requests,
+all HTTP 200:
+
+| Input length (chars) | n | p50 (s) | p95 (s) |
+| --- | --- | --- | --- |
+| 1000 | 8 | 4.32 | 5.07 |
+| 2000 | 16 | 8.00 | 10.18 |
+| 4000 | 8 | 16.89 | 18.23 |
+| 6000 | 8 | 21.26 | 24.12 |
+
+24.12s against a 120s ceiling at the worst supported input length. The ceiling is not what
+blocks reranking at a single-candidate cost — four candidates is.
+
+This is a capability limit, not an unshipped feature. Quoting 0.9157 without it would be
+quoting a configuration that cannot be deployed.
+
+Measured single-pass latency (40 requests, all HTTP 200) shows where the headroom goes:
+
+| Input chars | n | p50 (s) | p95 (s) |
+| --- | --- | --- | --- |
+| 1000 | 8 | 4.32 | 5.07 |
+| 2000 | 16 | 8.00 | 10.18 |
+| 4000 | 8 | 16.89 | 18.23 |
+| 6000 | 8 | 21.26 | 24.12 |
+
+Single-pass at 6000 characters has ample margin against the 120-second ceiling. Four candidates
+do not.
+
+---
+
+## Method
+
+```
+termbase (three-tier)
+      │
+      ├─► term injection ──► first translation
+      │                            │
+      │                      TCR check ──── pass ──► accept
+      │                            │
+      │                          fail
+      │                            │
+      └─────────────► retry-repair (source + current translation + missed terms)
+                                   │
+                             TCR re-check ──► accept only if the failure set strictly shrinks
 ```
 
-## 核心文档
+Two design decisions worth naming:
 
-| 文档 | 用途 |
-|---|---|
-| `docs/README.md` | 文档索引、边界和维护原则。 |
-| `docs/requirements.md` | 标准法规翻译子模块需求、语种范围和验收目标。 |
-| `docs/current_experiment_plan.md` | 本轮 Prompt 分级策略对比实验的目标、三组设计、样本范围和整体流程。 |
-| `docs/closed_loop_pipeline.md` | 术语召回、三组翻译、TCR、retry、XCOMET-DA/COMET 和报告汇总闭环。 |
-| `docs/evaluation_and_acceptance.md` | TCR、retry、XCOMET-DA/COMET 和质量风险解释口径。 |
+- **Longest-match span occupancy in term matching.** A naive word-boundary matcher counts
+  `shall` as required inside `shall not`, and `cell` inside `single cell internal short
+  circuit`. The matcher assigns text spans to the longest matching term and suppresses shorter
+  terms fully contained in an occupied span. This is a denominator correction, not a target
+  relaxation — the affected terms were never genuinely required.
+- **Strict-subset guardrail on retry.** Retry-repair returns a full translation, not a patch, so
+  a repair can fix one term and break another. A repaired output is accepted only when its
+  failure set is a strict subset of the original. Without the guard, gross recovery is partly
+  cancelled by regressions.
 
-`docs/` 不再维护按阶段编号拆开的执行手册；具体命令、脚本参数和运行细节以 `scripts/`、配置文件和实际产物为准。
+Evaluation uses XCOMET-XXL for DA. QE is used only as a data-cleaning signal, never as a
+reported metric.
 
-## 主要产物
+---
 
-| 产物 | 用途 |
-|---|---|
-| `outputs/README.md` | 输出目录说明：翻译、TCR、XCOMET 和报告产物的默认位置。 |
-| `outputs/reports/tcr_final_report.md` | TCR 首译、retry 后恢复率、最终 pass rate 和失败术语分析。 |
-| `outputs/reports/xcomet_da_final_report.md` | 三组译文的 XCOMET-DA/COMET 评分对比。 |
-| `outputs/reports/tcr_group_metrics.csv` | TCR 组间指标表。 |
-| `outputs/reports/tcr_language_metrics.csv` | TCR 分语种指标表。 |
-| `outputs/reports/xcomet_group_metrics.csv` | XCOMET 组间指标表。 |
-| `outputs/reports/xcomet_language_metrics.csv` | XCOMET 分语种指标表。 |
+## Repository layout
 
-## 配置文件
+```
+api/          FastAPI service — contract layer, auth, backends, deploy units
+  backends/     DashScope and local-NPU translation backends
+  examples/     request/response fixtures and a regression harness
+configs/      language, translation and evaluation configuration
+docs/         pipeline design, acceptance criteria, experiment plans, backlog
+results/      aggregate result files backing every number in this README
+scripts/      preprocessing, translation, termbase, evaluation, analysis, reporting
+termbase/     termbase schema and documentation
+```
 
-| 文件 | 用途 |
-|---|---|
-| `configs/README.md` | 配置目录说明和维护规则。 |
-| `configs/languages.yaml` | 当前必做/待确认语种、优先级和质量阈值。 |
-| `configs/translation.yaml` | 翻译模型、术语库、Prompt 路由、重试和输出字段配置。 |
-| `configs/evaluation.yaml` | TCR、DA/COMET、速度、并发和报告字段配置。 |
+Corpora, model outputs, per-row scores and the termbase itself are not published. `results/`
+contains only aggregate figures; each file names the run it came from.
 
-## 主要数据
+---
 
-| 目录 | 说明 |
-|---|---|
-| `data/raw/` | 标准化原始法规文档和中文参考译文，按语种方向组织。 |
-| `data/eval/splits/source_only_300_by_lang/` | 下一轮三组翻译和 TCR 使用的源文 split，不包含 `ref_text`。 |
-| `data/eval/splits/reference_with_ref_300_by_lang/` | 与源文 split 一一对应的 DA/COMET 参考译文 split，包含 `ref_text`。 |
-| `data/eval/splits/*/by_lang/` | 按语种拆分的源文或参考译文文件，便于抽样和人工检查。 |
-| `outputs/translations/source_only_300_by_lang/first/` | 下一轮第一次翻译结果，生成前为空或不存在。 |
-| `outputs/translations_retry/source_only_300_by_lang/` | 下一轮 retry 重新翻译结果，生成前为空或不存在。 |
-| `outputs/evaluation/tcr*/source_only_300_by_lang/` | 下一轮 TCR 和 retry recheck 结果。 |
+## How to run
 
-## 主要脚本
+```bash
+pip install -r scripts/requirements.txt   # pipeline; versions pinned deliberately
+pip install -r api/requirements.txt       # service only
+cp api/.env.example .env                  # project root, not api/ — fill in tokens
+```
 
-脚本按功能分类，运行位置和参数以脚本自身说明、`scripts/README.md` 和配置文件为准。
+Alignment and corpus construction:
 
-| 目录 | 说明 |
-|---|---|
-| `scripts/termbase/` | 术语召回、术语命中标注和 Prompt 模式预路由。 |
-| `scripts/translation/` | 首译、retry 和翻译输入构造相关脚本。 |
-| `scripts/evaluation/` | TCR 硬校验、retry recheck、XCOMET-DA/COMET 输入构造和评分汇总。 |
-| `scripts/reporting/` | 多指标合并和阶段分析表生成。 |
-| `scripts/common/` | JSONL/CSV 读写、语言映射、术语匹配和 Prompt 构造等共用逻辑。 |
+```bash
+python scripts/evaluation/prepare_da_pairs.py --mode from_raw \
+    --raw-dir data/raw --only-language-pair en-zh --output-dir data/eval
+python scripts/evaluation/prepare_da_pairs.py --mode selftest_canonical   # 14 unit checks
+```
 
-## 术语库
+Term recall, then translation through the terminology gate:
 
-当前核心术语文件位于 `termbase/`：
+```bash
+python scripts/termbase/term_recall.py --mode build_prompt_experiment_inputs \
+    --input <split>.jsonl --output-dir outputs/experiment_inputs/<split> \
+    --termbase termbase/auto_regulation_terms_v1.csv
 
-| 文件 | 说明 |
-|---|---|
-| `termbase/README.md` | 术语库保留范围、字段和使用原则。 |
-| `termbase/auto_regulation_terms_v1.csv` | 当前统一术语库，版本为 `termbase_v1`。 |
+python scripts/translation/run_prompt_compare_first.py \
+    --input-dir outputs/experiment_inputs/<split> \
+    --output-dir outputs/translations/<split>/first \
+    --split-name <split> --model qwen-max --temperature 0.0
+```
 
-术语相关实验需要明确区分：
+Term-consistency check, then DA scoring:
 
-- `strict`：对外验收口径，只看 required target term。
-- `relaxed`：内部诊断口径，可参考 alias 和合理变体。
-- `hard required terms`：进入硬 TCR 控制的核心术语。
-- `soft/review terms`：用于辅助 Prompt 或人工复核，不直接包装成硬达标。
+```bash
+python scripts/evaluation/check_tcr.py \
+    --input <translations>.jsonl --output <tcr>.jsonl --summary <tcr_summary>.json \
+    --termbase termbase/auto_regulation_terms_v1.csv --scope hard
 
-## 当前实验工作流
+python scripts/evaluation/run_xcomet.py --mode da \
+    --input <xcomet_inputs>.jsonl --output <da_scores>.jsonl \
+    --model-path <XCOMET-XXL>/checkpoints/model.ckpt --device npu:0 --batch-size 8
 
-1. 从 raw 法规 PDF 和中文参考 PDF 构建源文 split 与配对参考译文 split。
-2. 使用统一术语库召回 hard required terms 和 required target terms。
-3. 对 `source_only_300_by_lang` 的同一批 source_text 生成三组翻译：`no_term_baseline`、`term_baseline`、`graded_prompt`。
-4. 对首译结果做 TCR，生成 retry 样本池。
-5. 对 TCR fail 样本做 retry，并复核 retry 后 TCR。
-6. 使用 `reference_with_ref_300_by_lang` 补入 `ref_text`，对 first_pass 和 final 译文做 XCOMET-DA/COMET。
-7. 汇总 TCR、retry、DA 和失败术语，形成最终报告。
+python scripts/evaluation/build_sentence_pairs.py \
+    --scores <da_scores>.jsonl --out-pairs <sent_pairs>.jsonl --out-map <sent_map>.jsonl
+```
 
-## 文档维护原则
+The XCOMET-XXL checkpoint (~40 GB) is not included; its path is passed with `--model-path`,
+not read from a config file. `--device` defaults to `cuda` and accepts `npu:N` (requires
+`torch_npu`). Scoring was run on Ascend NPU in bf16; the bf16-vs-fp32 calibration offset is
++0.0015 mean.
 
-- `docs/` 保留高层说明，不保留逐步执行命令。
-- 阶段结果必须注明是否已经在本仓库产出。
-- 对外指标优先引用 `outputs/reports/` 的最终报告。
-- 旧版本术语库、历史实验说明和临时运行记录需要追溯时使用 Git 历史。
+Service:
+
+```bash
+API_VENV=<venv> bash api/deploy/run.sh
+```
+
+`run.sh` reads `.env` from the project root. `PORT` has no default — the script refuses to
+start rather than silently bind the wrong port.
+
+---
+
+## Notes
+
+- Source PDFs, extracted references and the termbase are client materials and are not
+  redistributed here.
+- The DA target of 0.90 is treated as a metric-calibration question rather than a pure
+  translation target. XCOMET-XXL systematically underscores Chinese legal translation, and in
+  reviewed cases the translation was better than the reference while scoring lower. The strict
+  full-set number and the defect-removed subset are both reported so the gap is auditable.
+- Superseded figures that appear in older commits and must not be reused: the 615-row
+  (DA 0.8567) and 432-row English corpora, and the pre-fix TCR of 88.79%.
+
+---
+
+## Author
+
+**Jiekang Yang** — project lead, MSc Computer & Information Engineering,
+The Chinese University of Hong Kong, Shenzhen. Advisor: Prof. Xiaoying Tang.
+Three-person team; March 2026 – present.

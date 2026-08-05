@@ -1,0 +1,196 @@
+{
+  "_about": "ru/fr/de/th 四语向对外 DA 聚合数（en 见 en_zh_689_summary.json）。每条含产出路径、口径、n、DA 均值/中位数与长度分档；只含聚合数字，不含逐条源文/参考译文/译文。",
+  "_scope": "各语向的单语向定版评测（2026-07-29~07-30），非 unified_7lang 批次；README 交叉语言表引用的就是这四个数。",
+  "_scorer": "XCOMET-XXL DA, unbabel-comet 2.2.7, bf16, Ascend NPU",
+  "_generated_from": "由各语向 DA 打分 jsonl 逐条重算，未从文档正文抄录",
+  "languages": {
+    "ru-zh": {
+      "inputs": {
+        "da_sentence_scores": "outputs/eval/ru_zh_z1_20260729/retranslate_v2/z1_sent_scores_final.jsonl",
+        "hypothesis": "outputs/eval/ru_zh_z1_20260729/retranslate_v2/z1_hyp_final.jsonl",
+        "tcr_summary": "results/ru_zh_tcr_final_summary.json"
+      },
+      "alignment": "exact + 条款号归一化",
+      "level": "sentence",
+      "n_aligned_units": 116,
+      "n_units_splittable": 109,
+      "da": {
+        "n": 135,
+        "mean": 0.852467,
+        "median": 0.881056
+      },
+      "da_bands_by_source_chars": {
+        "<=99": {
+          "n": 31,
+          "mean": 0.903583
+        },
+        "100-199": {
+          "n": 64,
+          "mean": 0.880609
+        },
+        "200-299": {
+          "n": 30,
+          "mean": 0.805493
+        },
+        "300+": {
+          "n": 10,
+          "mean": 0.654814
+        }
+      },
+      "tcr_term_level": 0.97619,
+      "tcr_terms": [
+        41,
+        42
+      ],
+      "da_threshold": 0.85,
+      "status": "pass",
+      "note": "125 条重译后剔除 9 条可核验缺陷（5 条段尾文字粘连 + 4 条真实未译）得 116 条；其中 109 条可拆句 → 135 句为句级主数，7 条三侧句数不一致退回段级、不并入主数。"
+    },
+    "fr-zh": {
+      "inputs": {
+        "da_candidate_scores": "outputs/eval/fr_zh_z2_20260729/fr_y3_da.jsonl",
+        "candidates": "outputs/eval/fr_zh_z2_20260729/fr_y3_cands.jsonl",
+        "selected": "outputs/eval/fr_zh_z2_20260729/fr_y3_final.jsonl",
+        "da_greedy_scores": "outputs/eval/fr_zh_z2_20260729/z2_sent_scores.jsonl",
+        "tcr_summary": "results/fr_zh_tcr_final_summary.json"
+      },
+      "alignment": "exact + code 式条款号（Article L541-9）",
+      "level": "sentence",
+      "n_aligned_units": 43,
+      "da": {
+        "n": 117,
+        "mean": 0.781874,
+        "median": 0.823494
+      },
+      "da_greedy_single_candidate": {
+        "n": 117,
+        "mean": 0.76101,
+        "median": 0.807825
+      },
+      "da_bands_by_source_chars": {
+        "<=99": {
+          "n": 22,
+          "mean": 0.785282
+        },
+        "100-199": {
+          "n": 42,
+          "mean": 0.851721
+        },
+        "200-299": {
+          "n": 29,
+          "mean": 0.791288
+        },
+        "300+": {
+          "n": 24,
+          "mean": 0.645144
+        }
+      },
+      "rerank": {
+        "n_candidates": 4,
+        "selection": "先过 TCR 硬术语检查 → 通过者取 XCOMET-QE 最高 → 无人通过回落候选 0",
+        "n_fallback_to_cand0": 5,
+        "gain": 0.020865
+      },
+      "tcr_term_level": 0.973404,
+      "tcr_terms": [
+        183,
+        188
+      ],
+      "da_threshold": 0.8,
+      "status": "fail",
+      "note": "DA 差 0.0181 未达标，如实报未达标。另：117 句里含硬术语句仅 83 句，未达合同「每语向 ≥100 条含硬术语句」——材料量上限，非链路漏抽。"
+    },
+    "de-zh": {
+      "inputs": {
+        "da_sentence_scores": "outputs/eval/de_zh_z2_20260729/de_sent_scores_final32.jsonl",
+        "da_segment_scores": [
+          "outputs/eval/de_zh_z2_20260729/de_da_scores.jsonl",
+          "outputs/eval/de_zh_z2_20260729/de_delta_da.jsonl"
+        ],
+        "hypothesis": "outputs/eval/de_zh_z2_20260729/de_hyp_final32.jsonl",
+        "tcr_summary": "results/de_zh_tcr_final32_summary.json"
+      },
+      "alignment": "§ N 条款号识别 + 列举项合并",
+      "level": "sentence",
+      "n_aligned_units": 32,
+      "n_units_splittable": 20,
+      "da": {
+        "n": 49,
+        "mean": 0.839886,
+        "median": 0.890844
+      },
+      "da_segment_level": {
+        "n": 32,
+        "mean": 0.595455,
+        "median": 0.581164
+      },
+      "da_bands_by_source_chars": {
+        "<=99": {
+          "n": 15,
+          "mean": 0.912937
+        },
+        "100-199": {
+          "n": 18,
+          "mean": 0.896349
+        },
+        "200-299": {
+          "n": 10,
+          "mean": 0.763671
+        },
+        "300+": {
+          "n": 6,
+          "mean": 0.61489
+        }
+      },
+      "tcr_term_level": 0.647059,
+      "tcr_terms": [
+        11,
+        17
+      ],
+      "da_threshold": 0.8,
+      "status": "fail",
+      "note": "句级 DA 过 0.80，但 TCR 64.7%（仅 17 个术语实例）明确未达标，且 n=32 远未达 100 条门槛，整体不算达标。max_chars 当结构边界是瓶颈，实测 3000→6000 反而使 exact 从 71 降到 66。"
+    },
+    "th-zh": {
+      "inputs": {
+        "da_segment_scores": "outputs/eval/th_zh_z4_20260730/th_da_scores.jsonl",
+        "hypothesis": "outputs/eval/th_zh_z4_20260730/th_hyp_srclang.jsonl",
+        "tcr_summary": "results/th_zh_tcr_summary.json"
+      },
+      "alignment": "泰文数字转写 + order_based",
+      "level": "segment",
+      "n_aligned_units": 21,
+      "da": {
+        "n": 21,
+        "mean": 0.419908,
+        "median": 0.290094
+      },
+      "da_bands_by_source_chars": {
+        "<=99": {
+          "n": 0,
+          "mean": null
+        },
+        "100-199": {
+          "n": 3,
+          "mean": 0.898056
+        },
+        "200-299": {
+          "n": 3,
+          "mean": 0.559409
+        },
+        "300+": {
+          "n": 15,
+          "mean": 0.296379
+        }
+      },
+      "tcr_term_level": 0.8,
+      "tcr_terms": [
+        12,
+        15
+      ],
+      "da_threshold": 0.7,
+      "status": "fail",
+      "note": "段级 0.4199，远低于 0.70。瓶颈在抽取与对齐，不在翻译质量。"
+    }
+  }
+}
