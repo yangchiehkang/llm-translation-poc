@@ -183,7 +183,7 @@ Alignment and corpus construction:
 ```bash
 python scripts/evaluation/prepare_da_pairs.py --mode from_raw \
     --raw-dir data/raw --only-language-pair en-zh --output-dir data/eval
-python scripts/evaluation/prepare_da_pairs.py --mode selftest_canonical   # 14 unit checks
+python scripts/evaluation/prepare_da_pairs.py --mode selftest_canonical   # 18 unit checks
 ```
 
 Term recall, then translation through the terminology gate:
